@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A0039211-844E-4553-8D47-F0879EC7E814</string>
+	<key>IDESourceControlProjectName</key>
+	<string>iBeacon_Retail</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>2DCC35DC8A143FBDE2DCB7CCD79EB81B2CD1EECF</key>
+		<string>https://github.com/hegdeShruti/iBeacon_App.git</string>
+		<key>514fc0e1-e916-0410-81aa-bcb374a88025++5317</key>
+		<string>https://inusv001.act.org/repos02/VTC/GST/G3Prototypes/PnD</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>iBeacon_Retail/iBeacon_Retail.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>2DCC35DC8A143FBDE2DCB7CCD79EB81B2CD1EECF</key>
+		<string>../../..</string>
+		<key>514fc0e1-e916-0410-81aa-bcb374a88025++5317</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>514fc0e1-e916-0410-81aa-bcb374a88025++5317</key>
+		<string>https://inusv001.act.org/repos02</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/hegdeShruti/iBeacon_App.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>2DCC35DC8A143FBDE2DCB7CCD79EB81B2CD1EECF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>514fc0e1-e916-0410-81aa-bcb374a88025++5317</string>
+			<key>IDESourceControlWCCName</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2DCC35DC8A143FBDE2DCB7CCD79EB81B2CD1EECF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iBeacon_App</string>
+		</dict>
+	</array>
+</dict>
+</plist>
