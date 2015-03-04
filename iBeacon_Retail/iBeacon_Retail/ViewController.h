@@ -10,6 +10,8 @@
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIButton *productButton;
+- (IBAction)openProductScreen:(id)sender;
 
 @end
 

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6249" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6243"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProductViewController">
+            <connections>
+                <outlet property="prodCollectionView" destination="0US-iZ-Zkm" id="lN4-v7-ii8"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rpe-4n-hMf">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Products" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hU8-Pt-x3s">
+                            <rect key="frame" x="125" y="11" width="70" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.86274509799999999" green="0.01176470588" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="hU8-Pt-x3s" firstAttribute="top" secondItem="rpe-4n-hMf" secondAttribute="top" constant="11" id="KdP-55-xAa"/>
+                        <constraint firstAttribute="height" constant="44" id="kiJ-dF-h8W"/>
+                        <constraint firstAttribute="centerX" secondItem="hU8-Pt-x3s" secondAttribute="centerX" id="m6N-RD-ysM"/>
+                    </constraints>
+                </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="0US-iZ-Zkm">
+                    <rect key="frame" x="0.0" y="88" width="320" height="489"/>
+                    <color key="backgroundColor" red="0.92206606660000001" green="0.64859567350000003" blue="0.1557881176" alpha="1" colorSpace="calibratedRGB"/>
+                    <inset key="scrollIndicatorInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="0.0" id="1Fc-Tp-Xn5">
+                        <size key="itemSize" width="150" height="150"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="4eP-Jr-Rod"/>
+                        <outlet property="delegate" destination="-1" id="kj8-QP-Nh3"/>
+                    </connections>
+                </collectionView>
+                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="9AA-lB-B6N">
+                    <rect key="frame" x="0.0" y="44" width="320" height="44"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="e3f-Vy-5b0"/>
+                    </connections>
+                </searchBar>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="rpe-4n-hMf" secondAttribute="trailing" id="Ddc-u1-FJP"/>
+                <constraint firstAttribute="bottom" secondItem="0US-iZ-Zkm" secondAttribute="bottom" constant="-9" id="HFI-1B-5OB"/>
+                <constraint firstItem="0US-iZ-Zkm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Ja8-xP-Xpi"/>
+                <constraint firstAttribute="trailing" secondItem="0US-iZ-Zkm" secondAttribute="trailing" id="LKF-MC-Bca"/>
+                <constraint firstItem="rpe-4n-hMf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="YE0-2p-fB1"/>
+                <constraint firstItem="9AA-lB-B6N" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cJC-gE-nym"/>
+                <constraint firstItem="9AA-lB-B6N" firstAttribute="top" secondItem="rpe-4n-hMf" secondAttribute="bottom" id="iZm-KR-Oxp"/>
+                <constraint firstItem="rpe-4n-hMf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="l7d-1i-euD"/>
+                <constraint firstAttribute="trailing" secondItem="9AA-lB-B6N" secondAttribute="trailing" id="xYS-8E-nVf"/>
+                <constraint firstItem="0US-iZ-Zkm" firstAttribute="top" secondItem="9AA-lB-B6N" secondAttribute="bottom" id="xxf-Fu-4BI"/>
+            </constraints>
+            <point key="canvasLocation" x="337" y="338"/>
+        </view>
+    </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

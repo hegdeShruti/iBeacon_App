@@ -7,8 +7,14 @@
 //
 
 #import "AppDelegate.h"
+#import "ESTConfig.h"
+#import "ESTBeaconManager.h"
+#import "ESTBeaconRegion.h"
+#define ESTIMOTE_PROXIMITY_UUID             [[NSUUID alloc] initWithUUIDString:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"]
 
-@interface AppDelegate ()
+@interface AppDelegate ()<ESTBeaconManagerDelegate>
+@property (nonatomic, strong) ESTBeaconRegion *region;
+@property(nonatomic,strong)ESTBeaconManager *beaconManager;
 
 @end
 
@@ -16,7 +22,28 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    [ESTConfig setupAppID:nil andAppToken:nil];
+    self.beaconManager = [[ESTBeaconManager alloc] init];
+    self.beaconManager.delegate = self;
+    
+    // read config values from plist and assign it to parameters
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Config" ofType:@"plist"];
+    NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:path];
+    NSUUID *beaconId=[[NSUUID alloc] initWithUUIDString:[dict objectForKey:@"UUID"]];
+    CLBeaconMajorValue majorValue=[[dict objectForKey:@"EntryBeacon_Major"] intValue];
+    CLBeaconMinorValue minorValue=[[dict objectForKey:@"EntryBeacon_Minor"] intValue];
+    
+    // create a region for entry beacon
+    self.region = [[ESTBeaconRegion alloc] initWithProximityUUID:beaconId
+                                                           major:majorValue minor:minorValue identifier:@"RegionIdentifier"
+                                                         secured:NO];
+    //settings for monitoring a region
+    self.region.notifyOnEntry = YES;
+    self.region.notifyOnExit = YES;
+    [self.beaconManager requestAlwaysAuthorization];
+    [self.beaconManager startMonitoringForRegion:  self.region];
+    
     return YES;
 }
 
@@ -41,5 +68,35 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+#pragma beacon manager delegaes
+- (void)beaconManager:(ESTBeaconManager *)manager didEnterRegion:(ESTBeaconRegion *)region
+{
+    UILocalNotification *notification = [UILocalNotification new];
+    notification.alertBody = @"Welcome to Tavant Store..Check for offers here";
+    
+    [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+}
+
+- (void)beaconManager:(ESTBeaconManager *)manager didExitRegion:(ESTBeaconRegion *)region
+{
+    UILocalNotification *notification = [UILocalNotification new];
+    notification.alertBody = @"Thank you for visiting Us";
+    
+    [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+}
+
+#pragma mark - ESTBeaconManager delegate
+
+- (void)beaconManager:(ESTBeaconManager *)manager monitoringDidFailForRegion:(ESTBeaconRegion *)region withError:(NSError *)error
+{
+    UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:@"Monitoring error"
+                                                        message:error.localizedDescription
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+    
+    [errorView show];
+}
+
 
 @end

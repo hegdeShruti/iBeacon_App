@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>EntryBeacon_Major</key>
+	<integer>5813</integer>
+	<key>EntryBeacon_Minor</key>
+	<integer>506</integer>
+	<key>UUID</key>
+	<string>B9407F30-F5F8-466E-AFF9-25556B57FE6D</string>
+</dict>
+</plist>
