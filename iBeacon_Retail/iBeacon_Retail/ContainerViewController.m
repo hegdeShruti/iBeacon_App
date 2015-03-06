@@ -49,6 +49,7 @@
         [self.mainScreenViewController loadProductsViewController];
 //    }
     [self.mainScreenViewController loadProductsViewController];
+    self.mainScreenViewController.view.frame = self.view.frame;
     self.mainScreenViewController.resetMainScreenPositionOnMenuSelection = ^(void){
         [self movePanelToOriginalPosition];
     };
