@@ -22,7 +22,15 @@
 		814BC9621AA4404800164B30 /* ProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 814BC9601AA4404800164B30 /* ProductViewController.xib */; };
 		814BC9661AA4634900164B30 /* prodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 814BC9641AA4634900164B30 /* prodCell.m */; };
 		814BC9671AA4634900164B30 /* prodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 814BC9651AA4634900164B30 /* prodCell.xib */; };
+		8186A0A01AA7775D00BB5AC4 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8186A09F1AA7775C00BB5AC4 /* ViewController.xib */; };
 		81AE08891AA70A6400CD7F75 /* libEstimoteSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF78FBE1AA039E800B57B8C /* libEstimoteSDK.a */; };
+		81AE088E1AA71F1900CD7F75 /* OffersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE088C1AA71F1900CD7F75 /* OffersViewController.m */; };
+		81AE088F1AA71F1900CD7F75 /* OffersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81AE088D1AA71F1900CD7F75 /* OffersViewController.xib */; };
+		81AE08931AA720D200CD7F75 /* OffersTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE08911AA720D200CD7F75 /* OffersTableCell.m */; };
+		81AE08941AA720D200CD7F75 /* OffersTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81AE08921AA720D200CD7F75 /* OffersTableCell.xib */; };
+		81AE089A1AA7672200CD7F75 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE08961AA7672200CD7F75 /* ContainerViewController.m */; };
+		81AE089B1AA7672200CD7F75 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE08981AA7672200CD7F75 /* MenuViewController.m */; };
+		81AE089C1AA7672200CD7F75 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81AE08991AA7672200CD7F75 /* MenuViewController.xib */; };
 		81B6A8731AA5D93C00A234D7 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 81B6A8721AA5D93C00A234D7 /* Config.plist */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +93,18 @@
 		814BC9631AA4634900164B30 /* prodCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prodCell.h; sourceTree = "<group>"; };
 		814BC9641AA4634900164B30 /* prodCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = prodCell.m; sourceTree = "<group>"; };
 		814BC9651AA4634900164B30 /* prodCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = prodCell.xib; sourceTree = "<group>"; };
+		8186A09F1AA7775C00BB5AC4 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		81AE088B1AA71F1900CD7F75 /* OffersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OffersViewController.h; sourceTree = "<group>"; };
+		81AE088C1AA71F1900CD7F75 /* OffersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OffersViewController.m; sourceTree = "<group>"; };
+		81AE088D1AA71F1900CD7F75 /* OffersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OffersViewController.xib; sourceTree = "<group>"; };
+		81AE08901AA720D200CD7F75 /* OffersTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OffersTableCell.h; sourceTree = "<group>"; };
+		81AE08911AA720D200CD7F75 /* OffersTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OffersTableCell.m; sourceTree = "<group>"; };
+		81AE08921AA720D200CD7F75 /* OffersTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OffersTableCell.xib; sourceTree = "<group>"; };
+		81AE08951AA7672200CD7F75 /* ContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerViewController.h; sourceTree = "<group>"; };
+		81AE08961AA7672200CD7F75 /* ContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
+		81AE08971AA7672200CD7F75 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		81AE08981AA7672200CD7F75 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		81AE08991AA7672200CD7F75 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
 		81B6A8721AA5D93C00A234D7 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,10 +157,17 @@
 		0AF77D6B1AA0363800B57B8C /* iBeacon_Retail */ = {
 			isa = PBXGroup;
 			children = (
+				81AE08951AA7672200CD7F75 /* ContainerViewController.h */,
+				81AE08961AA7672200CD7F75 /* ContainerViewController.m */,
+				81AE08971AA7672200CD7F75 /* MenuViewController.h */,
+				81AE08981AA7672200CD7F75 /* MenuViewController.m */,
+				81AE08991AA7672200CD7F75 /* MenuViewController.xib */,
+				81AE088A1AA71EED00CD7F75 /* Offers */,
 				814BC95D1AA4401200164B30 /* Products */,
 				814BC95C1AA4400500164B30 /* Model */,
 				0AF77D701AA0363800B57B8C /* AppDelegate.h */,
 				0AF77D711AA0363800B57B8C /* AppDelegate.m */,
+				8186A09F1AA7775C00BB5AC4 /* ViewController.xib */,
 				0AF77D731AA0363800B57B8C /* ViewController.h */,
 				0AF77D741AA0363800B57B8C /* ViewController.m */,
 				0AF77D761AA0363800B57B8C /* Main.storyboard */,
@@ -238,6 +265,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		81AE088A1AA71EED00CD7F75 /* Offers */ = {
+			isa = PBXGroup;
+			children = (
+				81AE088B1AA71F1900CD7F75 /* OffersViewController.h */,
+				81AE088C1AA71F1900CD7F75 /* OffersViewController.m */,
+				81AE088D1AA71F1900CD7F75 /* OffersViewController.xib */,
+				81AE08901AA720D200CD7F75 /* OffersTableCell.h */,
+				81AE08911AA720D200CD7F75 /* OffersTableCell.m */,
+				81AE08921AA720D200CD7F75 /* OffersTableCell.xib */,
+			);
+			name = Offers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -318,11 +358,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8186A0A01AA7775D00BB5AC4 /* ViewController.xib in Resources */,
 				0AF77D781AA0363800B57B8C /* Main.storyboard in Resources */,
+				81AE08941AA720D200CD7F75 /* OffersTableCell.xib in Resources */,
 				0AF77D7D1AA0363800B57B8C /* LaunchScreen.xib in Resources */,
 				814BC9621AA4404800164B30 /* ProductViewController.xib in Resources */,
+				81AE089C1AA7672200CD7F75 /* MenuViewController.xib in Resources */,
 				814BC9671AA4634900164B30 /* prodCell.xib in Resources */,
 				81B6A8731AA5D93C00A234D7 /* Config.plist in Resources */,
+				81AE088F1AA71F1900CD7F75 /* OffersViewController.xib in Resources */,
 				0AF77D7A1AA0363800B57B8C /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,10 +385,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81AE08931AA720D200CD7F75 /* OffersTableCell.m in Sources */,
+				81AE089B1AA7672200CD7F75 /* MenuViewController.m in Sources */,
 				0AF77D751AA0363800B57B8C /* ViewController.m in Sources */,
+				81AE088E1AA71F1900CD7F75 /* OffersViewController.m in Sources */,
 				0AF77D721AA0363800B57B8C /* AppDelegate.m in Sources */,
 				814BC9661AA4634900164B30 /* prodCell.m in Sources */,
 				814BC9611AA4404800164B30 /* ProductViewController.m in Sources */,
+				81AE089A1AA7672200CD7F75 /* ContainerViewController.m in Sources */,
 				0AF77D6F1AA0363800B57B8C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

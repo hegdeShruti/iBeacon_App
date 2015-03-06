@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MenuViewController.h"
 
-@interface ProductViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate,UISearchBarDelegate>
+@interface ProductViewController : UIViewController<UICollectionViewDataSource,MenuViewControllerDelegate,UICollectionViewDelegate,UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *prodCollectionView;
 
 @end

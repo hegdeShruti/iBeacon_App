@@ -10,6 +10,8 @@
 #import "ESTConfig.h"
 #import "ESTBeaconManager.h"
 #import "ESTBeaconRegion.h"
+#import "OffersViewController.h"
+//#import "ContainerViewController.h"
 #define ESTIMOTE_PROXIMITY_UUID             [[NSUUID alloc] initWithUUIDString:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"]
 
 @interface AppDelegate ()<ESTBeaconManagerDelegate>
@@ -44,7 +46,12 @@
     [self.beaconManager requestAlwaysAuthorization];
     [self.beaconManager startMonitoringForRegion:  self.region];
     
-    return YES;
+    // check if the app opens from notification
+//    UILocalNotification *notification =[launchOptions objectForKeyedSubscript:UIApplicationLaunchOptionsLocalNotificationKey];
+    
+
+    
+       return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -68,6 +75,17 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+-(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
+    if (notification)
+    {
+//        ContainerViewController *container=[[ContainerViewController alloc]initWithNibName:@"ContainerViewController" bundle:[NSBundle mainBundle] ];
+//        container.screenToOpen=@"Offers";
+//        ViewController *mainview=[[ViewController alloc] initWithNibName:@"ViewController" bundle:[NSBundle mainBundle]];
+//        self.wi
+        OffersViewController *offers = [[OffersViewController alloc]initWithNibName:NSStringFromClass([OffersViewController class]) bundle:nil];
+        [self.window.rootViewController presentViewController:offers animated:YES completion:nil];
+        
+    }}
 #pragma beacon manager delegaes
 - (void)beaconManager:(ESTBeaconManager *)manager didEnterRegion:(ESTBeaconRegion *)region
 {
@@ -97,6 +115,7 @@
     
     [errorView show];
 }
+
 
 
 @end
