@@ -45,6 +45,9 @@
         self.productsViewController = [[ProductViewController alloc] initWithNibName:@"ProductViewController" bundle:nil];
     }
     [self.contentView addSubview:self.productsViewController.view];
+    
+    self.productsViewController.view.frame = CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
+    
     [self addChildViewController:self.productsViewController];
     [self.productsViewController didMoveToParentViewController:self];
     self.navbar.topItem.title = @"Products";
@@ -57,6 +60,9 @@
         self.offersViewController = [[OffersViewController alloc] initWithNibName:@"OffersViewController" bundle:nil];
     }
     [self.contentView addSubview:self.offersViewController.view];
+    
+    self.offersViewController.view.frame = CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
+    
     [self addChildViewController:self.offersViewController];
     [self.offersViewController didMoveToParentViewController:self];
     self.navbar.topItem.title = @"Offers";
