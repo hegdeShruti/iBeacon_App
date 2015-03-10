@@ -11,11 +11,12 @@
 #import "ESTBeaconManager.h"
 #import "ESTBeaconRegion.h"
 #import "OffersViewController.h"
-//#import "ContainerViewController.h"
+#import "ContainerViewController.h"
 #define ESTIMOTE_PROXIMITY_UUID             [[NSUUID alloc] initWithUUIDString:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"]
 
 @interface AppDelegate ()<ESTBeaconManagerDelegate>
 @property (nonatomic, strong) ESTBeaconRegion *region;
+@property (nonatomic, strong) ESTBeaconRegion *regionSectionSpec;
 @property(nonatomic,strong)ESTBeaconManager *beaconManager;
 
 @end
@@ -40,14 +41,26 @@
     self.region = [[ESTBeaconRegion alloc] initWithProximityUUID:beaconId
                                                            major:majorValue minor:minorValue identifier:@"RegionIdentifier"
                                                          secured:NO];
+   
     //settings for monitoring a region
     self.region.notifyOnEntry = YES;
     self.region.notifyOnExit = YES;
+    
     [self.beaconManager requestAlwaysAuthorization];
     [self.beaconManager startMonitoringForRegion:  self.region];
-    
+     
+//    UILocalNotification *notification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+//    
+//    if (notification)
+//    {
+//        ContainerViewController *container=[[ContainerViewController alloc]initWithNibName:@"ContainerViewController" bundle:[NSBundle mainBundle] ];
+//                container.shoulOpenOffers=YES;
+//    
+//    }
     // check if the app opens from notification
 //    UILocalNotification *notification =[launchOptions objectForKeyedSubscript:UIApplicationLaunchOptionsLocalNotificationKey];
+    
+   
     
 
     
@@ -75,20 +88,34 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
 -(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
     if (notification)
     {
-//        ContainerViewController *container=[[ContainerViewController alloc]initWithNibName:@"ContainerViewController" bundle:[NSBundle mainBundle] ];
-//        container.screenToOpen=@"Offers";
-//        ViewController *mainview=[[ViewController alloc] initWithNibName:@"ViewController" bundle:[NSBundle mainBundle]];
-//        self.wi
-        OffersViewController *offers = [[OffersViewController alloc]initWithNibName:NSStringFromClass([OffersViewController class]) bundle:nil];
-        [self.window.rootViewController presentViewController:offers animated:YES completion:nil];
+        
+        NSLog(@"%@",notification.userInfo.description);
+      //  ContainerViewController *container=[[ContainerViewController alloc]initWithNibName:@"ContainerViewController" bundle:[NSBundle mainBundle] ];
+        ContainerViewController *container = (ContainerViewController *)[self.window rootViewController];
+//        ContainerViewController *container = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+       // [container initialize];
+        UIApplicationState state = [UIApplication sharedApplication].applicationState;
+        BOOL result = (state == UIApplicationStateActive);
+        if(!result){
+            [container.mainScreenViewController loadOffersViewController];
+        }
+        
+
+              
+        //[[NSNotificationCenter defaultCenter] postNotificationName:@"pushNotification" object:nil userInfo:userInfo];
+//        OffersViewController *offers = [[OffersViewController alloc]initWithNibName:NSStringFromClass([OffersViewController class]) bundle:nil];
+//        [self.window.rootViewController presentViewController:offers animated:YES completion:nil];
         
     }}
 #pragma beacon manager delegaes
 - (void)beaconManager:(ESTBeaconManager *)manager didEnterRegion:(ESTBeaconRegion *)region
 {
+ 
     UILocalNotification *notification = [UILocalNotification new];
     notification.alertBody = @"Welcome to Tavant Store..Check for offers here";
     
@@ -97,6 +124,7 @@
 
 - (void)beaconManager:(ESTBeaconManager *)manager didExitRegion:(ESTBeaconRegion *)region
 {
+
     UILocalNotification *notification = [UILocalNotification new];
     notification.alertBody = @"Thank you for visiting Us";
     

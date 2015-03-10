@@ -7,9 +7,18 @@
 //
 
 #import "ViewController.h"
+#import "ESTBeaconManager.h"
+#import "ESTConfig.h"
+#import "ESTBeaconManager.h"
+#import "ESTBeaconRegion.h"
 
-@interface ViewController ()
-
+@interface ViewController ()<ESTBeaconManagerDelegate>
+@property(nonatomic,strong)ESTBeaconManager *beaconManager;
+@property (nonatomic, strong) ESTBeacon         *beacon;
+@property (nonatomic, strong) ESTBeaconRegion *region;
+@property(nonatomic, assign) BOOL hasShownOffersForMen;
+@property(nonatomic, assign) BOOL hasShownOffersForWomen;
+-(void) checkProximity:(ESTBeacon *)bcn withMessage:(NSString *) msg ;
 @end
 
 @implementation ViewController
@@ -20,7 +29,7 @@
     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
         [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
     }
-
+  
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -164,4 +173,6 @@
             break;
     }
 }
+
+
 @end

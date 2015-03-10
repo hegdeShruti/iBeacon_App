@@ -31,23 +31,28 @@
 }
 
 //Used to set the intial screen of the app
+
+-(void)initialize {
+    self.mainScreenViewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+}
 -(void) setupView
-{
+
+{   [self initialize];
     [self loadMainScreenViewController];
 }
 
 // loads the main container screen with default/home screen (ProductsViewController)
 -(void)loadMainScreenViewController
 {
-    self.mainScreenViewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+    
     self.mainScreenViewController.view.tag = CENTER_TAG;
     self.mainScreenViewController.delegate = self;
-//    if([self.screenToOpen isEqualToString:@"Offers"]){
+//    if(self.shoulOpenOffers){
 //        [self.mainScreenViewController loadOffersViewController];
 //    }
 //    else{
         [self.mainScreenViewController loadProductsViewController];
-//    }
+    //}
     [self.mainScreenViewController loadProductsViewController];
     self.mainScreenViewController.view.frame = self.view.frame;
     self.mainScreenViewController.resetMainScreenPositionOnMenuSelection = ^(void){

@@ -26,7 +26,8 @@
 @property (nonatomic, assign) BOOL showingLeftPanel;
 @property (nonatomic, assign) BOOL showPanel;
 @property (nonatomic, assign) CGPoint preVelocity;
-@property(nonatomic,strong) NSString *screenToOpen;
+@property(nonatomic,assign) BOOL *shoulOpenOffers;
+-(void) initialize;
 
 @end
 
