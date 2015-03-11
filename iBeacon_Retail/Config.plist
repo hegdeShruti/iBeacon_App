@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>WomenSectionBeacon_Minor</key>
+	<integer>41861</integer>
+	<key>WomenSectionBeacon_Major</key>
+	<integer>36164</integer>
+	<key>MenSectionBeacon_Minor</key>
+	<integer>39431</integer>
+	<key>MenSectionBeacon_Major</key>
+	<integer>32673</integer>
 	<key>EntryBeacon_Major</key>
 	<integer>5813</integer>
 	<key>EntryBeacon_Minor</key>

@@ -77,6 +77,8 @@
 		81AE089A1AA7672200CD7F75 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE08961AA7672200CD7F75 /* ContainerViewController.m */; };
 		81AE089B1AA7672200CD7F75 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE08981AA7672200CD7F75 /* MenuViewController.m */; };
 		81AE089C1AA7672200CD7F75 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81AE08991AA7672200CD7F75 /* MenuViewController.xib */; };
+		81AF71091AAF1AD800B350B6 /* BeaconMonitoringModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AF71081AAF1AD800B350B6 /* BeaconMonitoringModel.m */; };
+		81AF710C1AB00E4800B350B6 /* NetworkOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AF710B1AB00E4800B350B6 /* NetworkOperations.m */; };
 		81B6A8731AA5D93C00A234D7 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 81B6A8721AA5D93C00A234D7 /* Config.plist */; };
 /* End PBXBuildFile section */
 
@@ -207,6 +209,10 @@
 		81AE08971AA7672200CD7F75 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		81AE08981AA7672200CD7F75 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		81AE08991AA7672200CD7F75 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
+		81AF71071AAF1AD800B350B6 /* BeaconMonitoringModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeaconMonitoringModel.h; sourceTree = "<group>"; };
+		81AF71081AAF1AD800B350B6 /* BeaconMonitoringModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeaconMonitoringModel.m; sourceTree = "<group>"; };
+		81AF710A1AB00E4800B350B6 /* NetworkOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkOperations.h; sourceTree = "<group>"; };
+		81AF710B1AB00E4800B350B6 /* NetworkOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkOperations.m; sourceTree = "<group>"; };
 		81B6A8721AA5D93C00A234D7 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -276,6 +282,7 @@
 		0AF77D6B1AA0363800B57B8C /* iBeacon_Retail */ = {
 			isa = PBXGroup;
 			children = (
+				81AF71061AAF1A8F00B350B6 /* Utility */,
 				81AE08951AA7672200CD7F75 /* ContainerViewController.h */,
 				81AE08961AA7672200CD7F75 /* ContainerViewController.m */,
 				81AE08971AA7672200CD7F75 /* MenuViewController.h */,
@@ -485,6 +492,17 @@
 			name = Offers;
 			sourceTree = "<group>";
 		};
+		81AF71061AAF1A8F00B350B6 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				81AF71071AAF1AD800B350B6 /* BeaconMonitoringModel.h */,
+				81AF71081AAF1AD800B350B6 /* BeaconMonitoringModel.m */,
+				81AF710A1AB00E4800B350B6 /* NetworkOperations.h */,
+				81AF710B1AB00E4800B350B6 /* NetworkOperations.m */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -636,6 +654,8 @@
 				814BC9661AA4634900164B30 /* prodCell.m in Sources */,
 				455269A11AB03FDD00E6F7C3 /* StoreLocationMapViewController.m in Sources */,
 				814BC9611AA4404800164B30 /* ProductViewController.m in Sources */,
+				81AF710C1AB00E4800B350B6 /* NetworkOperations.m in Sources */,
+				81AF71091AAF1AD800B350B6 /* BeaconMonitoringModel.m in Sources */,
 				81AE089A1AA7672200CD7F75 /* ContainerViewController.m in Sources */,
 				0AF77D6F1AA0363800B57B8C /* main.m in Sources */,
 			);

@@ -12,59 +12,26 @@
 #import "ESTBeaconRegion.h"
 #import "OffersViewController.h"
 #import "ContainerViewController.h"
+#import "BeaconMonitoringModel.h"
 #define ESTIMOTE_PROXIMITY_UUID             [[NSUUID alloc] initWithUUIDString:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"]
 
 @interface AppDelegate ()<ESTBeaconManagerDelegate>
 @property (nonatomic, strong) ESTBeaconRegion *region;
 @property (nonatomic, strong) ESTBeaconRegion *regionSectionSpec;
 @property(nonatomic,strong)ESTBeaconManager *beaconManager;
+@property (nonatomic, strong) ESTBeaconRegion *regionMenSection;
+@property (nonatomic, strong) BeaconMonitoringModel *beaconOperations;
 
 @end
 
 @implementation AppDelegate
-
+@synthesize beaconOperations;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [ESTConfig setupAppID:nil andAppToken:nil];
-    self.beaconManager = [[ESTBeaconManager alloc] init];
-    self.beaconManager.delegate = self;
-    
-    // read config values from plist and assign it to parameters
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"Config" ofType:@"plist"];
-    NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:path];
-    NSUUID *beaconId=[[NSUUID alloc] initWithUUIDString:[dict objectForKey:@"UUID"]];
-    CLBeaconMajorValue majorValue=[[dict objectForKey:@"EntryBeacon_Major"] intValue];
-    CLBeaconMinorValue minorValue=[[dict objectForKey:@"EntryBeacon_Minor"] intValue];
-    
-    // create a region for entry beacon
-    self.region = [[ESTBeaconRegion alloc] initWithProximityUUID:beaconId
-                                                           major:majorValue minor:minorValue identifier:@"RegionIdentifier"
-                                                         secured:NO];
-   
-    //settings for monitoring a region
-    self.region.notifyOnEntry = YES;
-    self.region.notifyOnExit = YES;
-    
-    [self.beaconManager requestAlwaysAuthorization];
-    [self.beaconManager startMonitoringForRegion:  self.region];
-     
-//    UILocalNotification *notification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
-//    
-//    if (notification)
-//    {
-//        ContainerViewController *container=[[ContainerViewController alloc]initWithNibName:@"ContainerViewController" bundle:[NSBundle mainBundle] ];
-//                container.shoulOpenOffers=YES;
-//    
-//    }
-    // check if the app opens from notification
-//    UILocalNotification *notification =[launchOptions objectForKeyedSubscript:UIApplicationLaunchOptionsLocalNotificationKey];
-    
-   
-    
-
-    
-       return YES;
+    beaconOperations=[[BeaconMonitoringModel alloc] init];
+    [beaconOperations startBeaconOperations];
+    return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -95,55 +62,15 @@
     {
         
         NSLog(@"%@",notification.userInfo.description);
-      //  ContainerViewController *container=[[ContainerViewController alloc]initWithNibName:@"ContainerViewController" bundle:[NSBundle mainBundle] ];
+      
         ContainerViewController *container = (ContainerViewController *)[self.window rootViewController];
-//        ContainerViewController *container = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
-       // [container initialize];
+
         UIApplicationState state = [UIApplication sharedApplication].applicationState;
         BOOL result = (state == UIApplicationStateActive);
         if(!result){
             [container.mainScreenViewController loadOffersViewController];
         }
-        
-
-              
-        //[[NSNotificationCenter defaultCenter] postNotificationName:@"pushNotification" object:nil userInfo:userInfo];
-//        OffersViewController *offers = [[OffersViewController alloc]initWithNibName:NSStringFromClass([OffersViewController class]) bundle:nil];
-//        [self.window.rootViewController presentViewController:offers animated:YES completion:nil];
-        
-    }}
-#pragma beacon manager delegaes
-- (void)beaconManager:(ESTBeaconManager *)manager didEnterRegion:(ESTBeaconRegion *)region
-{
- 
-    UILocalNotification *notification = [UILocalNotification new];
-    notification.alertBody = @"Welcome to Tavant Store..Check for offers here";
-    
-    [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
-}
-
-- (void)beaconManager:(ESTBeaconManager *)manager didExitRegion:(ESTBeaconRegion *)region
-{
-
-    UILocalNotification *notification = [UILocalNotification new];
-    notification.alertBody = @"Thank you for visiting Us";
-    
-    [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
-}
-
-#pragma mark - ESTBeaconManager delegate
-
-- (void)beaconManager:(ESTBeaconManager *)manager monitoringDidFailForRegion:(ESTBeaconRegion *)region withError:(NSError *)error
-{
-    UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:@"Monitoring error"
-                                                        message:error.localizedDescription
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-    
-    [errorView show];
-}
-
-
+     
+}}
 
 @end
