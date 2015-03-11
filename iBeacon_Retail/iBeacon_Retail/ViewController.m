@@ -11,6 +11,9 @@
 #import "ESTConfig.h"
 #import "ESTBeaconManager.h"
 #import "ESTBeaconRegion.h"
+#import "ESTIndoorLocationManager.h"
+#import "ESTConfig.h"
+#import "ESTLocationBuilder.h"
 
 @interface ViewController ()<ESTBeaconManagerDelegate>
 @property(nonatomic,strong)ESTBeaconManager *beaconManager;
@@ -88,6 +91,26 @@
 {
     self.navbar.topItem.title = @"Map";
     self.selectedIndex = mapMenuIndex;
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"location" ofType:@"json"];
+    NSString *content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    
+    if(self.storeLocationMapViewController ==  nil){
+        ESTLocation *location = [ESTLocationBuilder parseFromJSON:content];
+//        self.storeLocationMapViewController = [[StoreLocationMapViewController alloc] initWithNibName:@"StoreLocationMapViewController" bundle:nil];
+        self.storeLocationMapViewController = [[StoreLocationMapViewController alloc] initWithLocation:location];
+    }
+    [self.contentView addSubview:self.storeLocationMapViewController.view];
+    
+    self.storeLocationMapViewController.view.frame = CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
+    
+    [self addChildViewController:self.storeLocationMapViewController];
+    [self.storeLocationMapViewController didMoveToParentViewController:self];
+    
+//    StoreLocationMapViewController *storeMapVC = [[StoreLocationMapViewController alloc] initWithLocation:location];
+//    storeMapVC.view.frame = CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
+//    [self.navigationController pushViewController:storeMapVC animated:YES];
+    
 }
 
 
@@ -114,10 +137,13 @@
             break;
         }
         case cartMenuIndex:{
+            
             break;
         }
         case mapMenuIndex:{
-            
+            [self.storeLocationMapViewController removeFromParentViewController];
+            [self.storeLocationMapViewController.view removeFromSuperview];
+            self.storeLocationMapViewController = nil;
             break;
         }
         default:

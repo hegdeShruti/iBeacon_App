@@ -17,6 +17,8 @@
 #import "MenuViewController.h"
 #import "ProductViewController.h"
 #import "OffersViewController.h"
+#import "StoreLocationMapViewController.h"
+
 
 
 @protocol MainScreeViewControllerDelegate <NSObject>
@@ -39,6 +41,7 @@
 @property (nonatomic,weak) id<MainScreeViewControllerDelegate> delegate;
 @property (nonatomic, strong) ProductViewController* productsViewController;
 @property (nonatomic, strong) OffersViewController* offersViewController;
+@property (nonatomic, strong) StoreLocationMapViewController* storeLocationMapViewController;
 
 - (IBAction)menuButtonPressed:(id)sender;
 -(void)loadProductsViewController;

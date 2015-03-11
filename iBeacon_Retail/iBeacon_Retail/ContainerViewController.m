@@ -237,7 +237,7 @@
         } else {
             // NSLog(@"opposite direction");
         }
-        NSLog(@"view center X: %f",[sender view].center.x);
+//        NSLog(@"view center X: %f",[sender view].center.x);
 //        NSLog(@"view center Y: %f",[sender view].center.y);
         _preVelocity = velocity;
     }
