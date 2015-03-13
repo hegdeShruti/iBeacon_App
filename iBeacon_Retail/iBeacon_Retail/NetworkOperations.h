@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NetworkOperations : NSObject
+@interface NetworkOperations : NSObject<NSURLSessionDelegate, NSURLSessionDownloadDelegate>
 
+-(void) fetchDataFromServer : (NSString *) url;
 @end
