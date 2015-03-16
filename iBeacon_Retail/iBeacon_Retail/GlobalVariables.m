@@ -26,6 +26,7 @@ static GlobalVariables *instance = nil;
             instance.hasUserGotWOmenSectionOffers=NO;
             instance.hasUsercrossedEntrance=NO;
             instance.hasUserEntredEntryBeacon=NO;
+           // instance.hasALreadyLoggedIn=NO;
         }
     }
     return instance;

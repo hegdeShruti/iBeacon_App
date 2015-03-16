@@ -7,29 +7,48 @@
 //
 
 #import "LoginViewController.h"
+#import "GlobalVariables.h"
+#import "AppDelegate.h"
 
-@interface LoginViewController ()
+@interface LoginViewController ()<UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewWidthConstraint;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollViewBottomConstraint;
+@property(nonatomic,strong) NSUserDefaults *defaults;
 @end
 
 @implementation LoginViewController
+@synthesize defaults;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self setUSerDefaults];
+    
 }
 
+
+-(void)viewWillAppear:(BOOL)animated {
+    self.contentViewWidthConstraint.constant  = [[UIScreen mainScreen] bounds].size.width;
+    self.contentViewHeightConstraint.constant  = [[UIScreen mainScreen] bounds].size.height;
+    
+    NSLog(@"%f %f",self.contentViewWidthConstraint.constant ,self.contentViewHeightConstraint.constant);
+    [self.view layoutIfNeeded];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    [self setUSerDefaults];
+   
     // Dispose of any resources that can be recreated.
 }
 
 -(void) setUSerDefaults{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    defaults = [NSUserDefaults standardUserDefaults];
     
-    [defaults setObject:@"Shruti" forKey:@"userName"];
-    [defaults setObject:@"Welcome123" forKey:@"password"];
+    [defaults setObject:@"sss" forKey:@"userName"];
+    [defaults setObject:@"123" forKey:@"password"];
+    [defaults synchronize];
 }
 /*
 #pragma mark - Navigation
@@ -41,6 +60,14 @@
 }
 */
 
+-(void)textFieldDidBeginEditing:(UITextField *)textField {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.scrollViewBottomConstraint.constant  = 216.0;
+        [self.view layoutIfNeeded];
+        [self.scrollView setContentOffset:CGPointMake(0, 216.0) animated:YES];
+    }];
+}
+
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
     [self.userNameField resignFirstResponder];
     [self.passWordField resignFirstResponder];
@@ -50,17 +77,33 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     [self.userNameField resignFirstResponder];
     [self.passWordField resignFirstResponder];
+    [UIView animateWithDuration:0.3 animations:^{
+        self.scrollViewBottomConstraint.constant  = 0.0;
+        [self.view layoutIfNeeded];
+    }];
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [self.userNameField resignFirstResponder];
+    [self.passWordField resignFirstResponder];
+        return YES;
+}
 - (IBAction)loginButtonClicked:(id)sender {
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    GlobalVariables *globals=[GlobalVariables getInstance];
+  defaults = [NSUserDefaults standardUserDefaults];
     
     NSString *userName = [defaults objectForKey:@"userName"];
     NSString *passWord = [defaults objectForKey:@"password"];
-    
-    if([self.userNameField.text isEqualToString:userName] && [self.userNameField.text isEqualToString:passWord]){
+    NSLog(@"User Name is %@",self.userNameField.text);
+    NSLog(@"Password is %@",self.userNameField.text);
+    if( [self ValidateTExtFields]){
+    if([self.userNameField.text isEqualToString:userName] && [self.passWordField.text isEqualToString:passWord]){
         
+        //globals.hasALreadyLoggedIn=YES;
+        [defaults setBool:YES forKey:@"hasALreadyLoggedIn"];
+       // UIStoryboard *mainViewControler=[UIStoryboard s]
+        [(AppDelegate *)[[UIApplication sharedApplication] delegate] showMainScreen];
     }
     else{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login"
@@ -71,5 +114,24 @@
         
         [alert show];
     }
+    }
+    else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login failed"
+                                                        message:@"Text fields cannot be empty"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles: nil];
+        
+        [alert show];
+    }
 }
+-(BOOL) ValidateTExtFields{
+    if([self.userNameField.text isEqualToString:@""] || [self.passWordField.text isEqualToString:@""]){
+        return NO;
+    }
+    else{
+        return YES;
+    }
+}
+
 @end

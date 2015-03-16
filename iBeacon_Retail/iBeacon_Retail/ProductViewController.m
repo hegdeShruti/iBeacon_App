@@ -8,9 +8,12 @@
 
 #import "ProductViewController.h"
 #import "prodCell.h"
+#import "Products.h"
+#import "NetworkOperations.h"
 
 @interface ProductViewController ()
-
+@property(nonatomic,strong) Products * product;
+@property(nonatomic,strong)NetworkOperations *networks;
 @end
 
 @implementation ProductViewController
@@ -19,8 +22,16 @@
     [super viewDidLoad];
     UINib *cellNib = [UINib nibWithNibName:@"prodCell" bundle:nil];
     [self.prodCollectionView registerNib:cellNib forCellWithReuseIdentifier:@"prodCell"];
-    //[self.prodCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"productCell"];
-    // Do any additional setup after loading the view from its nib.
+    //[self getProductListing];
+}
+
+
+-(void) getProductListing{
+    self.networks=[[NetworkOperations alloc] init];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Config" ofType:@"plist"];
+    NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:path];
+    NSLog(@"The product Api is %@",[dict objectForKey:@"Prod_Api"]);
+    [self.networks fetchDataFromServer:[dict objectForKey:@"Prod_Api"]];
 }
 
 - (void)didReceiveMemoryWarning {

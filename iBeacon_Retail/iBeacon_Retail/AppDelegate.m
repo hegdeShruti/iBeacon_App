@@ -13,6 +13,8 @@
 #import "OffersViewController.h"
 #import "ContainerViewController.h"
 #import "BeaconMonitoringModel.h"
+#import "GlobalVariables.h"
+#import "LoginViewController.h"
 #define ESTIMOTE_PROXIMITY_UUID             [[NSUUID alloc] initWithUUIDString:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"]
 
 @interface AppDelegate ()<ESTBeaconManagerDelegate>
@@ -21,16 +23,20 @@
 @property(nonatomic,strong)ESTBeaconManager *beaconManager;
 @property (nonatomic, strong) ESTBeaconRegion *regionMenSection;
 @property (nonatomic, strong) BeaconMonitoringModel *beaconOperations;
+@property (nonatomic,strong) ContainerViewController *containerViewController;
+@property (nonatomic,strong) LoginViewController *loginViewController;
 
 @end
 
 @implementation AppDelegate
 @synthesize beaconOperations;
+@synthesize containerViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     beaconOperations=[[BeaconMonitoringModel alloc] init];
     [beaconOperations startBeaconOperations];
+    [self showMainScreen];
     return YES;
 }
 
@@ -72,5 +78,26 @@
         }
      
 }}
+
+// global method to decide main screen
+-(void) showMainScreen{
+   NSUserDefaults  *defaults = [NSUserDefaults standardUserDefaults];
+   
+   // GlobalVariables *globals=[GlobalVariables getInstance];
+     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    if([defaults boolForKey:@"hasALreadyLoggedIn"]){
+     
+        if (!containerViewController) {
+           
+            containerViewController = [storyboard instantiateViewControllerWithIdentifier:@"ContainerViewController"];
+            self.window.rootViewController=containerViewController;
+        }
+    }
+    else{
+        self.loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        self.window.rootViewController=self.loginViewController;
+    }
+    
+}
 
 @end

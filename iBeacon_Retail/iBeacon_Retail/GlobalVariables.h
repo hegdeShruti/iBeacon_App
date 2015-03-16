@@ -16,6 +16,7 @@
 @property(nonatomic,assign) BOOL hasUserGotKidSectionOffers;
 @property(nonatomic,assign) BOOL hasUsercrossedEntrance;
 @property(nonatomic,assign) BOOL hasUserEntredEntryBeacon;
+//@property(nonatomic,assign) BOOL hasALreadyLoggedIn;
 
 +( GlobalVariables *) getInstance;
 

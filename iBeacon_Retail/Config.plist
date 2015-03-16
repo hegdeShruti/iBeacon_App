@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Offers_Api</key>
+	<string>http://192.168.139.26:8080/offers</string>
+	<key>Prod_Api</key>
+	<string>http://192.168.139.26:8080/products</string>
 	<key>MainEntranceBeacon_Minor</key>
 	<integer>20643</integer>
 	<key>MainEntranceBeacon_Major</key>

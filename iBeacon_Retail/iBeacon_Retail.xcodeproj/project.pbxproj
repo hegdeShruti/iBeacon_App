@@ -67,12 +67,12 @@
 		45526A601AB06F3300E6F7C3 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 45526A5F1AB06F3300E6F7C3 /* libxml2.dylib */; };
 		811165711AB14FF8003629E0 /* GlobalVariables.m in Sources */ = {isa = PBXBuildFile; fileRef = 811165701AB14FF8003629E0 /* GlobalVariables.m */; };
 		811165761AB1AEF1003629E0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 811165741AB1AEF0003629E0 /* LoginViewController.m */; };
-		811165771AB1AEF1003629E0 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 811165751AB1AEF1003629E0 /* LoginViewController.xib */; };
 		814BC9611AA4404800164B30 /* ProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 814BC95F1AA4404800164B30 /* ProductViewController.m */; };
 		814BC9621AA4404800164B30 /* ProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 814BC9601AA4404800164B30 /* ProductViewController.xib */; };
 		814BC9661AA4634900164B30 /* prodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 814BC9641AA4634900164B30 /* prodCell.m */; };
 		814BC9671AA4634900164B30 /* prodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 814BC9651AA4634900164B30 /* prodCell.xib */; };
 		8186A0A01AA7775D00BB5AC4 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8186A09F1AA7775C00BB5AC4 /* ViewController.xib */; };
+		81948B4B1AB6AA9C002A6FE6 /* Products.m in Sources */ = {isa = PBXBuildFile; fileRef = 81948B4A1AB6AA9C002A6FE6 /* Products.m */; };
 		81AE088E1AA71F1900CD7F75 /* OffersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE088C1AA71F1900CD7F75 /* OffersViewController.m */; };
 		81AE088F1AA71F1900CD7F75 /* OffersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81AE088D1AA71F1900CD7F75 /* OffersViewController.xib */; };
 		81AE08931AA720D200CD7F75 /* OffersTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE08911AA720D200CD7F75 /* OffersTableCell.m */; };
@@ -198,7 +198,6 @@
 		811165701AB14FF8003629E0 /* GlobalVariables.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalVariables.m; sourceTree = "<group>"; };
 		811165731AB1AEF0003629E0 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		811165741AB1AEF0003629E0 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		811165751AB1AEF1003629E0 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		814BC95E1AA4404800164B30 /* ProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductViewController.h; sourceTree = "<group>"; };
 		814BC95F1AA4404800164B30 /* ProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductViewController.m; sourceTree = "<group>"; };
 		814BC9601AA4404800164B30 /* ProductViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductViewController.xib; sourceTree = "<group>"; };
@@ -206,6 +205,8 @@
 		814BC9641AA4634900164B30 /* prodCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = prodCell.m; sourceTree = "<group>"; };
 		814BC9651AA4634900164B30 /* prodCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = prodCell.xib; sourceTree = "<group>"; };
 		8186A09F1AA7775C00BB5AC4 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		81948B491AB6AA9C002A6FE6 /* Products.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Products.h; sourceTree = "<group>"; };
+		81948B4A1AB6AA9C002A6FE6 /* Products.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Products.m; sourceTree = "<group>"; };
 		81AE088B1AA71F1900CD7F75 /* OffersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OffersViewController.h; sourceTree = "<group>"; };
 		81AE088C1AA71F1900CD7F75 /* OffersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OffersViewController.m; sourceTree = "<group>"; };
 		81AE088D1AA71F1900CD7F75 /* OffersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OffersViewController.xib; sourceTree = "<group>"; };
@@ -311,7 +312,6 @@
 				0AF77D7B1AA0363800B57B8C /* LaunchScreen.xib */,
 				811165731AB1AEF0003629E0 /* LoginViewController.h */,
 				811165741AB1AEF0003629E0 /* LoginViewController.m */,
-				811165751AB1AEF1003629E0 /* LoginViewController.xib */,
 				0AF77D6C1AA0363800B57B8C /* Supporting Files */,
 			);
 			path = iBeacon_Retail;
@@ -483,6 +483,8 @@
 		814BC95C1AA4400500164B30 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				81948B491AB6AA9C002A6FE6 /* Products.h */,
+				81948B4A1AB6AA9C002A6FE6 /* Products.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -611,7 +613,6 @@
 				45526A451AB048B300E6F7C3 /* screen8_beacon_gray_trans@2x.png in Resources */,
 				45526A401AB048B300E6F7C3 /* indoor_error@2x.png in Resources */,
 				45526A2C1AB048B300E6F7C3 /* 8a.mov in Resources */,
-				811165771AB1AEF1003629E0 /* LoginViewController.xib in Resources */,
 				45526A421AB048B300E6F7C3 /* navigation_guy@2x.png in Resources */,
 				45526A2A1AB048B300E6F7C3 /* 5a.mov in Resources */,
 				45526A2F1AB048B300E6F7C3 /* 5a_first_frame@2x.png in Resources */,
@@ -668,6 +669,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81948B4B1AB6AA9C002A6FE6 /* Products.m in Sources */,
 				81AE08931AA720D200CD7F75 /* OffersTableCell.m in Sources */,
 				81AE089B1AA7672200CD7F75 /* MenuViewController.m in Sources */,
 				0AF77D751AA0363800B57B8C /* ViewController.m in Sources */,
