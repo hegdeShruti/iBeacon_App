@@ -31,7 +31,7 @@
 @end
 
 
-@interface ViewController : UIViewController <MenuViewControllerDelegate>
+@interface ViewController : UIViewController <MenuViewControllerDelegate, UIAlertViewDelegate>
 
 @property (nonatomic,strong) void (^resetMainScreenPositionOnMenuSelection)(void);
 @property (assign) menuIndexes selectedIndex;

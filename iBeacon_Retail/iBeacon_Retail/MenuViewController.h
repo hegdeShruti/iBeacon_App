@@ -18,7 +18,8 @@ typedef enum {
     productsMenuIndex = 0,
     offersMenuIndex = 1,
     cartMenuIndex = 2,
-    mapMenuIndex = 3
+    mapMenuIndex = 3,
+    logoutIndex=4
 } menuIndexes;
 
 @interface MenuViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>

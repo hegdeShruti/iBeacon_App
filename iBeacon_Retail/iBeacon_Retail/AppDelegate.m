@@ -90,8 +90,9 @@
         if (!containerViewController) {
            
             containerViewController = [storyboard instantiateViewControllerWithIdentifier:@"ContainerViewController"];
-            self.window.rootViewController=containerViewController;
+            
         }
+        self.window.rootViewController=containerViewController;
     }
     else{
         self.loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];

@@ -11,9 +11,12 @@
 #import "Products.h"
 #import "NetworkOperations.h"
 
+typedef void (^ DataCallbackBlock)(id, int);
+
 @interface ProductViewController ()
 @property(nonatomic,strong) Products * product;
 @property(nonatomic,strong)NetworkOperations *networks;
+@property(nonatomic,strong) NSMutableArray *dataArray;
 @end
 
 @implementation ProductViewController
@@ -22,7 +25,10 @@
     [super viewDidLoad];
     UINib *cellNib = [UINib nibWithNibName:@"prodCell" bundle:nil];
     [self.prodCollectionView registerNib:cellNib forCellWithReuseIdentifier:@"prodCell"];
-    //[self getProductListing];
+    if(![self.dataArray count]>0){
+          [self getProductListing];
+    }
+  
 }
 
 
@@ -31,7 +37,18 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Config" ofType:@"plist"];
     NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:path];
     NSLog(@"The product Api is %@",[dict objectForKey:@"Prod_Api"]);
-    [self.networks fetchDataFromServer:[dict objectForKey:@"Prod_Api"]];
+ // send block as parameter to get callbacks
+    [self.networks fetchDataFromServer:[dict objectForKey:@"Prod_Api"] withreturnMethod:^(NSMutableArray* data){
+        self.dataArray=data;
+        NSLog(@"The product Api is %lu",(unsigned long)[self.dataArray count]);
+        dispatch_async(dispatch_get_main_queue(), ^
+                       {
+                           [self.prodCollectionView reloadData];
+                           
+                       });
+    }];
+   // [self.prodCollectionView reloadData];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,12 +65,15 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section
 {
-    return 9;
+    return [self.dataArray count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath; {
     prodCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"prodCell" forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor whiteColor];
+    //cell.backgroundColor = [UIColor whiteColor];
+    
+    Products *prodObject= [[Products alloc] initWithDictionary:[self.dataArray objectAtIndex:indexPath.row]];
+    cell.productName.text=prodObject.prodName;
     return cell;
  
 }

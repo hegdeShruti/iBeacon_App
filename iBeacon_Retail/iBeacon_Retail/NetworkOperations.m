@@ -23,18 +23,21 @@
 }
 
 
-- (void) fetchDataFromServer:(NSString *)url{
+- (void) fetchDataFromServer:(NSString *)url withreturnMethod:(void(^)(NSMutableArray *)) completionHandlerBlock{
     
     
     //NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sharedSession];
-    //NSString * urlString=@"http://192.168.139.26:8080/products";
+//    NSString * urlString = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:url] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        NSMutableArray *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        NSLog(@"%@", json);
+        self.dataArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+
+        completionHandlerBlock(self.dataArray);
+   
     }];
     
     [dataTask resume];
+    
     
 }
 

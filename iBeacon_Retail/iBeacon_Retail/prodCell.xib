@@ -43,6 +43,12 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <size key="customSize" width="320" height="155"/>
+            <connections>
+                <outlet property="offerPrice" destination="DqC-G7-7oj" id="iIB-Du-VhE"/>
+                <outlet property="prodDescription" destination="8j4-xO-3bU" id="SFS-Nz-PIC"/>
+                <outlet property="productImage" destination="l5p-V0-Sup" id="FKz-CW-oPR"/>
+                <outlet property="productName" destination="v6o-oA-gBc" id="7yv-Vb-iLS"/>
+            </connections>
             <point key="canvasLocation" x="450" y="238"/>
         </collectionViewCell>
     </objects>

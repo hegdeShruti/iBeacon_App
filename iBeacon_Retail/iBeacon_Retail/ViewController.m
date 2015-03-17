@@ -14,6 +14,8 @@
 #import "ESTIndoorLocationManager.h"
 #import "ESTConfig.h"
 #import "ESTLocationBuilder.h"
+#import "AppDelegate.h"
+#import "ContainerViewController.h"
 
 @interface ViewController ()<ESTBeaconManagerDelegate>
 @property(nonatomic,strong)ESTBeaconManager *beaconManager;
@@ -146,6 +148,14 @@
             self.storeLocationMapViewController = nil;
             break;
         }
+            
+        case logoutIndex:{
+            NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setBool:NO forKey:@"hasALreadyLoggedIn"];
+                       
+            [(AppDelegate *)[[UIApplication sharedApplication] delegate] showMainScreen];
+            break;
+        }
         default:
             break;
             
@@ -195,10 +205,38 @@
             [self loadMapViewController];
             self.resetMainScreenPositionOnMenuSelection();
             break;
+        case logoutIndex:{
+          
+            // confirm if user wants to logout
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning"
+                                                            message:@"Are you sure you want logout."
+                                                           delegate:self
+                                                  cancelButtonTitle:@"No"
+                                                  otherButtonTitles:@"Yes", nil];
+            [alert show];
+            
+            
+            break;
+        }
         default:
             break;
     }
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    
+    if([title isEqualToString:@"Yes"])
+    {
+        self.selectedIndex=logoutIndex;
+        [self resetViews];
+        self.selectedIndex=productsMenuIndex;
+    }
+    else if([title isEqualToString:@"No"])
+    {
+        self.resetMainScreenPositionOnMenuSelection();
+    }
+}
 
 @end

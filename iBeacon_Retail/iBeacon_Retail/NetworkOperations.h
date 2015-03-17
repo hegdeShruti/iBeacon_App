@@ -10,5 +10,6 @@
 
 @interface NetworkOperations : NSObject<NSURLSessionDelegate, NSURLSessionDownloadDelegate>
 
--(void) fetchDataFromServer : (NSString *) url;
+@property(nonatomic,strong) NSMutableArray *dataArray;
+-( void) fetchDataFromServer : (NSString *) url withreturnMethod:(void(^)(NSMutableArray *)) completionHandlerBlock;
 @end

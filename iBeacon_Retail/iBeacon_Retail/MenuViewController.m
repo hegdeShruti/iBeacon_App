@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.menuItems = [NSArray arrayWithObjects:@"Products",@"Offers",@"Cart",@"Map", nil];
+    self.menuItems = [NSArray arrayWithObjects:@"Products",@"Offers",@"Cart",@"Map",@"Logout", nil];
     [self.tableview registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     
     NSIndexPath *indexPath = [self.tableview indexPathForSelectedRow];
