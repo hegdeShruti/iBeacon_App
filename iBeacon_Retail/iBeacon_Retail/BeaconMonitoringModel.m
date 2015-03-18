@@ -23,6 +23,7 @@
 @property(nonatomic,strong)ESTBeaconManager *beaconManager;
 @property (nonatomic, strong) ESTBeaconRegion *regionMenSection;
 @property (nonatomic, strong) ESTBeaconRegion *regionWomenSection;
+@property (nonatomic, strong) ESTBeaconRegion *regionKidsSection;
 @property (nonatomic, assign) RegionIdentifier beaconRegion;
 @property (nonatomic, strong) ESTBeaconRegion *mainEntraneRegion;
 @property(nonatomic,strong) GlobalVariables *globals;
@@ -64,6 +65,9 @@
     self.mainEntraneRegion = [[ESTBeaconRegion alloc] initWithProximityUUID:beaconId
                                                                        major:[[dict objectForKey:@"MainEntranceBeacon_Major"] intValue] minor:[[dict objectForKey:@"MainEntranceBeacon_Minor"] intValue] identifier:@"MAINENTRANCEBEACON"
                                                                      secured:NO];
+    self.regionKidsSection = [[ESTBeaconRegion alloc] initWithProximityUUID:beaconId
+                                                                     major:[[dict objectForKey:@"KidSectionBeacon_Major"] intValue] minor:[[dict objectForKey:@"KidSectionBeacon_Minor"] intValue] identifier:@"KIDSECTIONBEACON"
+                                                                   secured:NO];
 //    self.mainEntraneRegion = [[ESTBeaconRegion alloc] initWithProximityUUID:beaconId
 //                                                                      major:37372  minor:20643 identifier:@"MAINENTRANCEBEACON"
 //                                                                    secured:NO];
@@ -76,11 +80,13 @@
     self.regionWomenSection.notifyOnEntry=YES;
     self.mainEntraneRegion.notifyOnEntry=YES;
     self.mainEntraneRegion.notifyOnExit=YES;
+    self.regionKidsSection.notifyOnEntry=YES;
     [self.beaconManager requestAlwaysAuthorization];
     [self.beaconManager startMonitoringForRegion:  self.mainEntraneRegion];
     [self.beaconManager startMonitoringForRegion:  self.region];
     [self.beaconManager startMonitoringForRegion:  self.regionMenSection];
     [self.beaconManager startMonitoringForRegion:  self.regionWomenSection];
+    [self.beaconManager startMonitoringForRegion:  self.regionKidsSection];
    
 }
 
@@ -89,6 +95,8 @@
 {
    
     NSLog(@"recieved region is %@",region.identifier);
+    
+    UIAlertView *sectionBasedAlert = [[UIAlertView alloc] initWithTitle:@"" message:@"" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
    
     UILocalNotification *notification = [UILocalNotification new];
     // if user is near outside beacon and he has already visted shop not that event as exit and clear all flags
@@ -100,6 +108,7 @@
             self.globals.hasUserGotMenSectionOffers=NO;
             self.globals.hasUserGotWOmenSectionOffers=NO;
             self.globals.hasUserEntredEntryBeacon=NO;
+            self.globals.hasUserGotKidSectionOffers=NO;
             [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
         }
         
@@ -110,21 +119,36 @@
 //                                              otherButtonTitles: nil];
 //        
 //        [alert show];
+        [sectionBasedAlert setTitle:@"MAINENTRANCEBEACON"];
+        [sectionBasedAlert show];
         
     }
    else  if([region.identifier isEqualToString:@"ENTRYBEACON" ] && !self.globals.hasUserEnteredTheStore && self.globals.hasUsercrossedEntrance){
         notification.alertBody = @"Welcome to Tavant Store..Check for offers here";
         self.globals.hasUserEnteredTheStore=YES;
         self.globals.hasUserEntredEntryBeacon=YES;
+       [sectionBasedAlert setTitle:@"ENTRYBEACON"];
+       [sectionBasedAlert show];
     }
     else if([region.identifier isEqualToString:@"MENSECTIONBEACON"]&& !self.globals.hasUserGotMenSectionOffers ){
          notification.alertBody = @"Visit Men section to avail the exiting offers.";
         self.globals.hasUserGotMenSectionOffers=YES;
+        [sectionBasedAlert setTitle:@"MENSECTIONBEACON"];
+        [sectionBasedAlert show];
     }
     else if([region.identifier isEqualToString:@"WOMENSECTIONBEACON"]&& !self.globals.hasUserGotWOmenSectionOffers ){
         notification.alertBody = @"Visit Women section to avail the exiting offers.";
         self.globals.hasUserGotWOmenSectionOffers=YES;
+        [sectionBasedAlert setTitle:@"WOMENSECTIONBEACON"];
+        [sectionBasedAlert show];
     }
+    else if([region.identifier isEqualToString:@"KIDSECTIONBEACON"]&& !self.globals.hasUserGotKidSectionOffers ){
+        notification.alertBody = @"Visit Kids section to avail the exiting offers.";
+        self.globals.hasUserGotKidSectionOffers=YES;
+        [sectionBasedAlert setTitle:@"KIDSECTIONBEACON"];
+        [sectionBasedAlert show];
+    }
+
     else{
         
     }

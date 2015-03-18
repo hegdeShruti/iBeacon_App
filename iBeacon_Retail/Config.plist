@@ -22,6 +22,10 @@
 	<integer>5813</integer>
 	<key>EntryBeacon_Minor</key>
 	<integer>506</integer>
+	<key>KidSectionBeacon_Major</key>
+	<integer>64990</integer>
+	<key>KidSectionBeacon_Minor</key>
+	<integer>59688</integer>
 	<key>UUID</key>
 	<string>B9407F30-F5F8-466E-AFF9-25556B57FE6D</string>
 </dict>

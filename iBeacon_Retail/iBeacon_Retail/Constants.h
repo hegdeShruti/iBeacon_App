@@ -9,8 +9,8 @@
 #ifndef iBeacon_Retail_Constants_h
 #define iBeacon_Retail_Constants_h
 
-#define MENSECTION_MAC @"ff11a3858d44"
-#define WOMENSECTION_MAC @"f48464c7ba6b"
-#define KIDSSECTION_MAC @"db1419349ea6"
+#define MENSECTION_MAC @"d8689a077fa1"
+#define WOMENSECTION_MAC @"ff11a3858d44"
+#define KIDSSECTION_MAC @"e6b0e928fdde"
 
 #endif
