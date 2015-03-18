@@ -72,24 +72,32 @@
     // self.indoorLocationView.positionImage = [UIImage imageNamed:@"name_of_your_image"];
     
     
-    for(ESTPositionedBeacon *beacon in self.indoorLocationView.location.beacons){
-        NSLog(@"mac Address is %@",beacon.description);
+    for(ESTPositionedBeacon *beacon in self.location.beacons){
         if([beacon.macAddress isEqualToString:MENSECTION_MAC]){
             //Men's Section ...
-            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(beacon.position.x, beacon.position.y, 50, 50)];
-            imageView.image = [UIImage imageNamed:@"Test_men'sSection.png"];
-            [self.indoorLocationView addSubview:imageView];
+            UIImageView *sectionLogo = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, 30, 30)];
+            sectionLogo.image = [UIImage imageNamed:@"Test_men'sSection.png"];
+            [self.indoorLocationView drawObject:sectionLogo withPosition:[ESTPoint pointWithX:beacon.position.x y:beacon.position.y]];
         }
+    
         else if([beacon.macAddress isEqualToString:WOMENSECTION_MAC]){
             //Women's Section ...
+            UIImageView *sectionLogo = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, 30, 30)];
+            sectionLogo.image = [UIImage imageNamed:@"Test_men'sSection.png"];
+            [self.indoorLocationView drawObject:sectionLogo withPosition:[ESTPoint pointWithX:beacon.position.x y:beacon.position.y]];
             
         }
         else if([beacon.macAddress isEqualToString:KIDSSECTION_MAC]){
             //Kid's Section ...
-            
+            UIImageView *sectionLogo = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, 30, 30)];
+            sectionLogo.image = [UIImage imageNamed:@"Test_men'sSection.png"];
+            [self.indoorLocationView drawObject:sectionLogo withPosition:[ESTPoint pointWithX:beacon.position.x y:beacon.position.y]];
         }
         else{
             //Electronic Section...
+            UIImageView *sectionLogo = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, 30, 30)];
+            sectionLogo.image = [UIImage imageNamed:@"Test_men'sSection.png"];
+            [self.indoorLocationView drawObject:sectionLogo withPosition:[ESTPoint pointWithX:beacon.position.x y:beacon.position.y]];
             
         }
     }
