@@ -83,9 +83,9 @@
 		81AF71091AAF1AD800B350B6 /* BeaconMonitoringModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AF71081AAF1AD800B350B6 /* BeaconMonitoringModel.m */; };
 		81AF710C1AB00E4800B350B6 /* NetworkOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AF710B1AB00E4800B350B6 /* NetworkOperations.m */; };
 		81B6A8731AA5D93C00A234D7 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 81B6A8721AA5D93C00A234D7 /* Config.plist */; };
-		B17C01991AB9838600542233 /* Test_Women'sSection.png in Resources */ = {isa = PBXBuildFile; fileRef = B17C01981AB9838600542233 /* Test_Women'sSection.png */; };
-		B17C019B1AB983C700542233 /* Test_Kid'sSection.png in Resources */ = {isa = PBXBuildFile; fileRef = B17C019A1AB983C700542233 /* Test_Kid'sSection.png */; };
-		B17C019F1AB9AEDA00542233 /* Test_MenSection.png in Resources */ = {isa = PBXBuildFile; fileRef = B17C019E1AB9AEDA00542233 /* Test_MenSection.png */; };
+		B17C01A31AB9B35C00542233 /* Test_Kid'sSection.png in Resources */ = {isa = PBXBuildFile; fileRef = B17C01A01AB9B35C00542233 /* Test_Kid'sSection.png */; };
+		B17C01A41AB9B35C00542233 /* Test_MenSection.png in Resources */ = {isa = PBXBuildFile; fileRef = B17C01A11AB9B35C00542233 /* Test_MenSection.png */; };
+		B17C01A51AB9B35C00542233 /* Test_Women'sSection.png in Resources */ = {isa = PBXBuildFile; fileRef = B17C01A21AB9B35C00542233 /* Test_Women'sSection.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -226,9 +226,9 @@
 		81AF710A1AB00E4800B350B6 /* NetworkOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkOperations.h; sourceTree = "<group>"; };
 		81AF710B1AB00E4800B350B6 /* NetworkOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkOperations.m; sourceTree = "<group>"; };
 		81B6A8721AA5D93C00A234D7 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
-		B17C01981AB9838600542233 /* Test_Women'sSection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Test_Women'sSection.png"; path = "../../../../Test_Women'sSection.png"; sourceTree = "<group>"; };
-		B17C019A1AB983C700542233 /* Test_Kid'sSection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Test_Kid'sSection.png"; path = "../../../../Test_Kid'sSection.png"; sourceTree = "<group>"; };
-		B17C019E1AB9AEDA00542233 /* Test_MenSection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Test_MenSection.png; path = ../../../../Test_MenSection.png; sourceTree = "<group>"; };
+		B17C01A01AB9B35C00542233 /* Test_Kid'sSection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Test_Kid'sSection.png"; sourceTree = "<group>"; };
+		B17C01A11AB9B35C00542233 /* Test_MenSection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Test_MenSection.png; sourceTree = "<group>"; };
+		B17C01A21AB9B35C00542233 /* Test_Women'sSection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Test_Women'sSection.png"; sourceTree = "<group>"; };
 		B19CB4931AB97804006C7575 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -538,9 +538,9 @@
 		B19CB4901AB95998006C7575 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				B17C019E1AB9AEDA00542233 /* Test_MenSection.png */,
-				B17C019A1AB983C700542233 /* Test_Kid'sSection.png */,
-				B17C01981AB9838600542233 /* Test_Women'sSection.png */,
+				B17C01A01AB9B35C00542233 /* Test_Kid'sSection.png */,
+				B17C01A11AB9B35C00542233 /* Test_MenSection.png */,
+				B17C01A21AB9B35C00542233 /* Test_Women'sSection.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -638,7 +638,6 @@
 				45526A441AB048B300E6F7C3 /* screen8_beacon_gray@2x.png in Resources */,
 				45526A311AB048B300E6F7C3 /* 8a_first_frame@2x.png in Resources */,
 				45526A3E1AB048B300E6F7C3 /* beaconMintSmall.png in Resources */,
-				B17C01991AB9838600542233 /* Test_Women'sSection.png in Resources */,
 				455269A41AB0443D00E6F7C3 /* location.json in Resources */,
 				8186A0A01AA7775D00BB5AC4 /* ViewController.xib in Resources */,
 				45526A301AB048B300E6F7C3 /* 5b_first_frame@2x.png in Resources */,
@@ -648,10 +647,9 @@
 				45526A341AB048B300E6F7C3 /* beacon_grey@2x.png in Resources */,
 				0AF77D781AA0363800B57B8C /* Main.storyboard in Resources */,
 				45526A371AB048B300E6F7C3 /* beaconBlueberrySmall@2x.png in Resources */,
+				B17C01A31AB9B35C00542233 /* Test_Kid'sSection.png in Resources */,
 				45526A431AB048B300E6F7C3 /* screen8_beacon_blue@2x.png in Resources */,
 				45526A3D1AB048B300E6F7C3 /* beaconmint@2x.png in Resources */,
-				B17C019B1AB983C700542233 /* Test_Kid'sSection.png in Resources */,
-				B17C019F1AB9AEDA00542233 /* Test_MenSection.png in Resources */,
 				81AE08941AA720D200CD7F75 /* OffersTableCell.xib in Resources */,
 				0AF77D7D1AA0363800B57B8C /* LaunchScreen.xib in Resources */,
 				814BC9621AA4404800164B30 /* ProductViewController.xib in Resources */,
@@ -669,7 +667,9 @@
 				45526A391AB048B300E6F7C3 /* beaconGreySmall@2x.png in Resources */,
 				45526A4A1AB048B300E6F7C3 /* SixBeaconsView.xib in Resources */,
 				45526A331AB048B300E6F7C3 /* 8c_first_frame@2x.png in Resources */,
+				B17C01A41AB9B35C00542233 /* Test_MenSection.png in Resources */,
 				0AF77D7A1AA0363800B57B8C /* Images.xcassets in Resources */,
+				B17C01A51AB9B35C00542233 /* Test_Women'sSection.png in Resources */,
 				45526A3C1AB048B300E6F7C3 /* beaconIcySmall@2x.png in Resources */,
 				45526A411AB048B300E6F7C3 /* instructions@2x.png in Resources */,
 				45526A361AB048B300E6F7C3 /* beaconBlueberrySmall.png in Resources */,
