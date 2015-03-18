@@ -83,6 +83,7 @@
 		81AF71091AAF1AD800B350B6 /* BeaconMonitoringModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AF71081AAF1AD800B350B6 /* BeaconMonitoringModel.m */; };
 		81AF710C1AB00E4800B350B6 /* NetworkOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AF710B1AB00E4800B350B6 /* NetworkOperations.m */; };
 		81B6A8731AA5D93C00A234D7 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 81B6A8721AA5D93C00A234D7 /* Config.plist */; };
+		B19CB4921AB95998006C7575 /* Test_men'sSection.png in Resources */ = {isa = PBXBuildFile; fileRef = B19CB4911AB95998006C7575 /* Test_men'sSection.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -223,6 +224,8 @@
 		81AF710A1AB00E4800B350B6 /* NetworkOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkOperations.h; sourceTree = "<group>"; };
 		81AF710B1AB00E4800B350B6 /* NetworkOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkOperations.m; sourceTree = "<group>"; };
 		81B6A8721AA5D93C00A234D7 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		B19CB4911AB95998006C7575 /* Test_men'sSection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Test_men'sSection.png"; sourceTree = "<group>"; };
+		B19CB4931AB97804006C7575 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,6 +294,7 @@
 		0AF77D6B1AA0363800B57B8C /* iBeacon_Retail */ = {
 			isa = PBXGroup;
 			children = (
+				B19CB4901AB95998006C7575 /* Images */,
 				811165721AB14FFE003629E0 /* Network */,
 				81AF71061AAF1A8F00B350B6 /* Utility */,
 				81AE08951AA7672200CD7F75 /* ContainerViewController.h */,
@@ -522,8 +526,17 @@
 				81AF71081AAF1AD800B350B6 /* BeaconMonitoringModel.m */,
 				8111656F1AB14FF8003629E0 /* GlobalVariables.h */,
 				811165701AB14FF8003629E0 /* GlobalVariables.m */,
+				B19CB4931AB97804006C7575 /* Constants.h */,
 			);
 			name = Utility;
+			sourceTree = "<group>";
+		};
+		B19CB4901AB95998006C7575 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				B19CB4911AB95998006C7575 /* Test_men'sSection.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -612,6 +625,7 @@
 				45526A381AB048B300E6F7C3 /* beacongrey@2x.png in Resources */,
 				45526A451AB048B300E6F7C3 /* screen8_beacon_gray_trans@2x.png in Resources */,
 				45526A401AB048B300E6F7C3 /* indoor_error@2x.png in Resources */,
+				B19CB4921AB95998006C7575 /* Test_men'sSection.png in Resources */,
 				45526A2C1AB048B300E6F7C3 /* 8a.mov in Resources */,
 				45526A421AB048B300E6F7C3 /* navigation_guy@2x.png in Resources */,
 				45526A2A1AB048B300E6F7C3 /* 5a.mov in Resources */,

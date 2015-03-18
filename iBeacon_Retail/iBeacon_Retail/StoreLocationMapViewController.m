@@ -9,6 +9,7 @@
 #import "StoreLocationMapViewController.h"
 #import "ESTIndoorLocationManager.h"
 #import "ESTIndoorLocationView.h"
+#import "Constants.h"
 
 @interface StoreLocationMapViewController () <ESTIndoorLocationManagerDelegate>
 
@@ -70,6 +71,29 @@
     // You can change the avatar using positionImage property of ESTIndoorLocationView class.
     // self.indoorLocationView.positionImage = [UIImage imageNamed:@"name_of_your_image"];
     
+    
+    for(ESTPositionedBeacon *beacon in self.indoorLocationView.location.beacons){
+        NSLog(@"mac Address is %@",beacon.description);
+        if([beacon.macAddress isEqualToString:MENSECTION_MAC]){
+            //Men's Section ...
+            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(beacon.position.x, beacon.position.y, 50, 50)];
+            imageView.image = [UIImage imageNamed:@"Test_men'sSection.png"];
+            [self.indoorLocationView addSubview:imageView];
+        }
+        else if([beacon.macAddress isEqualToString:WOMENSECTION_MAC]){
+            //Women's Section ...
+            
+        }
+        else if([beacon.macAddress isEqualToString:KIDSSECTION_MAC]){
+            //Kid's Section ...
+            
+        }
+        else{
+            //Electronic Section...
+            
+        }
+    }
+    
     [self.manager startIndoorLocation:self.location];
 }
 
@@ -91,6 +115,8 @@
 {
     self.indoorLocationView.rotateOnPositionUpdate = self.rotateOnUpdateSwitch.isOn;
 }
+
+//-(void)showAlertForSection:
 
 #pragma mark - ESTIndoorLocationManager delegate
 
