@@ -96,8 +96,6 @@
    
     NSLog(@"recieved region is %@",region.identifier);
     
-    UIAlertView *sectionBasedAlert = [[UIAlertView alloc] initWithTitle:@"" message:@"" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-   
     UILocalNotification *notification = [UILocalNotification new];
     // if user is near outside beacon and he has already visted shop not that event as exit and clear all flags
     if([region.identifier isEqualToString:@"MAINENTRANCEBEACON"]) {
@@ -119,34 +117,33 @@
 //                                              otherButtonTitles: nil];
 //        
 //        [alert show];
-        [sectionBasedAlert setTitle:@"MAINENTRANCEBEACON"];
-        [sectionBasedAlert show];
         
     }
    else  if([region.identifier isEqualToString:@"ENTRYBEACON" ] && !self.globals.hasUserEnteredTheStore && self.globals.hasUsercrossedEntrance){
         notification.alertBody = @"Welcome to Tavant Store..Check for offers here";
         self.globals.hasUserEnteredTheStore=YES;
         self.globals.hasUserEntredEntryBeacon=YES;
-       [sectionBasedAlert setTitle:@"ENTRYBEACON"];
-       [sectionBasedAlert show];
+       self.beaconRegion = ENTRYBEACON;
     }
     else if([region.identifier isEqualToString:@"MENSECTIONBEACON"]&& !self.globals.hasUserGotMenSectionOffers ){
          notification.alertBody = @"Visit Men section to avail the exiting offers.";
         self.globals.hasUserGotMenSectionOffers=YES;
-        [sectionBasedAlert setTitle:@"MENSECTIONBEACON"];
-        [sectionBasedAlert show];
+        self.beaconRegion = MENSECTIONBEACON;
+        [self showPopUpForOffer];
+        
     }
     else if([region.identifier isEqualToString:@"WOMENSECTIONBEACON"]&& !self.globals.hasUserGotWOmenSectionOffers ){
         notification.alertBody = @"Visit Women section to avail the exiting offers.";
         self.globals.hasUserGotWOmenSectionOffers=YES;
-        [sectionBasedAlert setTitle:@"WOMENSECTIONBEACON"];
-        [sectionBasedAlert show];
+        self.beaconRegion = WOMENSECTIONBEACON;
+        [self showPopUpForOffer];
     }
     else if([region.identifier isEqualToString:@"KIDSECTIONBEACON"]&& !self.globals.hasUserGotKidSectionOffers ){
         notification.alertBody = @"Visit Kids section to avail the exiting offers.";
         self.globals.hasUserGotKidSectionOffers=YES;
-        [sectionBasedAlert setTitle:@"KIDSECTIONBEACON"];
-        [sectionBasedAlert show];
+        self.beaconRegion = KIDSECTIONBEACON;
+        [self showPopUpForOffer];
+        
     }
 
     else{
@@ -155,6 +152,17 @@
   
     if(notification.alertBody){
     [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+    }
+}
+
+-(void)showPopUpForOffer{
+    if(self.globals.isUserOnTheMapScreen){
+        [self.globals showOfferPopUpWithTitle:[GlobalVariables returnTitleForRegion:self.beaconRegion] andMessage:@"You have 50% off on selected items"];
+        ;
+    }
+    else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[GlobalVariables returnTitleForRegion:self.beaconRegion] message:@"abc" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
     }
 }
 

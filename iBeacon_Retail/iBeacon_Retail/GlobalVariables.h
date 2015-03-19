@@ -7,6 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "StoreLocationMapViewController.h"
+
+typedef enum {
+    
+    ENTRYBEACON,
+    MENSECTIONBEACON,
+    WOMENSECTIONBEACON,
+    KIDSECTIONBEACON,
+    MAINENTRANCEBEACON
+    
+    
+    
+} RegionIdentifier;
 
 @interface GlobalVariables : NSObject
 
@@ -16,10 +29,14 @@
 @property(nonatomic,assign) BOOL hasUserGotKidSectionOffers;
 @property(nonatomic,assign) BOOL hasUsercrossedEntrance;
 @property(nonatomic,assign) BOOL hasUserEntredEntryBeacon;
+@property(nonatomic,assign) BOOL isUserOnTheMapScreen;
 @property(nonatomic,strong) NSMutableArray *offersDataArray;
 @property(nonatomic,strong) NSMutableArray *productDataArray;
+@property(nonatomic,strong)StoreLocationMapViewController *storeLocationController;
 //@property(nonatomic,assign) BOOL hasALreadyLoggedIn;
 
 +( GlobalVariables *) getInstance;
+- (void)showOfferPopUpWithTitle:(NSString *)inTitle andMessage:(NSString *)inMessage;
++(NSString *)returnTitleForRegion:(RegionIdentifier)inRegion;
 
 @end

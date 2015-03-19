@@ -7,9 +7,10 @@
 //
 
 #import "GlobalVariables.h"
+#import "OfferPopupMenu.h"
 
 @implementation GlobalVariables
-@synthesize hasUserEnteredTheStore , hasUserGotWOmenSectionOffers, hasUserGotKidSectionOffers,hasUserGotMenSectionOffers;
+@synthesize hasUserEnteredTheStore , hasUserGotWOmenSectionOffers, hasUserGotKidSectionOffers,hasUserGotMenSectionOffers,isUserOnTheMapScreen;
 
 static GlobalVariables *instance = nil;
 
@@ -28,11 +29,35 @@ static GlobalVariables *instance = nil;
             instance.hasUserEntredEntryBeacon=NO;
             instance.productDataArray=nil;
             instance.offersDataArray=nil;
+            instance.isUserOnTheMapScreen = NO;
            // instance.hasALreadyLoggedIn=NO;
         }
     }
     return instance;
 }
 
+- (void)showOfferPopUpWithTitle:(NSString *)inTitle andMessage:(NSString *)inMessage{
+    OfferPopupMenu *popup = [[OfferPopupMenu alloc]initWithTitle:inTitle message:inMessage];
+    popup.menuStyle = MenuStyleOval;
+    [popup showMenuInParentViewController:self.storeLocationController withCenter:self.storeLocationController.indoorLocationView.center];
+}
+
++(NSString *)returnTitleForRegion:(RegionIdentifier)inRegion{
+    NSString *regionTitle = @"";
+    switch (inRegion) {
+        case WOMENSECTIONBEACON:
+            regionTitle = @"Women's Section";
+            break;
+        case MENSECTIONBEACON:
+            regionTitle = @"Men's Section";
+            break;
+        case KIDSECTIONBEACON:
+            regionTitle = @"Kid's Section";
+            break;
+        default:
+            break;
+    }
+    return regionTitle;
+}
 
 @end

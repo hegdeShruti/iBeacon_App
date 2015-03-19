@@ -12,14 +12,13 @@
 #import "Constants.h"
 #import "OfferPopupMenu.h"
 #import "OfferButton.h"
+#import "GlobalVariables.h"
 
 @interface StoreLocationMapViewController () <ESTIndoorLocationManagerDelegate>
 
 @property (nonatomic, strong) ESTIndoorLocationManager *manager;
 @property (nonatomic, strong) ESTLocation *location;
-
-
-
+@property(nonatomic,strong) GlobalVariables *globals;
 
 @end
 
@@ -33,7 +32,7 @@
     {
         self.manager = [[ESTIndoorLocationManager alloc] init];
         self.manager.delegate = self;
-        
+         self.globals=[GlobalVariables getInstance];
         self.location = location;
     }
     
@@ -56,11 +55,15 @@
 {
     [super viewWillAppear:animated];
     
+    self.globals.isUserOnTheMapScreen = YES;
+    
     self.indoorLocationView.backgroundColor = [UIColor clearColor];
     
     self.indoorLocationView.rotateOnPositionUpdate=NO;
     
     self.indoorLocationView.showWallLengthLabels    = NO;
+    
+   // self.indoorLocationView.frame = CGRectMake(self.indoorLocationView.frame.origin.x, self.indoorLocationView.frame.origin.y, 350, 350);
     
     self.indoorLocationView.locationBorderColor     = [UIColor blackColor];
     self.indoorLocationView.locationBorderThickness = 4;
@@ -122,15 +125,19 @@
 }
 - (void)showOffer:(id)sender{
     //(NSString *)offerMessage inSection:(NSString *)section
-    OfferPopupMenu *popup = [[OfferPopupMenu alloc]initWithTitle:((OfferButton *)sender).secTitle message:((OfferButton *)sender).offerMsg];
-    popup.menuStyle = MenuStyleOval;
     
-    [popup showMenuInParentViewController:self withCenter:self.indoorLocationView.center];
+    [self.globals showOfferPopUpWithTitle:((OfferButton *)sender).secTitle andMessage:((OfferButton *)sender).offerMsg];
+    
+//    OfferPopupMenu *popup = [[OfferPopupMenu alloc]initWithTitle:((OfferButton *)sender).secTitle message:((OfferButton *)sender).offerMsg];
+//    popup.menuStyle = MenuStyleOval;
+//    
+//    [popup showMenuInParentViewController:self withCenter:self.indoorLocationView.center];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [self.manager stopIndoorLocation];
+    self.globals.isUserOnTheMapScreen = NO;
     [super viewWillDisappear:animated];
 }
 

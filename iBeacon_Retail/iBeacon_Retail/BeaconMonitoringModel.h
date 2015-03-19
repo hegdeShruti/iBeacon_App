@@ -8,18 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum {
-  
-    ENTRYBEACON,
-    MENSECTIONBEACON,
-    WOMENSECTIONBEACON,
-    KIDSECTIONBEACON,
-    MAINENTRANCEBEACON
-    
-    
-    
-} RegionIdentifier;
-
 @interface BeaconMonitoringModel : NSObject
 
 

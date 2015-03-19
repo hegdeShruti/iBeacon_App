@@ -89,6 +89,8 @@
 		B17C01A31AB9B35C00542233 /* Test_Kid'sSection.png in Resources */ = {isa = PBXBuildFile; fileRef = B17C01A01AB9B35C00542233 /* Test_Kid'sSection.png */; };
 		B17C01A41AB9B35C00542233 /* Test_MenSection.png in Resources */ = {isa = PBXBuildFile; fileRef = B17C01A11AB9B35C00542233 /* Test_MenSection.png */; };
 		B17C01A51AB9B35C00542233 /* Test_Women'sSection.png in Resources */ = {isa = PBXBuildFile; fileRef = B17C01A21AB9B35C00542233 /* Test_Women'sSection.png */; };
+		B17C01AA1ABAA28F00542233 /* OfferButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B17C01A71ABAA28F00542233 /* OfferButton.m */; };
+		B17C01AB1ABAA28F00542233 /* OfferPopupMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B17C01A91ABAA28F00542233 /* OfferPopupMenu.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -237,6 +239,10 @@
 		B17C01A01AB9B35C00542233 /* Test_Kid'sSection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Test_Kid'sSection.png"; sourceTree = "<group>"; };
 		B17C01A11AB9B35C00542233 /* Test_MenSection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Test_MenSection.png; sourceTree = "<group>"; };
 		B17C01A21AB9B35C00542233 /* Test_Women'sSection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Test_Women'sSection.png"; sourceTree = "<group>"; };
+		B17C01A61ABAA28F00542233 /* OfferButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfferButton.h; sourceTree = "<group>"; };
+		B17C01A71ABAA28F00542233 /* OfferButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfferButton.m; sourceTree = "<group>"; };
+		B17C01A81ABAA28F00542233 /* OfferPopupMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfferPopupMenu.h; sourceTree = "<group>"; };
+		B17C01A91ABAA28F00542233 /* OfferPopupMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfferPopupMenu.m; sourceTree = "<group>"; };
 		B19CB4931AB97804006C7575 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -405,6 +411,10 @@
 		4552699D1AB03F8500E6F7C3 /* StoreLocationMap */ = {
 			isa = PBXGroup;
 			children = (
+				B17C01A61ABAA28F00542233 /* OfferButton.h */,
+				B17C01A71ABAA28F00542233 /* OfferButton.m */,
+				B17C01A81ABAA28F00542233 /* OfferPopupMenu.h */,
+				B17C01A91ABAA28F00542233 /* OfferPopupMenu.m */,
 				4552699E1AB03FDD00E6F7C3 /* StoreLocationMapViewController.h */,
 				4552699F1AB03FDD00E6F7C3 /* StoreLocationMapViewController.m */,
 				455269A01AB03FDD00E6F7C3 /* StoreLocationMapViewController.xib */,
@@ -707,6 +717,7 @@
 			files = (
 				81948B4B1AB6AA9C002A6FE6 /* Products.m in Sources */,
 				81AE08931AA720D200CD7F75 /* OffersTableCell.m in Sources */,
+				B17C01AA1ABAA28F00542233 /* OfferButton.m in Sources */,
 				818849BB1AB98B14005A06BF /* productGridCellCollectionViewCell.m in Sources */,
 				81AE089B1AA7672200CD7F75 /* MenuViewController.m in Sources */,
 				0AF77D751AA0363800B57B8C /* ViewController.m in Sources */,
@@ -719,6 +730,7 @@
 				455269A11AB03FDD00E6F7C3 /* StoreLocationMapViewController.m in Sources */,
 				814BC9611AA4404800164B30 /* ProductViewController.m in Sources */,
 				81AF710C1AB00E4800B350B6 /* NetworkOperations.m in Sources */,
+				B17C01AB1ABAA28F00542233 /* OfferPopupMenu.m in Sources */,
 				81AF71091AAF1AD800B350B6 /* BeaconMonitoringModel.m in Sources */,
 				81AE089A1AA7672200CD7F75 /* ContainerViewController.m in Sources */,
 				0AF77D6F1AA0363800B57B8C /* main.m in Sources */,
@@ -781,7 +793,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bandhavi Vinay (ENMBG296B5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bandhavi Vinay (ENMBG296B5)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -802,6 +815,7 @@
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/iBeacon_Retail/EstimoteSDK/**";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv7 arm64";
 			};
@@ -825,7 +839,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bandhavi Vinay (ENMBG296B5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bandhavi Vinay (ENMBG296B5)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -840,6 +855,7 @@
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/iBeacon_Retail/EstimoteSDK/**";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "armv7 arm64";
@@ -851,6 +867,8 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bandhavi Vinay (ENMBG296B5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bandhavi Vinay (ENMBG296B5)";
 				INFOPLIST_FILE = iBeacon_Retail/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -861,6 +879,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lc++";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7 arm64";
 			};
 			name = Debug;
@@ -870,6 +889,8 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bandhavi Vinay (ENMBG296B5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bandhavi Vinay (ENMBG296B5)";
 				INFOPLIST_FILE = iBeacon_Retail/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -880,6 +901,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lc++";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7 arm64";
 			};
 			name = Release;

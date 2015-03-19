@@ -103,6 +103,8 @@
         ESTLocation *location = [ESTLocationBuilder parseFromJSON:content];
 //        self.storeLocationMapViewController = [[StoreLocationMapViewController alloc] initWithNibName:@"StoreLocationMapViewController" bundle:nil];
         self.storeLocationMapViewController = [[StoreLocationMapViewController alloc] initWithLocation:location];
+        GlobalVariables *globalVar = [GlobalVariables getInstance];
+        globalVar.storeLocationController = self.storeLocationMapViewController;
     }
     [self.contentView addSubview:self.storeLocationMapViewController.view];
     

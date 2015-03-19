@@ -18,7 +18,7 @@
 #import "ProductViewController.h"
 #import "OffersViewController.h"
 #import "StoreLocationMapViewController.h"
-
+#import "GlobalVariables.h"
 
 
 @protocol MainScreeViewControllerDelegate <NSObject>
