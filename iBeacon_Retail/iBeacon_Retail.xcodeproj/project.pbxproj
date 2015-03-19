@@ -72,6 +72,9 @@
 		814BC9661AA4634900164B30 /* prodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 814BC9641AA4634900164B30 /* prodCell.m */; };
 		814BC9671AA4634900164B30 /* prodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 814BC9651AA4634900164B30 /* prodCell.xib */; };
 		8186A0A01AA7775D00BB5AC4 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8186A09F1AA7775C00BB5AC4 /* ViewController.xib */; };
+		818849B71AB94952005A06BF /* Offers.m in Sources */ = {isa = PBXBuildFile; fileRef = 818849B61AB94952005A06BF /* Offers.m */; };
+		818849BB1AB98B14005A06BF /* productGridCellCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 818849B91AB98B14005A06BF /* productGridCellCollectionViewCell.m */; };
+		818849BC1AB98B14005A06BF /* productGridCellCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 818849BA1AB98B14005A06BF /* productGridCellCollectionViewCell.xib */; };
 		81948B4B1AB6AA9C002A6FE6 /* Products.m in Sources */ = {isa = PBXBuildFile; fileRef = 81948B4A1AB6AA9C002A6FE6 /* Products.m */; };
 		81AE088E1AA71F1900CD7F75 /* OffersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE088C1AA71F1900CD7F75 /* OffersViewController.m */; };
 		81AE088F1AA71F1900CD7F75 /* OffersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81AE088D1AA71F1900CD7F75 /* OffersViewController.xib */; };
@@ -208,6 +211,11 @@
 		814BC9641AA4634900164B30 /* prodCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = prodCell.m; sourceTree = "<group>"; };
 		814BC9651AA4634900164B30 /* prodCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = prodCell.xib; sourceTree = "<group>"; };
 		8186A09F1AA7775C00BB5AC4 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		818849B51AB94952005A06BF /* Offers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Offers.h; sourceTree = "<group>"; };
+		818849B61AB94952005A06BF /* Offers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Offers.m; sourceTree = "<group>"; };
+		818849B81AB98B14005A06BF /* productGridCellCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = productGridCellCollectionViewCell.h; sourceTree = "<group>"; };
+		818849B91AB98B14005A06BF /* productGridCellCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = productGridCellCollectionViewCell.m; sourceTree = "<group>"; };
+		818849BA1AB98B14005A06BF /* productGridCellCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = productGridCellCollectionViewCell.xib; sourceTree = "<group>"; };
 		81948B491AB6AA9C002A6FE6 /* Products.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Products.h; sourceTree = "<group>"; };
 		81948B4A1AB6AA9C002A6FE6 /* Products.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Products.m; sourceTree = "<group>"; };
 		81AE088B1AA71F1900CD7F75 /* OffersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OffersViewController.h; sourceTree = "<group>"; };
@@ -493,6 +501,8 @@
 			children = (
 				81948B491AB6AA9C002A6FE6 /* Products.h */,
 				81948B4A1AB6AA9C002A6FE6 /* Products.m */,
+				818849B51AB94952005A06BF /* Offers.h */,
+				818849B61AB94952005A06BF /* Offers.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -506,6 +516,9 @@
 				814BC9631AA4634900164B30 /* prodCell.h */,
 				814BC9641AA4634900164B30 /* prodCell.m */,
 				814BC9651AA4634900164B30 /* prodCell.xib */,
+				818849B81AB98B14005A06BF /* productGridCellCollectionViewCell.h */,
+				818849B91AB98B14005A06BF /* productGridCellCollectionViewCell.m */,
+				818849BA1AB98B14005A06BF /* productGridCellCollectionViewCell.xib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -655,6 +668,7 @@
 				814BC9621AA4404800164B30 /* ProductViewController.xib in Resources */,
 				81AE089C1AA7672200CD7F75 /* MenuViewController.xib in Resources */,
 				814BC9671AA4634900164B30 /* prodCell.xib in Resources */,
+				818849BC1AB98B14005A06BF /* productGridCellCollectionViewCell.xib in Resources */,
 				81B6A8731AA5D93C00A234D7 /* Config.plist in Resources */,
 				81AE088F1AA71F1900CD7F75 /* OffersViewController.xib in Resources */,
 				45526A2E1AB048B300E6F7C3 /* 8c.mov in Resources */,
@@ -693,12 +707,14 @@
 			files = (
 				81948B4B1AB6AA9C002A6FE6 /* Products.m in Sources */,
 				81AE08931AA720D200CD7F75 /* OffersTableCell.m in Sources */,
+				818849BB1AB98B14005A06BF /* productGridCellCollectionViewCell.m in Sources */,
 				81AE089B1AA7672200CD7F75 /* MenuViewController.m in Sources */,
 				0AF77D751AA0363800B57B8C /* ViewController.m in Sources */,
 				81AE088E1AA71F1900CD7F75 /* OffersViewController.m in Sources */,
 				811165761AB1AEF1003629E0 /* LoginViewController.m in Sources */,
 				0AF77D721AA0363800B57B8C /* AppDelegate.m in Sources */,
 				811165711AB14FF8003629E0 /* GlobalVariables.m in Sources */,
+				818849B71AB94952005A06BF /* Offers.m in Sources */,
 				814BC9661AA4634900164B30 /* prodCell.m in Sources */,
 				455269A11AB03FDD00E6F7C3 /* StoreLocationMapViewController.m in Sources */,
 				814BC9611AA4404800164B30 /* ProductViewController.m in Sources */,
@@ -841,8 +857,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/iBeacon_Retail/EstimoteSDK/**",
 					"$(PROJECT_DIR)/iBeacon_Retail/EstimoteIndoorLocationSDK/**",
-					"$(PROJECT_DIR)/iBeacon_Retail/EstimoteSDK",
-					"$(PROJECT_DIR)/iBeacon_Retail/EstimoteIndoorLocationSDK",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lc++";
@@ -862,8 +876,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/iBeacon_Retail/EstimoteSDK/**",
 					"$(PROJECT_DIR)/iBeacon_Retail/EstimoteIndoorLocationSDK/**",
-					"$(PROJECT_DIR)/iBeacon_Retail/EstimoteSDK",
-					"$(PROJECT_DIR)/iBeacon_Retail/EstimoteIndoorLocationSDK",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lc++";

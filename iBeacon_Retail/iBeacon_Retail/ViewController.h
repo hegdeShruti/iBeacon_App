@@ -45,7 +45,7 @@
 
 - (IBAction)menuButtonPressed:(id)sender;
 -(void)loadProductsViewController;
--(void)loadOffersViewController;
+-(void)loadOffersViewController:(NSInteger) offerId;
 -(void)loadCartViewController;
 -(void)loadMapViewController;
 

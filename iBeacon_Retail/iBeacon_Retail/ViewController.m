@@ -23,6 +23,7 @@
 @property (nonatomic, strong) ESTBeaconRegion *region;
 @property(nonatomic, assign) BOOL hasShownOffersForMen;
 @property(nonatomic, assign) BOOL hasShownOffersForWomen;
+
 -(void) checkProximity:(ESTBeacon *)bcn withMessage:(NSString *) msg ;
 @end
 
@@ -68,11 +69,12 @@
     self.selectedIndex = productsMenuIndex;
 }
 
--(void) loadOffersViewController
+-(void) loadOffersViewController: (NSInteger) offerId
 {
     if(self.offersViewController ==  nil){
         self.offersViewController = [[OffersViewController alloc] initWithNibName:@"OffersViewController" bundle:nil];
     }
+    self.offersViewController.offerId=offerId;
     [self.contentView addSubview:self.offersViewController.view];
     
     self.offersViewController.view.frame = CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
@@ -192,7 +194,7 @@
             break;
         case offersMenuIndex:
             [self resetViews];
-            [self loadOffersViewController];
+            [self loadOffersViewController:1];
             self.resetMainScreenPositionOnMenuSelection();
             break;
         case cartMenuIndex:

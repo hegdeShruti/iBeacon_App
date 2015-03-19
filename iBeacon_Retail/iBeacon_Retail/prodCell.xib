@@ -12,8 +12,11 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="jacket" translatesAutoresizingMaskIntoConstraints="NO" id="l5p-V0-Sup">
-                        <rect key="frame" x="-1" y="5" width="128" height="140"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jacket" translatesAutoresizingMaskIntoConstraints="NO" id="l5p-V0-Sup">
+                        <rect key="frame" x="0.0" y="5" width="128" height="140"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="128" id="Ye5-VL-yjg"/>
+                        </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Originator Jacket" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v6o-oA-gBc">
                         <rect key="frame" x="143" y="8" width="169" height="21"/>
@@ -42,6 +45,11 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="l5p-V0-Sup" secondAttribute="bottom" constant="5" id="2Hz-dh-D6s"/>
+                <constraint firstItem="l5p-V0-Sup" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="foV-vU-CFT"/>
+                <constraint firstItem="l5p-V0-Sup" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="vCM-II-fmJ"/>
+            </constraints>
             <size key="customSize" width="320" height="155"/>
             <connections>
                 <outlet property="offerPrice" destination="DqC-G7-7oj" id="iIB-Du-VhE"/>

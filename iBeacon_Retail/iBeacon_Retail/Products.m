@@ -24,7 +24,7 @@
     
     if ((self = [super init])) {
         self.productId =(NSInteger) [nutrientData valueForKey:@"productId"];
-         self.beaconId =(NSInteger) [nutrientData valueForKey:@"beaconId"];
+         self.beaconId =[nutrientData valueForKey:@"beaconId"];
          self.sectionId =(NSInteger) [nutrientData valueForKey:@"sectionId"];
          self.prodName=[nutrientData valueForKey:@"productName"];
         

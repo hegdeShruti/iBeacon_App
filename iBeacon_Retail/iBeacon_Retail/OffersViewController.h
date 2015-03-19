@@ -10,5 +10,6 @@
 
 @interface OffersViewController : UIViewController
 - (IBAction)menuButtonCLicked:(id)sender;
-
+@property (weak, nonatomic) IBOutlet UITableView *offersTableView;
+@property(nonatomic,assign) NSInteger offerId;
 @end

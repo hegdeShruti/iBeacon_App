@@ -74,7 +74,8 @@
         UIApplicationState state = [UIApplication sharedApplication].applicationState;
         BOOL result = (state == UIApplicationStateActive);
         if(!result){
-            [container.mainScreenViewController loadOffersViewController];
+           
+            [container.mainScreenViewController loadOffersViewController:[[notification.userInfo valueForKey:@"offerId" ] intValue]];
         }
      
 }}

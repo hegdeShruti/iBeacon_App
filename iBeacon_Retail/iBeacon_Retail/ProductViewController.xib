@@ -18,7 +18,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0fI-9J-hEe">
                     <rect key="frame" x="0.0" y="44" width="320" height="30"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHS-I1-nmY">
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHS-I1-nmY">
                             <rect key="frame" x="262" y="2" width="26" height="26"/>
                             <color key="backgroundColor" red="0.080312095099999994" green="0.07136980372" blue="0.38946101640000003" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" image="list_icon">

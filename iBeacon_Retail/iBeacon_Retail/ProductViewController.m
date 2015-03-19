@@ -10,22 +10,26 @@
 #import "prodCell.h"
 #import "Products.h"
 #import "NetworkOperations.h"
+#import "GlobalVariables.h"
 
-typedef void (^ DataCallbackBlock)(id, int);
 
 @interface ProductViewController ()
 @property(nonatomic,strong) Products * product;
 @property(nonatomic,strong)NetworkOperations *networks;
-@property(nonatomic,strong) NSMutableArray *dataArray;
+//@property(nonatomic,strong) NSMutableArray *productDataArray;
+@property(nonatomic,strong) GlobalVariables *globals;
 @end
 
 @implementation ProductViewController
+@synthesize globals;
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
+    globals=[GlobalVariables getInstance];
     UINib *cellNib = [UINib nibWithNibName:@"prodCell" bundle:nil];
     [self.prodCollectionView registerNib:cellNib forCellWithReuseIdentifier:@"prodCell"];
-    if(![self.dataArray count]>0){
+    if(![globals.productDataArray count]>0){
           [self getProductListing];
     }
   
@@ -39,8 +43,8 @@ typedef void (^ DataCallbackBlock)(id, int);
     NSLog(@"The product Api is %@",[dict objectForKey:@"Prod_Api"]);
  // send block as parameter to get callbacks
     [self.networks fetchDataFromServer:[dict objectForKey:@"Prod_Api"] withreturnMethod:^(NSMutableArray* data){
-        self.dataArray=data;
-        NSLog(@"The product Api is %lu",(unsigned long)[self.dataArray count]);
+        globals.productDataArray=data;
+        NSLog(@"The product Api is %lu",(unsigned long)[globals.productDataArray count]);
         dispatch_async(dispatch_get_main_queue(), ^
                        {
                            [self.prodCollectionView reloadData];
@@ -65,14 +69,14 @@ typedef void (^ DataCallbackBlock)(id, int);
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section
 {
-    return [self.dataArray count];
+    return [globals.productDataArray count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath; {
     prodCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"prodCell" forIndexPath:indexPath];
     //cell.backgroundColor = [UIColor whiteColor];
     
-    Products *prodObject= [[Products alloc] initWithDictionary:[self.dataArray objectAtIndex:indexPath.row]];
+    Products *prodObject= [[Products alloc] initWithDictionary:[globals.productDataArray objectAtIndex:indexPath.row]];
     cell.productName.text=prodObject.prodName;
     return cell;
  

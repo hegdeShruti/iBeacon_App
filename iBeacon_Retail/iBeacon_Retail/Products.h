@@ -11,7 +11,7 @@
 @interface Products : NSObject
 @property(nonatomic,assign) NSInteger productId;
 @property(nonatomic,strong)NSString *prodName;
-@property(nonatomic,assign) NSInteger beaconId;
+@property(nonatomic,assign) NSString *beaconId;
 @property(nonatomic,assign) NSInteger sectionId;
 
 

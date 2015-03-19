@@ -20,9 +20,13 @@
                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RFp-Vf-IvZ">
                     <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                     <color key="barTintColor" red="0.90196078430000004" green="0.56078431370000004" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <textAttributes key="titleTextAttributes">
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </textAttributes>
                     <items>
                         <navigationItem title="Title" id="EnZ-BA-r5b">
-                            <barButtonItem key="leftBarButtonItem" tag="1" title="Menu" id="ICH-Ym-93y">
+                            <barButtonItem key="leftBarButtonItem" tag="1" image="menu_icon" id="ICH-Ym-93y">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="menuButtonPressed:" destination="-1" id="lxT-k4-3Bn"/>
                                 </connections>
@@ -49,4 +53,7 @@
             <point key="canvasLocation" x="493" y="387"/>
         </view>
     </objects>
+    <resources>
+        <image name="menu_icon" width="32" height="32"/>
+    </resources>
 </document>

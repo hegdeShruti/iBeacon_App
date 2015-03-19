@@ -16,6 +16,8 @@
 @property(nonatomic,assign) BOOL hasUserGotKidSectionOffers;
 @property(nonatomic,assign) BOOL hasUsercrossedEntrance;
 @property(nonatomic,assign) BOOL hasUserEntredEntryBeacon;
+@property(nonatomic,strong) NSMutableArray *offersDataArray;
+@property(nonatomic,strong) NSMutableArray *productDataArray;
 //@property(nonatomic,assign) BOOL hasALreadyLoggedIn;
 
 +( GlobalVariables *) getInstance;
