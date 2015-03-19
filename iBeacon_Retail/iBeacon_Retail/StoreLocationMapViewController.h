@@ -14,10 +14,6 @@
 @interface StoreLocationMapViewController : UIViewController
 
 @property (nonatomic, strong) IBOutlet ESTIndoorLocationView *indoorLocationView;
-@property (nonatomic, strong) IBOutlet UISwitch *showTraceSwitch;
-@property (nonatomic, strong) IBOutlet UISwitch *rotateOnUpdateSwitch;
-
-@property (nonatomic, strong) IBOutlet UILabel *positionLabel;
 
 - (instancetype)initWithLocation:(ESTLocation *)location;
 
