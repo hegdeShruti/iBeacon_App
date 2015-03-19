@@ -67,7 +67,7 @@
     if (notification)
     {
         
-        NSLog(@"%@",notification.userInfo.description);
+        NSLog(@" offer id is%@",notification.userInfo.description);
       
         ContainerViewController *container = (ContainerViewController *)[self.window rootViewController];
 

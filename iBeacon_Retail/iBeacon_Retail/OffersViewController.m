@@ -37,19 +37,19 @@ globals=[GlobalVariables getInstance];
 // hardcoding section data for now
 -(void)filterOffersforSections{
     switch (self.offerId) {
-        case 1:self.offersDataArray=[[NSMutableArray alloc]initWithArray:globals.offersDataArray];
+        case 1: self.offersDataArray=[[NSMutableArray alloc]initWithArray:globals.offersDataArray];
             
             break;
-        case 2:self.offersDataArray=[[NSMutableArray alloc] initWithObjects:[globals.offersDataArray objectAtIndex:2], nil];
+        case 2: self.offersDataArray=[[NSMutableArray alloc] initWithObjects:[globals.offersDataArray objectAtIndex:3], nil];
             
             break;
         case 3:self.offersDataArray=[[NSMutableArray alloc] initWithObjects:[globals.offersDataArray objectAtIndex:1], nil];
             
             break;
-        case 4:self.offersDataArray=[[NSMutableArray alloc] initWithObjects:[globals.offersDataArray objectAtIndex:3], nil];
+        case 4:self.offersDataArray=[[NSMutableArray alloc] initWithObjects:[globals.offersDataArray objectAtIndex:2], nil];
             break;
             
-        default:
+        default:self.offersDataArray=[[NSMutableArray alloc]initWithArray:globals.offersDataArray];
             break;
     }
      [self.offersTableView reloadData];

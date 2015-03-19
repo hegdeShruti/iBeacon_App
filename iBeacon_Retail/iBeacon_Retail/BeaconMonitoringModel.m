@@ -121,29 +121,36 @@
     }
    else  if([region.identifier isEqualToString:@"ENTRYBEACON" ] && !self.globals.hasUserEnteredTheStore && self.globals.hasUsercrossedEntrance){
         notification.alertBody = @"Welcome to Tavant Store..Check for offers here";
+       NSDictionary *userInformation=[[NSDictionary alloc] initWithObjectsAndKeys:@"1",@"offerId", nil];
+       notification.userInfo=userInformation;
         self.globals.hasUserEnteredTheStore=YES;
         self.globals.hasUserEntredEntryBeacon=YES;
        self.beaconRegion = ENTRYBEACON;
     }
     else if([region.identifier isEqualToString:@"MENSECTIONBEACON"]&& !self.globals.hasUserGotMenSectionOffers ){
          notification.alertBody = @"Visit Men section to avail the exiting offers.";
+        NSDictionary *userInformation=[[NSDictionary alloc] initWithObjectsAndKeys:@"1",@"offerId", nil];
+        notification.userInfo=userInformation;
         self.globals.hasUserGotMenSectionOffers=YES;
         self.beaconRegion = MENSECTIONBEACON;
         [self showPopUpForOffer];
-        
+
     }
     else if([region.identifier isEqualToString:@"WOMENSECTIONBEACON"]&& !self.globals.hasUserGotWOmenSectionOffers ){
         notification.alertBody = @"Visit Women section to avail the exiting offers.";
+        NSDictionary *userInformation=[[NSDictionary alloc] initWithObjectsAndKeys:@"3",@"offerId", nil];
+        notification.userInfo=userInformation;
         self.globals.hasUserGotWOmenSectionOffers=YES;
         self.beaconRegion = WOMENSECTIONBEACON;
         [self showPopUpForOffer];
     }
     else if([region.identifier isEqualToString:@"KIDSECTIONBEACON"]&& !self.globals.hasUserGotKidSectionOffers ){
         notification.alertBody = @"Visit Kids section to avail the exiting offers.";
+        NSDictionary *userInformation=[[NSDictionary alloc] initWithObjectsAndKeys:@"4",@"offerId", nil];
+        notification.userInfo=userInformation;
         self.globals.hasUserGotKidSectionOffers=YES;
         self.beaconRegion = KIDSECTIONBEACON;
         [self showPopUpForOffer];
-        
     }
 
     else{
