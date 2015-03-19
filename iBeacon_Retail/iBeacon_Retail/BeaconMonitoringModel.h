@@ -10,15 +10,15 @@
 
 typedef enum {
   
-    ENTRYBEACON,
-    MENSECTIONBEACON,
-    WOMENSECTIONBEACON,
-    KIDSECTIONBEACON,
-    MAINENTRANCEBEACON
+    ENTRYBEACON=1,
+    MENSECTIONBEACON=135679,
+    WOMENSECTIONBEACON=123679,
+    KIDSECTIONBEACON=126679
     
     
     
-} RegionIdentifier;
+    
+} BeaconIdentifier;
 
 @interface BeaconMonitoringModel : NSObject
 

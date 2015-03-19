@@ -71,9 +71,9 @@
 
 -(void) loadOffersViewController: (NSInteger) offerId
 {
-    if(self.offersViewController ==  nil){
+    //if(self.offersViewController ==  nil){
         self.offersViewController = [[OffersViewController alloc] initWithNibName:@"OffersViewController" bundle:nil];
-    }
+    //}
     self.offersViewController.offerId=offerId;
     [self.contentView addSubview:self.offersViewController.view];
     
