@@ -27,12 +27,12 @@
 - (instancetype)initWithLocation:(ESTLocation *)location
 {
     self = [super init];
-//    self = [super initWithNibName:@"StoreLocationMapViewController" bundle:nil];
+    //    self = [super initWithNibName:@"StoreLocationMapViewController" bundle:nil];
     if (self)
     {
         self.manager = [[ESTIndoorLocationManager alloc] init];
         self.manager.delegate = self;
-         self.globals=[GlobalVariables getInstance];
+        self.globals=[GlobalVariables getInstance];
         self.location = location;
     }
     
@@ -63,7 +63,7 @@
     
     self.indoorLocationView.showWallLengthLabels    = NO;
     
-   // self.indoorLocationView.frame = CGRectMake(self.indoorLocationView.frame.origin.x, self.indoorLocationView.frame.origin.y, 350, 350);
+    // self.indoorLocationView.frame = CGRectMake(self.indoorLocationView.frame.origin.x, self.indoorLocationView.frame.origin.y, 350, 350);
     
     self.indoorLocationView.locationBorderColor     = [UIColor blackColor];
     self.indoorLocationView.locationBorderThickness = 4;
@@ -89,7 +89,7 @@
             [sectionLogo addTarget:self action:@selector(showOffer:) forControlEvents:UIControlEventTouchUpInside];
             [self.indoorLocationView drawObject:sectionLogo withPosition:[ESTPoint pointWithX:beacon.position.x y:beacon.position.y]];
         }
-    
+        
         else if([beacon.macAddress isEqualToString:WOMENSECTION_MAC]){
             //Women's Section ...
             OfferButton *sectionLogo = [[OfferButton alloc] initWithFrame:CGRectMake(0,0, 30, 30)];
@@ -112,9 +112,9 @@
         else{
             //Electronic Section...
             OfferButton *sectionLogo = [[OfferButton alloc] initWithFrame:CGRectMake(0,0, 30, 30)];
-            sectionLogo.secTitle=@"Electronics Section ";
-            sectionLogo.offerMsg=@"You have 50% off on selected items";
-            [sectionLogo setBackgroundImage:[UIImage imageNamed:@"Test_men'sSection.png"] forState: UIControlStateNormal] ;
+            sectionLogo.secTitle=@"";
+            sectionLogo.offerMsg=@"Welcome to Our Store";
+            //[sectionLogo setBackgroundImage:[UIImage imageNamed:@"Test_men'sSection.png"] forState: UIControlStateNormal] ;
             [sectionLogo addTarget:nil action:@selector(showOffer:) forControlEvents:UIControlEventTouchUpInside];
             [self.indoorLocationView drawObject:sectionLogo withPosition:[ESTPoint pointWithX:beacon.position.x y:beacon.position.y]];
             
@@ -128,10 +128,10 @@
     
     [self.globals showOfferPopUpWithTitle:((OfferButton *)sender).secTitle andMessage:((OfferButton *)sender).offerMsg];
     
-//    OfferPopupMenu *popup = [[OfferPopupMenu alloc]initWithTitle:((OfferButton *)sender).secTitle message:((OfferButton *)sender).offerMsg];
-//    popup.menuStyle = MenuStyleOval;
-//    
-//    [popup showMenuInParentViewController:self withCenter:self.indoorLocationView.center];
+    //    OfferPopupMenu *popup = [[OfferPopupMenu alloc]initWithTitle:((OfferButton *)sender).secTitle message:((OfferButton *)sender).offerMsg];
+    //    popup.menuStyle = MenuStyleOval;
+    //
+    //    [popup showMenuInParentViewController:self withCenter:self.indoorLocationView.center];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -152,18 +152,18 @@
             didUpdatePosition:(ESTOrientedPoint *)position
                    inLocation:(ESTLocation *)location
 {
-//    self.positionLabel.text = [NSString stringWithFormat:@"x: %.2f  y: %.2f   α: %.2f",
-//                               position.x,
-//                               position.y,
-//                               position.orientation];
+    //    self.positionLabel.text = [NSString stringWithFormat:@"x: %.2f  y: %.2f   α: %.2f",
+    //                               position.x,
+    //                               position.y,
+    //                               position.orientation];
     
     [self.indoorLocationView updatePosition:position];
 }
 
 - (void)indoorLocationManager:(ESTIndoorLocationManager *)manager didFailToUpdatePositionWithError:(NSError *)error
 {
-//    self.positionLabel.text = @"It seems you are outside the location.";
-//    NSLog(@"%@", error.localizedDescription);
+    //    self.positionLabel.text = @"It seems you are outside the location.";
+    //    NSLog(@"%@", error.localizedDescription);
 }
 
 @end

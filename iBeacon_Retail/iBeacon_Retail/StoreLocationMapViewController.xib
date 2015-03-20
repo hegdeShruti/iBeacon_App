@@ -22,7 +22,7 @@
                             <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         </imageView>
                         <view autoresizesSubviews="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F00-Zi-Lt0" customClass="ESTIndoorLocationView">
-                            <rect key="frame" x="20" y="20" width="280" height="427"/>
+                            <rect key="frame" x="-10" y="70" width="340" height="350"/>
                             <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <userDefinedRuntimeAttributes>
@@ -43,7 +43,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <nil key="simulatedStatusBarMetrics"/>
-            <point key="canvasLocation" x="542" y="287"/>
+            <point key="canvasLocation" x="504" y="241"/>
         </view>
     </objects>
 </document>
