@@ -129,7 +129,7 @@
     }
     else if([region.identifier isEqualToString:@"MENSECTIONBEACON"]&& !self.globals.hasUserGotMenSectionOffers ){
          notification.alertBody = @"Visit Men section to avail the exiting offers.";
-        NSDictionary *userInformation=[[NSDictionary alloc] initWithObjectsAndKeys:@"1",@"offerId", nil];
+        NSDictionary *userInformation=[[NSDictionary alloc] initWithObjectsAndKeys:@"2",@"offerId", nil];
         notification.userInfo=userInformation;
         self.globals.hasUserGotMenSectionOffers=YES;
         self.beaconRegion = MENSECTIONBEACON;
@@ -168,8 +168,8 @@
         ;
     }
     else{
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[GlobalVariables returnTitleForRegion:self.beaconRegion] message:@"abc" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[GlobalVariables returnTitleForRegion:self.beaconRegion] message:@"abc" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//        [alert show];
     }
 }
 

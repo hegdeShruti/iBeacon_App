@@ -40,13 +40,13 @@ globals=[GlobalVariables getInstance];
         case 1: self.offersDataArray=[[NSMutableArray alloc]initWithArray:globals.offersDataArray];
             
             break;
-        case 2: self.offersDataArray=[[NSMutableArray alloc] initWithObjects:[globals.offersDataArray objectAtIndex:3], nil];
+        case 2: self.offersDataArray=[[NSMutableArray alloc] initWithObjects:[globals.offersDataArray objectAtIndex:2], nil];
             
             break;
-        case 3:self.offersDataArray=[[NSMutableArray alloc] initWithObjects:[globals.offersDataArray objectAtIndex:1], nil];
+        case 3:self.offersDataArray=[[NSMutableArray alloc] initWithObjects:[globals.offersDataArray objectAtIndex:0], nil];
             
             break;
-        case 4:self.offersDataArray=[[NSMutableArray alloc] initWithObjects:[globals.offersDataArray objectAtIndex:2], nil];
+        case 4:self.offersDataArray=[[NSMutableArray alloc] initWithObjects:[globals.offersDataArray objectAtIndex:1], nil];
             break;
             
         default:self.offersDataArray=[[NSMutableArray alloc]initWithArray:globals.offersDataArray];
