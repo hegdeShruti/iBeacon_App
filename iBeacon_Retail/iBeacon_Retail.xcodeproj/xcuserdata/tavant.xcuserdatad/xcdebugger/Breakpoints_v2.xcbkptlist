@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iBeacon_Retail/BeaconMonitoringModel.m"
-            timestampString = "448448490.679805"
+            timestampString = "448533209.759533"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "-beaconManager:didEnterRegion:"
             landmarkType = "5">
          </BreakpointContent>

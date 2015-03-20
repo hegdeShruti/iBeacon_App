@@ -27,11 +27,16 @@
 @property (nonatomic, assign) RegionIdentifier beaconRegion;
 @property (nonatomic, strong) ESTBeaconRegion *mainEntraneRegion;
 @property(nonatomic,strong) GlobalVariables *globals;
+@property(nonatomic,strong)NSDictionary *dict;
 @end
 
 
-@implementation BeaconMonitoringModel
+BOOL isMenOfferShown = NO;
+BOOL isWomenOfferShown = NO;
+BOOL isKidsOfferShown = NO;
 
+@implementation BeaconMonitoringModel
+@synthesize dict;
 
 - (id) init {
     if (self = [super init]) {
@@ -47,7 +52,7 @@
     self.globals=[GlobalVariables getInstance];
     // read config values from plist and assign it to parameters
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Config" ofType:@"plist"];
-    NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:path];
+    dict = [[NSDictionary alloc] initWithContentsOfFile:path];
     NSUUID *beaconId=[[NSUUID alloc] initWithUUIDString:[dict objectForKey:@"UUID"]];
     CLBeaconMajorValue majorValue=[[dict objectForKey:@"EntryBeacon_Major"] intValue];
     CLBeaconMinorValue minorValue=[[dict objectForKey:@"EntryBeacon_Minor"] intValue];
@@ -87,6 +92,12 @@
     [self.beaconManager startMonitoringForRegion:  self.regionMenSection];
     [self.beaconManager startMonitoringForRegion:  self.regionWomenSection];
     [self.beaconManager startMonitoringForRegion:  self.regionKidsSection];
+    
+    [self.beaconManager startRangingBeaconsInRegion:  self.mainEntraneRegion];
+    [self.beaconManager startRangingBeaconsInRegion:  self.region];
+    [self.beaconManager startRangingBeaconsInRegion:  self.regionMenSection];
+    [self.beaconManager startRangingBeaconsInRegion:  self.regionWomenSection];
+    [self.beaconManager startRangingBeaconsInRegion:  self.regionKidsSection];
    
 }
 
@@ -125,15 +136,13 @@
        notification.userInfo=userInformation;
         self.globals.hasUserEnteredTheStore=YES;
         self.globals.hasUserEntredEntryBeacon=YES;
-       self.beaconRegion = ENTRYBEACON;
     }
     else if([region.identifier isEqualToString:@"MENSECTIONBEACON"]&& !self.globals.hasUserGotMenSectionOffers ){
          notification.alertBody = @"Visit Men section to avail the exiting offers.";
         NSDictionary *userInformation=[[NSDictionary alloc] initWithObjectsAndKeys:@"1",@"offerId", nil];
         notification.userInfo=userInformation;
         self.globals.hasUserGotMenSectionOffers=YES;
-        self.beaconRegion = MENSECTIONBEACON;
-        [self showPopUpForOffer];
+
 
     }
     else if([region.identifier isEqualToString:@"WOMENSECTIONBEACON"]&& !self.globals.hasUserGotWOmenSectionOffers ){
@@ -141,16 +150,12 @@
         NSDictionary *userInformation=[[NSDictionary alloc] initWithObjectsAndKeys:@"3",@"offerId", nil];
         notification.userInfo=userInformation;
         self.globals.hasUserGotWOmenSectionOffers=YES;
-        self.beaconRegion = WOMENSECTIONBEACON;
-        [self showPopUpForOffer];
     }
     else if([region.identifier isEqualToString:@"KIDSECTIONBEACON"]&& !self.globals.hasUserGotKidSectionOffers ){
         notification.alertBody = @"Visit Kids section to avail the exiting offers.";
         NSDictionary *userInformation=[[NSDictionary alloc] initWithObjectsAndKeys:@"4",@"offerId", nil];
         notification.userInfo=userInformation;
         self.globals.hasUserGotKidSectionOffers=YES;
-        self.beaconRegion = KIDSECTIONBEACON;
-        [self showPopUpForOffer];
     }
 
     else{
@@ -162,15 +167,58 @@
     }
 }
 
+- (void)beaconManager:(ESTBeaconManager *)manager
+      didRangeBeacons:(NSArray *)beacons
+             inRegion:(ESTBeaconRegion *)region{
+    for(ESTBeacon *beaconObj in beacons){
+        
+        if(([beaconObj.major isEqualToNumber:[dict objectForKey:@"MenSectionBeacon_Major"]])){
+            if(beaconObj.proximity == CLProximityFar || beaconObj.proximity == CLProximityUnknown){
+                isMenOfferShown = NO;
+            }
+            else if(((beaconObj.proximity==CLProximityImmediate)||(beaconObj.proximity==CLProximityNear)) && !isMenOfferShown){
+                isMenOfferShown = YES;
+                self.beaconRegion = MENSECTIONBEACON;
+                [self showPopUpForOffer];
+            }
+        }
+        else if(([beaconObj.major isEqualToNumber:[dict objectForKey:@"WomenSectionBeacon_Major"]])){
+            if(beaconObj.proximity == CLProximityFar || beaconObj.proximity == CLProximityUnknown){
+                isWomenOfferShown = NO;
+            }
+            else if(((beaconObj.proximity==CLProximityImmediate)||(beaconObj.proximity==CLProximityNear)) && !isWomenOfferShown){
+                isWomenOfferShown = YES;
+                self.beaconRegion = WOMENSECTIONBEACON;
+                [self showPopUpForOffer];
+            }
+        }
+        else if(([beaconObj.major isEqualToNumber:[dict objectForKey:@"KidSectionBeacon_Major"]])){
+            if(beaconObj.proximity == CLProximityFar || beaconObj.proximity == CLProximityUnknown){
+                isKidsOfferShown = NO;
+            }
+            else if(((beaconObj.proximity==CLProximityImmediate)||(beaconObj.proximity==CLProximityNear)) && !isKidsOfferShown){
+                isKidsOfferShown = YES;
+                self.beaconRegion = KIDSECTIONBEACON;
+                [self showPopUpForOffer];
+            }
+        }
+        else{
+            
+        }
+        
+    }
+    
+}
+
 -(void)showPopUpForOffer{
     if(self.globals.isUserOnTheMapScreen){
         [self.globals showOfferPopUpWithTitle:[GlobalVariables returnTitleForRegion:self.beaconRegion] andMessage:@"You have 50% off on selected items"];
         ;
     }
-    else{
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[GlobalVariables returnTitleForRegion:self.beaconRegion] message:@"abc" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
-    }
+//    else{
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[GlobalVariables returnTitleForRegion:self.beaconRegion] message:@"abc" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//        [alert show];
+//    }
 }
 
 - (void)beaconManager:(ESTBeaconManager *)manager didExitRegion:(ESTBeaconRegion *)region
