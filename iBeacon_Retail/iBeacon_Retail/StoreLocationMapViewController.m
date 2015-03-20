@@ -112,9 +112,9 @@
         else{
             //Electronic Section...
             OfferButton *sectionLogo = [[OfferButton alloc] initWithFrame:CGRectMake(0,0, 30, 30)];
-            sectionLogo.secTitle=@"Electronics Section ";
-            sectionLogo.offerMsg=@"You have 50% off on selected items";
-            [sectionLogo setBackgroundImage:[UIImage imageNamed:@"Test_men'sSection.png"] forState: UIControlStateNormal] ;
+            sectionLogo.secTitle=@"";
+            sectionLogo.offerMsg=@"Welcome to Our Store";
+            //[sectionLogo setBackgroundImage:[UIImage imageNamed:@"Test_men'sSection.png"] forState: UIControlStateNormal] ;
             [sectionLogo addTarget:nil action:@selector(showOffer:) forControlEvents:UIControlEventTouchUpInside];
             [self.indoorLocationView drawObject:sectionLogo withPosition:[ESTPoint pointWithX:beacon.position.x y:beacon.position.y]];
             
