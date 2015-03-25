@@ -102,7 +102,7 @@
                 <constraint firstAttribute="trailing" secondItem="9AA-lB-B6N" secondAttribute="trailing" id="xYS-8E-nVf"/>
                 <constraint firstItem="0US-iZ-Zkm" firstAttribute="top" secondItem="9AA-lB-B6N" secondAttribute="bottom" constant="31" id="xxf-Fu-4BI"/>
             </constraints>
-            <nil key="simulatedStatusBarMetrics"/>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
             <point key="canvasLocation" x="337" y="338"/>
         </view>
     </objects>

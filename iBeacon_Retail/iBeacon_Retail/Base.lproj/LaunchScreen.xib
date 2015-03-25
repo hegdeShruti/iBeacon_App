@@ -10,16 +10,29 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="01_splash" translatesAutoresizingMaskIntoConstraints="NO" id="HQG-d4-qOF">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-1" translatesAutoresizingMaskIntoConstraints="NO" id="HQG-d4-qOF">
                     <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="bbH-W1-Qp7">
+                    <rect key="frame" x="137" y="168" width="207" height="143"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="207" id="EF5-N5-Asc"/>
+                        <constraint firstAttribute="height" constant="143" id="lvn-ul-KNW"/>
+                    </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="HQG-d4-qOF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1jb-dD-Gn5"/>
+                <constraint firstItem="HQG-d4-qOF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="42h-rp-QHt"/>
                 <constraint firstAttribute="bottom" secondItem="HQG-d4-qOF" secondAttribute="bottom" id="4X7-mr-fjQ"/>
+                <constraint firstAttribute="centerX" secondItem="bbH-W1-Qp7" secondAttribute="centerX" id="Ima-tD-gzY"/>
+                <constraint firstAttribute="centerY" secondItem="bbH-W1-Qp7" secondAttribute="centerY" id="Nyg-e3-69x"/>
                 <constraint firstItem="HQG-d4-qOF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dha-DS-rUm"/>
+                <constraint firstAttribute="bottom" secondItem="HQG-d4-qOF" secondAttribute="bottom" id="hbp-cO-FyH"/>
                 <constraint firstItem="HQG-d4-qOF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="oKM-Fw-Ps8"/>
                 <constraint firstAttribute="trailing" secondItem="HQG-d4-qOF" secondAttribute="trailing" id="u7Q-Ys-c5I"/>
+                <constraint firstAttribute="trailing" secondItem="HQG-d4-qOF" secondAttribute="trailing" id="xV5-E8-cnX"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -27,6 +40,12 @@
         </view>
     </objects>
     <resources>
-        <image name="01_splash" width="640" height="1136"/>
+        <image name="bg-1" width="320" height="568"/>
+        <image name="logo" width="207" height="148"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>

@@ -19,6 +19,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     [self setupView];
     [self setupGestures];
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -41,6 +42,10 @@
     [self loadMainScreenViewController];
 }
 
+#pragma mark - For Status Bar
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
 // loads the main container screen with default/home screen (ProductsViewController)
 -(void)loadMainScreenViewController
 {

@@ -29,6 +29,10 @@
     
 }
 
+#pragma mark - For Status Bar
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
 
 -(void)viewWillAppear:(BOOL)animated {
     self.contentViewWidthConstraint.constant  = [[UIScreen mainScreen] bounds].size.width;

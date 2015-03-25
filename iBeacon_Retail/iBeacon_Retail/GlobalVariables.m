@@ -36,10 +36,16 @@ static GlobalVariables *instance = nil;
     return instance;
 }
 
-- (void)showOfferPopUpWithTitle:(NSString *)inTitle andMessage:(NSString *)inMessage{
+- (void)showOfferPopUpWithTitle:(NSString *)inTitle andMessage:(NSString *)inMessage {
     OfferPopupMenu *popup = [[OfferPopupMenu alloc]initWithTitle:inTitle message:inMessage];
     popup.menuStyle = MenuStyleOval;
     [popup showMenuInParentViewController:self.storeLocationController withCenter:self.storeLocationController.indoorLocationView.center];
+}
+- (void)showOfferPopUp:(NSString *)inTitle andMessage:(NSString *)inMessage onController:(id) controller centrvalue:(CGPoint) refValue{
+    OfferPopupMenu *popup = [[OfferPopupMenu alloc]initWithTitle:inTitle message:inMessage];
+    popup.menuStyle = MenuStyleOval;
+    [popup showMenuInParentViewController:controller withCenter:refValue];
+
 }
 
 +(NSString *)returnTitleForRegion:(RegionIdentifier)inRegion{

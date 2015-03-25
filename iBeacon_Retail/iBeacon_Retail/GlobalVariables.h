@@ -35,7 +35,8 @@ typedef enum {
 //@property(nonatomic,assign) BOOL hasALreadyLoggedIn;
 
 +( GlobalVariables *) getInstance;
-- (void)showOfferPopUpWithTitle:(NSString *)inTitle andMessage:(NSString *)inMessage;
+- (void)showOfferPopUpWithTitle:(NSString *)inTitle andMessage:(NSString *)inMessage ;
+- (void)showOfferPopUp:(NSString *)inTitle andMessage:(NSString *)inMessage onController:(id) controller centerValue:(CGPoint) refValue;
 +(NSString *)returnTitleForRegion:(RegionIdentifier)inRegion;
 
 @end
