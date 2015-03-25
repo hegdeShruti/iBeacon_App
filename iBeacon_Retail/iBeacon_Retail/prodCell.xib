@@ -122,7 +122,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rs. 2,500" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DqC-G7-7oj">
                                         <rect key="frame" x="57" y="3" width="130" height="23"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <color key="textColor" red="0.21074774732046986" green="0.71791514613968499" blue="0.92586016414141414" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -140,6 +140,9 @@
                                     <constraint firstAttribute="height" constant="1" id="eer-mY-9IE"/>
                                 </constraints>
                             </imageView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="over_bar" translatesAutoresizingMaskIntoConstraints="NO" id="uYe-PF-ZNf">
+                                <rect key="frame" x="0.0" y="0.0" width="4" height="150"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -148,15 +151,18 @@
                             <constraint firstItem="XDA-BN-vrg" firstAttribute="leading" secondItem="l5p-V0-Sup" secondAttribute="trailing" id="7ku-jS-U4T"/>
                             <constraint firstItem="w2Z-17-bLi" firstAttribute="leading" secondItem="SmS-Fb-o4n" secondAttribute="leading" id="81p-5f-EO0"/>
                             <constraint firstItem="XDA-BN-vrg" firstAttribute="bottom" secondItem="FkL-Nr-mkm" secondAttribute="bottom" constant="-40" id="8TE-pP-dQ9"/>
+                            <constraint firstAttribute="bottom" secondItem="uYe-PF-ZNf" secondAttribute="bottom" id="Ao2-IP-la0"/>
                             <constraint firstItem="l5p-V0-Sup" firstAttribute="leading" secondItem="SmS-Fb-o4n" secondAttribute="leading" id="B9X-Rn-OwL"/>
                             <constraint firstAttribute="bottom" secondItem="l5p-V0-Sup" secondAttribute="bottom" id="CXx-u7-lJB"/>
                             <constraint firstItem="l5p-V0-Sup" firstAttribute="width" secondItem="SmS-Fb-o4n" secondAttribute="height" multiplier="5:6" id="Fjn-Su-Qqy"/>
                             <constraint firstItem="w2Z-17-bLi" firstAttribute="leading" secondItem="SmS-Fb-o4n" secondAttribute="leading" constant="20" id="I1K-cm-hKU"/>
                             <constraint firstItem="FkL-Nr-mkm" firstAttribute="leading" secondItem="l5p-V0-Sup" secondAttribute="trailing" constant="-3" id="J0a-1B-F1C"/>
+                            <constraint firstItem="uYe-PF-ZNf" firstAttribute="width" secondItem="SmS-Fb-o4n" secondAttribute="height" multiplier="2:75" id="JtW-sB-SXB"/>
                             <constraint firstAttribute="trailing" secondItem="XDA-BN-vrg" secondAttribute="trailing" id="Li1-Dc-hqi"/>
                             <constraint firstAttribute="bottom" secondItem="w2Z-17-bLi" secondAttribute="bottom" constant="-20" id="Mco-tW-olx"/>
                             <constraint firstItem="w2Z-17-bLi" firstAttribute="width" secondItem="SmS-Fb-o4n" secondAttribute="height" multiplier="32:19" id="Mrd-PW-1c7"/>
                             <constraint firstAttribute="width" secondItem="SmS-Fb-o4n" secondAttribute="height" multiplier="36:19" constant="35.78947368421052" id="O5C-ck-VNA"/>
+                            <constraint firstItem="uYe-PF-ZNf" firstAttribute="leading" secondItem="SmS-Fb-o4n" secondAttribute="leading" id="Piu-EV-QkP"/>
                             <constraint firstAttribute="bottom" secondItem="FkL-Nr-mkm" secondAttribute="bottom" id="RYJ-Ai-Jue"/>
                             <constraint firstAttribute="trailing" secondItem="w2Z-17-bLi" secondAttribute="trailing" id="SEj-iY-xAK"/>
                             <constraint firstAttribute="trailing" secondItem="w2Z-17-bLi" secondAttribute="trailing" constant="-20" id="TJR-1d-TpC"/>
@@ -168,10 +174,12 @@
                             <constraint firstItem="w2Z-17-bLi" firstAttribute="width" secondItem="SmS-Fb-o4n" secondAttribute="height" multiplier="32:15" id="YOk-aO-g8m"/>
                             <constraint firstItem="l5p-V0-Sup" firstAttribute="leading" secondItem="SmS-Fb-o4n" secondAttribute="leading" id="YZY-LE-iJr"/>
                             <constraint firstAttribute="trailing" secondItem="FkL-Nr-mkm" secondAttribute="trailing" constant="20" id="bHg-67-lXZ"/>
+                            <constraint firstItem="uYe-PF-ZNf" firstAttribute="top" secondItem="SmS-Fb-o4n" secondAttribute="top" id="cUg-dI-NPu"/>
                             <constraint firstAttribute="centerX" secondItem="w2Z-17-bLi" secondAttribute="centerX" constant="-20" id="gku-pe-hKc"/>
                             <constraint firstItem="FkL-Nr-mkm" firstAttribute="top" secondItem="XDA-BN-vrg" secondAttribute="bottom" id="h8R-Yy-c1t"/>
                             <constraint firstItem="w2Z-17-bLi" firstAttribute="leading" secondItem="SmS-Fb-o4n" secondAttribute="leading" constant="20" id="sTT-gk-cVG"/>
                             <constraint firstAttribute="bottom" secondItem="FkL-Nr-mkm" secondAttribute="bottom" id="shu-fK-ciT"/>
+                            <constraint firstItem="FkL-Nr-mkm" firstAttribute="bottom" secondItem="XDA-BN-vrg" secondAttribute="bottom" constant="30" id="tN1-fE-FCz"/>
                             <constraint firstItem="XDA-BN-vrg" firstAttribute="top" secondItem="SmS-Fb-o4n" secondAttribute="top" id="tjF-v9-NQC"/>
                             <constraint firstItem="XDA-BN-vrg" firstAttribute="width" secondItem="FkL-Nr-mkm" secondAttribute="width" id="v5u-Yb-8qQ"/>
                             <constraint firstItem="XDA-BN-vrg" firstAttribute="leading" secondItem="l5p-V0-Sup" secondAttribute="trailing" constant="-3" id="z2b-8h-0cG"/>
@@ -188,6 +196,7 @@
                                 <exclude reference="TJR-1d-TpC"/>
                                 <exclude reference="VLc-W1-tFQ"/>
                                 <exclude reference="WJz-fM-0Ng"/>
+                                <exclude reference="YOk-aO-g8m"/>
                                 <exclude reference="gku-pe-hKc"/>
                                 <exclude reference="sTT-gk-cVG"/>
                                 <exclude reference="5Wj-nq-uch"/>
@@ -217,12 +226,14 @@
                 <outlet property="prodDescription" destination="8j4-xO-3bU" id="SFS-Nz-PIC"/>
                 <outlet property="productImage" destination="l5p-V0-Sup" id="FKz-CW-oPR"/>
                 <outlet property="productName" destination="v6o-oA-gBc" id="7yv-Vb-iLS"/>
+                <outlet property="selectedProductIndicator" destination="uYe-PF-ZNf" id="Pup-dr-Gzb"/>
             </connections>
             <point key="canvasLocation" x="450" y="238"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="jacket" width="82" height="96"/>
+        <image name="over_bar" width="4" height="115"/>
         <image name="prod_divider" width="320" height="1"/>
     </resources>
 </document>

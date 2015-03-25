@@ -18,5 +18,6 @@
 @property (nonatomic,weak) IBOutlet UIView* availableColor2;
 @property (nonatomic,weak) IBOutlet UIView* availableColor3;
 @property (nonatomic,weak) IBOutlet UIView* availableColor4;
+@property (nonatomic,weak) IBOutlet UIImageView* selectedProductIndicator;
 
 @end
