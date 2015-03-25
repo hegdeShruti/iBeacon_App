@@ -65,6 +65,9 @@
 		45526A5C1AB06E4D00E6F7C3 /* libEstimoteSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45526A5B1AB06E4D00E6F7C3 /* libEstimoteSDK.a */; };
 		45526A5E1AB06E5A00E6F7C3 /* libEstimoteIndoorSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45526A5D1AB06E5A00E6F7C3 /* libEstimoteIndoorSDK.a */; };
 		45526A601AB06F3300E6F7C3 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 45526A5F1AB06F3300E6F7C3 /* libxml2.dylib */; };
+		45DA40771AC13E1F00D86C8A /* CartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45DA40751AC13E1F00D86C8A /* CartViewController.m */; };
+		45DA40781AC13E1F00D86C8A /* CartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45DA40761AC13E1F00D86C8A /* CartViewController.xib */; };
+		45DA407A1AC293AB00D86C8A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45DA40791AC293AB00D86C8A /* QuartzCore.framework */; };
 		811165711AB14FF8003629E0 /* GlobalVariables.m in Sources */ = {isa = PBXBuildFile; fileRef = 811165701AB14FF8003629E0 /* GlobalVariables.m */; };
 		811165761AB1AEF1003629E0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 811165741AB1AEF0003629E0 /* LoginViewController.m */; };
 		814BC9611AA4404800164B30 /* ProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 814BC95F1AA4404800164B30 /* ProductViewController.m */; };
@@ -202,6 +205,10 @@
 		45526A5B1AB06E4D00E6F7C3 /* libEstimoteSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libEstimoteSDK.a; sourceTree = "<group>"; };
 		45526A5D1AB06E5A00E6F7C3 /* libEstimoteIndoorSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libEstimoteIndoorSDK.a; sourceTree = "<group>"; };
 		45526A5F1AB06F3300E6F7C3 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		45DA40741AC13E1F00D86C8A /* CartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartViewController.h; sourceTree = "<group>"; };
+		45DA40751AC13E1F00D86C8A /* CartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartViewController.m; sourceTree = "<group>"; };
+		45DA40761AC13E1F00D86C8A /* CartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CartViewController.xib; sourceTree = "<group>"; };
+		45DA40791AC293AB00D86C8A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8111656F1AB14FF8003629E0 /* GlobalVariables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalVariables.h; sourceTree = "<group>"; };
 		811165701AB14FF8003629E0 /* GlobalVariables.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalVariables.m; sourceTree = "<group>"; };
 		811165731AB1AEF0003629E0 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -251,6 +258,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45DA407A1AC293AB00D86C8A /* QuartzCore.framework in Frameworks */,
 				45526A601AB06F3300E6F7C3 /* libxml2.dylib in Frameworks */,
 				45526A531AB04C2400E6F7C3 /* MessageUI.framework in Frameworks */,
 				45526A571AB04C3F00E6F7C3 /* AudioToolbox.framework in Frameworks */,
@@ -281,6 +289,7 @@
 		0AF77D601AA0363800B57B8C = {
 			isa = PBXGroup;
 			children = (
+				45DA40791AC293AB00D86C8A /* QuartzCore.framework */,
 				45526A5F1AB06F3300E6F7C3 /* libxml2.dylib */,
 				45526A581AB04CDA00E6F7C3 /* AVFoundation.framework */,
 				45526A561AB04C3F00E6F7C3 /* AudioToolbox.framework */,
@@ -321,6 +330,7 @@
 				81AE08981AA7672200CD7F75 /* MenuViewController.m */,
 				81AE08991AA7672200CD7F75 /* MenuViewController.xib */,
 				81AE088A1AA71EED00CD7F75 /* Offers */,
+				45DA40731AC13DE300D86C8A /* Cart */,
 				4552699D1AB03F8500E6F7C3 /* StoreLocationMap */,
 				814BC95D1AA4401200164B30 /* Products */,
 				814BC95C1AA4400500164B30 /* Model */,
@@ -497,6 +507,16 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		45DA40731AC13DE300D86C8A /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				45DA40741AC13E1F00D86C8A /* CartViewController.h */,
+				45DA40751AC13E1F00D86C8A /* CartViewController.m */,
+				45DA40761AC13E1F00D86C8A /* CartViewController.xib */,
+			);
+			name = Cart;
+			sourceTree = "<group>";
+		};
 		811165721AB14FFE003629E0 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -621,6 +641,7 @@
 					};
 					0AF77D811AA0363800B57B8C = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 93ZK4B4MRX;
 						TestTargetID = 0AF77D681AA0363800B57B8C;
 					};
 				};
@@ -668,6 +689,7 @@
 				45526A3B1AB048B300E6F7C3 /* beaconIcySmall.png in Resources */,
 				45526A2B1AB048B300E6F7C3 /* 5b.mov in Resources */,
 				45526A471AB048B300E6F7C3 /* screen8_beacon_purple@2x.png in Resources */,
+				45DA40781AC13E1F00D86C8A /* CartViewController.xib in Resources */,
 				45526A341AB048B300E6F7C3 /* beacon_grey@2x.png in Resources */,
 				0AF77D781AA0363800B57B8C /* Main.storyboard in Resources */,
 				45526A371AB048B300E6F7C3 /* beaconBlueberrySmall@2x.png in Resources */,
@@ -732,6 +754,7 @@
 				814BC9611AA4404800164B30 /* ProductViewController.m in Sources */,
 				81AF710C1AB00E4800B350B6 /* NetworkOperations.m in Sources */,
 				B17C01AB1ABAA28F00542233 /* OfferPopupMenu.m in Sources */,
+				45DA40771AC13E1F00D86C8A /* CartViewController.m in Sources */,
 				81AF71091AAF1AD800B350B6 /* BeaconMonitoringModel.m in Sources */,
 				81AE089A1AA7672200CD7F75 /* ContainerViewController.m in Sources */,
 				0AF77D6F1AA0363800B57B8C /* main.m in Sources */,
@@ -794,8 +817,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bandhavi Vinay (ENMBG296B5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bandhavi Vinay (ENMBG296B5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Sreejit  Sreedharan (X654J4F933)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sreejit  Sreedharan (X654J4F933)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -816,7 +839,7 @@
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/iBeacon_Retail/EstimoteSDK/**";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1bc098e9-5e4f-4c15-a5ff-cbd6245f58b6";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv7 arm64";
 			};
@@ -840,8 +863,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bandhavi Vinay (ENMBG296B5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bandhavi Vinay (ENMBG296B5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Sreejit  Sreedharan (X654J4F933)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sreejit  Sreedharan (X654J4F933)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -856,7 +879,7 @@
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/iBeacon_Retail/EstimoteSDK/**";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1bc098e9-5e4f-4c15-a5ff-cbd6245f58b6";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "armv7 arm64";
@@ -868,8 +891,8 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Sreejit  Sreedharan (X654J4F933)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sreejit  Sreedharan (X654J4F933)";
 				INFOPLIST_FILE = iBeacon_Retail/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -880,7 +903,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lc++";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1bc098e9-5e4f-4c15-a5ff-cbd6245f58b6";
 				VALID_ARCHS = "armv7 arm64";
 			};
 			name = Debug;
@@ -890,8 +913,8 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Sreejit  Sreedharan (X654J4F933)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sreejit  Sreedharan (X654J4F933)";
 				INFOPLIST_FILE = iBeacon_Retail/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -902,7 +925,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lc++";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1bc098e9-5e4f-4c15-a5ff-cbd6245f58b6";
 				VALID_ARCHS = "armv7 arm64";
 			};
 			name = Release;
@@ -911,6 +934,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -922,6 +947,7 @@
 				INFOPLIST_FILE = iBeacon_RetailTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iBeacon_Retail.app/iBeacon_Retail";
 			};
 			name = Debug;
@@ -930,6 +956,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -937,6 +965,7 @@
 				INFOPLIST_FILE = iBeacon_RetailTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iBeacon_Retail.app/iBeacon_Retail";
 			};
 			name = Release;

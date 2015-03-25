@@ -14,5 +14,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *productName;
 @property (weak, nonatomic) IBOutlet UILabel *prodDescription;
 @property (weak, nonatomic) IBOutlet UILabel *offerPrice;
+@property (nonatomic,weak) IBOutlet UIView* availableColor1;
+@property (nonatomic,weak) IBOutlet UIView* availableColor2;
+@property (nonatomic,weak) IBOutlet UIView* availableColor3;
+@property (nonatomic,weak) IBOutlet UIView* availableColor4;
 
 @end

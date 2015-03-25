@@ -74,10 +74,24 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath; {
     prodCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"prodCell" forIndexPath:indexPath];
+    cell.frame = CGRectMake(0, cell.frame.origin.y, self.prodCollectionView.frame.size.width, cell.frame.size.height);
     //cell.backgroundColor = [UIColor whiteColor];
     
     Products *prodObject= [[Products alloc] initWithDictionary:[globals.productDataArray objectAtIndex:indexPath.row]];
     cell.productName.text=prodObject.prodName;
+    
+    cell.availableColor1.backgroundColor = [UIColor redColor];
+    cell.availableColor1.layer.cornerRadius = (CGFloat)cell.availableColor1.frame.size.height/2;
+    
+    cell.availableColor2.backgroundColor = [UIColor blueColor];
+    cell.availableColor2.layer.cornerRadius = (CGFloat)cell.availableColor2.frame.size.height/2;
+    
+    cell.availableColor3.backgroundColor = [UIColor blackColor];
+    cell.availableColor3.layer.cornerRadius = (CGFloat)cell.availableColor3.frame.size.height/2;
+    
+    cell.availableColor4.backgroundColor = [UIColor yellowColor];
+    cell.availableColor4.layer.cornerRadius = (CGFloat)cell.availableColor4.frame.size.height/2;
+    
     return cell;
  
 }

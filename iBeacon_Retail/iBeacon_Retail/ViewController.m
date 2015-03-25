@@ -87,6 +87,16 @@
 
 -(void)loadCartViewController
 {
+    if(self.cartViewController == nil){
+        self.cartViewController = [[CartViewController alloc] initWithNibName:@"CartViewController" bundle:nil];
+    }
+    [self.contentView addSubview:self.cartViewController.view];
+    
+    self.cartViewController.view.frame = CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
+    
+    [self addChildViewController:self.cartViewController];
+    [self.cartViewController didMoveToParentViewController:self];
+    
     self.navbar.topItem.title = @"Cart";
     self.selectedIndex = cartMenuIndex;
 }

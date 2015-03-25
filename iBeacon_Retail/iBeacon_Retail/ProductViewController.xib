@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6249" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6243"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProductViewController">
@@ -15,9 +15,20 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="9AA-lB-B6N">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="e3f-Vy-5b0"/>
+                    </connections>
+                </searchBar>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0fI-9J-hEe">
                     <rect key="frame" x="0.0" y="44" width="320" height="30"/>
                     <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="allcater_bg" translatesAutoresizingMaskIntoConstraints="NO" id="PLk-xA-4Uj">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
+                        </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHS-I1-nmY">
                             <rect key="frame" x="262" y="2" width="26" height="26"/>
                             <color key="backgroundColor" red="0.080312095099999994" green="0.07136980372" blue="0.38946101640000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -35,8 +46,11 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="All Categories" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xnh-DF-j97">
-                            <rect key="frame" x="4" y="4" width="206" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All Categories" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xnh-DF-j97">
+                            <rect key="frame" x="11" y="0.0" width="241" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="241" id="y0o-O5-9ho"/>
+                            </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
@@ -45,30 +59,29 @@
                     <color key="backgroundColor" red="0.89810211489898994" green="0.89810211489898994" blue="0.89810211489898994" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="cHS-I1-nmY" secondAttribute="bottom" constant="2" id="1BM-hF-lJN"/>
+                        <constraint firstItem="PLk-xA-4Uj" firstAttribute="top" secondItem="0fI-9J-hEe" secondAttribute="top" id="4j4-ay-Yh2"/>
+                        <constraint firstItem="PLk-xA-4Uj" firstAttribute="leading" secondItem="0fI-9J-hEe" secondAttribute="leading" id="9Ka-nH-gDK"/>
+                        <constraint firstItem="Xnh-DF-j97" firstAttribute="leading" secondItem="0fI-9J-hEe" secondAttribute="leading" constant="11" id="HBi-cj-NEE"/>
                         <constraint firstAttribute="height" constant="30" id="KF7-P5-Aq2"/>
                         <constraint firstAttribute="trailing" secondItem="e1T-jX-Vdb" secondAttribute="trailing" constant="4" id="KwL-PN-kVR"/>
                         <constraint firstItem="e1T-jX-Vdb" firstAttribute="leading" secondItem="cHS-I1-nmY" secondAttribute="trailing" constant="2" id="Olb-pt-LdA"/>
+                        <constraint firstAttribute="bottom" secondItem="PLk-xA-4Uj" secondAttribute="bottom" id="Qpk-iJ-p2n"/>
+                        <constraint firstAttribute="bottom" secondItem="Xnh-DF-j97" secondAttribute="bottom" id="a7x-ik-MUy"/>
                         <constraint firstItem="cHS-I1-nmY" firstAttribute="top" secondItem="0fI-9J-hEe" secondAttribute="top" constant="2" id="iMw-EK-kdJ"/>
+                        <constraint firstItem="Xnh-DF-j97" firstAttribute="top" secondItem="0fI-9J-hEe" secondAttribute="top" id="mVU-9H-d0e"/>
+                        <constraint firstAttribute="trailing" secondItem="PLk-xA-4Uj" secondAttribute="trailing" id="nty-hJ-l7u"/>
                         <constraint firstItem="e1T-jX-Vdb" firstAttribute="top" secondItem="0fI-9J-hEe" secondAttribute="top" constant="2" id="w51-tl-DQ9"/>
                     </constraints>
                 </view>
-                <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="9AA-lB-B6N">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                    <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <textInputTraits key="textInputTraits"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="e3f-Vy-5b0"/>
-                    </connections>
-                </searchBar>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="0US-iZ-Zkm">
                     <rect key="frame" x="0.0" y="75" width="320" height="493"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="0.0" id="1Fc-Tp-Xn5">
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="1Fc-Tp-Xn5">
                         <size key="itemSize" width="320" height="150"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="4eP-Jr-Rod"/>
@@ -94,6 +107,7 @@
         </view>
     </objects>
     <resources>
+        <image name="allcater_bg" width="320" height="28"/>
         <image name="list_icon" width="26" height="26"/>
         <image name="thumb_icon" width="26" height="26"/>
     </resources>
