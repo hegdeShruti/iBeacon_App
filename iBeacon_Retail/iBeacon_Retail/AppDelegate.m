@@ -16,6 +16,8 @@
 #import "GlobalVariables.h"
 #import "LoginViewController.h"
 #define ESTIMOTE_PROXIMITY_UUID             [[NSUUID alloc] initWithUUIDString:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"]
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+
 
 @interface AppDelegate ()<ESTBeaconManagerDelegate>
 @property (nonatomic, strong) ESTBeaconRegion *region;
@@ -34,6 +36,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+//    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
+//    {
+//        UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0,320, 20)];
+//        view.backgroundColor=[UIColor colorWithRed:230/255.0 green:143/255.0 blue:34/255.0 alpha:1.0];
+//        [self.window.rootViewController.view addSubview:view];
+//    }
+
+    //[[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:230/255.0 green:143/255.0 blue:34/255.0 alpha:1.0]];
     beaconOperations=[[BeaconMonitoringModel alloc] init];
     [beaconOperations startBeaconOperations];
     [self showMainScreen];
@@ -77,8 +87,28 @@
            
             [container.mainScreenViewController loadOffersViewController:[[notification.userInfo valueForKey:@"offerId" ] intValue]];
         }
+        else{
+            // show Alert
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"offer Alert"
+                                                                    message:notification.userInfo.description
+                                                                   delegate:nil
+                                                          cancelButtonTitle:@"OK"
+                                                          otherButtonTitles: nil];
+            
+                    [alert show];
+            // On Okay show him to Offer
+//             GlobalVariables * globals=[GlobalVariables getInstance];
+//            [globals showOfferPopUp:notification.userInfo.description andMessage:notification.userInfo.description onController:self.window.rootViewController centerValue:self.window.rootViewController.view.center ];
+            [self clearNotifications];
+        }
      
-}}
+}
+}
+
+- (void) clearNotifications {
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 0];
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+}
 
 // global method to decide main screen
 -(void) showMainScreen{

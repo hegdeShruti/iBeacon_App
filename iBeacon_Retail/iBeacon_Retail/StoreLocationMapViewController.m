@@ -125,11 +125,11 @@
 }
 - (void)showOffer:(id)sender{
     //(NSString *)offerMessage inSection:(NSString *)section
+            OfferPopupMenu *popup = [[OfferPopupMenu alloc]initWithTitle:((OfferButton *)sender).secTitle message:((OfferButton *)sender).offerMsg];
+    popup.menuStyle = MenuStyleOval;
+    [self.globals showOfferPopUpWithTitle:((OfferButton *)sender).secTitle andMessage:((OfferButton *)sender).offerMsg ];
     
-    [self.globals showOfferPopUpWithTitle:((OfferButton *)sender).secTitle andMessage:((OfferButton *)sender).offerMsg];
     
-    //    OfferPopupMenu *popup = [[OfferPopupMenu alloc]initWithTitle:((OfferButton *)sender).secTitle message:((OfferButton *)sender).offerMsg];
-    //    popup.menuStyle = MenuStyleOval;
     //
     //    [popup showMenuInParentViewController:self withCenter:self.indoorLocationView.center];
 }
