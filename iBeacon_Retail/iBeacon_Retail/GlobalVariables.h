@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "StoreLocationMapViewController.h"
-
+#import "Constants.h"
 typedef enum {
     
     ENTRYBEACON=1,
@@ -19,6 +19,13 @@ typedef enum {
 
     
 } RegionIdentifier;
+typedef enum {
+    
+    ENTRANCE=0,
+    MENSECTION=2,
+    WOMENSECTION=1,
+    KIDSECTION=4
+} SectionIdentifier;
 
 @interface GlobalVariables : NSObject
 
@@ -37,6 +44,10 @@ typedef enum {
 +( GlobalVariables *) getInstance;
 - (void)showOfferPopUpWithTitle:(NSString *)inTitle andMessage:(NSString *)inMessage ;
 - (void)showOfferPopUp:(NSString *)inTitle andMessage:(NSString *)inMessage onController:(id) controller centerValue:(CGPoint) refValue;
+- (void)showOfferPopUpWithTitle:(NSString *)inTitle message:(NSString *)inMessage andDelegate:(id)delegate;
 +(NSString *)returnTitleForRegion:(RegionIdentifier)inRegion;
-
++(NSString*)getBeaconMacAddress:(int)sectionId;
++(int)getSectionId:(NSString *)macAddress;
++(NSString *)returnTitleForSection:(SectionIdentifier)sectionId;
+-(void) getOffers;
 @end
