@@ -152,31 +152,29 @@
     NSLog(@"offer  %@",self.globals.offersDataArray);
     [((OfferButton *)sender)setBackgroundImage:[UIImage imageNamed:@"map-pin-green.png"] forState: UIControlStateNormal] ;
     ((OfferButton *)sender).secTitle=[GlobalVariables returnTitleForSection:((OfferButton *)sender).tag];
+    ((OfferButton *)sender).offerMsg=@"You have 50% off on selected items";
+
     NSArray *resultOfferArray=[self.globals.offersDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"%K == %d", @"sectionId",((OfferButton *)sender).tag]];
     NSDictionary *resultOffer;
-    if (resultOfferArray !=nil &&  [resultOffer count ]!=0)
+    if (resultOfferArray !=nil &&  [resultOfferArray count ]!=0)
     resultOffer=[resultOfferArray objectAtIndex:0 ];
     
-    if (resultOffer==nil ||  [resultOffer count ]==0) {
-        ((OfferButton *)sender).offerMsg=@"You have 50% off on selected items";
-        [self.globals showOfferPopUpWithTitle:((OfferButton *)sender).secTitle message:((OfferButton *)sender).offerMsg andDelegate:self];
-        return;
-    }
+    if (resultOffer!=nil && [resultOffer count ]!=0) {
     for (id offer in [self.indoorLocationView subviews]) {
         if([offer isKindOfClass:[OfferButton class]] ){
+            NSLog(@"tag %lu  %d",((OfferButton *)offer).tag , [[resultOffer valueForKey:@"sectionId"] intValue]);
             if ([[resultOffer valueForKey:@"sectionId"] intValue]==((OfferButton *)offer).tag){
-                NSLog(@"tag %lu  %d",((OfferButton *)offer).tag , [[resultOffer valueForKey:@"sectionId"] intValue]);
                 [((OfferButton *)offer)setBackgroundImage:[UIImage imageNamed:@"map-pin-green.png"] forState: UIControlStateNormal];
                 ((OfferButton *)sender).offerMsg=[NSString stringWithFormat:@"%@\n%@",[resultOffer valueForKey:@"offerHeading"],[resultOffer valueForKey:@"offerDescription"]];
- 
+
             }
         }
-        else{
-                ((OfferButton *)sender).offerMsg=@"You have 50% off on selected items";
-        }
+
     }
-//    ((OfferButton *)sender).offerMsg=@"You have 50% off on selected items";
+    }
     [self.globals showOfferPopUpWithTitle:((OfferButton *)sender).secTitle message:((OfferButton *)sender).offerMsg andDelegate:self];
+//    ((OfferButton *)sender).offerMsg=@"You have 50% off on selected items";
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated
