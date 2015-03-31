@@ -611,10 +611,13 @@
 		B19CB4901AB95998006C7575 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				458F3CB31ACA71FB0099F2E6 /* arrow.png */,
 				458F3CB41ACA71FB0099F2E6 /* map-pin-green.png */,
 				458F3CB51ACA71FB0099F2E6 /* map-pin-red.png */,
 				458F3CB61ACA71FB0099F2E6 /* map.png */,
+=======
+>>>>>>> origin/master
 				B17C01A01AB9B35C00542233 /* Test_Kid'sSection.png */,
 				B17C01A11AB9B35C00542233 /* Test_MenSection.png */,
 				B17C01A21AB9B35C00542233 /* Test_Women'sSection.png */,
@@ -736,8 +739,11 @@
 				814BC9621AA4404800164B30 /* ProductViewController.xib in Resources */,
 				458F3CB71ACA71FB0099F2E6 /* arrow.png in Resources */,
 				81AE089C1AA7672200CD7F75 /* MenuViewController.xib in Resources */,
+<<<<<<< HEAD
 				458F3CBA1ACA71FB0099F2E6 /* map.png in Resources */,
 				458F3CB81ACA71FB0099F2E6 /* map-pin-green.png in Resources */,
+=======
+>>>>>>> origin/master
 				814BC9671AA4634900164B30 /* prodCell.xib in Resources */,
 				818849BC1AB98B14005A06BF /* productGridCellCollectionViewCell.xib in Resources */,
 				81AE088F1AA71F1900CD7F75 /* OffersViewController.xib in Resources */,
