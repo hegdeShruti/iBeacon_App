@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "StoreLocationMapViewController.h"
+@class CartItem;
 
 typedef enum {
     
@@ -31,6 +32,7 @@ typedef enum {
 @property(nonatomic,assign) BOOL isUserOnTheMapScreen;
 @property(nonatomic,strong) NSMutableArray *offersDataArray;
 @property(nonatomic,strong) NSMutableArray *productDataArray;
+@property(nonatomic,strong) NSMutableArray *cartDataArray;
 @property(nonatomic,strong)StoreLocationMapViewController *storeLocationController;
 //@property(nonatomic,assign) BOOL hasALreadyLoggedIn;
 
@@ -38,5 +40,7 @@ typedef enum {
 - (void)showOfferPopUpWithTitle:(NSString *)inTitle andMessage:(NSString *)inMessage ;
 - (void)showOfferPopUp:(NSString *)inTitle andMessage:(NSString *)inMessage onController:(id) controller centerValue:(CGPoint) refValue;
 +(NSString *)returnTitleForRegion:(RegionIdentifier)inRegion;
-
++(void)addItemToCart: (CartItem*) cartItem;
++(void)removeItemFromCart: (CartItem*) cartItem;
++(NSMutableArray*)getCartItems;
 @end

@@ -8,10 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Products : NSObject
+@interface Products : NSObject <NSCoding>
+
 @property(nonatomic,assign) NSInteger productId;
-@property(nonatomic,strong)NSString *prodName;
-@property(nonatomic,assign) NSString *beaconId;
+@property(nonatomic,strong) NSString *prodName;
+@property(nonatomic,strong) NSString *prodDescription;
+//@property(nonatomic,assign) double price;
+@property(nonatomic,strong) NSString *price;
+@property(nonatomic,strong) NSString *size;
+//@property(nonatomic,strong) NSString *sizeUnit;
+@property(nonatomic,strong) NSString *colour;
+@property(nonatomic,strong) NSString *beaconId;
 @property(nonatomic,assign) NSInteger sectionId;
 
 

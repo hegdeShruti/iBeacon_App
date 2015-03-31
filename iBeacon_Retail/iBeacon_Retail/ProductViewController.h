@@ -11,6 +11,7 @@
 #import "MenuViewController.h"
 
 @interface ProductViewController : UIViewController<UICollectionViewDataSource,MenuViewControllerDelegate,UICollectionViewDelegate,UISearchBarDelegate>
-@property (weak, nonatomic) IBOutlet UICollectionView *prodCollectionView;
 
+@property (weak, nonatomic) IBOutlet UICollectionView *prodCollectionView;
+@property (nonatomic,weak) IBOutlet UISearchBar* searchBar;
 @end

@@ -110,6 +110,7 @@
     } completion:^(BOOL finished){
         if(finished){
             self.mainScreenViewController.menuButton.tag=0;
+            [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
         }
     }];
 }

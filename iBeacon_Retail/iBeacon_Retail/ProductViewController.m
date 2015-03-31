@@ -9,6 +9,7 @@
 #import "ProductViewController.h"
 #import "prodCell.h"
 #import "Products.h"
+#import "CartItem.h"
 #import "NetworkOperations.h"
 #import "GlobalVariables.h"
 
@@ -32,6 +33,20 @@
     if(![globals.productDataArray count]>0){
           [self getProductListing];
     }
+    /*
+    for (UIView *subview in self.searchBar.subviews)
+    {
+        for (UIView *subSubview in subview.subviews)
+        {
+            if ([subSubview conformsToProtocol:@protocol(UITextInputTraits)])
+            {
+                UITextField *textField = (UITextField *)subSubview;
+//                [textField setKeyboardAppearance: UIKeyboardAppearanceAlert];
+                textField.returnKeyType = UIReturnKeyDefault;
+                break;
+            }
+        }
+    }*/
   
 }
 
@@ -79,7 +94,12 @@
     //cell.backgroundColor = [UIColor whiteColor];
     
     Products *prodObject= [[Products alloc] initWithDictionary:[globals.productDataArray objectAtIndex:indexPath.row]];
+
+    cell.product = prodObject;
     cell.productName.text=prodObject.prodName;
+    cell.prodDescription.text = prodObject.prodDescription;
+    cell.offerPrice.text = prodObject.price;
+    cell.size.text = prodObject.size;
     
     cell.availableColor1.backgroundColor = [UIColor redColor];
     cell.availableColor1.layer.cornerRadius = (CGFloat)cell.availableColor1.frame.size.height/2;
@@ -97,6 +117,42 @@
  
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    Products *prodObject= [[Products alloc] initWithDictionary:[globals.productDataArray objectAtIndex:indexPath.row]];
+    
+    NSDictionary* tempDic = [[NSDictionary alloc] initWithObjectsAndKeys:prodObject,@"product",[NSNumber numberWithInteger:1],@"quantity", nil];
+    CartItem* cartItem = [[CartItem alloc] initWithDictionary:tempDic];
+    
+    [GlobalVariables addItemToCart:cartItem];
+    
+//    NSMutableArray* cartArray= [NSMutableArray arrayWithObjects:cartItem, nil];
+//    
+//    NSData *archivedObject = [NSKeyedArchiver archivedDataWithRootObject:cartArray];
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    [defaults setObject:archivedObject forKey:@"CartItems"];
+//    [defaults synchronize];
+    
+    [self testRetrieve];
+    
+    
+//    UIAlertView* addedAlert = [[UIAlertView alloc] initWithTitle:@"Added" message:@"product added" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//    [addedAlert show];
+}
+
+-(void) testRetrieve
+{
+    // Read from NSUserDefaults
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    NSData *archivedObject = [defaults objectForKey:@"CartItems"];
+//    NSArray *obj = (NSArray*)[NSKeyedUnarchiver unarchiveObjectWithData:archivedObject];
+    NSArray *obj =  [GlobalVariables getCartItems];
+    for(CartItem* itm in obj){
+        NSLog(@"CARTITEM SAVED - productName: %@,%li", itm.product.prodName, (long)itm.quantity);
+    }
+}
+
 #pragma searchBar delegates
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
@@ -111,6 +167,7 @@
 //- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
 //
 //}
+
 
 /*
 #pragma mark - Navigation

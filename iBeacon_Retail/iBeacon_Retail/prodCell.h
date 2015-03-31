@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Products.h"
 
 @interface prodCell : UICollectionViewCell
 
+@property (nonatomic,strong) Products* product;
 @property (weak, nonatomic) IBOutlet UIImageView *productImage;
 @property (weak, nonatomic) IBOutlet UILabel *productName;
 @property (weak, nonatomic) IBOutlet UILabel *prodDescription;
+@property (weak, nonatomic) IBOutlet UILabel *size;
 @property (weak, nonatomic) IBOutlet UILabel *offerPrice;
 @property (nonatomic,weak) IBOutlet UIView* availableColor1;
 @property (nonatomic,weak) IBOutlet UIView* availableColor2;

@@ -8,6 +8,7 @@
 
 #import "GlobalVariables.h"
 #import "OfferPopupMenu.h"
+#import "CartItem.h"
 
 @implementation GlobalVariables
 @synthesize hasUserEnteredTheStore , hasUserGotWOmenSectionOffers, hasUserGotKidSectionOffers,hasUserGotMenSectionOffers,isUserOnTheMapScreen;
@@ -64,6 +65,56 @@ static GlobalVariables *instance = nil;
             break;
     }
     return regionTitle;
+}
+
++(void)addItemToCart: (CartItem*) cartItem
+{
+    NSMutableArray* cartItems = (NSMutableArray*)[self getCartItems];
+    if([cartItems count] != 0){
+        BOOL itemExists = NO;
+        for(CartItem* item in cartItems)
+        {
+            if([item.product.prodName isEqualToString:cartItem.product.prodName]){
+                UIAlertView* alreadyExistsAlert = [[UIAlertView alloc] initWithTitle:@"Warning!" message:@"Item already in cart" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                [alreadyExistsAlert show];
+                itemExists = YES;
+                break;
+            }
+        }
+        if(!itemExists){
+            NSData *archivedObject = [NSKeyedArchiver archivedDataWithRootObject:[cartItems arrayByAddingObjectsFromArray:[NSArray arrayWithObject:cartItem]]];
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:archivedObject forKey:@"CartItems"];
+            [defaults synchronize];
+        }
+    }else{
+        NSData *archivedObject = [NSKeyedArchiver archivedDataWithRootObject:[cartItems arrayByAddingObjectsFromArray:[NSArray arrayWithObject:cartItem]]];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:archivedObject forKey:@"CartItems"];
+        [defaults synchronize];
+    }
+    
+    
+    
+}
+
++(void)removeItemFromCart: (CartItem*) cartItem
+{
+    
+}
+
++(NSMutableArray*)getCartItems
+{
+    NSMutableArray *obj;
+    // Read from NSUserDefaults
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *archivedObject = [defaults objectForKey:@"CartItems"];
+    if(archivedObject == nil){
+        obj = [[NSMutableArray alloc] init];
+    }else{
+        obj = (NSMutableArray*)[NSKeyedUnarchiver unarchiveObjectWithData:archivedObject];
+    }
+    return obj;
 }
 
 @end

@@ -67,6 +67,9 @@
 		45DA40781AC13E1F00D86C8A /* CartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45DA40761AC13E1F00D86C8A /* CartViewController.xib */; };
 		45DA407A1AC293AB00D86C8A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45DA40791AC293AB00D86C8A /* QuartzCore.framework */; };
 		45E8D6C01AC2DBF300E107F2 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 45E8D6BF1AC2DBF300E107F2 /* Config.plist */; };
+		45E8D6C41AC3E38E00E107F2 /* CartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E8D6C21AC3E38E00E107F2 /* CartTableViewCell.m */; };
+		45E8D6C51AC3E38E00E107F2 /* CartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45E8D6C31AC3E38E00E107F2 /* CartTableViewCell.xib */; };
+		45E8D6CA1AC58EB400E107F2 /* CartItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E8D6C91AC58EB400E107F2 /* CartItem.m */; };
 		811165711AB14FF8003629E0 /* GlobalVariables.m in Sources */ = {isa = PBXBuildFile; fileRef = 811165701AB14FF8003629E0 /* GlobalVariables.m */; };
 		811165761AB1AEF1003629E0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 811165741AB1AEF0003629E0 /* LoginViewController.m */; };
 		8120C7091AC186B5008019EE /* libEstimoteIndoorSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45526A5D1AB06E5A00E6F7C3 /* libEstimoteIndoorSDK.a */; };
@@ -185,6 +188,11 @@
 		45DA40761AC13E1F00D86C8A /* CartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CartViewController.xib; sourceTree = "<group>"; };
 		45DA40791AC293AB00D86C8A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		45E8D6BF1AC2DBF300E107F2 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		45E8D6C11AC3E38E00E107F2 /* CartTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartTableViewCell.h; sourceTree = "<group>"; };
+		45E8D6C21AC3E38E00E107F2 /* CartTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartTableViewCell.m; sourceTree = "<group>"; };
+		45E8D6C31AC3E38E00E107F2 /* CartTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CartTableViewCell.xib; sourceTree = "<group>"; };
+		45E8D6C81AC58EB400E107F2 /* CartItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartItem.h; sourceTree = "<group>"; };
+		45E8D6C91AC58EB400E107F2 /* CartItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartItem.m; sourceTree = "<group>"; };
 		8111656F1AB14FF8003629E0 /* GlobalVariables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalVariables.h; sourceTree = "<group>"; };
 		811165701AB14FF8003629E0 /* GlobalVariables.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalVariables.m; sourceTree = "<group>"; };
 		811165731AB1AEF0003629E0 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -474,6 +482,9 @@
 				45DA40741AC13E1F00D86C8A /* CartViewController.h */,
 				45DA40751AC13E1F00D86C8A /* CartViewController.m */,
 				45DA40761AC13E1F00D86C8A /* CartViewController.xib */,
+				45E8D6C11AC3E38E00E107F2 /* CartTableViewCell.h */,
+				45E8D6C21AC3E38E00E107F2 /* CartTableViewCell.m */,
+				45E8D6C31AC3E38E00E107F2 /* CartTableViewCell.xib */,
 			);
 			name = Cart;
 			sourceTree = "<group>";
@@ -502,6 +513,8 @@
 				81948B4A1AB6AA9C002A6FE6 /* Products.m */,
 				818849B51AB94952005A06BF /* Offers.h */,
 				818849B61AB94952005A06BF /* Offers.m */,
+				45E8D6C81AC58EB400E107F2 /* CartItem.h */,
+				45E8D6C91AC58EB400E107F2 /* CartItem.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -726,6 +739,7 @@
 				B17C01A41AB9B35C00542233 /* Test_MenSection.png in Resources */,
 				0AF77D7A1AA0363800B57B8C /* Images.xcassets in Resources */,
 				B17C01A51AB9B35C00542233 /* Test_Women'sSection.png in Resources */,
+				45E8D6C51AC3E38E00E107F2 /* CartTableViewCell.xib in Resources */,
 				45526A3C1AB048B300E6F7C3 /* beaconIcySmall@2x.png in Resources */,
 				45526A411AB048B300E6F7C3 /* instructions@2x.png in Resources */,
 				45526A361AB048B300E6F7C3 /* beaconBlueberrySmall.png in Resources */,
@@ -751,6 +765,7 @@
 				81AE08931AA720D200CD7F75 /* OffersTableCell.m in Sources */,
 				B17C01AA1ABAA28F00542233 /* OfferButton.m in Sources */,
 				818849BB1AB98B14005A06BF /* productGridCellCollectionViewCell.m in Sources */,
+				45E8D6C41AC3E38E00E107F2 /* CartTableViewCell.m in Sources */,
 				81AE089B1AA7672200CD7F75 /* MenuViewController.m in Sources */,
 				0AF77D751AA0363800B57B8C /* ViewController.m in Sources */,
 				81AE088E1AA71F1900CD7F75 /* OffersViewController.m in Sources */,
@@ -763,6 +778,7 @@
 				814BC9611AA4404800164B30 /* ProductViewController.m in Sources */,
 				81AF710C1AB00E4800B350B6 /* NetworkOperations.m in Sources */,
 				B17C01AB1ABAA28F00542233 /* OfferPopupMenu.m in Sources */,
+				45E8D6CA1AC58EB400E107F2 /* CartItem.m in Sources */,
 				45DA40771AC13E1F00D86C8A /* CartViewController.m in Sources */,
 				81AF71091AAF1AD800B350B6 /* BeaconMonitoringModel.m in Sources */,
 				81AE089A1AA7672200CD7F75 /* ContainerViewController.m in Sources */,

@@ -39,6 +39,16 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+}
+
 #pragma mark - For Status Bar
 -(UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
@@ -158,7 +168,9 @@
             break;
         }
         case cartMenuIndex:{
-            
+            [self.cartViewController removeFromParentViewController];
+            [self.cartViewController.view removeFromSuperview];
+            self.cartViewController = nil;
             break;
         }
         case mapMenuIndex:{
