@@ -63,6 +63,10 @@
 		45526A571AB04C3F00E6F7C3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45526A561AB04C3F00E6F7C3 /* AudioToolbox.framework */; };
 		45526A591AB04CDA00E6F7C3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45526A581AB04CDA00E6F7C3 /* AVFoundation.framework */; };
 		45526A601AB06F3300E6F7C3 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 45526A5F1AB06F3300E6F7C3 /* libxml2.dylib */; };
+		458F3CB71ACA71FB0099F2E6 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 458F3CB31ACA71FB0099F2E6 /* arrow.png */; };
+		458F3CB81ACA71FB0099F2E6 /* map-pin-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 458F3CB41ACA71FB0099F2E6 /* map-pin-green.png */; };
+		458F3CB91ACA71FB0099F2E6 /* map-pin-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 458F3CB51ACA71FB0099F2E6 /* map-pin-red.png */; };
+		458F3CBA1ACA71FB0099F2E6 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 458F3CB61ACA71FB0099F2E6 /* map.png */; };
 		45DA40771AC13E1F00D86C8A /* CartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45DA40751AC13E1F00D86C8A /* CartViewController.m */; };
 		45DA40781AC13E1F00D86C8A /* CartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45DA40761AC13E1F00D86C8A /* CartViewController.xib */; };
 		45DA407A1AC293AB00D86C8A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45DA40791AC293AB00D86C8A /* QuartzCore.framework */; };
@@ -183,6 +187,10 @@
 		45526A581AB04CDA00E6F7C3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		45526A5D1AB06E5A00E6F7C3 /* libEstimoteIndoorSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libEstimoteIndoorSDK.a; sourceTree = "<group>"; };
 		45526A5F1AB06F3300E6F7C3 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		458F3CB31ACA71FB0099F2E6 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		458F3CB41ACA71FB0099F2E6 /* map-pin-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-pin-green.png"; sourceTree = "<group>"; };
+		458F3CB51ACA71FB0099F2E6 /* map-pin-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-pin-red.png"; sourceTree = "<group>"; };
+		458F3CB61ACA71FB0099F2E6 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		45DA40741AC13E1F00D86C8A /* CartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartViewController.h; sourceTree = "<group>"; };
 		45DA40751AC13E1F00D86C8A /* CartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartViewController.m; sourceTree = "<group>"; };
 		45DA40761AC13E1F00D86C8A /* CartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CartViewController.xib; sourceTree = "<group>"; };
@@ -603,6 +611,10 @@
 		B19CB4901AB95998006C7575 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				458F3CB31ACA71FB0099F2E6 /* arrow.png */,
+				458F3CB41ACA71FB0099F2E6 /* map-pin-green.png */,
+				458F3CB51ACA71FB0099F2E6 /* map-pin-red.png */,
+				458F3CB61ACA71FB0099F2E6 /* map.png */,
 				B17C01A01AB9B35C00542233 /* Test_Kid'sSection.png */,
 				B17C01A11AB9B35C00542233 /* Test_MenSection.png */,
 				B17C01A21AB9B35C00542233 /* Test_Women'sSection.png */,
@@ -722,7 +734,10 @@
 				81AE08941AA720D200CD7F75 /* OffersTableCell.xib in Resources */,
 				0AF77D7D1AA0363800B57B8C /* LaunchScreen.xib in Resources */,
 				814BC9621AA4404800164B30 /* ProductViewController.xib in Resources */,
+				458F3CB71ACA71FB0099F2E6 /* arrow.png in Resources */,
 				81AE089C1AA7672200CD7F75 /* MenuViewController.xib in Resources */,
+				458F3CBA1ACA71FB0099F2E6 /* map.png in Resources */,
+				458F3CB81ACA71FB0099F2E6 /* map-pin-green.png in Resources */,
 				814BC9671AA4634900164B30 /* prodCell.xib in Resources */,
 				818849BC1AB98B14005A06BF /* productGridCellCollectionViewCell.xib in Resources */,
 				81AE088F1AA71F1900CD7F75 /* OffersViewController.xib in Resources */,
@@ -734,6 +749,7 @@
 				45526A4B1AB048B300E6F7C3 /* wall_bump.wav in Resources */,
 				45526A3A1AB048B300E6F7C3 /* beaconicy@2x.png in Resources */,
 				45526A391AB048B300E6F7C3 /* beaconGreySmall@2x.png in Resources */,
+				458F3CB91ACA71FB0099F2E6 /* map-pin-red.png in Resources */,
 				45526A4A1AB048B300E6F7C3 /* SixBeaconsView.xib in Resources */,
 				45526A331AB048B300E6F7C3 /* 8c_first_frame@2x.png in Resources */,
 				B17C01A41AB9B35C00542233 /* Test_MenSection.png in Resources */,

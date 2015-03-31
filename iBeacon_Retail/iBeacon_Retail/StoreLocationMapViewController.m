@@ -34,6 +34,7 @@
         self.manager.delegate = self;
         self.globals=[GlobalVariables getInstance];
         self.location = location;
+        self.filteredProductList=[NSMutableArray array];
     }
     
     return self;
@@ -49,6 +50,11 @@
     }
     
     self.title = self.location.name;
+
+    self.autocompleteTableView.delegate = self;
+    self.autocompleteTableView.dataSource = self;
+    self.autocompleteTableView.hidden = YES;
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -56,6 +62,7 @@
     [super viewWillAppear:animated];
     
     self.globals.isUserOnTheMapScreen = YES;
+    [self.globals getOffers];
     
     self.indoorLocationView.backgroundColor = [UIColor clearColor];
     
@@ -65,7 +72,7 @@
     
     // self.indoorLocationView.frame = CGRectMake(self.indoorLocationView.frame.origin.x, self.indoorLocationView.frame.origin.y, 350, 350);
     
-    self.indoorLocationView.locationBorderColor     = [UIColor blackColor];
+    self.indoorLocationView.locationBorderColor     = [UIColor clearColor];
     self.indoorLocationView.locationBorderThickness = 4;
     self.indoorLocationView.doorColor               = [UIColor brownColor];
     self.indoorLocationView.doorThickness           = 6;
@@ -76,62 +83,100 @@
     [self.indoorLocationView drawLocation:self.location];
     
     // You can change the avatar using positionImage property of ESTIndoorLocationView class.
-    // self.indoorLocationView.positionImage = [UIImage imageNamed:@"name_of_your_image"];
+//    self.indoorLocationView.positionImage = [UIImage imageNamed:@"arrow.png"];
     
+    UIImageView *img=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 300, 290)];
+    [img setImage:[UIImage imageNamed:@"map.png"]];
+    [self.indoorLocationView drawObject:img withPosition:[ESTPoint pointWithX:0 y:0]];
     
     for(ESTPositionedBeacon *beacon in self.location.beacons){
-        if([beacon.macAddress isEqualToString:MENSECTION_MAC]){
-            //Men's Section ...
-            OfferButton *sectionLogo = [[OfferButton alloc] initWithFrame:CGRectMake(0,0, 30, 30)];
-            sectionLogo.secTitle=@"Men's Section ";
-            sectionLogo.offerMsg=@"You have 50% off on selected items";
-            [sectionLogo setBackgroundImage:[UIImage imageNamed:@"Test_MenSection.png"] forState: UIControlStateNormal] ;
-            [sectionLogo addTarget:self action:@selector(showOffer:) forControlEvents:UIControlEventTouchUpInside];
-            [self.indoorLocationView drawObject:sectionLogo withPosition:[ESTPoint pointWithX:beacon.position.x y:beacon.position.y]];
-        }
-        
-        else if([beacon.macAddress isEqualToString:WOMENSECTION_MAC]){
-            //Women's Section ...
-            OfferButton *sectionLogo = [[OfferButton alloc] initWithFrame:CGRectMake(0,0, 30, 30)];
-            sectionLogo.secTitle=@"Women's Section ";
-            sectionLogo.offerMsg=@"You have 50% off on selected items";
-            [sectionLogo setBackgroundImage:[UIImage imageNamed:@"Test_Women'sSection.png"] forState: UIControlStateNormal] ;
-            [sectionLogo addTarget:nil action:@selector(showOffer:) forControlEvents:UIControlEventTouchUpInside];
-            [self.indoorLocationView drawObject:sectionLogo withPosition:[ESTPoint pointWithX:beacon.position.x y:beacon.position.y]];
-            
-        }
-        else if([beacon.macAddress isEqualToString:KIDSSECTION_MAC]){
-            //Kid's Section ...
-            OfferButton *sectionLogo = [[OfferButton alloc] initWithFrame:CGRectMake(0,0, 30, 30)];
-            sectionLogo.secTitle=@"Kid's Section ";
-            sectionLogo.offerMsg=@"You have 50% off on selected items";
-            [sectionLogo setBackgroundImage:[UIImage imageNamed:@"Test_Kid'sSection.png"] forState: UIControlStateNormal] ;
-            [sectionLogo addTarget:nil action:@selector(showOffer:) forControlEvents:UIControlEventTouchUpInside];
-            [self.indoorLocationView drawObject:sectionLogo withPosition:[ESTPoint pointWithX:beacon.position.x y:beacon.position.y]];
-        }
-        else{
-            //Electronic Section...
-            OfferButton *sectionLogo = [[OfferButton alloc] initWithFrame:CGRectMake(0,0, 30, 30)];
-            sectionLogo.secTitle=@"";
-            sectionLogo.offerMsg=@"Welcome to Our Store";
-            //[sectionLogo setBackgroundImage:[UIImage imageNamed:@"Test_men'sSection.png"] forState: UIControlStateNormal] ;
-            [sectionLogo addTarget:nil action:@selector(showOffer:) forControlEvents:UIControlEventTouchUpInside];
-            [self.indoorLocationView drawObject:sectionLogo withPosition:[ESTPoint pointWithX:beacon.position.x y:beacon.position.y]];
-            
-        }
+        OfferButton *sectionLogo = [[OfferButton alloc] initWithFrame:CGRectMake(0,0, 30, 50)];
+        sectionLogo.tag=[GlobalVariables getSectionId:beacon.macAddress];
+        [sectionLogo setBackgroundImage:[UIImage imageNamed:@"map-pin-red.png"] forState: UIControlStateNormal] ;
+        [sectionLogo addTarget:self action:@selector(showOffer:) forControlEvents:UIControlEventTouchUpInside];
+        [self.indoorLocationView drawObject:sectionLogo withPosition:[ESTPoint pointWithX:beacon.position.x y:beacon.position.y]];
     }
+    //    for(ESTPositionedBeacon *beacon in self.location.beacons){
+    //        if([beacon.macAddress isEqualToString:MENSECTION_MAC]){
+    //            //Men's Section ...
+    //            OfferButton *sectionLogo = [[OfferButton alloc] initWithFrame:CGRectMake(0,0, 30, 50)];
+    //            sectionLogo.tag=2;
+    //            sectionLogo.secTitle=@"Men's Section ";
+    //            sectionLogo.offerMsg=@"You have 50% off on selected items";
+    //            //sectionLogo.backgroundColor=[UIColor whiteColor];
+    //            [sectionLogo setBackgroundImage:[UIImage imageNamed:@"map-pin-red.png"] forState: UIControlStateNormal] ;
+    //            [sectionLogo addTarget:self action:@selector(showOffer:) forControlEvents:UIControlEventTouchUpInside];
+    //            [self.indoorLocationView drawObject:sectionLogo withPosition:[ESTPoint pointWithX:beacon.position.x y:beacon.position.y]];
+    //        }
+    //
+    //        else if([beacon.macAddress isEqualToString:WOMENSECTION_MAC]){
+    //            //Women's Section ...
+    //            OfferButton *sectionLogo = [[OfferButton alloc] initWithFrame:CGRectMake(0,0, 30, 50)];
+    //            sectionLogo.tag=1;
+    //            sectionLogo.secTitle=@"Women's Section ";
+    //            sectionLogo.offerMsg=@"You have 50% off on selected items";
+    ////            sectionLogo.backgroundColor=[UIColor whiteColor];
+    //            [sectionLogo setBackgroundImage:[UIImage imageNamed:@"map-pin-red.png"] forState: UIControlStateNormal] ;
+    //            [sectionLogo addTarget:nil action:@selector(showOffer:) forControlEvents:UIControlEventTouchUpInside];
+    //            [self.indoorLocationView drawObject:sectionLogo withPosition:[ESTPoint pointWithX:beacon.position.x y:beacon.position.y]];
+    //
+    //        }
+    //        else if([beacon.macAddress isEqualToString:KIDSSECTION_MAC]){
+    //            //Kid's Section ...
+    //            OfferButton *sectionLogo = [[OfferButton alloc] initWithFrame:CGRectMake(0,0, 30, 50)];
+    //            sectionLogo.tag=4;
+    //            sectionLogo.secTitle=@"Kid's Section ";
+    //            sectionLogo.offerMsg=@"You have 50% off on selected items";
+    ////            sectionLogo.backgroundColor=[UIColor whiteColor];
+    //            [sectionLogo setBackgroundImage:[UIImage imageNamed:@"map-pin-red.png"] forState: UIControlStateNormal] ;
+    //            [sectionLogo addTarget:nil action:@selector(showOffer:) forControlEvents:UIControlEventTouchUpInside];
+    //            [self.indoorLocationView drawObject:sectionLogo withPosition:[ESTPoint pointWithX:beacon.position.x y:beacon.position.y]];
+    //        }
+    //        else{
+    //            //Electronic Section...
+    //            OfferButton *sectionLogo = [[OfferButton alloc] initWithFrame:CGRectMake(0,0, 30, 50)];
+    //            sectionLogo.secTitle=@"";
+    //            sectionLogo.offerMsg=@"Welcome to Our Store";
+    ////            sectionLogo.backgroundColor=[UIColor whiteColor];
+    //            [sectionLogo setBackgroundImage:[UIImage imageNamed:@"map-pin-red.png"] forState: UIControlStateNormal] ;
+    //            [sectionLogo addTarget:nil action:@selector(showOffer:) forControlEvents:UIControlEventTouchUpInside];
+    //            [self.indoorLocationView drawObject:sectionLogo withPosition:[ESTPoint pointWithX:beacon.position.x y:beacon.position.y]];
+    //
+    //        }
+    //    }
     
     [self.manager startIndoorLocation:self.location];
 }
 - (void)showOffer:(id)sender{
-    //(NSString *)offerMessage inSection:(NSString *)section
-            OfferPopupMenu *popup = [[OfferPopupMenu alloc]initWithTitle:((OfferButton *)sender).secTitle message:((OfferButton *)sender).offerMsg];
-    popup.menuStyle = MenuStyleOval;
-    [self.globals showOfferPopUpWithTitle:((OfferButton *)sender).secTitle andMessage:((OfferButton *)sender).offerMsg ];
     
+    NSLog(@"offer  %@",self.globals.offersDataArray);
+    [((OfferButton *)sender)setBackgroundImage:[UIImage imageNamed:@"map-pin-green.png"] forState: UIControlStateNormal] ;
+    ((OfferButton *)sender).secTitle=[GlobalVariables returnTitleForSection:((OfferButton *)sender).tag];
+    NSArray *resultOfferArray=[self.globals.offersDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"%K == %d", @"sectionId",((OfferButton *)sender).tag]];
+    NSDictionary *resultOffer;
+    if (resultOfferArray !=nil &&  [resultOffer count ]!=0)
+    resultOffer=[resultOfferArray objectAtIndex:0 ];
     
-    //
-    //    [popup showMenuInParentViewController:self withCenter:self.indoorLocationView.center];
+    if (resultOffer==nil ||  [resultOffer count ]==0) {
+        ((OfferButton *)sender).offerMsg=@"You have 50% off on selected items";
+        [self.globals showOfferPopUpWithTitle:((OfferButton *)sender).secTitle message:((OfferButton *)sender).offerMsg andDelegate:self];
+        return;
+    }
+    for (id offer in [self.indoorLocationView subviews]) {
+        if([offer isKindOfClass:[OfferButton class]] ){
+            if ([[resultOffer valueForKey:@"sectionId"] intValue]==((OfferButton *)offer).tag){
+                NSLog(@"tag %lu  %d",((OfferButton *)offer).tag , [[resultOffer valueForKey:@"sectionId"] intValue]);
+                [((OfferButton *)offer)setBackgroundImage:[UIImage imageNamed:@"map-pin-green.png"] forState: UIControlStateNormal];
+                ((OfferButton *)sender).offerMsg=[NSString stringWithFormat:@"%@\n%@",[resultOffer valueForKey:@"offerHeading"],[resultOffer valueForKey:@"offerDescription"]];
+ 
+            }
+        }
+        else{
+                ((OfferButton *)sender).offerMsg=@"You have 50% off on selected items";
+        }
+    }
+//    ((OfferButton *)sender).offerMsg=@"You have 50% off on selected items";
+    [self.globals showOfferPopUpWithTitle:((OfferButton *)sender).secTitle message:((OfferButton *)sender).offerMsg andDelegate:self];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -152,18 +197,106 @@
             didUpdatePosition:(ESTOrientedPoint *)position
                    inLocation:(ESTLocation *)location
 {
-    //    self.positionLabel.text = [NSString stringWithFormat:@"x: %.2f  y: %.2f   α: %.2f",
-    //                               position.x,
-    //                               position.y,
-    //                               position.orientation];
-    
     [self.indoorLocationView updatePosition:position];
 }
 
 - (void)indoorLocationManager:(ESTIndoorLocationManager *)manager didFailToUpdatePositionWithError:(NSError *)error
 {
-    //    self.positionLabel.text = @"It seems you are outside the location.";
-    //    NSLog(@"%@", error.localizedDescription);
+}
+
+#pragma searchBar delegates
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
+    if ([self.filteredProductList count]==0) {
+        return;
+    }
+    NSDictionary *resultProduct=[[self.globals.productDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"%K == %@", @"productName",searchBar.text]] objectAtIndex:0];
+    for (id offer in [self.indoorLocationView subviews]) {
+        if([offer isKindOfClass:[OfferButton class]] )
+            if ([[resultProduct valueForKey:@"sectionId"] intValue]==((OfferButton *)offer).tag){
+                NSLog(@"tag %lu  %d",((OfferButton *)offer).tag , [[resultProduct valueForKey:@"sectionId"] intValue]);
+                [((OfferButton *)offer)setBackgroundImage:[UIImage imageNamed:@"map-pin-green.png"] forState: UIControlStateNormal];
+            }
+    }
+    
+    
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
+    
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    NSLog(@"The product Api is %lu",(unsigned long)[self.globals.productDataArray count]);
+    if ([searchText isEqualToString:@""]) {
+        for (id offer in [self.indoorLocationView subviews]) {
+            if([offer isKindOfClass:[OfferButton class]] )
+                [((OfferButton *)offer)setBackgroundImage:[UIImage imageNamed:@"map-pin-red.png"] forState: UIControlStateNormal];
+        }
+        self.autocompleteTableView.hidden = YES;
+        
+        
+    }
+    else{
+        [self.filteredProductList removeAllObjects];
+        NSString* searchStr = [NSString stringWithFormat:@"*%@*",searchText];
+        [self.filteredProductList addObjectsFromArray:[self.globals.productDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"%K like %@", @"productName",searchStr]]];
+        NSLog(@"%@",self.filteredProductList);
+        // searchBar.text= [[filtered objectAtIndex:0]valueForKey:@"productName"];
+        [self.autocompleteTableView reloadData];
+        self.autocompleteTableView.hidden = NO;
+    }
+}
+#pragma mark UITableViewDataSource methods
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger) section {
+    return self.filteredProductList.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self.filteredProductList count]==0) {
+        return nil;
+    }
+    UITableViewCell *cell = nil;
+    static NSString *AutoCompleteRowIdentifier = @"AutoCompleteRowIdentifier";
+    cell = [tableView dequeueReusableCellWithIdentifier:AutoCompleteRowIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]
+                initWithStyle:UITableViewCellStyleDefault reuseIdentifier:AutoCompleteRowIdentifier];
+    }
+    
+    cell.textLabel.text = [[self.filteredProductList objectAtIndex:indexPath.row]valueForKey:@"productName"];
+    return cell;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 30;
+}
+#pragma mark UITableViewDelegate methods
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+    self.searchBar.text = selectedCell.textLabel.text;
+    
+    // [self goPressed];
+    
+    self.autocompleteTableView.hidden = YES;
+    
+}
+
+#pragma OfferPopupMenuDelegate methods
+
+-(void)menu:(OfferPopupMenu*)menu willDismissWithSelectedItemAtIndex:(NSUInteger)index{
+    
+}
+-(void)menuwillDismiss:(OfferPopupMenu *)menu{
+    for (id offer in [self.indoorLocationView subviews]) {
+        if([offer isKindOfClass:[OfferButton class]] )
+            [((OfferButton *)offer)setBackgroundImage:[UIImage imageNamed:@"map-pin-red.png"] forState: UIControlStateNormal];
+    }
+    
 }
 
 @end

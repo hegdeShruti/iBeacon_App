@@ -8,6 +8,7 @@
 
 #import "GlobalVariables.h"
 #import "OfferPopupMenu.h"
+#import "NetworkOperations.h"
 #import "CartItem.h"
 
 @implementation GlobalVariables
@@ -37,9 +38,13 @@ static GlobalVariables *instance = nil;
     return instance;
 }
 
-- (void)showOfferPopUpWithTitle:(NSString *)inTitle andMessage:(NSString *)inMessage {
+- (void)showOfferPopUpWithTitle:(NSString *)inTitle andMessage:(NSString *)inMessage{
+    [self showOfferPopUpWithTitle:inTitle message:inTitle andDelegate:nil];
+   }
+- (void)showOfferPopUpWithTitle:(NSString *)inTitle message:(NSString *)inMessage andDelegate:(id)delegate{
     OfferPopupMenu *popup = [[OfferPopupMenu alloc]initWithTitle:inTitle message:inMessage];
     popup.menuStyle = MenuStyleOval;
+    popup.delegate=delegate;
     [popup showMenuInParentViewController:self.storeLocationController withCenter:self.storeLocationController.indoorLocationView.center];
 }
 - (void)showOfferPopUp:(NSString *)inTitle andMessage:(NSString *)inMessage onController:(id) controller centrvalue:(CGPoint) refValue{
@@ -66,9 +71,64 @@ static GlobalVariables *instance = nil;
     }
     return regionTitle;
 }
++(NSString*)getBeaconMacAddress:(int)sectionId{
+    NSString *mac = @"";
+    switch (sectionId) {
+        case 1:
+            mac = KIDSSECTION_MAC;
+            break;
+        case 2:
+            mac = MENSECTION_MAC;
+            break;
+        case 3:
+            mac = WOMENSECTION_MAC;
+            break;
+        default:
+            break;
+    }
+    return mac;
+}
++(int)getSectionId:(NSString *)macAddress{
+    int secId=0;
+    if([macAddress isEqualToString:KIDSSECTION_MAC])
+        secId=4;
+    if([macAddress isEqualToString:MENSECTION_MAC])
+        secId=2;
+    if([macAddress isEqualToString:WOMENSECTION_MAC])
+        secId=1;
+    return secId;
+}
++(NSString *)returnTitleForSection:(SectionIdentifier)sectionId{
+    NSString *sectionTitle = @"";
+    switch (sectionId) {
+        case WOMENSECTION:
+            sectionTitle = @"Women's Section";
+            break;
+        case MENSECTION:
+            sectionTitle = @"Men's Section";
+            break;
+        case KIDSECTION:
+            sectionTitle = @"Kid's Section";
+            break;
+        default:
+            sectionTitle = @"SALE! SALE! SALE!";
+            break;
+    }
+    return sectionTitle;
+}
+-(void) getOffers{
+    NetworkOperations *networks=[[NetworkOperations alloc] init];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Config" ofType:@"plist"];
+    NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:path];
+    NSLog(@"The product Api is %@",[dict objectForKey:@"Offers_Api"]);
+    // send block as parameter to get callbacks
+    [networks fetchDataFromServer:[dict objectForKey:@"Offers_Api"] withreturnMethod:^(NSMutableArray* data){
+        instance.offersDataArray=data;
+        NSLog(@"The product Api is %lu",(unsigned long)[instance.offersDataArray count]);
+    }];
+}
 
-+(void)addItemToCart: (CartItem*) cartItem
-{
++(void)addItemToCart: (CartItem*) cartItem{
     NSMutableArray* cartItems = (NSMutableArray*)[self getCartItems];
     if([cartItems count] != 0){
         BOOL itemExists = NO;
@@ -98,13 +158,11 @@ static GlobalVariables *instance = nil;
     
 }
 
-+(void)removeItemFromCart: (CartItem*) cartItem
-{
++(void)removeItemFromCart: (CartItem*) cartItem{
     
 }
 
-+(NSMutableArray*)getCartItems
-{
++(NSMutableArray*)getCartItems{
     NSMutableArray *obj;
     // Read from NSUserDefaults
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -116,5 +174,4 @@ static GlobalVariables *instance = nil;
     }
     return obj;
 }
-
 @end

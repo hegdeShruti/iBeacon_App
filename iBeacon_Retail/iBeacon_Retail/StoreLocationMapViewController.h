@@ -11,9 +11,12 @@
 #import "ESTLocation.h"
 #import "ESTIndoorLocationView.h"
 
-@interface StoreLocationMapViewController : UIViewController
+@interface StoreLocationMapViewController : UIViewController<UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) IBOutlet ESTIndoorLocationView *indoorLocationView;
+@property (nonatomic, retain) IBOutlet UITableView *autocompleteTableView;
+@property (nonatomic, retain) NSMutableArray *filteredProductList;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 - (instancetype)initWithLocation:(ESTLocation *)location;
 

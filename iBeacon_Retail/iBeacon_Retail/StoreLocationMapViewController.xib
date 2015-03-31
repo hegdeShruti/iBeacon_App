@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6249" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6243"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StoreLocationMapViewController">
             <connections>
+                <outlet property="autocompleteTableView" destination="JYe-5R-C2A" id="pGd-eq-uwO"/>
                 <outlet property="indoorLocationView" destination="F00-Zi-Lt0" id="GUy-Wq-3aN"/>
+                <outlet property="searchBar" destination="VX5-Om-zrG" id="fq6-m9-Dgf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,14 +17,14 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QEz-bZ-YhF">
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QEz-bZ-YhF">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="600"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GDi-jD-4KQ">
                             <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         </imageView>
-                        <view autoresizesSubviews="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F00-Zi-Lt0" customClass="ESTIndoorLocationView">
-                            <rect key="frame" x="-10" y="70" width="340" height="350"/>
+                        <view autoresizesSubviews="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F00-Zi-Lt0" customClass="ESTIndoorLocationView">
+                            <rect key="frame" x="-10" y="110" width="340" height="310"/>
                             <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <userDefinedRuntimeAttributes>
@@ -37,23 +39,32 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
+                        <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VX5-Om-zrG">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                            <scopeButtonTitles>
+                                <string>Title</string>
+                                <string>Title</string>
+                            </scopeButtonTitles>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="Vgc-Dh-XeJ"/>
+                            </connections>
+                        </searchBar>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="30" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="JYe-5R-C2A">
+                            <rect key="frame" x="0.0" y="44" width="320" height="60"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="0AE-5w-JJc"/>
+                                <outlet property="delegate" destination="-1" id="wM2-Fm-ZdY"/>
+                            </connections>
+                        </tableView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="centerX" secondItem="F00-Zi-Lt0" secondAttribute="centerX" id="RZL-jg-mzZ"/>
-                        <constraint firstAttribute="centerY" secondItem="F00-Zi-Lt0" secondAttribute="centerY" id="sFz-8P-GQC"/>
-                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstAttribute="trailing" secondItem="QEz-bZ-YhF" secondAttribute="trailing" id="Fdq-9k-cep"/>
-                <constraint firstItem="QEz-bZ-YhF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="YoC-ZP-k0F"/>
-                <constraint firstItem="QEz-bZ-YhF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="mNd-Yt-dnh"/>
-                <constraint firstAttribute="bottom" secondItem="QEz-bZ-YhF" secondAttribute="bottom" id="qd9-ul-8CL"/>
-            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
-            <point key="canvasLocation" x="504" y="241"/>
+            <point key="canvasLocation" x="504" y="273"/>
         </view>
     </objects>
 </document>
