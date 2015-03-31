@@ -94,10 +94,6 @@
 		B17C01A51AB9B35C00542233 /* Test_Women'sSection.png in Resources */ = {isa = PBXBuildFile; fileRef = B17C01A21AB9B35C00542233 /* Test_Women'sSection.png */; };
 		B17C01AA1ABAA28F00542233 /* OfferButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B17C01A71ABAA28F00542233 /* OfferButton.m */; };
 		B17C01AB1ABAA28F00542233 /* OfferPopupMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B17C01A91ABAA28F00542233 /* OfferPopupMenu.m */; };
-		EFB9AE161ACA63A600746194 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = EFB9AE121ACA63A600746194 /* arrow.png */; };
-		EFB9AE171ACA63A600746194 /* map-pin-green.png in Resources */ = {isa = PBXBuildFile; fileRef = EFB9AE131ACA63A600746194 /* map-pin-green.png */; };
-		EFB9AE181ACA63A600746194 /* map-pin-red.png in Resources */ = {isa = PBXBuildFile; fileRef = EFB9AE141ACA63A600746194 /* map-pin-red.png */; };
-		EFB9AE191ACA63A600746194 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = EFB9AE151ACA63A600746194 /* map.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -255,10 +251,6 @@
 		B17C01A81ABAA28F00542233 /* OfferPopupMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfferPopupMenu.h; sourceTree = "<group>"; };
 		B17C01A91ABAA28F00542233 /* OfferPopupMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfferPopupMenu.m; sourceTree = "<group>"; };
 		B19CB4931AB97804006C7575 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		EFB9AE121ACA63A600746194 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
-		EFB9AE131ACA63A600746194 /* map-pin-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-pin-green.png"; sourceTree = "<group>"; };
-		EFB9AE141ACA63A600746194 /* map-pin-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-pin-red.png"; sourceTree = "<group>"; };
-		EFB9AE151ACA63A600746194 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -598,10 +590,6 @@
 		B19CB4901AB95998006C7575 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				EFB9AE121ACA63A600746194 /* arrow.png */,
-				EFB9AE131ACA63A600746194 /* map-pin-green.png */,
-				EFB9AE141ACA63A600746194 /* map-pin-red.png */,
-				EFB9AE151ACA63A600746194 /* map.png */,
 				B17C01A01AB9B35C00542233 /* Test_Kid'sSection.png */,
 				B17C01A11AB9B35C00542233 /* Test_MenSection.png */,
 				B17C01A21AB9B35C00542233 /* Test_Women'sSection.png */,
@@ -705,7 +693,6 @@
 				45526A441AB048B300E6F7C3 /* screen8_beacon_gray@2x.png in Resources */,
 				45526A311AB048B300E6F7C3 /* 8a_first_frame@2x.png in Resources */,
 				45526A3E1AB048B300E6F7C3 /* beaconMintSmall.png in Resources */,
-				EFB9AE181ACA63A600746194 /* map-pin-red.png in Resources */,
 				455269A41AB0443D00E6F7C3 /* location.json in Resources */,
 				8186A0A01AA7775D00BB5AC4 /* ViewController.xib in Resources */,
 				45526A301AB048B300E6F7C3 /* 5b_first_frame@2x.png in Resources */,
@@ -723,7 +710,6 @@
 				0AF77D7D1AA0363800B57B8C /* LaunchScreen.xib in Resources */,
 				814BC9621AA4404800164B30 /* ProductViewController.xib in Resources */,
 				81AE089C1AA7672200CD7F75 /* MenuViewController.xib in Resources */,
-				EFB9AE161ACA63A600746194 /* arrow.png in Resources */,
 				814BC9671AA4634900164B30 /* prodCell.xib in Resources */,
 				818849BC1AB98B14005A06BF /* productGridCellCollectionViewCell.xib in Resources */,
 				81AE088F1AA71F1900CD7F75 /* OffersViewController.xib in Resources */,
@@ -733,14 +719,12 @@
 				45526A3F1AB048B300E6F7C3 /* beaconMintSmall@2x.png in Resources */,
 				45526A491AB048B300E6F7C3 /* welcome@2x.png in Resources */,
 				45526A4B1AB048B300E6F7C3 /* wall_bump.wav in Resources */,
-				EFB9AE171ACA63A600746194 /* map-pin-green.png in Resources */,
 				45526A3A1AB048B300E6F7C3 /* beaconicy@2x.png in Resources */,
 				45526A391AB048B300E6F7C3 /* beaconGreySmall@2x.png in Resources */,
 				45526A4A1AB048B300E6F7C3 /* SixBeaconsView.xib in Resources */,
 				45526A331AB048B300E6F7C3 /* 8c_first_frame@2x.png in Resources */,
 				B17C01A41AB9B35C00542233 /* Test_MenSection.png in Resources */,
 				0AF77D7A1AA0363800B57B8C /* Images.xcassets in Resources */,
-				EFB9AE191ACA63A600746194 /* map.png in Resources */,
 				B17C01A51AB9B35C00542233 /* Test_Women'sSection.png in Resources */,
 				45526A3C1AB048B300E6F7C3 /* beaconIcySmall@2x.png in Resources */,
 				45526A411AB048B300E6F7C3 /* instructions@2x.png in Resources */,
