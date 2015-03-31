@@ -67,6 +67,8 @@
 		458F3CB81ACA71FB0099F2E6 /* map-pin-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 458F3CB41ACA71FB0099F2E6 /* map-pin-green.png */; };
 		458F3CB91ACA71FB0099F2E6 /* map-pin-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 458F3CB51ACA71FB0099F2E6 /* map-pin-red.png */; };
 		458F3CBA1ACA71FB0099F2E6 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 458F3CB61ACA71FB0099F2E6 /* map.png */; };
+		458F3CC01ACA9CC50099F2E6 /* ProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 458F3CBE1ACA9CC50099F2E6 /* ProductDetailViewController.m */; };
+		458F3CC11ACA9CC50099F2E6 /* ProductDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 458F3CBF1ACA9CC50099F2E6 /* ProductDetailViewController.xib */; };
 		45DA40771AC13E1F00D86C8A /* CartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45DA40751AC13E1F00D86C8A /* CartViewController.m */; };
 		45DA40781AC13E1F00D86C8A /* CartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45DA40761AC13E1F00D86C8A /* CartViewController.xib */; };
 		45DA407A1AC293AB00D86C8A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45DA40791AC293AB00D86C8A /* QuartzCore.framework */; };
@@ -191,6 +193,9 @@
 		458F3CB41ACA71FB0099F2E6 /* map-pin-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-pin-green.png"; sourceTree = "<group>"; };
 		458F3CB51ACA71FB0099F2E6 /* map-pin-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-pin-red.png"; sourceTree = "<group>"; };
 		458F3CB61ACA71FB0099F2E6 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
+		458F3CBD1ACA9CC50099F2E6 /* ProductDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailViewController.h; sourceTree = "<group>"; };
+		458F3CBE1ACA9CC50099F2E6 /* ProductDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailViewController.m; sourceTree = "<group>"; };
+		458F3CBF1ACA9CC50099F2E6 /* ProductDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailViewController.xib; sourceTree = "<group>"; };
 		45DA40741AC13E1F00D86C8A /* CartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartViewController.h; sourceTree = "<group>"; };
 		45DA40751AC13E1F00D86C8A /* CartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartViewController.m; sourceTree = "<group>"; };
 		45DA40761AC13E1F00D86C8A /* CartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CartViewController.xib; sourceTree = "<group>"; };
@@ -484,6 +489,32 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		458F3CBB1ACA9C7A0099F2E6 /* ProductListing */ = {
+			isa = PBXGroup;
+			children = (
+				814BC95E1AA4404800164B30 /* ProductViewController.h */,
+				814BC95F1AA4404800164B30 /* ProductViewController.m */,
+				814BC9601AA4404800164B30 /* ProductViewController.xib */,
+				814BC9631AA4634900164B30 /* prodCell.h */,
+				814BC9641AA4634900164B30 /* prodCell.m */,
+				814BC9651AA4634900164B30 /* prodCell.xib */,
+				818849B81AB98B14005A06BF /* productGridCellCollectionViewCell.h */,
+				818849B91AB98B14005A06BF /* productGridCellCollectionViewCell.m */,
+				818849BA1AB98B14005A06BF /* productGridCellCollectionViewCell.xib */,
+			);
+			name = ProductListing;
+			sourceTree = "<group>";
+		};
+		458F3CBC1ACA9C8B0099F2E6 /* ProductDetail */ = {
+			isa = PBXGroup;
+			children = (
+				458F3CBD1ACA9CC50099F2E6 /* ProductDetailViewController.h */,
+				458F3CBE1ACA9CC50099F2E6 /* ProductDetailViewController.m */,
+				458F3CBF1ACA9CC50099F2E6 /* ProductDetailViewController.xib */,
+			);
+			name = ProductDetail;
+			sourceTree = "<group>";
+		};
 		45DA40731AC13DE300D86C8A /* Cart */ = {
 			isa = PBXGroup;
 			children = (
@@ -530,15 +561,8 @@
 		814BC95D1AA4401200164B30 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				814BC95E1AA4404800164B30 /* ProductViewController.h */,
-				814BC95F1AA4404800164B30 /* ProductViewController.m */,
-				814BC9601AA4404800164B30 /* ProductViewController.xib */,
-				814BC9631AA4634900164B30 /* prodCell.h */,
-				814BC9641AA4634900164B30 /* prodCell.m */,
-				814BC9651AA4634900164B30 /* prodCell.xib */,
-				818849B81AB98B14005A06BF /* productGridCellCollectionViewCell.h */,
-				818849B91AB98B14005A06BF /* productGridCellCollectionViewCell.m */,
-				818849BA1AB98B14005A06BF /* productGridCellCollectionViewCell.xib */,
+				458F3CBC1ACA9C8B0099F2E6 /* ProductDetail */,
+				458F3CBB1ACA9C7A0099F2E6 /* ProductListing */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -611,7 +635,6 @@
 		B19CB4901AB95998006C7575 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-
 				458F3CB31ACA71FB0099F2E6 /* arrow.png */,
 				458F3CB41ACA71FB0099F2E6 /* map-pin-green.png */,
 				458F3CB51ACA71FB0099F2E6 /* map-pin-red.png */,
@@ -719,6 +742,7 @@
 				45526A441AB048B300E6F7C3 /* screen8_beacon_gray@2x.png in Resources */,
 				45526A311AB048B300E6F7C3 /* 8a_first_frame@2x.png in Resources */,
 				45526A3E1AB048B300E6F7C3 /* beaconMintSmall.png in Resources */,
+				458F3CC11ACA9CC50099F2E6 /* ProductDetailViewController.xib in Resources */,
 				455269A41AB0443D00E6F7C3 /* location.json in Resources */,
 				8186A0A01AA7775D00BB5AC4 /* ViewController.xib in Resources */,
 				45526A301AB048B300E6F7C3 /* 5b_first_frame@2x.png in Resources */,
@@ -785,6 +809,7 @@
 				45E8D6C41AC3E38E00E107F2 /* CartTableViewCell.m in Sources */,
 				81AE089B1AA7672200CD7F75 /* MenuViewController.m in Sources */,
 				0AF77D751AA0363800B57B8C /* ViewController.m in Sources */,
+				458F3CC01ACA9CC50099F2E6 /* ProductDetailViewController.m in Sources */,
 				81AE088E1AA71F1900CD7F75 /* OffersViewController.m in Sources */,
 				811165761AB1AEF1003629E0 /* LoginViewController.m in Sources */,
 				0AF77D721AA0363800B57B8C /* AppDelegate.m in Sources */,
