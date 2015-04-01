@@ -126,27 +126,20 @@
     CartItem* cartItem = [[CartItem alloc] initWithDictionary:tempDic];
     
     [GlobalVariables addItemToCart:cartItem];
+    ProductDetailViewController* test = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController" bundle:nil];
+//    test.view.frame = self.view.frame;
+    NSLog(@"%@",self.navigationController);
+    [self.navigationController pushViewController:test animated:YES];
+    [self.delegate setGesturesOn:NO];
+    [self.delegate toggleMenuButtonOnceProductDetailVCLoaded];
     
-//    NSMutableArray* cartArray= [NSMutableArray arrayWithObjects:cartItem, nil];
-//    
-//    NSData *archivedObject = [NSKeyedArchiver archivedDataWithRootObject:cartArray];
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    [defaults setObject:archivedObject forKey:@"CartItems"];
-//    [defaults synchronize];
-    
-    [self testRetrieve];
-    
-    
+//    [self testRetrieve];
 //    UIAlertView* addedAlert = [[UIAlertView alloc] initWithTitle:@"Added" message:@"product added" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 //    [addedAlert show];
 }
 
 -(void) testRetrieve
 {
-    // Read from NSUserDefaults
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    NSData *archivedObject = [defaults objectForKey:@"CartItems"];
-//    NSArray *obj = (NSArray*)[NSKeyedUnarchiver unarchiveObjectWithData:archivedObject];
     NSArray *obj =  [GlobalVariables getCartItems];
     for(CartItem* itm in obj){
         NSLog(@"CARTITEM SAVED - productName: %@,%li", itm.product.prodName, (long)itm.quantity);

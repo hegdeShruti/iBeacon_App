@@ -27,6 +27,7 @@
 @property (nonatomic, assign) BOOL showPanel;
 @property (nonatomic, assign) CGPoint preVelocity;
 @property(nonatomic,assign) BOOL *shoulOpenOffers;
+@property (nonatomic,strong) UIPanGestureRecognizer *panRecognizer;
 -(void) initialize;
 
 @end

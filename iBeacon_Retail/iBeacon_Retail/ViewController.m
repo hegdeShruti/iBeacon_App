@@ -71,15 +71,21 @@
 
 -(void)loadProductsViewController
 {
+    
     if(self.productsViewController == nil){
+        
         self.productsViewController = [[ProductViewController alloc] initWithNibName:@"ProductViewController" bundle:nil];
+        self.productsViewController.delegate=self;
+        self.productNavigationViewController = [[UINavigationController alloc] initWithRootViewController:self.productsViewController];
+        self.productNavigationViewController.view.frame = CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
     }
-    [self.contentView addSubview:self.productsViewController.view];
     
-    self.productsViewController.view.frame = CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
+    self.productNavigationViewController.navigationBarHidden = YES;
+//    [self.contentView addSubview:self.productsViewController.view];
+        [self.contentView addSubview:self.productNavigationViewController.view];
     
-    [self addChildViewController:self.productsViewController];
-    [self.productsViewController didMoveToParentViewController:self];
+    [self addChildViewController:self.productNavigationViewController];
+    [self.productNavigationViewController didMoveToParentViewController:self];
     self.navbar.topItem.title = @"Products";
     self.selectedIndex = productsMenuIndex;
 }
@@ -144,11 +150,30 @@
     
 }
 
+//-(void)loadProductDetailViewController
+//{
+//    if(self.productDetailViewController == nil){
+//        self.productDetailViewController = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController" bundle:nil];
+//    }
+//    [self.contentView addSubview:self.productDetailViewController.view];
+//    
+//    self.productDetailViewController.view.frame = CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
+//    
+//    [self addChildViewController:self.productDetailViewController];
+//    [self.productDetailViewController didMoveToParentViewController:self];
+//    self.navbar.topItem.title = @"Products";
+//    self.selectedIndex = productDetailMenuIndex;
+//}
+
 
 -(void) resetViews
 {
     switch(self.selectedIndex){
         case productsMenuIndex:{
+            [self.productNavigationViewController removeFromParentViewController];
+            [self.productNavigationViewController.view removeFromSuperview];
+            self.productNavigationViewController = nil;
+            
             [self.productsViewController removeFromParentViewController];
             [self.productsViewController.view removeFromSuperview];
             self.productsViewController = nil;
@@ -187,6 +212,12 @@
             [(AppDelegate *)[[UIApplication sharedApplication] delegate] showMainScreen];
             break;
         }
+//        case productDetailMenuIndex:{
+//            [self.productDetailViewController removeFromParentViewController];
+//            [self.productDetailViewController.view removeFromSuperview];
+//            self.productDetailViewController = nil;
+//            break;
+//        }
         default:
             break;
             
@@ -205,6 +236,10 @@
         }
         case 1:{
             [self.delegate movePanelRight];
+            break;
+        }
+        case 2:{
+            [self returnToProductListingScreenFromProductDetailScreen];
             break;
         }
         default:
@@ -268,6 +303,28 @@
     {
         self.resetMainScreenPositionOnMenuSelection();
     }
+}
+
+-(void)returnToProductListingScreenFromProductDetailScreen{
+//    if(self.selectedIndex == productDetailMenuIndex){
+//        [self resetViews];
+//    }
+    [self.productNavigationViewController popViewControllerAnimated:YES];
+    self.menuButton. image = [UIImage imageNamed:@"menu_icon.png"];
+    self.menuButton.title  = @"";
+    self.menuButton.tag = 1;
+    [self.delegate setGesturesOn:YES];
+}
+
+- (void)setGesturesOn:(BOOL)switchOn{
+    [self.delegate setGesturesOn:switchOn];
+}
+
+-(void)toggleMenuButtonOnceProductDetailVCLoaded
+{
+    self.menuButton. image = nil;
+    self.menuButton.title  = @"Back";
+    self.menuButton.tag = 2;
 }
 
 @end

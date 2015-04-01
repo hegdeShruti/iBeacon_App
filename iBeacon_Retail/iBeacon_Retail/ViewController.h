@@ -19,6 +19,7 @@
 #import "OffersViewController.h"
 #import "StoreLocationMapViewController.h"
 #import "CartViewController.h"
+//#import "ProductDetailViewController.h"
 #import "GlobalVariables.h"
 
 
@@ -26,13 +27,13 @@
 
 @optional
 - (void)movePanelRight;
-
+- (void)setGesturesOn:(BOOL) switchOn;
 @required
 - (void)movePanelToOriginalPosition;
 @end
 
 
-@interface ViewController : UIViewController <MenuViewControllerDelegate, UIAlertViewDelegate>
+@interface ViewController : UIViewController <MenuViewControllerDelegate, UIAlertViewDelegate,productViewControllerDelegate>
 
 @property (nonatomic,strong) void (^resetMainScreenPositionOnMenuSelection)(void);
 @property (assign) menuIndexes selectedIndex;
@@ -40,10 +41,12 @@
 @property (nonatomic,weak) IBOutlet UINavigationBar* navbar;
 @property (nonatomic,weak) IBOutlet UIView* contentView;
 @property (nonatomic,weak) id<MainScreeViewControllerDelegate> delegate;
+@property (nonatomic, strong) UINavigationController* productNavigationViewController;
 @property (nonatomic, strong) ProductViewController* productsViewController;
 @property (nonatomic, strong) OffersViewController* offersViewController;
 @property (nonatomic,strong) CartViewController* cartViewController;
 @property (nonatomic, strong) StoreLocationMapViewController* storeLocationMapViewController;
+@property (nonatomic, strong) ProductDetailViewController* productDetailViewController;
 
 - (IBAction)menuButtonPressed:(id)sender;
 -(void)loadProductsViewController;

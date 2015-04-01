@@ -110,6 +110,7 @@
     } completion:^(BOOL finished){
         if(finished){
             self.mainScreenViewController.menuButton.tag=0;
+            NSLog(@"Menu button tag 1, %i",[[NSNumber numberWithInteger:self.mainScreenViewController.menuButton.tag] intValue]);
             [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
         }
     }];
@@ -155,6 +156,7 @@
 //        self.menuViewController = nil;
         
         self.mainScreenViewController.menuButton.tag = 1;
+        NSLog(@"Menu button tag 2, %i",[[NSNumber numberWithInteger:self.mainScreenViewController.menuButton.tag] intValue]);
         self.showingLeftPanel = NO;
     }
     
@@ -166,12 +168,22 @@
 //load gesture recognition for the main screen view
 -(void) setupGestures
 {
-    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(movePanel:)];
-    [panRecognizer setMinimumNumberOfTouches:1];
-    [panRecognizer setMaximumNumberOfTouches:1];
-    [panRecognizer setDelegate:self];
+    self.panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(movePanel:)];
+    [self.panRecognizer setMinimumNumberOfTouches:1];
+    [self.panRecognizer setMaximumNumberOfTouches:1];
+    [self.panRecognizer setDelegate:self];
     
-    [self.mainScreenViewController.view addGestureRecognizer:panRecognizer];
+    [self togglePanGestures:YES];
+}
+
+
+-(void)togglePanGestures: (BOOL)switchOn
+{
+    if(switchOn == YES){
+        [self.mainScreenViewController.view addGestureRecognizer:self.panRecognizer];
+    }else{
+        [self.mainScreenViewController.view removeGestureRecognizer:self.panRecognizer];
+    }
 }
 
 
@@ -247,6 +259,11 @@
 //        NSLog(@"view center Y: %f",[sender view].center.y);
         _preVelocity = velocity;
     }
+}
+
+-(void)setGesturesOn:(BOOL)switchOn
+{
+    [self togglePanGestures:switchOn];
 }
 
 
