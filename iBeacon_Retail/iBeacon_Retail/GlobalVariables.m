@@ -136,7 +136,7 @@ static GlobalVariables *instance = nil;
         {
             if([item.product.prodName isEqualToString:cartItem.product.prodName]){
                 UIAlertView* alreadyExistsAlert = [[UIAlertView alloc] initWithTitle:@"Warning!" message:@"Item already in cart" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                [alreadyExistsAlert show];
+//                [alreadyExistsAlert show];    
                 itemExists = YES;
                 break;
             }

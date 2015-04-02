@@ -19,6 +19,7 @@
     // Do any additional setup after loading the view from its nib.
 //    self.containerView.frame = CGRectMake(0, self.containerView.frame.origin.y, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
     self.scrollview.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, self.contentView.frame.size.height);
+    self.imageScrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, self.imageScrollViewContentView.frame.size.height);
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
