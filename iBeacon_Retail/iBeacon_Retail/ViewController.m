@@ -106,7 +106,10 @@ static ViewController *instance = nil;
 }
 
 -(void) loadOffersViewController: (NSInteger) offerId
+
 {
+    
+   
     //if(self.offersViewController ==  nil){
         self.offersViewController = [[OffersViewController alloc] initWithNibName:@"OffersViewController" bundle:nil];
     //}

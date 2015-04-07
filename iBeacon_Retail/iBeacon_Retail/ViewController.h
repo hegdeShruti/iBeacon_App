@@ -42,6 +42,7 @@
 @property (nonatomic,weak) IBOutlet UIView* contentView;
 @property (nonatomic,weak) id<MainScreeViewControllerDelegate> delegate;
 @property (nonatomic, strong) UINavigationController* productNavigationViewController;
+@property (nonatomic, strong) UINavigationController* offersNavigationCOntroller;
 @property (nonatomic, strong) ProductViewController* productsViewController;
 @property (nonatomic, strong) OffersViewController* offersViewController;
 @property (nonatomic,strong) CartViewController* cartViewController;

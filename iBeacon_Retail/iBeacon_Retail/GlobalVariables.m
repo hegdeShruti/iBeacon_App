@@ -10,6 +10,8 @@
 #import "OfferPopupMenu.h"
 #import "NetworkOperations.h"
 #import "CartItem.h"
+#import "OfferPopupViewController.h"
+#import "UIImage+ImageEffects.h"
 
 @implementation GlobalVariables
 @synthesize hasUserEnteredTheStore , hasUserGotWOmenSectionOffers, hasUserGotKidSectionOffers,hasUserGotMenSectionOffers,isUserOnTheMapScreen;
@@ -47,11 +49,30 @@ static GlobalVariables *instance = nil;
     popup.delegate=delegate;
     [popup showMenuInParentViewController:self.storeLocationController withCenter:self.storeLocationController.indoorLocationView.center];
 }
-- (void)showOfferPopUp:(NSString *)inTitle andMessage:(NSString *)inMessage onController:(id) controller centrvalue:(CGPoint) refValue{
-    OfferPopupMenu *popup = [[OfferPopupMenu alloc]initWithTitle:inTitle message:inMessage];
-    popup.menuStyle = MenuStyleOval;
-    [popup showMenuInParentViewController:controller withCenter:refValue];
+- (void)showOfferPopUp:(NSString *)inTitle andMessage:(NSString *)inMessage onController:(id) controller withImage:(UIImage *)sourceImage {
+  
+    OfferPopupViewController *offerPopup=[[OfferPopupViewController alloc] initWithNibName:@"OfferPopupViewController" bundle:[NSBundle mainBundle]];
+    //[self blurWithCoreImage:offerPopup.backgroundImage withSource:sourceImage];
+    
+    
 
+   // [controller setModalPresentationStyle:UIModalPresentationCurrentContext];
+    [controller presentViewController:offerPopup animated:YES completion:^{
+        offerPopup.backgroundImage.image=sourceImage;
+      //  offerPopup.backgroundImage.image=[UIImage imageNamed:@"bg.png"];
+        [offerPopup.backgroundImage.image applyExtraLightEffect];
+    }];
+    
+    
+    
+}
+- (void)blurWithCoreImage:(UIImageView *)baseImageView withSource:(UIImage *)sourceImage
+{
+    UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
+    effectView.frame = baseImageView.bounds;
+    [baseImageView addSubview:effectView];
+   
 }
 
 +(NSString *)returnTitleForRegion:(RegionIdentifier)inRegion{
