@@ -18,8 +18,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 //    self.containerView.frame = CGRectMake(0, self.containerView.frame.origin.y, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+//    [self.recommendationCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"RecommendationCell"];
+    
+    UINib *cellNib1 = [UINib nibWithNibName:@"ProductImageCollectionViewCell" bundle:nil];
+    UINib *cellNib2 = [UINib nibWithNibName:@"ProductRecommendationCollectionViewCell" bundle:nil];
+    [self.productImageCollectionView registerNib:cellNib1 forCellWithReuseIdentifier:@"ProductImageCell"];
+    [self.recommendationCollectionView registerNib:cellNib2 forCellWithReuseIdentifier:@"RecommendationCell"];
+    
+    self.productImagesArray = [NSArray arrayWithObjects:@"1",@"2",@"3", nil];
+    self.recommendationDataArray = [NSArray arrayWithObjects:@"1",@"2",@"3",@"4",@"5",@"6", nil];
+    
     self.scrollview.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, self.contentView.frame.size.height);
-    self.imageScrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, self.imageScrollViewContentView.frame.size.height);
+    [self setupPageControlForProductImagesCollectionView];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -39,5 +49,76 @@
     // Pass the selected object to the new view controller.
 }
 */
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    if(collectionView.tag == 1){ // this is the product images collection view
+        return 1;
+    }else{
+        return 1;
+    }
+}
 
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    if(collectionView.tag == 1){ // this is the product images collection view
+        return self.productImagesArray.count;
+    }else{
+        return self.recommendationDataArray.count;
+    }
+    
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+//    NSLog(@"Collection tag: %d",collectionView.tag );
+    if(collectionView.tag == 1){ // this is the product images collection view
+        ProductImageCollectionViewCell* cell = (ProductImageCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"ProductImageCell" forIndexPath:indexPath];
+        cell.prodImage.image = [UIImage imageNamed: @"jacket.jpg"];
+        return cell;
+        
+    }else{
+        ProductRecommendationCollectionViewCell* cell = (ProductRecommendationCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"RecommendationCell" forIndexPath:indexPath];
+        return cell;
+    }
+}
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(8_0)
+{
+    NSLog(@"Cell : %@", NSStringFromCGRect(cell.frame));
+//           cell.frame = CGRectMake(self.productImageCollectionView.frame.size.width * indexPath.row, cell.frame.origin.y, self.productImageCollectionView.frame.size.width, self.productImageCollectionView.frame.size.height);
+
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(collectionView.tag == 1){
+        return self.productImageCollectionView.frame.size;
+    }else{
+        CGSize defaultSize = [(UICollectionViewFlowLayout*)collectionViewLayout itemSize];
+        return defaultSize;
+    }
+}
+
+
+- (IBAction)pageControlChanged:(UIPageControl *)sender {
+    UIPageControl *pageControl = sender;
+    CGFloat pageWidth = self.productImageCollectionView.frame.size.width;
+    CGPoint scrollTo = CGPointMake(pageWidth * pageControl.currentPage, 0);
+    [self.productImageCollectionView setContentOffset:scrollTo animated:YES];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    CGFloat pageWidth = self.productImageCollectionView.frame.size.width;
+    self.pageControl.currentPage = self.productImageCollectionView.contentOffset.x / pageWidth;
+}
+
+-(void) setupPageControlForProductImagesCollectionView
+{
+    if(self.productImagesArray.count > 0)
+    {
+        self.pageControl.currentPage = 0; // set the current page for pagecontrol
+        self.pageControl.numberOfPages = self.productImagesArray.count;
+    }else{
+        self.pageControl.hidden = YES;
+    }
+}
 @end
