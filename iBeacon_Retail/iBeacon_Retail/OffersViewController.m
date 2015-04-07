@@ -86,9 +86,10 @@ globals=[GlobalVariables getInstance];
     return [self.offersDataArray count];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return self.view.frame.size.height;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    return 103
+//    ;
+//}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"CellIdentifier";
     OffersTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -103,6 +104,11 @@ globals=[GlobalVariables getInstance];
     cell.offerDescription.text=offerObject.offerHeading;
     // Configure Cell
         return cell;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
 }
 /*
 #pragma mark - Navigation
