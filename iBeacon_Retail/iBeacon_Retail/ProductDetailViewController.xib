@@ -9,11 +9,21 @@
             <connections>
                 <outlet property="containerView" destination="hyw-V5-f1g" id="ejL-Wp-mLw"/>
                 <outlet property="contentView" destination="UDd-EF-rXR" id="JAZ-lv-cFs"/>
+                <outlet property="locateProductButton" destination="QRy-ed-Ew7" id="mgI-MM-Rvl"/>
                 <outlet property="pageControl" destination="UiH-2b-Hs6" id="Hxg-Hg-QpY"/>
+                <outlet property="productDescription" destination="0Kc-MO-skW" id="RSB-Ev-wwJ"/>
                 <outlet property="productImageCollectionView" destination="LRS-C0-2qD" id="Zlg-6Y-cmT"/>
+                <outlet property="productName" destination="RcZ-Ga-fJv" id="Xnq-zA-BOc"/>
                 <outlet property="recommendationCollectionView" destination="Ihh-WZ-hsr" id="1w6-8G-FYB"/>
                 <outlet property="scrollview" destination="a2I-jz-ZEg" id="jdp-5v-Al1"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outletCollection property="sizeButtonCollectionView" destination="nDp-5Y-2V3" id="HI7-AI-kGn"/>
+                <outletCollection property="sizeButtonCollectionView" destination="Lko-0f-H1w" id="41W-SX-eD9"/>
+                <outletCollection property="sizeButtonCollectionView" destination="fYd-cY-4Zo" id="O18-xL-l0P"/>
+                <outletCollection property="sizeButtonCollectionView" destination="rKZ-BH-L2R" id="lpx-No-1Hx"/>
+                <outletCollection property="sizeButtonCollectionView" destination="0Ra-Fv-CVd" id="ReD-9m-BGq"/>
+                <outletCollection property="sizeButtonCollectionView" destination="L5j-o4-No4" id="DDY-Gg-5Sb"/>
+                <outletCollection property="sizeButtonCollectionView" destination="uP4-sq-ZD8" id="lTU-lU-Fms"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -92,6 +102,9 @@
                                                                             <exclude reference="Qxo-X9-bIo"/>
                                                                         </mask>
                                                                     </variation>
+                                                                    <connections>
+                                                                        <action selector="locateProduct:" destination="-1" eventType="touchUpInside" id="uHO-Ha-zES"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -289,10 +302,13 @@
                                                                         <constraint firstAttribute="width" secondItem="nDp-5Y-2V3" secondAttribute="height" multiplier="1:1" id="Z7W-vD-dnM"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                    <state key="normal" title="5.5" backgroundImage="sizebox_normal">
-                                                                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <state key="normal" title="5.5" backgroundImage="sizebox_selected">
+                                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="sizeButtonSelected:" destination="-1" eventType="touchUpInside" id="nkI-OX-tHe"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lko-0f-H1w">
                                                                     <rect key="frame" x="49" y="35" width="35" height="35"/>
@@ -305,6 +321,9 @@
                                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="sizeButtonSelected:" destination="-1" eventType="touchUpInside" id="aVH-rE-okD"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fYd-cY-4Zo">
                                                                     <rect key="frame" x="90" y="35" width="35" height="35"/>
@@ -317,6 +336,9 @@
                                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="sizeButtonSelected:" destination="-1" eventType="touchUpInside" id="muo-jS-wVO"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rKZ-BH-L2R">
                                                                     <rect key="frame" x="131" y="35" width="35" height="35"/>
@@ -329,6 +351,9 @@
                                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="sizeButtonSelected:" destination="-1" eventType="touchUpInside" id="OQo-Qf-lYV"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ra-Fv-CVd">
                                                                     <rect key="frame" x="172" y="35" width="35" height="35"/>
@@ -341,6 +366,9 @@
                                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="sizeButtonSelected:" destination="-1" eventType="touchUpInside" id="9qp-oy-HBI"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6B-f3-Jgh">
                                                                     <rect key="frame" x="8" y="105" width="35" height="35"/>
@@ -404,6 +432,9 @@
                                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="sizeButtonSelected:" destination="-1" eventType="touchUpInside" id="KNh-4b-taC"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uP4-sq-ZD8">
                                                                     <rect key="frame" x="256" y="35" width="35" height="35"/>
@@ -416,6 +447,9 @@
                                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="sizeButtonSelected:" destination="-1" eventType="touchUpInside" id="N3C-ES-Ez5"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aB3-d4-4eJ">
                                                                     <rect key="frame" x="131" y="105" width="35" height="35"/>
@@ -720,5 +754,6 @@
     <resources>
         <image name="Loaction_icon" width="20" height="20"/>
         <image name="sizebox_normal" width="28" height="28"/>
+        <image name="sizebox_selected" width="28" height="28"/>
     </resources>
 </document>

@@ -29,6 +29,8 @@
 
 @implementation ViewController
 
+static ViewController *instance = nil;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIApplication *application = [UIApplication sharedApplication];
@@ -57,6 +59,19 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
++(ViewController *)getInstance
+{
+    @synchronized(self)
+    {
+        if(instance==nil)
+        {
+            instance= [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+            // instance.hasALreadyLoggedIn=NO;
+        }
+    }
+    return instance;
 }
 
 /*
@@ -239,6 +254,10 @@
             break;
         }
         case 2:{
+            [self returnToProductListingScreenFromProductDetailScreen];
+            break;
+        }
+        case 3:{
             [self returnToProductListingScreenFromProductDetailScreen];
             break;
         }

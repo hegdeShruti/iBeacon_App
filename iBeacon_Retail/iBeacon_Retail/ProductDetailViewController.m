@@ -7,6 +7,7 @@
 //
 
 #import "ProductDetailViewController.h"
+#import "ViewController.h"
 
 @interface ProductDetailViewController ()
 
@@ -103,6 +104,21 @@
     CGFloat pageWidth = self.productImageCollectionView.frame.size.width;
     CGPoint scrollTo = CGPointMake(pageWidth * pageControl.currentPage, 0);
     [self.productImageCollectionView setContentOffset:scrollTo animated:YES];
+}
+
+- (IBAction)sizeButtonSelected:(id)sender {
+    UIButton* selectedButton = (UIButton*) sender;
+    for (UIButton* button in self.sizeButtonCollectionView){
+        [button setBackgroundImage:[UIImage imageNamed:@"sizebox_normal"] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    }
+    [selectedButton setBackgroundImage:[UIImage imageNamed:@"sizebox_selected"] forState:UIControlStateNormal];
+    [selectedButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+}
+
+- (IBAction)locateProduct:(UIButton *)sender {
+    ViewController* temp = [ViewController getInstance];
+    [temp.productNavigationViewController popViewControllerAnimated:YES];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView

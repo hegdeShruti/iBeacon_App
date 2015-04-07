@@ -11,6 +11,7 @@
 #import "ProductRecommendationCollectionViewCell.h"
 #import "Products.h"
 
+
 @interface ProductDetailViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate,UICollectionViewDelegate>
 @property (nonatomic,strong) NSArray* productImagesArray;
 @property (nonatomic,strong) NSArray* recommendationDataArray;
@@ -24,5 +25,13 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *productImageCollectionView;
 @property (weak, nonatomic) IBOutlet UICollectionView *recommendationCollectionView;
 
+@property (weak, nonatomic) IBOutlet UIButton *locateProductButton;
+@property (weak, nonatomic) IBOutlet UILabel *productName;
+@property (weak, nonatomic) IBOutlet UILabel *productDescription;
+
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *sizeButtonCollectionView;
+
 - (IBAction)pageControlChanged:(UIPageControl *)sender;
+- (IBAction)sizeButtonSelected:(id)sender;
+- (IBAction)locateProduct:(UIButton *)sender;
 @end

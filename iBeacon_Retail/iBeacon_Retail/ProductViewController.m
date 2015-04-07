@@ -121,15 +121,15 @@
 {
     
     Products *prodObject= [[Products alloc] initWithDictionary:[globals.productDataArray objectAtIndex:indexPath.row]];
+//    NSDictionary* tempDic = [[NSDictionary alloc] initWithObjectsAndKeys:prodObject,@"product",[NSNumber numberWithInteger:1],@"quantity", nil];
+//    CartItem* cartItem = [[CartItem alloc] initWithDictionary:tempDic];
+//    [GlobalVariables addItemToCart:cartItem];
     
-    NSDictionary* tempDic = [[NSDictionary alloc] initWithObjectsAndKeys:prodObject,@"product",[NSNumber numberWithInteger:1],@"quantity", nil];
-    CartItem* cartItem = [[CartItem alloc] initWithDictionary:tempDic];
-    
-    [GlobalVariables addItemToCart:cartItem];
-    ProductDetailViewController* test = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController" bundle:nil];
+    ProductDetailViewController* prodDetailVC = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController" bundle:nil];
+    prodDetailVC.product = prodObject;
 //    test.view.frame = self.view.frame;
     NSLog(@"%@",self.navigationController);
-    [self.navigationController pushViewController:test animated:YES];
+    [self.navigationController pushViewController:prodDetailVC animated:YES];
     [self.delegate setGesturesOn:NO];
     [self.delegate toggleMenuButtonOnceProductDetailVCLoaded];
     

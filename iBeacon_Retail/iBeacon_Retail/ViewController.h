@@ -19,7 +19,7 @@
 #import "OffersViewController.h"
 #import "StoreLocationMapViewController.h"
 #import "CartViewController.h"
-//#import "ProductDetailViewController.h"
+#import "ProductDetailViewController.h"
 #import "GlobalVariables.h"
 
 
@@ -54,5 +54,6 @@
 -(void)loadCartViewController;
 -(void)loadMapViewController;
 
++(ViewController *)getInstance;
 
 @end
