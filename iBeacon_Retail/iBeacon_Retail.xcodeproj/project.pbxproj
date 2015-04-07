@@ -98,6 +98,9 @@
 		81AE089C1AA7672200CD7F75 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81AE08991AA7672200CD7F75 /* MenuViewController.xib */; };
 		81AF71091AAF1AD800B350B6 /* BeaconMonitoringModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AF71081AAF1AD800B350B6 /* BeaconMonitoringModel.m */; };
 		81AF710C1AB00E4800B350B6 /* NetworkOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AF710B1AB00E4800B350B6 /* NetworkOperations.m */; };
+		81DB9E3A1AD3955F004E9C64 /* OfferPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DB9E381AD3955F004E9C64 /* OfferPopupViewController.m */; };
+		81DB9E3B1AD3955F004E9C64 /* OfferPopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81DB9E391AD3955F004E9C64 /* OfferPopupViewController.xib */; };
+		81DB9E3E1AD41337004E9C64 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DB9E3D1AD41337004E9C64 /* UIImage+ImageEffects.m */; };
 		B17C01A31AB9B35C00542233 /* Test_Kid'sSection.png in Resources */ = {isa = PBXBuildFile; fileRef = B17C01A01AB9B35C00542233 /* Test_Kid'sSection.png */; };
 		B17C01A41AB9B35C00542233 /* Test_MenSection.png in Resources */ = {isa = PBXBuildFile; fileRef = B17C01A11AB9B35C00542233 /* Test_MenSection.png */; };
 		B17C01A51AB9B35C00542233 /* Test_Women'sSection.png in Resources */ = {isa = PBXBuildFile; fileRef = B17C01A21AB9B35C00542233 /* Test_Women'sSection.png */; };
@@ -264,6 +267,11 @@
 		81AF71081AAF1AD800B350B6 /* BeaconMonitoringModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeaconMonitoringModel.m; sourceTree = "<group>"; };
 		81AF710A1AB00E4800B350B6 /* NetworkOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkOperations.h; sourceTree = "<group>"; };
 		81AF710B1AB00E4800B350B6 /* NetworkOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkOperations.m; sourceTree = "<group>"; };
+		81DB9E371AD3955F004E9C64 /* OfferPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfferPopupViewController.h; sourceTree = "<group>"; };
+		81DB9E381AD3955F004E9C64 /* OfferPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfferPopupViewController.m; sourceTree = "<group>"; };
+		81DB9E391AD3955F004E9C64 /* OfferPopupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OfferPopupViewController.xib; sourceTree = "<group>"; };
+		81DB9E3C1AD3F3C8004E9C64 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		81DB9E3D1AD41337004E9C64 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		B17C01A01AB9B35C00542233 /* Test_Kid'sSection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Test_Kid'sSection.png"; sourceTree = "<group>"; };
 		B17C01A11AB9B35C00542233 /* Test_MenSection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Test_MenSection.png; sourceTree = "<group>"; };
 		B17C01A21AB9B35C00542233 /* Test_Women'sSection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Test_Women'sSection.png"; sourceTree = "<group>"; };
@@ -342,6 +350,8 @@
 		0AF77D6B1AA0363800B57B8C /* iBeacon_Retail */ = {
 			isa = PBXGroup;
 			children = (
+				81DB9E3C1AD3F3C8004E9C64 /* UIImage+ImageEffects.h */,
+				81DB9E3D1AD41337004E9C64 /* UIImage+ImageEffects.m */,
 				0AF77D701AA0363800B57B8C /* AppDelegate.h */,
 				0AF77D711AA0363800B57B8C /* AppDelegate.m */,
 				8186A09F1AA7775C00BB5AC4 /* ViewController.xib */,
@@ -616,6 +626,9 @@
 				81AE08901AA720D200CD7F75 /* OffersTableCell.h */,
 				81AE08911AA720D200CD7F75 /* OffersTableCell.m */,
 				81AE08921AA720D200CD7F75 /* OffersTableCell.xib */,
+				81DB9E371AD3955F004E9C64 /* OfferPopupViewController.h */,
+				81DB9E381AD3955F004E9C64 /* OfferPopupViewController.m */,
+				81DB9E391AD3955F004E9C64 /* OfferPopupViewController.xib */,
 			);
 			name = Offers;
 			sourceTree = "<group>";
@@ -734,6 +747,7 @@
 				45526A381AB048B300E6F7C3 /* beacongrey@2x.png in Resources */,
 				45E8D6C01AC2DBF300E107F2 /* Config.plist in Resources */,
 				45526A451AB048B300E6F7C3 /* screen8_beacon_gray_trans@2x.png in Resources */,
+				81DB9E3B1AD3955F004E9C64 /* OfferPopupViewController.xib in Resources */,
 				45526A401AB048B300E6F7C3 /* indoor_error@2x.png in Resources */,
 				45526A2C1AB048B300E6F7C3 /* 8a.mov in Resources */,
 				45526A421AB048B300E6F7C3 /* navigation_guy@2x.png in Resources */,
@@ -808,10 +822,12 @@
 				818849BB1AB98B14005A06BF /* productGridCellCollectionViewCell.m in Sources */,
 				45E8D6C41AC3E38E00E107F2 /* CartTableViewCell.m in Sources */,
 				81AE089B1AA7672200CD7F75 /* MenuViewController.m in Sources */,
+				81DB9E3E1AD41337004E9C64 /* UIImage+ImageEffects.m in Sources */,
 				0AF77D751AA0363800B57B8C /* ViewController.m in Sources */,
 				458F3CC01ACA9CC50099F2E6 /* ProductDetailViewController.m in Sources */,
 				81AE088E1AA71F1900CD7F75 /* OffersViewController.m in Sources */,
 				811165761AB1AEF1003629E0 /* LoginViewController.m in Sources */,
+				81DB9E3A1AD3955F004E9C64 /* OfferPopupViewController.m in Sources */,
 				0AF77D721AA0363800B57B8C /* AppDelegate.m in Sources */,
 				811165711AB14FF8003629E0 /* GlobalVariables.m in Sources */,
 				818849B71AB94952005A06BF /* Offers.m in Sources */,

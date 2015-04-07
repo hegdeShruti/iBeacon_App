@@ -11,6 +11,10 @@
 #import "NetworkOperations.h"
 #import "Offers.h"
 #import "GlobalVariables.h"
+#import "Products.h"
+#import "ProductDetailViewController.h"
+#import "OfferPopupViewController.h"
+#import "AppDelegate.h"
 
 @interface OffersViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong) NSMutableArray *offersDataArray;
@@ -33,6 +37,15 @@ globals=[GlobalVariables getInstance];
     
    [self filterOffersforSections];
     
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.offersTableView reloadData];
 }
 // hardcoding section data for now
 -(void)filterOffersforSections{
@@ -100,14 +113,40 @@ globals=[GlobalVariables getInstance];
     }
     
     Offers *offerObject=[[Offers alloc]initWithDictionary:[self.offersDataArray objectAtIndex:indexPath.row] ];
-    cell.offerHeader.text=offerObject.offerDescription;
+   
+    NSArray *productsArray = [globals.productDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(offerid == %@)", offerObject.offerId]];
+    Products *prodObject;
+    if([productsArray count]>0){
+        prodObject=[[Products alloc]  initWithDictionary:[productsArray objectAtIndex:0]];
+    }
+       cell.offerHeader.text=prodObject.prodName;
     cell.offerDescription.text=offerObject.offerHeading;
+    cell.offerInfo.text=offerObject.offerDescription;
     // Configure Cell
         return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    ProductDetailViewController* test = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController" bundle:nil];
+//    //    test.view.frame = self.view.frame;
+//    NSLog(@"%@",self.navigationController);
+//    [self.navigationController pushViewController:test animated:YES];
+   // GlobalVariables * globals=[GlobalVariables getInstance];
+    
+    
+//    UIGraphicsBeginImageContext(CGSizeMake(self.view.frame.size.width, self.view.frame.size.height));
+//    [self.view drawViewHierarchyInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) afterScreenUpdates:YES];
+//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+    CGRect mainFrame = [UIScreen mainScreen].bounds;
+    
+    UIGraphicsBeginImageContext(CGSizeMake(mainFrame.size.width, mainFrame.size.height));
+    [self.parentViewController.view drawViewHierarchyInRect:CGRectMake(0, 0, mainFrame.size.width, mainFrame.size.height) afterScreenUpdates:YES];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    [globals showOfferPopUp:@"Camera" andMessage:@"Rush to avail offers" onController:self withImage:image];
     
 }
 /*

@@ -45,8 +45,8 @@ typedef enum {
 //@property(nonatomic,assign) BOOL hasALreadyLoggedIn;
 
 +( GlobalVariables *) getInstance;
-- (void)showOfferPopUpWithTitle:(NSString *)inTitle andMessage:(NSString *)inMessage ;
-- (void)showOfferPopUp:(NSString *)inTitle andMessage:(NSString *)inMessage onController:(id) controller centerValue:(CGPoint) refValue;
+- (void)showOfferPopUpWithTitle:(NSString *)inTitle andMessage:(NSString *)inMessage  ;
+- (void)showOfferPopUp:(NSString *)inTitle andMessage:(NSString *)inMessage onController:(id) controller withImage:(UIImage *)image ;
 - (void)showOfferPopUpWithTitle:(NSString *)inTitle message:(NSString *)inMessage andDelegate:(id)delegate;
 +(NSString *)returnTitleForRegion:(RegionIdentifier)inRegion;
 +(NSString*)getBeaconMacAddress:(int)sectionId;

@@ -86,9 +86,10 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="offerDescription" destination="Izs-a4-lIq" id="0sC-5t-m4v"/>
+                <outlet property="offerDescription" destination="Izs-a4-lIq" id="6GN-c4-9SD"/>
                 <outlet property="offerHeader" destination="xBF-6M-Fr5" id="eF4-0R-xi7"/>
                 <outlet property="offerImage" destination="ZTZ-9T-9pR" id="55v-8k-vvw"/>
+                <outlet property="offerInfo" destination="7Ho-8d-sCA" id="Zzb-Jr-jg0"/>
             </connections>
             <point key="canvasLocation" x="286" y="326.5"/>
         </tableViewCell>

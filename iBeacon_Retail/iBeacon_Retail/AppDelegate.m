@@ -97,8 +97,9 @@
             
                     [alert show];
             // On Okay show him to Offer
-//             GlobalVariables * globals=[GlobalVariables getInstance];
-//            [globals showOfferPopUp:notification.userInfo.description andMessage:notification.userInfo.description onController:self.window.rootViewController centerValue:self.window.rootViewController.view.center ];
+            
+             GlobalVariables * globals=[GlobalVariables getInstance];
+//            [globals showOfferPopUp:[notification.userInfo valueForKey:@"offerDescription"] andMessage:notification.userInfo.description onController:self.window.rootViewController  ];
             [self clearNotifications];
         }
      
