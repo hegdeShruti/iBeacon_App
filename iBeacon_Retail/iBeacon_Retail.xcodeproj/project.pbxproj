@@ -65,6 +65,8 @@
 		45526A601AB06F3300E6F7C3 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 45526A5F1AB06F3300E6F7C3 /* libxml2.dylib */; };
 		4556001C1AD2981D0034BBD2 /* ProductRecommendationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4556001A1AD2981D0034BBD2 /* ProductRecommendationCollectionViewCell.m */; };
 		4556001D1AD2981D0034BBD2 /* ProductRecommendationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4556001B1AD2981D0034BBD2 /* ProductRecommendationCollectionViewCell.xib */; };
+		456167811AD3B38F007F2396 /* ProductImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4561677F1AD3B38F007F2396 /* ProductImageCollectionViewCell.m */; };
+		456167821AD3B38F007F2396 /* ProductImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 456167801AD3B38F007F2396 /* ProductImageCollectionViewCell.xib */; };
 		458F3CB71ACA71FB0099F2E6 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 458F3CB31ACA71FB0099F2E6 /* arrow.png */; };
 		458F3CB81ACA71FB0099F2E6 /* map-pin-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 458F3CB41ACA71FB0099F2E6 /* map-pin-green.png */; };
 		458F3CB91ACA71FB0099F2E6 /* map-pin-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 458F3CB51ACA71FB0099F2E6 /* map-pin-red.png */; };
@@ -194,6 +196,9 @@
 		455600191AD2981D0034BBD2 /* ProductRecommendationCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductRecommendationCollectionViewCell.h; sourceTree = "<group>"; };
 		4556001A1AD2981D0034BBD2 /* ProductRecommendationCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductRecommendationCollectionViewCell.m; sourceTree = "<group>"; };
 		4556001B1AD2981D0034BBD2 /* ProductRecommendationCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductRecommendationCollectionViewCell.xib; sourceTree = "<group>"; };
+		4561677E1AD3B38F007F2396 /* ProductImageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductImageCollectionViewCell.h; sourceTree = "<group>"; };
+		4561677F1AD3B38F007F2396 /* ProductImageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductImageCollectionViewCell.m; sourceTree = "<group>"; };
+		456167801AD3B38F007F2396 /* ProductImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		458F3CB31ACA71FB0099F2E6 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		458F3CB41ACA71FB0099F2E6 /* map-pin-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-pin-green.png"; sourceTree = "<group>"; };
 		458F3CB51ACA71FB0099F2E6 /* map-pin-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-pin-red.png"; sourceTree = "<group>"; };
@@ -519,6 +524,9 @@
 				455600191AD2981D0034BBD2 /* ProductRecommendationCollectionViewCell.h */,
 				4556001A1AD2981D0034BBD2 /* ProductRecommendationCollectionViewCell.m */,
 				4556001B1AD2981D0034BBD2 /* ProductRecommendationCollectionViewCell.xib */,
+				4561677E1AD3B38F007F2396 /* ProductImageCollectionViewCell.h */,
+				4561677F1AD3B38F007F2396 /* ProductImageCollectionViewCell.m */,
+				456167801AD3B38F007F2396 /* ProductImageCollectionViewCell.xib */,
 			);
 			name = ProductDetail;
 			sourceTree = "<group>";
@@ -773,6 +781,7 @@
 				458F3CB81ACA71FB0099F2E6 /* map-pin-green.png in Resources */,
 				814BC9671AA4634900164B30 /* prodCell.xib in Resources */,
 				818849BC1AB98B14005A06BF /* productGridCellCollectionViewCell.xib in Resources */,
+				456167821AD3B38F007F2396 /* ProductImageCollectionViewCell.xib in Resources */,
 				81AE088F1AA71F1900CD7F75 /* OffersViewController.xib in Resources */,
 				45526A2E1AB048B300E6F7C3 /* 8c.mov in Resources */,
 				455269A21AB03FDD00E6F7C3 /* StoreLocationMapViewController.xib in Resources */,
@@ -832,6 +841,7 @@
 				B17C01AB1ABAA28F00542233 /* OfferPopupMenu.m in Sources */,
 				45E8D6CA1AC58EB400E107F2 /* CartItem.m in Sources */,
 				45DA40771AC13E1F00D86C8A /* CartViewController.m in Sources */,
+				456167811AD3B38F007F2396 /* ProductImageCollectionViewCell.m in Sources */,
 				81AF71091AAF1AD800B350B6 /* BeaconMonitoringModel.m in Sources */,
 				81AE089A1AA7672200CD7F75 /* ContainerViewController.m in Sources */,
 				0AF77D6F1AA0363800B57B8C /* main.m in Sources */,
