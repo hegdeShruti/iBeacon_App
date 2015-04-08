@@ -67,6 +67,14 @@
 		4556001D1AD2981D0034BBD2 /* ProductRecommendationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4556001B1AD2981D0034BBD2 /* ProductRecommendationCollectionViewCell.xib */; };
 		456167811AD3B38F007F2396 /* ProductImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4561677F1AD3B38F007F2396 /* ProductImageCollectionViewCell.m */; };
 		456167821AD3B38F007F2396 /* ProductImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 456167801AD3B38F007F2396 /* ProductImageCollectionViewCell.xib */; };
+		45849E9A1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 45849E8C1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorFade.m */; };
+		45849E9B1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorScale.m in Sources */ = {isa = PBXBuildFile; fileRef = 45849E8E1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorScale.m */; };
+		45849E9C1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 45849E901AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorScaleAndFade.m */; };
+		45849E9D1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorSlide.m in Sources */ = {isa = PBXBuildFile; fileRef = 45849E921AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorSlide.m */; };
+		45849E9E1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 45849E941AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorSlideAndFade.m */; };
+		45849E9F1AD4F2FC00FF7A1F /* menu-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 45849E961AD4F2FC00FF7A1F /* menu-button.png */; };
+		45849EA01AD4F2FC00FF7A1F /* menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45849E971AD4F2FC00FF7A1F /* menu-button@2x.png */; };
+		45849EA11AD4F2FC00FF7A1F /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45849E991AD4F2FC00FF7A1F /* SlideNavigationController.m */; };
 		458F3CB71ACA71FB0099F2E6 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 458F3CB31ACA71FB0099F2E6 /* arrow.png */; };
 		458F3CB81ACA71FB0099F2E6 /* map-pin-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 458F3CB41ACA71FB0099F2E6 /* map-pin-green.png */; };
 		458F3CB91ACA71FB0099F2E6 /* map-pin-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 458F3CB51ACA71FB0099F2E6 /* map-pin-red.png */; };
@@ -202,6 +210,21 @@
 		4561677E1AD3B38F007F2396 /* ProductImageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductImageCollectionViewCell.h; sourceTree = "<group>"; };
 		4561677F1AD3B38F007F2396 /* ProductImageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductImageCollectionViewCell.m; sourceTree = "<group>"; };
 		456167801AD3B38F007F2396 /* ProductImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		45849E8A1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimator.h; sourceTree = "<group>"; };
+		45849E8B1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorFade.h; sourceTree = "<group>"; };
+		45849E8C1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorFade.m; sourceTree = "<group>"; };
+		45849E8D1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorScale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorScale.h; sourceTree = "<group>"; };
+		45849E8E1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorScale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorScale.m; sourceTree = "<group>"; };
+		45849E8F1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorScaleAndFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorScaleAndFade.h; sourceTree = "<group>"; };
+		45849E901AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorScaleAndFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorScaleAndFade.m; sourceTree = "<group>"; };
+		45849E911AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorSlide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorSlide.h; sourceTree = "<group>"; };
+		45849E921AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorSlide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorSlide.m; sourceTree = "<group>"; };
+		45849E931AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorSlideAndFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorSlideAndFade.h; sourceTree = "<group>"; };
+		45849E941AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorSlideAndFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorSlideAndFade.m; sourceTree = "<group>"; };
+		45849E961AD4F2FC00FF7A1F /* menu-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-button.png"; sourceTree = "<group>"; };
+		45849E971AD4F2FC00FF7A1F /* menu-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-button@2x.png"; sourceTree = "<group>"; };
+		45849E981AD4F2FC00FF7A1F /* SlideNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationController.h; sourceTree = "<group>"; };
+		45849E991AD4F2FC00FF7A1F /* SlideNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationController.m; sourceTree = "<group>"; };
 		458F3CB31ACA71FB0099F2E6 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		458F3CB41ACA71FB0099F2E6 /* map-pin-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-pin-green.png"; sourceTree = "<group>"; };
 		458F3CB51ACA71FB0099F2E6 /* map-pin-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-pin-red.png"; sourceTree = "<group>"; };
@@ -213,7 +236,7 @@
 		45DA40751AC13E1F00D86C8A /* CartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartViewController.m; sourceTree = "<group>"; };
 		45DA40761AC13E1F00D86C8A /* CartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CartViewController.xib; sourceTree = "<group>"; };
 		45DA40791AC293AB00D86C8A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		45E8D6BF1AC2DBF300E107F2 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		45E8D6BF1AC2DBF300E107F2 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Config.plist; path = ../Config.plist; sourceTree = "<group>"; };
 		45E8D6C11AC3E38E00E107F2 /* CartTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartTableViewCell.h; sourceTree = "<group>"; };
 		45E8D6C21AC3E38E00E107F2 /* CartTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartTableViewCell.m; sourceTree = "<group>"; };
 		45E8D6C31AC3E38E00E107F2 /* CartTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CartTableViewCell.xib; sourceTree = "<group>"; };
@@ -328,20 +351,6 @@
 		0AF77D601AA0363800B57B8C = {
 			isa = PBXGroup;
 			children = (
-				45E8D6BF1AC2DBF300E107F2 /* Config.plist */,
-				45DA40791AC293AB00D86C8A /* QuartzCore.framework */,
-				45526A5F1AB06F3300E6F7C3 /* libxml2.dylib */,
-				45526A581AB04CDA00E6F7C3 /* AVFoundation.framework */,
-				45526A561AB04C3F00E6F7C3 /* AudioToolbox.framework */,
-				45526A541AB04C3400E6F7C3 /* MediaPlayer.framework */,
-				45526A521AB04C2400E6F7C3 /* MessageUI.framework */,
-				45526A501AB04BFE00E6F7C3 /* CoreGraphics.framework */,
-				45526A4E1AB04BDF00E6F7C3 /* CoreMotion.framework */,
-				45526A4C1AB04BBE00E6F7C3 /* UIKit.framework */,
-				0AF78F841AA0395800B57B8C /* SystemConfiguration.framework */,
-				0AF78F821AA0394800B57B8C /* CoreBluetooth.framework */,
-				0AF77D951AA038BC00B57B8C /* CoreLocation.framework */,
-				0AF77D921AA038A700B57B8C /* Foundation.framework */,
 				0AF77D6B1AA0363800B57B8C /* iBeacon_Retail */,
 				0AF77D851AA0363800B57B8C /* iBeacon_RetailTests */,
 				0AF77D6A1AA0363800B57B8C /* Products */,
@@ -381,6 +390,7 @@
 				4552699D1AB03F8500E6F7C3 /* StoreLocationMap */,
 				814BC95D1AA4401200164B30 /* Products */,
 				814BC95C1AA4400500164B30 /* Model */,
+				45849E881AD4F2A800FF7A1F /* SlideMenuLibrary */,
 				811492CC1AC1A63A009AB358 /* Frameworks */,
 				0AF77D791AA0363800B57B8C /* Images.xcassets */,
 				0AF77D7B1AA0363800B57B8C /* LaunchScreen.xib */,
@@ -399,6 +409,7 @@
 				455269A31AB0443D00E6F7C3 /* location.json */,
 				0AF77D6D1AA0363800B57B8C /* Info.plist */,
 				0AF77D6E1AA0363800B57B8C /* main.m */,
+				45E8D6BF1AC2DBF300E107F2 /* Config.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -509,6 +520,44 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		45849E881AD4F2A800FF7A1F /* SlideMenuLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				45849E891AD4F2FC00FF7A1F /* Animations */,
+				45849E951AD4F2FC00FF7A1F /* Assets */,
+				45849E981AD4F2FC00FF7A1F /* SlideNavigationController.h */,
+				45849E991AD4F2FC00FF7A1F /* SlideNavigationController.m */,
+			);
+			name = SlideMenuLibrary;
+			sourceTree = "<group>";
+		};
+		45849E891AD4F2FC00FF7A1F /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				45849E8A1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimator.h */,
+				45849E8B1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorFade.h */,
+				45849E8C1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorFade.m */,
+				45849E8D1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorScale.h */,
+				45849E8E1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorScale.m */,
+				45849E8F1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorScaleAndFade.h */,
+				45849E901AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorScaleAndFade.m */,
+				45849E911AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorSlide.h */,
+				45849E921AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorSlide.m */,
+				45849E931AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorSlideAndFade.h */,
+				45849E941AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorSlideAndFade.m */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
+		45849E951AD4F2FC00FF7A1F /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				45849E961AD4F2FC00FF7A1F /* menu-button.png */,
+				45849E971AD4F2FC00FF7A1F /* menu-button@2x.png */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		458F3CBB1ACA9C7A0099F2E6 /* ProductListing */ = {
 			isa = PBXGroup;
 			children = (
@@ -566,6 +615,19 @@
 		811492CC1AC1A63A009AB358 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				45DA40791AC293AB00D86C8A /* QuartzCore.framework */,
+				45526A5F1AB06F3300E6F7C3 /* libxml2.dylib */,
+				45526A581AB04CDA00E6F7C3 /* AVFoundation.framework */,
+				45526A561AB04C3F00E6F7C3 /* AudioToolbox.framework */,
+				45526A541AB04C3400E6F7C3 /* MediaPlayer.framework */,
+				45526A521AB04C2400E6F7C3 /* MessageUI.framework */,
+				45526A501AB04BFE00E6F7C3 /* CoreGraphics.framework */,
+				45526A4E1AB04BDF00E6F7C3 /* CoreMotion.framework */,
+				45526A4C1AB04BBE00E6F7C3 /* UIKit.framework */,
+				0AF78F841AA0395800B57B8C /* SystemConfiguration.framework */,
+				0AF78F821AA0394800B57B8C /* CoreBluetooth.framework */,
+				0AF77D951AA038BC00B57B8C /* CoreLocation.framework */,
+				0AF77D921AA038A700B57B8C /* Foundation.framework */,
 			);
 			name = Frameworks;
 			path = ..;
@@ -774,6 +836,7 @@
 				45526A3E1AB048B300E6F7C3 /* beaconMintSmall.png in Resources */,
 				458F3CC11ACA9CC50099F2E6 /* ProductDetailViewController.xib in Resources */,
 				455269A41AB0443D00E6F7C3 /* location.json in Resources */,
+				45849EA01AD4F2FC00FF7A1F /* menu-button@2x.png in Resources */,
 				8186A0A01AA7775D00BB5AC4 /* ViewController.xib in Resources */,
 				45526A301AB048B300E6F7C3 /* 5b_first_frame@2x.png in Resources */,
 				45526A3B1AB048B300E6F7C3 /* beaconIcySmall.png in Resources */,
@@ -781,6 +844,7 @@
 				45526A471AB048B300E6F7C3 /* screen8_beacon_purple@2x.png in Resources */,
 				45DA40781AC13E1F00D86C8A /* CartViewController.xib in Resources */,
 				45526A341AB048B300E6F7C3 /* beacon_grey@2x.png in Resources */,
+				45849E9F1AD4F2FC00FF7A1F /* menu-button.png in Resources */,
 				0AF77D781AA0363800B57B8C /* Main.storyboard in Resources */,
 				45526A371AB048B300E6F7C3 /* beaconBlueberrySmall@2x.png in Resources */,
 				B17C01A31AB9B35C00542233 /* Test_Kid'sSection.png in Resources */,
@@ -834,6 +898,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45849EA11AD4F2FC00FF7A1F /* SlideNavigationController.m in Sources */,
 				81948B4B1AB6AA9C002A6FE6 /* Products.m in Sources */,
 				4556001C1AD2981D0034BBD2 /* ProductRecommendationCollectionViewCell.m in Sources */,
 				81AE08931AA720D200CD7F75 /* OffersTableCell.m in Sources */,
@@ -841,6 +906,7 @@
 				818849BB1AB98B14005A06BF /* productGridCellCollectionViewCell.m in Sources */,
 				45E8D6C41AC3E38E00E107F2 /* CartTableViewCell.m in Sources */,
 				81AE089B1AA7672200CD7F75 /* MenuViewController.m in Sources */,
+				45849E9D1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
 				81DB9E3E1AD41337004E9C64 /* UIImage+ImageEffects.m in Sources */,
 				0AF77D751AA0363800B57B8C /* ViewController.m in Sources */,
 				458F3CC01ACA9CC50099F2E6 /* ProductDetailViewController.m in Sources */,
@@ -854,12 +920,16 @@
 				455269A11AB03FDD00E6F7C3 /* StoreLocationMapViewController.m in Sources */,
 				814BC9611AA4404800164B30 /* ProductViewController.m in Sources */,
 				81AF710C1AB00E4800B350B6 /* NetworkOperations.m in Sources */,
+				45849E9B1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorScale.m in Sources */,
 				B17C01AB1ABAA28F00542233 /* OfferPopupMenu.m in Sources */,
 				45E8D6CA1AC58EB400E107F2 /* CartItem.m in Sources */,
+				45849E9A1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorFade.m in Sources */,
 				45DA40771AC13E1F00D86C8A /* CartViewController.m in Sources */,
+				45849E9C1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,
 				456167811AD3B38F007F2396 /* ProductImageCollectionViewCell.m in Sources */,
 				81AF71091AAF1AD800B350B6 /* BeaconMonitoringModel.m in Sources */,
 				81AE089A1AA7672200CD7F75 /* ContainerViewController.m in Sources */,
+				45849E9E1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */,
 				0AF77D6F1AA0363800B57B8C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
