@@ -49,18 +49,20 @@ static GlobalVariables *instance = nil;
     popup.delegate=delegate;
     [popup showMenuInParentViewController:self.storeLocationController withCenter:self.storeLocationController.indoorLocationView.center];
 }
+
+// method that presents popup on existing screen on any beacon notification
 - (void)showOfferPopUp:(NSString *)inTitle andMessage:(NSString *)inMessage onController:(id) controller withImage:(UIImage *)sourceImage {
   
     OfferPopupViewController *offerPopup=[[OfferPopupViewController alloc] initWithNibName:@"OfferPopupViewController" bundle:[NSBundle mainBundle]];
-    //[self blurWithCoreImage:offerPopup.backgroundImage withSource:sourceImage];
-    
-    
-
-   // [controller setModalPresentationStyle:UIModalPresentationCurrentContext];
+   
     [controller presentViewController:offerPopup animated:YES completion:^{
+        // Adding blur effect on the snapshot taken
         offerPopup.backgroundImage.image=sourceImage;
-      //  offerPopup.backgroundImage.image=[UIImage imageNamed:@"bg.png"];
-        [offerPopup.backgroundImage.image applyExtraLightEffect];
+        UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+        UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
+        effectView.frame = offerPopup.backgroundImage.bounds;
+        [offerPopup.backgroundImage addSubview:effectView];
+        
     }];
     
     
