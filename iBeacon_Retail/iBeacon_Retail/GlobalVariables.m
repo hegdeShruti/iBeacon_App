@@ -11,7 +11,7 @@
 #import "NetworkOperations.h"
 #import "CartItem.h"
 #import "OfferPopupViewController.h"
-#import "UIImage+ImageEffects.h"
+
 
 @implementation GlobalVariables
 @synthesize hasUserEnteredTheStore , hasUserGotWOmenSectionOffers, hasUserGotKidSectionOffers,hasUserGotMenSectionOffers,isUserOnTheMapScreen;
@@ -58,9 +58,11 @@ static GlobalVariables *instance = nil;
     [controller presentViewController:offerPopup animated:YES completion:^{
         // Adding blur effect on the snapshot taken
         offerPopup.backgroundImage.image=sourceImage;
-        UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+      
+        UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
         UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
         effectView.frame = offerPopup.backgroundImage.bounds;
+        effectView.alpha=0.95;
         [offerPopup.backgroundImage addSubview:effectView];
         
     }];
