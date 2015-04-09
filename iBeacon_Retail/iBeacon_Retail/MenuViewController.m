@@ -36,11 +36,34 @@ typedef enum : NSUInteger {
     // Do any additional setup after loading the view from its nib.
     
     self.menuItems = [NSArray arrayWithObjects:@"Products",@"Offers",@"Cart",@"Store Map",@"Logout", nil];
+    self.menuImageItems = [NSArray arrayWithObjects:@"product.png",@"offer.png",@"Cart.png",@"Map.png",@"Logout.png", nil];
     [self.tableview registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     
     NSIndexPath *indexPath = [self.tableview indexPathForSelectedRow];
     [self.tableview selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionMiddle];
+ //   [self setBlurredBackground];
     
+}
+
+-(void)viewDidLayoutSubviews {
+    [self setBlurredBackground];
+}
+
+-(void)setBlurredBackground{
+    
+    
+    [self.backgroundView setImage:[UIImage imageNamed:@"bg_blur.png"]];
+    [_backgroundView setContentMode:UIViewContentModeLeft];
+    UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
+    effectView.frame = self.backgroundView.bounds;
+    effectView.alpha=1.0;
+     [self.backgroundView addSubview:effectView];
+    self.userIcon.layer.cornerRadius=self.userIcon.frame.size.width/2;
+    self.userIcon.clipsToBounds=YES;
+    self.userIcon.layer.borderWidth = 1.0f;
+    self.userIcon.layer.borderColor = [UIColor whiteColor].CGColor;
+
 }
 
 #pragma mark - For Status Bar
@@ -72,12 +95,23 @@ typedef enum : NSUInteger {
 {
     return [self.menuItems count];
 }
+-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 44.0;
+}
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    cell.backgroundColor = [UIColor clearColor];
+
+    UIView *backgroundView = [[UIView alloc] initWithFrame:cell.selectedBackgroundView.frame];
+    [backgroundView setBackgroundColor:[UIColor colorWithRed:0/255.f green:0/255.f blue:0/255.f alpha:0.3]];
+    [cell setSelectedBackgroundView:backgroundView];
+
     [cell.textLabel setText:[self.menuItems objectAtIndex:indexPath.row]];
+    cell.textLabel.textColor=[UIColor whiteColor];
+    cell.imageView.image=[UIImage imageNamed:[self.menuImageItems objectAtIndex:indexPath.row]];
 //    if(indexPath.row == 0){
 //        [cell setSelected:YES];
 //    }
