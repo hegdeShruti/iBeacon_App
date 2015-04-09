@@ -15,6 +15,7 @@
 #import "ProductDetailViewController.h"
 #import "OfferPopupViewController.h"
 #import "AppDelegate.h"
+#import "ProductDetailViewController.h"
 
 @interface OffersViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong) NSMutableArray *offersDataArray;
@@ -130,25 +131,25 @@ globals=[GlobalVariables getInstance];
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    ProductDetailViewController* test = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController" bundle:nil];
-//    //    test.view.frame = self.view.frame;
-//    NSLog(@"%@",self.navigationController);
-//    [self.navigationController pushViewController:test animated:YES];
-   // GlobalVariables * globals=[GlobalVariables getInstance];
-    
-    
-//    UIGraphicsBeginImageContext(CGSizeMake(self.view.frame.size.width, self.view.frame.size.height));
-//    [self.view drawViewHierarchyInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) afterScreenUpdates:YES];
-//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
     CGRect mainFrame = [UIScreen mainScreen].bounds;
     
-    UIGraphicsBeginImageContext(CGSizeMake(mainFrame.size.width, mainFrame.size.height));
-    [self.parentViewController.view drawViewHierarchyInRect:CGRectMake(0, 0, mainFrame.size.width, mainFrame.size.height) afterScreenUpdates:YES];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
+//    UIGraphicsBeginImageContext(CGSizeMake(mainFrame.size.width, mainFrame.size.height));
+//    [self.parentViewController.view drawViewHierarchyInRect:CGRectMake(0, 0, mainFrame.size.width, mainFrame.size.height) afterScreenUpdates:YES];
+//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    
+//    [globals showOfferPopUp:@"Camera" andMessage:@"Rush to avail offers" onController:self withImage:image];
+    Offers *offerObject= [[Offers alloc] initWithDictionary:[globals.offersDataArray objectAtIndex:indexPath.row]];
+    NSArray *productsArray = [globals.productDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(offerid == %@)", offerObject.offerId]];
+    Products *prodObject;
+    if([productsArray count]>0){
+        prodObject=[[Products alloc]  initWithDictionary:[productsArray objectAtIndex:0]];
+    }
     
-    [globals showOfferPopUp:@"Camera" andMessage:@"Rush to avail offers" onController:self withImage:image];
+    ProductDetailViewController* prodDetailVC = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController" bundle:nil];
+    prodDetailVC.product = prodObject;
+    
+    [[SlideNavigationController sharedInstance] pushViewController:prodDetailVC animated:YES];
     
 }
 /*

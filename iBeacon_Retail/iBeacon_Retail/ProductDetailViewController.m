@@ -157,7 +157,7 @@
     }
 }
 -(void)backToPreviousScreen{
-//    [self.navigationController popViewControllerAnimated:YES];
-    [[SlideNavigationController sharedInstance] popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
+   // [[SlideNavigationController sharedInstance] popToRootViewControllerAnimated:YES];
 }
 @end

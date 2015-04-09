@@ -88,7 +88,11 @@
         BOOL result = (state == UIApplicationStateActive);
         if(!result){
            
-            [container.mainScreenViewController loadOffersViewController:[[notification.userInfo valueForKey:@"offerId" ] intValue]];
+//            [container.mainScreenViewController loadOffersViewController:[[notification.userInfo valueForKey:@"offerId" ] intValue]];
+            
+            OffersViewController *offersView=[[OffersViewController alloc] initWithNibName:@"OffersViewController" bundle:[NSBundle mainBundle]];
+            [[SlideNavigationController sharedInstance] popToRootAndSwitchToViewController:offersView withSlideOutAnimation:NO andCompletion:nil];
+            
         }
         else{
             // show Alert
