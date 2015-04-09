@@ -28,7 +28,8 @@
     self.productImagesArray = [NSArray arrayWithObjects:@"1",@"2",@"3", nil];
     self.recommendationDataArray = [NSArray arrayWithObjects:@"1",@"2",@"3",@"4",@"5",@"6", nil];
     
-    self.scrollview.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, self.contentView.frame.size.height);
+    self.scrollview.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width,  self.contentView.frame.size.height);
+    
     [self setupPageControlForProductImagesCollectionView];
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -42,6 +43,8 @@
     UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     self.navigationItem.leftBarButtonItem = leftBarButtonItem;
     self.navigationItem.title = @"Product Details";
+    
+    [self loadProductDetails];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -159,5 +162,11 @@
 -(void)backToPreviousScreen{
     [self.navigationController popViewControllerAnimated:YES];
    // [[SlideNavigationController sharedInstance] popToRootViewControllerAnimated:YES];
+}
+
+-(void)loadProductDetails
+{
+    self.productName.text = self.product.prodName;
+    self.productDescription.text = self.product.prodDescription;
 }
 @end
