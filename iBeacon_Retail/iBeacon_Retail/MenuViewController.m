@@ -145,7 +145,7 @@ typedef enum : NSUInteger {
     }
 }
 
--(UIViewController*)loadStoreMap:(StoreLocationMapViewController*) vc{
+-(StoreLocationMapViewController*)loadStoreMap:(StoreLocationMapViewController*) vc{
     NSString *path = [[NSBundle mainBundle] pathForResource:@"location" ofType:@"json"];
     NSString *content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
     ESTLocation *location = [ESTLocationBuilder parseFromJSON:content];

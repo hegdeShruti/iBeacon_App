@@ -431,5 +431,9 @@
     return cons;
 }
 
-
+#pragma mark Slide view delegate method
+- (BOOL)slideNavigationControllerShouldDisplayLeftMenu
+{
+    return YES;
+}
 @end
