@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SlideNavigationController.h"
+#import "MenuViewController.h"
+#import "ProductViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
 -(void)showMainScreen;
 @end
 

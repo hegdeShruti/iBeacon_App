@@ -11,8 +11,9 @@
 #import "NetworkOperations.h"
 #import "GlobalVariables.h"
 #import "CartItem.h"
+#import "SlideNavigationController.h"
 
-@interface CartViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+@interface CartViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,SlideNavigationControllerDelegate>
 
 @property (nonatomic,weak) IBOutlet UITableView* tableview;
 @property (nonatomic,strong) NSArray* tableData;

@@ -60,7 +60,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+    [[SlideNavigationController sharedInstance].navigationBar.topItem setTitle:@"Store Map"];
     self.globals.isUserOnTheMapScreen = YES;
     [self.globals getOffers];
     
@@ -297,4 +297,9 @@
     
 }
 
+#pragma mark Slide view delegate method
+- (BOOL)slideNavigationControllerShouldDisplayLeftMenu
+{
+    return YES;
+}
 @end

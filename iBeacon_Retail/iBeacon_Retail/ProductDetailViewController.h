@@ -34,4 +34,5 @@
 - (IBAction)pageControlChanged:(UIPageControl *)sender;
 - (IBAction)sizeButtonSelected:(id)sender;
 - (IBAction)locateProduct:(UIButton *)sender;
+- (IBAction)addProductToCart:(id)sender;
 @end

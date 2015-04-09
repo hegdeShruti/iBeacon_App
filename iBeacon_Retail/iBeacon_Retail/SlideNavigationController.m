@@ -112,6 +112,11 @@ static SlideNavigationController *singletonInstance;
 	return self;
 }
 
+#pragma mark - For Status Bar
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
+
 - (void)setup
 {
 	if (singletonInstance)

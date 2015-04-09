@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SlideNavigationController.h"
 
 @interface LoginViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *userNameField;

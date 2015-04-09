@@ -10,7 +10,6 @@
 #import "ViewController.h"
 
 @interface ProductDetailViewController ()
-
 @end
 
 @implementation ProductDetailViewController
@@ -34,11 +33,25 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+//    [[SlideNavigationController sharedInstance].navigationBar.topItem setTitle:@""];
+  
+    /* Using custom button to add the WHITE back arrow to the leftbarbuttonitem */
+    UIButton *button  = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
+    [button setImage:[UIImage imageNamed:@"menu_icon.png"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(backToPreviousScreen) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.leftBarButtonItem = leftBarButtonItem;
+    self.navigationItem.title = @"Product Details";
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - For Status Bar
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
 
 /*
@@ -121,6 +134,12 @@
     [temp.productNavigationViewController popViewControllerAnimated:YES];
 }
 
+- (IBAction)addProductToCart:(id)sender {
+        NSDictionary* tempDic = [[NSDictionary alloc] initWithObjectsAndKeys:self.product,@"product",[NSNumber numberWithInteger:1],@"quantity", nil];
+        CartItem* cartItem = [[CartItem alloc] initWithDictionary:tempDic];
+        [GlobalVariables addItemToCart:cartItem];
+}
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     CGFloat pageWidth = self.productImageCollectionView.frame.size.width;
@@ -136,5 +155,9 @@
     }else{
         self.pageControl.hidden = YES;
     }
+}
+-(void)backToPreviousScreen{
+//    [self.navigationController popViewControllerAnimated:YES];
+    [[SlideNavigationController sharedInstance] popToRootViewControllerAnimated:YES];
 }
 @end

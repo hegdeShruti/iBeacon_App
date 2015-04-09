@@ -42,11 +42,13 @@ globals=[GlobalVariables getInstance];
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 }
-
--(void)viewWillAppear:(BOOL)animated {
+-(void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
+    [[SlideNavigationController sharedInstance].navigationBar.topItem setTitle:@"Offers"];
     [self.offersTableView reloadData];
 }
+
 // hardcoding section data for now
 -(void)filterOffersforSections{
     switch (self.offerId) {
@@ -161,5 +163,11 @@ globals=[GlobalVariables getInstance];
 
 - (IBAction)menuButtonCLicked:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark Slide view delegate method
+- (BOOL)slideNavigationControllerShouldDisplayLeftMenu
+{
+    return YES;
 }
 @end
