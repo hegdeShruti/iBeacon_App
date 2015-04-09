@@ -34,7 +34,8 @@
 //Used to set the intial screen of the app
 
 -(void)initialize {
-    self.mainScreenViewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+//    self.mainScreenViewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+    self.mainScreenViewController = [ViewController getInstance];
 }
 -(void) setupView
 

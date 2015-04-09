@@ -112,6 +112,8 @@ BOOL isKidsOfferShown = NO;
             self.globals.hasUsercrossedEntrance=YES;
             if(self.globals.hasUserEnteredTheStore){
                 notification.alertBody = @"Thank you for visiting Us";
+                NSDictionary *userInformation=[[NSDictionary alloc] initWithObjectsAndKeys:@"6",@"offerId",[GlobalVariables returnTitleForSection:6],@"offerDescription", nil];
+                notification.userInfo=userInformation;
                 self.globals.hasUserEnteredTheStore=NO;
                 self.globals.hasUserGotMenSectionOffers=NO;
                 self.globals.hasUserGotWOmenSectionOffers=NO;
@@ -131,14 +133,14 @@ BOOL isKidsOfferShown = NO;
         }
         else  if([region.identifier isEqualToString:@"ENTRYBEACON" ] && !self.globals.hasUserEnteredTheStore && self.globals.hasUsercrossedEntrance){
             notification.alertBody = @"Welcome to Tavant Store..Check for offers here";
-            NSDictionary *userInformation=[[NSDictionary alloc] initWithObjectsAndKeys:@"1",@"offerId", nil];
+            NSDictionary *userInformation=[[NSDictionary alloc] initWithObjectsAndKeys:@"1",@"offerId",[GlobalVariables returnTitleForSection:1],@"offerDescription", nil];
             notification.userInfo=userInformation;
             self.globals.hasUserEnteredTheStore=YES;
             self.globals.hasUserEntredEntryBeacon=YES;
         }
         else if([region.identifier isEqualToString:@"MENSECTIONBEACON"]&& !self.globals.hasUserGotMenSectionOffers &&  self.globals.hasUserEntredEntryBeacon ){
             notification.alertBody = @"Visit Men section to avail the exiting offers.";
-            NSDictionary *userInformation=[[NSDictionary alloc] initWithObjectsAndKeys:@"2",@"offerId", nil];
+            NSDictionary *userInformation=[[NSDictionary alloc] initWithObjectsAndKeys:@"2",@"offerId",[GlobalVariables returnTitleForSection:2],@"offerDescription", nil];
             notification.userInfo=userInformation;
             self.globals.hasUserGotMenSectionOffers=YES;
             
@@ -146,13 +148,13 @@ BOOL isKidsOfferShown = NO;
         }
         else if([region.identifier isEqualToString:@"WOMENSECTIONBEACON"]&& !self.globals.hasUserGotWOmenSectionOffers && self.globals.hasUserEntredEntryBeacon){
             notification.alertBody = @"Visit Women section to avail the exiting offers.";
-            NSDictionary *userInformation=[[NSDictionary alloc] initWithObjectsAndKeys:@"3",@"offerId", nil];
+            NSDictionary *userInformation=[[NSDictionary alloc] initWithObjectsAndKeys:@"3",@"offerId",[GlobalVariables returnTitleForSection:3],@"offerDescription", nil];
             notification.userInfo=userInformation;
             self.globals.hasUserGotWOmenSectionOffers=YES;
         }
         else if([region.identifier isEqualToString:@"KIDSECTIONBEACON"]&& !self.globals.hasUserGotKidSectionOffers && self.globals.hasUserEntredEntryBeacon){
             notification.alertBody = @"Visit Kids section to avail the exiting offers.";
-            NSDictionary *userInformation=[[NSDictionary alloc] initWithObjectsAndKeys:@"4",@"offerId", nil];
+            NSDictionary *userInformation=[[NSDictionary alloc] initWithObjectsAndKeys:@"4",@"offerId",[GlobalVariables returnTitleForSection:4],@"offerDescription", nil];
             notification.userInfo=userInformation;
             self.globals.hasUserGotKidSectionOffers=YES;
         }

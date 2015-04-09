@@ -29,8 +29,10 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [[SlideNavigationController sharedInstance].navigationBar.topItem setTitle:@"Cart"];
     [self getCartListing];
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -85,5 +87,9 @@
     // Pass the selected object to the new view controller.
 }
 */
-
+#pragma mark Slide view delegate method
+- (BOOL)slideNavigationControllerShouldDisplayLeftMenu
+{
+    return YES;
+}
 @end

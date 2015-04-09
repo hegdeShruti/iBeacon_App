@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6249" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6243"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="gTV-IL-0wX" customClass="ProductImageCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="giK-l8-Zhb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4yK-k7-0TQ">
+                                <rect key="frame" x="87" y="0.0" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="4yK-k7-0TQ" secondAttribute="height" multiplier="1:1" id="CKF-yf-z51"/>
+                                    <constraint firstAttribute="width" secondItem="4yK-k7-0TQ" secondAttribute="height" multiplier="1:1" id="U1z-Td-TO2"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="U1z-Td-TO2"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="4yK-k7-0TQ" secondAttribute="centerY" id="QaS-fG-wHy"/>
+                            <constraint firstItem="4yK-k7-0TQ" firstAttribute="width" secondItem="giK-l8-Zhb" secondAttribute="height" multiplier="1:1" id="Y7M-9q-fcd"/>
+                            <constraint firstItem="4yK-k7-0TQ" firstAttribute="width" secondItem="giK-l8-Zhb" secondAttribute="width" id="jT9-tU-bu2"/>
+                            <constraint firstAttribute="centerX" secondItem="4yK-k7-0TQ" secondAttribute="centerX" id="owN-WN-k50"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="jT9-tU-bu2"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="giK-l8-Zhb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="3jn-El-NE7"/>
+                <constraint firstAttribute="bottom" secondItem="giK-l8-Zhb" secondAttribute="bottom" id="QBK-9R-Vbr"/>
+                <constraint firstItem="giK-l8-Zhb" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ezZ-l5-BDs"/>
+                <constraint firstAttribute="trailing" secondItem="giK-l8-Zhb" secondAttribute="trailing" id="qF5-sW-fK1"/>
+            </constraints>
+            <connections>
+                <outlet property="prodImage" destination="4yK-k7-0TQ" id="tye-JS-ADe"/>
+            </connections>
+            <point key="canvasLocation" x="628" y="283"/>
+        </collectionViewCell>
+    </objects>
+</document>

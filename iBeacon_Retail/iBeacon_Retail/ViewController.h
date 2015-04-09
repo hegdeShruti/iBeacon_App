@@ -19,7 +19,7 @@
 #import "OffersViewController.h"
 #import "StoreLocationMapViewController.h"
 #import "CartViewController.h"
-//#import "ProductDetailViewController.h"
+#import "ProductDetailViewController.h"
 #import "GlobalVariables.h"
 
 
@@ -42,6 +42,7 @@
 @property (nonatomic,weak) IBOutlet UIView* contentView;
 @property (nonatomic,weak) id<MainScreeViewControllerDelegate> delegate;
 @property (nonatomic, strong) UINavigationController* productNavigationViewController;
+@property (nonatomic, strong) UINavigationController* offersNavigationCOntroller;
 @property (nonatomic, strong) ProductViewController* productsViewController;
 @property (nonatomic, strong) OffersViewController* offersViewController;
 @property (nonatomic,strong) CartViewController* cartViewController;
@@ -54,5 +55,6 @@
 -(void)loadCartViewController;
 -(void)loadMapViewController;
 
++(ViewController *)getInstance;
 
 @end

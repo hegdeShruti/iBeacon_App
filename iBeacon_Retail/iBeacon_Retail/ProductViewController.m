@@ -33,6 +33,7 @@
     if(![globals.productDataArray count]>0){
           [self getProductListing];
     }
+    
     /*
     for (UIView *subview in self.searchBar.subviews)
     {
@@ -50,7 +51,11 @@
   
 }
 
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationItem.title = @"Products";
+}
 
 -(void) getProductListing{
     self.networks=[[NetworkOperations alloc] init];
@@ -69,6 +74,11 @@
     }];
    // [self.prodCollectionView reloadData];
     
+}
+
+#pragma mark - For Status Bar
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -121,17 +131,20 @@
 {
     
     Products *prodObject= [[Products alloc] initWithDictionary:[globals.productDataArray objectAtIndex:indexPath.row]];
+//    NSDictionary* tempDic = [[NSDictionary alloc] initWithObjectsAndKeys:prodObject,@"product",[NSNumber numberWithInteger:1],@"quantity", nil];
+//    CartItem* cartItem = [[CartItem alloc] initWithDictionary:tempDic];
+//    [GlobalVariables addItemToCart:cartItem];
     
-    NSDictionary* tempDic = [[NSDictionary alloc] initWithObjectsAndKeys:prodObject,@"product",[NSNumber numberWithInteger:1],@"quantity", nil];
-    CartItem* cartItem = [[CartItem alloc] initWithDictionary:tempDic];
+    ProductDetailViewController* prodDetailVC = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController" bundle:nil];
+    prodDetailVC.product = prodObject;
     
-    [GlobalVariables addItemToCart:cartItem];
-    ProductDetailViewController* test = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController" bundle:nil];
+    [[SlideNavigationController sharedInstance] pushViewController:prodDetailVC animated:YES];
+//    [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:prodDetailVC withSlideOutAnimation:NO andCompletion:nil];
 //    test.view.frame = self.view.frame;
-    NSLog(@"%@",self.navigationController);
-    [self.navigationController pushViewController:test animated:YES];
-    [self.delegate setGesturesOn:NO];
-    [self.delegate toggleMenuButtonOnceProductDetailVCLoaded];
+//    NSLog(@"%@",self.navigationController);
+//    [self.navigationController pushViewController:prodDetailVC animated:YES];
+//    [self.delegate setGesturesOn:NO];
+//    [self.delegate toggleMenuButtonOnceProductDetailVCLoaded];
     
 //    [self testRetrieve];
 //    UIAlertView* addedAlert = [[UIAlertView alloc] initWithTitle:@"Added" message:@"product added" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -171,5 +184,11 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark Slide view delegate method
+- (BOOL)slideNavigationControllerShouldDisplayLeftMenu
+{
+    return YES;
+}
 
 @end

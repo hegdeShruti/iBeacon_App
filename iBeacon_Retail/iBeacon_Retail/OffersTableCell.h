@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *offerHeader;
 @property (weak, nonatomic) IBOutlet UILabel *offerDescription;
 @property (weak, nonatomic) IBOutlet UIImageView *offerImage;
+@property (weak, nonatomic) IBOutlet UILabel *offerInfo;
 
 @end

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MenuViewController.h"
 #import "ProductDetailViewController.h"
+#import "SlideNavigationController.h"
 
 @protocol productViewControllerDelegate <NSObject>
 
@@ -19,7 +20,7 @@
 @end
 
 
-@interface ProductViewController : UIViewController<UICollectionViewDataSource,MenuViewControllerDelegate,UICollectionViewDelegate,UISearchBarDelegate>
+@interface ProductViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate,UISearchBarDelegate, SlideNavigationControllerDelegate>
 
 @property (nonatomic,weak) id<productViewControllerDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UICollectionView *prodCollectionView;

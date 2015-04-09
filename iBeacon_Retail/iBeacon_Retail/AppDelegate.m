@@ -15,8 +15,10 @@
 #import "BeaconMonitoringModel.h"
 #import "GlobalVariables.h"
 #import "LoginViewController.h"
+
 #define ESTIMOTE_PROXIMITY_UUID             [[NSUUID alloc] initWithUUIDString:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"]
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define k_SlidePixelOffset 200;
 
 
 @interface AppDelegate ()<ESTBeaconManagerDelegate>
@@ -43,9 +45,10 @@
 //        [self.window.rootViewController.view addSubview:view];
 //    }
 
-    //[[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:230/255.0 green:143/255.0 blue:34/255.0 alpha:1.0]];
+    //[[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:74/255.0 green:170/255.0 blue:192/255.0 alpha:1.0]];
     beaconOperations=[[BeaconMonitoringModel alloc] init];
     [beaconOperations startBeaconOperations];
+    [self loadSlideNotifications];
     [self showMainScreen];
     return YES;
 }
@@ -97,8 +100,9 @@
             
                     [alert show];
             // On Okay show him to Offer
-//             GlobalVariables * globals=[GlobalVariables getInstance];
-//            [globals showOfferPopUp:notification.userInfo.description andMessage:notification.userInfo.description onController:self.window.rootViewController centerValue:self.window.rootViewController.view.center ];
+            
+             GlobalVariables * globals=[GlobalVariables getInstance];
+//            [globals showOfferPopUp:[notification.userInfo valueForKey:@"offerDescription"] andMessage:notification.userInfo.description onController:self.window.rootViewController  ];
             [self clearNotifications];
         }
      
@@ -118,18 +122,75 @@
      UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     if([defaults boolForKey:@"hasALreadyLoggedIn"]){
      
-        if (!containerViewController) {
-           
-            containerViewController = [storyboard instantiateViewControllerWithIdentifier:@"ContainerViewController"];
-            
-        }
-        self.window.rootViewController=containerViewController;
+//        if (!containerViewController) {
+//           
+//            containerViewController = [storyboard instantiateViewControllerWithIdentifier:@"ContainerViewController"];
+//            
+//        }
+//        [self loadSlideMenuInstance];
+        
+        self.window.rootViewController=[self loadSlideMenuInstance];
     }
     else{
         self.loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
         self.window.rootViewController=self.loginViewController;
     }
     
+}
+
+-(UINavigationController*)loadSlideMenuInstance{
+    
+        // this is where you define the view for the left panel
+        MenuViewController *menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+        ProductViewController* rootViewControllerForSlideMenu = [[ProductViewController alloc] initWithNibName:@"ProductViewController" bundle:nil];
+    
+//        menuViewController.view.tag = LEFT_PANEL_TAG;
+//        productsViewController.delegate=self;
+
+//        self.menuViewController.delegate = self.mainScreenViewController;
+//        // adds the menu view controller in the container view controller (self)
+//        [self.view addSubview:self.menuViewController.view];
+//        [self addChildViewController:self.menuViewController];
+//        [self.menuViewController didMoveToParentViewController:self];
+//        
+//        self.menuViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+//        NSIndexPath *indexPath=[NSIndexPath indexPathForRow:0 inSection:0];
+//        [self.menuViewController.tableview selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionBottom];
+    
+    SlideNavigationController *slideController = [[SlideNavigationController alloc] initWithRootViewController:rootViewControllerForSlideMenu];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:74/255.0 green:170/255.0 blue:192/255.0 alpha:1.0]];
+    [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys: [UIColor whiteColor],NSForegroundColorAttributeName, nil]];
+    
+    //slideController.rightMenu = menuViewController;
+    slideController.leftMenu = menuViewController;
+    slideController.menuRevealAnimationDuration = .18;
+    [SlideNavigationController sharedInstance].portraitSlideOffset = k_SlidePixelOffset;
+    
+    // Creating a custom bar button for right menu
+    UIButton *button  = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
+    [button setImage:[UIImage imageNamed:@"menu_icon.png"] forState:UIControlStateNormal];
+    [button addTarget:[SlideNavigationController sharedInstance] action:@selector(toggleLeftMenu) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    slideController.leftBarButtonItem = leftBarButtonItem;
+    return slideController;
+}
+
+-(void)loadSlideNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserverForName:SlideNavigationControllerDidClose object:nil queue:nil usingBlock:^(NSNotification *note) {
+        NSString *menu = note.userInfo[@"menu"];
+        NSLog(@"Closed %@", menu);
+    }];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:SlideNavigationControllerDidOpen object:nil queue:nil usingBlock:^(NSNotification *note) {
+        NSString *menu = note.userInfo[@"menu"];
+        NSLog(@"Opened %@", menu);
+    }];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:SlideNavigationControllerDidReveal object:nil queue:nil usingBlock:^(NSNotification *note) {
+        NSString *menu = note.userInfo[@"menu"];
+        NSLog(@"Revealed %@", menu);
+    }];
 }
 
 @end

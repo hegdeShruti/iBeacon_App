@@ -7,8 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SlideNavigationController.h"
+#import "LoginViewController.h"
+#import "ProductViewController.h"
+#import "OffersViewController.h"
+#import "CartViewController.h"
+#import "StoreLocationMapViewController.h"
+#import "AppDelegate.h"
 
-@protocol MenuViewControllerDelegate <NSObject>
+
+@protocol MenuViewControllerDelegate <NSObject,UIAlertViewDelegate>
 
 @optional
 - (void)menuItemSelected:(int) menuItem;

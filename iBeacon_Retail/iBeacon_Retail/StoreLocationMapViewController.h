@@ -10,8 +10,9 @@
 #import "ESTConfig.h"
 #import "ESTLocation.h"
 #import "ESTIndoorLocationView.h"
+#import "SlideNavigationController.h"
 
-@interface StoreLocationMapViewController : UIViewController<UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface StoreLocationMapViewController : UIViewController<UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource,SlideNavigationControllerDelegate>
 
 @property (nonatomic, strong) IBOutlet ESTIndoorLocationView *indoorLocationView;
 @property (nonatomic, retain) IBOutlet UITableView *autocompleteTableView;

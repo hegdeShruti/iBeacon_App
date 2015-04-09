@@ -10,6 +10,8 @@
 #import "OfferPopupMenu.h"
 #import "NetworkOperations.h"
 #import "CartItem.h"
+#import "OfferPopupViewController.h"
+
 
 @implementation GlobalVariables
 @synthesize hasUserEnteredTheStore , hasUserGotWOmenSectionOffers, hasUserGotKidSectionOffers,hasUserGotMenSectionOffers,isUserOnTheMapScreen;
@@ -47,11 +49,34 @@ static GlobalVariables *instance = nil;
     popup.delegate=delegate;
     [popup showMenuInParentViewController:self.storeLocationController withCenter:self.storeLocationController.indoorLocationView.center];
 }
-- (void)showOfferPopUp:(NSString *)inTitle andMessage:(NSString *)inMessage onController:(id) controller centrvalue:(CGPoint) refValue{
-    OfferPopupMenu *popup = [[OfferPopupMenu alloc]initWithTitle:inTitle message:inMessage];
-    popup.menuStyle = MenuStyleOval;
-    [popup showMenuInParentViewController:controller withCenter:refValue];
 
+// method that presents popup on existing screen on any beacon notification
+- (void)showOfferPopUp:(NSString *)inTitle andMessage:(NSString *)inMessage onController:(id) controller withImage:(UIImage *)sourceImage {
+  
+    OfferPopupViewController *offerPopup=[[OfferPopupViewController alloc] initWithNibName:@"OfferPopupViewController" bundle:[NSBundle mainBundle]];
+   
+    [controller presentViewController:offerPopup animated:YES completion:^{
+        // Adding blur effect on the snapshot taken
+        offerPopup.backgroundImage.image=sourceImage;
+      
+        UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+        UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
+        effectView.frame = offerPopup.backgroundImage.bounds;
+        effectView.alpha=0.95;
+        [offerPopup.backgroundImage addSubview:effectView];
+        
+    }];
+    
+    
+    
+}
+- (void)blurWithCoreImage:(UIImageView *)baseImageView withSource:(UIImage *)sourceImage
+{
+    UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
+    effectView.frame = baseImageView.bounds;
+    [baseImageView addSubview:effectView];
+   
 }
 
 +(NSString *)returnTitleForRegion:(RegionIdentifier)inRegion{
