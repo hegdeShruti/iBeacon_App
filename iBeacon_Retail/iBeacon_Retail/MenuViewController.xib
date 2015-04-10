@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="40h-7B-7fV">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_blur" translatesAutoresizingMaskIntoConstraints="NO" id="40h-7B-7fV">
                     <rect key="frame" x="0.0" y="0.0" width="212" height="736"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="212" id="oTM-Aa-NK6"/>
@@ -50,4 +50,7 @@
             <point key="canvasLocation" x="480" y="387"/>
         </view>
     </objects>
+    <resources>
+        <image name="bg_blur" width="320" height="568"/>
+    </resources>
 </document>

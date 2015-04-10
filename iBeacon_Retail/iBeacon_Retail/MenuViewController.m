@@ -78,12 +78,12 @@ typedef enum : NSUInteger {
     
     
     [self.backgroundView setImage:[UIImage imageNamed:@"bg_blur.png"]];
-    [_backgroundView setContentMode:UIViewContentModeLeft];
-    UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
-    effectView.frame = self.backgroundView.bounds;
-    effectView.alpha=1.0;
-     [self.backgroundView addSubview:effectView];
+//    [_backgroundView setContentMode:UIViewContentModeLeft];
+//    UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+//    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
+//    effectView.frame = self.backgroundView.bounds;
+//    effectView.alpha=1.0;
+//     [self.backgroundView addSubview:effectView];
    
 
 }
