@@ -8,66 +8,22 @@
             <connections>
                 <outlet property="backgroundView" destination="40h-7B-7fV" id="MJ2-Ah-x2J"/>
                 <outlet property="tableview" destination="scO-6k-Efe" id="Z0D-VW-GfG"/>
-                <outlet property="userIcon" destination="b02-14-YSW" id="ua4-Xu-HCV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="40h-7B-7fV">
-                    <rect key="frame" x="0.0" y="0.0" width="212" height="600"/>
+                    <rect key="frame" x="0.0" y="0.0" width="212" height="736"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="212" id="oTM-Aa-NK6"/>
                     </constraints>
                 </imageView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JtS-dr-t7B">
-                    <rect key="frame" x="0.0" y="0.0" width="212" height="137"/>
-                    <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3" translatesAutoresizingMaskIntoConstraints="NO" id="b02-14-YSW">
-                            <rect key="frame" x="76" y="23" width="60" height="60"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="60" id="KED-u9-HpD"/>
-                                <constraint firstAttribute="width" constant="60" id="WVs-9Q-cD2"/>
-                            </constraints>
-                        </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shruti.hegde@tavant.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7n-YK-bxz">
-                            <rect key="frame" x="0.0" y="109" width="212" height="21"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="21" id="PaE-4I-dDs"/>
-                                <constraint firstAttribute="width" constant="212" id="ejT-Qq-soV"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logged In as" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ydd-kn-hzU">
-                            <rect key="frame" x="0.0" y="86" width="212" height="21"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="212" id="Ura-mU-OLh"/>
-                                <constraint firstAttribute="height" constant="21" id="xok-Sp-H2c"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="212" id="9E0-zY-cYL"/>
-                        <constraint firstItem="T7n-YK-bxz" firstAttribute="top" secondItem="ydd-kn-hzU" secondAttribute="bottom" constant="2" id="BcE-3y-qwp"/>
-                        <constraint firstItem="ydd-kn-hzU" firstAttribute="leading" secondItem="JtS-dr-t7B" secondAttribute="leading" id="CU5-lW-K5G"/>
-                        <constraint firstItem="T7n-YK-bxz" firstAttribute="leading" secondItem="JtS-dr-t7B" secondAttribute="leading" id="Juy-gn-ejm"/>
-                        <constraint firstItem="b02-14-YSW" firstAttribute="top" secondItem="JtS-dr-t7B" secondAttribute="top" constant="23" id="bT1-9g-kzg"/>
-                        <constraint firstAttribute="centerX" secondItem="b02-14-YSW" secondAttribute="centerX" id="i3d-ua-LpW"/>
-                        <constraint firstItem="ydd-kn-hzU" firstAttribute="top" secondItem="b02-14-YSW" secondAttribute="bottom" constant="3" id="sm5-kY-mki"/>
-                        <constraint firstAttribute="height" constant="137" id="vwS-xK-Kf4"/>
-                    </constraints>
-                </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="scO-6k-Efe">
-                    <rect key="frame" x="0.0" y="137" width="212" height="460"/>
+                    <rect key="frame" x="0.0" y="0.0" width="212" height="736"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="212" id="t90-rr-qUY"/>
@@ -83,19 +39,15 @@
             <color key="backgroundColor" red="0.3803921569" green="0.6588235294" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="40h-7B-7fV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="9BM-ij-6OZ"/>
-                <constraint firstItem="scO-6k-Efe" firstAttribute="top" secondItem="JtS-dr-t7B" secondAttribute="bottom" id="ReK-CM-Oai"/>
+                <constraint firstItem="scO-6k-Efe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Hn8-a1-A9N"/>
                 <constraint firstAttribute="bottom" secondItem="40h-7B-7fV" secondAttribute="bottom" id="UT2-sh-9R6"/>
                 <constraint firstItem="40h-7B-7fV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="beJ-aD-abC"/>
                 <constraint firstItem="scO-6k-Efe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="h4B-Kv-JSS"/>
-                <constraint firstItem="JtS-dr-t7B" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iQy-uh-2dJ"/>
-                <constraint firstAttribute="bottom" secondItem="scO-6k-Efe" secondAttribute="bottom" constant="3" id="pEB-g9-xjd"/>
-                <constraint firstItem="JtS-dr-t7B" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="svH-4l-7eU"/>
+                <constraint firstAttribute="bottom" secondItem="scO-6k-Efe" secondAttribute="bottom" id="pEB-g9-xjd"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
             <point key="canvasLocation" x="480" y="387"/>
         </view>
     </objects>
-    <resources>
-        <image name="3" width="200" height="200"/>
-    </resources>
 </document>

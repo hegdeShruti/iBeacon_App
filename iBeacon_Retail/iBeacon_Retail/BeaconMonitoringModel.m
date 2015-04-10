@@ -132,6 +132,7 @@ BOOL isKidsOfferShown = NO;
             
         }
         else  if([region.identifier isEqualToString:@"ENTRYBEACON" ] && !self.globals.hasUserEnteredTheStore && self.globals.hasUsercrossedEntrance){
+//            else  if([region.identifier isEqualToString:@"ENTRYBEACON" ] ){
             notification.alertBody = @"Welcome to Tavant Store..Check for offers here";
             NSDictionary *userInformation=[[NSDictionary alloc] initWithObjectsAndKeys:@"1",@"offerId",[GlobalVariables returnTitleForSection:1],@"offerDescription", nil];
             notification.userInfo=userInformation;

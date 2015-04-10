@@ -54,11 +54,12 @@ static GlobalVariables *instance = nil;
 - (void)showOfferPopUp:(NSString *)inTitle andMessage:(NSString *)inMessage onController:(id) controller withImage:(UIImage *)sourceImage {
   
     OfferPopupViewController *offerPopup=[[OfferPopupViewController alloc] initWithNibName:@"OfferPopupViewController" bundle:[NSBundle mainBundle]];
+
    
     [controller presentViewController:offerPopup animated:YES completion:^{
         // Adding blur effect on the snapshot taken
         offerPopup.backgroundImage.image=sourceImage;
-      
+       offerPopup.offerHeader.text=inTitle;
         UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
         UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
         effectView.frame = offerPopup.backgroundImage.bounds;

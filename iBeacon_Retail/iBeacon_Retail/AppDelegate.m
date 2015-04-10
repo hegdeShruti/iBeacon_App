@@ -82,29 +82,24 @@
         
         NSLog(@" offer id is%@",notification.userInfo.description);
       
-        ContainerViewController *container = (ContainerViewController *)[self.window rootViewController];
+        // when app in backgroud and notification from beacon arrives then open product details screen
 
         UIApplicationState state = [UIApplication sharedApplication].applicationState;
         BOOL result = (state == UIApplicationStateActive);
         if(!result){
-           
-//            [container.mainScreenViewController loadOffersViewController:[[notification.userInfo valueForKey:@"offerId" ] intValue]];
             
             OffersViewController *offersView=[[OffersViewController alloc] initWithNibName:@"OffersViewController" bundle:[NSBundle mainBundle]];
              offersView.offerId=[[notification.userInfo valueForKey:@"offerId" ] intValue];
-            [[SlideNavigationController sharedInstance] popToRootAndSwitchToViewController:offersView withSlideOutAnimation:NO andCompletion:nil];
+            
+            ProductDetailViewController* prodDetailVC = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController" bundle:nil];
+            [[SlideNavigationController sharedInstance] popToRootAndSwitchToViewController:prodDetailVC withSlideOutAnimation:NO andCompletion:nil];
+        
             
         }
         else{
-            // show Alert
-//                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"offer Alert"
-//                                                                    message:notification.userInfo.description
-//                                                                   delegate:nil
-//                                                          cancelButtonTitle:@"OK"
-//                                                          otherButtonTitles: nil];
-//            
-//                    [alert show];
-            // On Okay show him to Offer
+            // if app in use and beacon notification arrives then remove it from widget and open up the offer popup screen
+           
+            [self clearNotifications];
             
              GlobalVariables * globals=[GlobalVariables getInstance];
             CGRect mainFrame = [UIScreen mainScreen].bounds;
@@ -113,8 +108,8 @@
                 UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
                 UIGraphicsEndImageContext();
             
-                [globals showOfferPopUp:@"Camera" andMessage:@"Rush to avail offers" onController:self withImage:image];
-            [self clearNotifications];
+                [globals showOfferPopUp:[notification.userInfo valueForKey:@"offerDescription" ] andMessage:[notification.userInfo valueForKey:@"offerDescription" ] onController:self.window.rootViewController withImage:image];
+            
         }
      
 }

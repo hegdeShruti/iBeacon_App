@@ -41,8 +41,33 @@ typedef enum : NSUInteger {
     
     NSIndexPath *indexPath = [self.tableview indexPathForSelectedRow];
     [self.tableview selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionMiddle];
+   _tableHeader.frame=CGRectMake(0, 0, self.tableview.frame.size.width , 162);
+   
+    self.tableview.tableHeaderView = self.headerView;
+    
+//    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableview.frame.size.width, 162)];
+//    headerView.backgroundColor = [UIColor redColor];
+//    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(XXX, YYY, XXX, YYY)];
+//    [headerView addSubview:imageView];
+//    UILabel *labelView = [[UILabel alloc] initWithFrame:CGRectMake(XXX, YYY, XXX, YYY)];
+//    [headerView addSubview:labelView];
+ //   self.tableview.tableHeaderView = headerView;
+    
+    
  //   [self setBlurredBackground];
     
+}
+
+-(UIView *) headerView {
+    if (!_headerView) {
+       _headerView= [[[NSBundle mainBundle] loadNibNamed:@"CustomHeaderView" owner:self options:nil]objectAtIndex:0 ];
+    }
+   
+    _headerView.iconImage.layer.cornerRadius=_headerView.iconImage.frame.size.width/2;
+     _headerView.iconImage.clipsToBounds=YES;
+//     _headerView.iconImage.layer.borderWidth = 1.0f;
+//     _headerView.iconImage.layer.borderColor = [UIColor whiteColor].CGColor;
+    return _headerView;
 }
 
 -(void)viewDidLayoutSubviews {
@@ -59,10 +84,7 @@ typedef enum : NSUInteger {
     effectView.frame = self.backgroundView.bounds;
     effectView.alpha=1.0;
      [self.backgroundView addSubview:effectView];
-    self.userIcon.layer.cornerRadius=self.userIcon.frame.size.width/2;
-    self.userIcon.clipsToBounds=YES;
-    self.userIcon.layer.borderWidth = 1.0f;
-    self.userIcon.layer.borderColor = [UIColor whiteColor].CGColor;
+   
 
 }
 
@@ -96,7 +118,7 @@ typedef enum : NSUInteger {
     return [self.menuItems count];
 }
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 44.0;
+    return 55.0;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

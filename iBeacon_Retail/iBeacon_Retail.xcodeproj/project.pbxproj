@@ -101,6 +101,8 @@
 		818849BB1AB98B14005A06BF /* productGridCellCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 818849B91AB98B14005A06BF /* productGridCellCollectionViewCell.m */; };
 		818849BC1AB98B14005A06BF /* productGridCellCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 818849BA1AB98B14005A06BF /* productGridCellCollectionViewCell.xib */; };
 		81948B4B1AB6AA9C002A6FE6 /* Products.m in Sources */ = {isa = PBXBuildFile; fileRef = 81948B4A1AB6AA9C002A6FE6 /* Products.m */; };
+		81A633DC1AD79A25002F927F /* CustomHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81A633DB1AD79A25002F927F /* CustomHeaderView.xib */; };
+		81A633DF1AD79BC0002F927F /* CustomHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A633DE1AD79BC0002F927F /* CustomHeaderView.m */; };
 		81AE088E1AA71F1900CD7F75 /* OffersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE088C1AA71F1900CD7F75 /* OffersViewController.m */; };
 		81AE088F1AA71F1900CD7F75 /* OffersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81AE088D1AA71F1900CD7F75 /* OffersViewController.xib */; };
 		81AE08931AA720D200CD7F75 /* OffersTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE08911AA720D200CD7F75 /* OffersTableCell.m */; };
@@ -285,6 +287,9 @@
 		818849BA1AB98B14005A06BF /* productGridCellCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = productGridCellCollectionViewCell.xib; sourceTree = "<group>"; };
 		81948B491AB6AA9C002A6FE6 /* Products.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Products.h; sourceTree = "<group>"; };
 		81948B4A1AB6AA9C002A6FE6 /* Products.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Products.m; sourceTree = "<group>"; };
+		81A633DB1AD79A25002F927F /* CustomHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomHeaderView.xib; sourceTree = "<group>"; };
+		81A633DD1AD79BC0002F927F /* CustomHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomHeaderView.h; sourceTree = "<group>"; };
+		81A633DE1AD79BC0002F927F /* CustomHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomHeaderView.m; sourceTree = "<group>"; };
 		81AE088B1AA71F1900CD7F75 /* OffersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OffersViewController.h; sourceTree = "<group>"; };
 		81AE088C1AA71F1900CD7F75 /* OffersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OffersViewController.m; sourceTree = "<group>"; };
 		81AE088D1AA71F1900CD7F75 /* OffersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OffersViewController.xib; sourceTree = "<group>"; };
@@ -378,6 +383,9 @@
 				81AE08961AA7672200CD7F75 /* ContainerViewController.m */,
 				81AE08971AA7672200CD7F75 /* MenuViewController.h */,
 				81AE08981AA7672200CD7F75 /* MenuViewController.m */,
+				81A633DB1AD79A25002F927F /* CustomHeaderView.xib */,
+				81A633DD1AD79BC0002F927F /* CustomHeaderView.h */,
+				81A633DE1AD79BC0002F927F /* CustomHeaderView.m */,
 				81AE08991AA7672200CD7F75 /* MenuViewController.xib */,
 				0AF77D761AA0363800B57B8C /* Main.storyboard */,
 				B19CB4901AB95998006C7575 /* Images */,
@@ -847,6 +855,7 @@
 				45849E9F1AD4F2FC00FF7A1F /* menu-button.png in Resources */,
 				0AF77D781AA0363800B57B8C /* Main.storyboard in Resources */,
 				45526A371AB048B300E6F7C3 /* beaconBlueberrySmall@2x.png in Resources */,
+				81A633DC1AD79A25002F927F /* CustomHeaderView.xib in Resources */,
 				B17C01A31AB9B35C00542233 /* Test_Kid'sSection.png in Resources */,
 				45526A431AB048B300E6F7C3 /* screen8_beacon_blue@2x.png in Resources */,
 				45526A3D1AB048B300E6F7C3 /* beaconmint@2x.png in Resources */,
@@ -926,6 +935,7 @@
 				45849E9A1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorFade.m in Sources */,
 				45DA40771AC13E1F00D86C8A /* CartViewController.m in Sources */,
 				45849E9C1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,
+				81A633DF1AD79BC0002F927F /* CustomHeaderView.m in Sources */,
 				456167811AD3B38F007F2396 /* ProductImageCollectionViewCell.m in Sources */,
 				81AF71091AAF1AD800B350B6 /* BeaconMonitoringModel.m in Sources */,
 				81AE089A1AA7672200CD7F75 /* ContainerViewController.m in Sources */,
