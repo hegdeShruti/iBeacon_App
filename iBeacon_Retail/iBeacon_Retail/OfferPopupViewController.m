@@ -7,11 +7,16 @@
 //
 
 #import "OfferPopupViewController.h"
+#import "ProductDetailViewController.h"
+#import "SlideNavigationController.h"
+
 
 @interface OfferPopupViewController ()
 @property(nonatomic,strong) NSString *offerHeaderStr;
 @property(nonatomic,strong) NSString *prodName;
 @property(nonatomic,strong) NSString *OfferDetails;
+
+- (IBAction)openProductDetails:(id)sender;
 
 @end
 
@@ -33,6 +38,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+/*
+ 
+ */
 
 /*
 #pragma mark - Navigation
@@ -43,9 +51,17 @@
     // Pass the selected object to the new view controller.
 }
 */
-
+// dismiss the popup screen on click of gray area
 - (IBAction)hidePopup:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 
+}
+
+// opening product  details screen on click of product image
+- (IBAction)openProductDetails:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    ProductDetailViewController* prodDetailVC = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController" bundle:nil];
+    [[SlideNavigationController sharedInstance] popToRootAndSwitchToViewController:prodDetailVC withSlideOutAnimation:NO andCompletion:nil];
+    
 }
 @end

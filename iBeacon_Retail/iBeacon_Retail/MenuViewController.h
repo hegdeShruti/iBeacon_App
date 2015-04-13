@@ -14,6 +14,7 @@
 #import "CartViewController.h"
 #import "StoreLocationMapViewController.h"
 #import "AppDelegate.h"
+#import "CustomHeaderView.h"
 
 
 @protocol MenuViewControllerDelegate <NSObject,UIAlertViewDelegate>
@@ -32,8 +33,12 @@ typedef enum {
 } menuIndexes;
 
 @interface MenuViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
-
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundView;
+@property (weak, nonatomic) IBOutlet UIImageView *userIcon;
+@property (weak, nonatomic) IBOutlet UIView *tableHeader;
+@property(nonatomic,strong) CustomHeaderView *headerView;
 @property (nonatomic,strong) NSArray* menuItems;
+@property (nonatomic,strong) NSArray* menuImageItems;
 @property (nonatomic,weak) IBOutlet UITableView* tableview;
 @property (nonatomic,weak) id<MenuViewControllerDelegate> delegate;
 

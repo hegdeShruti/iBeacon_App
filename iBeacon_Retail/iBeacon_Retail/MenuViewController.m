@@ -36,11 +36,56 @@ typedef enum : NSUInteger {
     // Do any additional setup after loading the view from its nib.
     
     self.menuItems = [NSArray arrayWithObjects:@"Products",@"Offers",@"Cart",@"Store Map",@"Logout", nil];
+    self.menuImageItems = [NSArray arrayWithObjects:@"product.png",@"offer.png",@"Cart.png",@"Map.png",@"Logout.png", nil];
     [self.tableview registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     
     NSIndexPath *indexPath = [self.tableview indexPathForSelectedRow];
     [self.tableview selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionMiddle];
+   _tableHeader.frame=CGRectMake(0, 0, self.tableview.frame.size.width , 162);
+   
+    self.tableview.tableHeaderView = self.headerView;
     
+//    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableview.frame.size.width, 162)];
+//    headerView.backgroundColor = [UIColor redColor];
+//    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(XXX, YYY, XXX, YYY)];
+//    [headerView addSubview:imageView];
+//    UILabel *labelView = [[UILabel alloc] initWithFrame:CGRectMake(XXX, YYY, XXX, YYY)];
+//    [headerView addSubview:labelView];
+ //   self.tableview.tableHeaderView = headerView;
+    
+    
+ //   [self setBlurredBackground];
+    
+}
+
+-(UIView *) headerView {
+    if (!_headerView) {
+       _headerView= [[[NSBundle mainBundle] loadNibNamed:@"CustomHeaderView" owner:self options:nil]objectAtIndex:0 ];
+    }
+   
+    _headerView.iconImage.layer.cornerRadius=_headerView.iconImage.frame.size.width/2;
+     _headerView.iconImage.clipsToBounds=YES;
+//     _headerView.iconImage.layer.borderWidth = 1.0f;
+//     _headerView.iconImage.layer.borderColor = [UIColor whiteColor].CGColor;
+    return _headerView;
+}
+
+-(void)viewDidLayoutSubviews {
+    [self setBlurredBackground];
+}
+
+-(void)setBlurredBackground{
+    
+    
+    [self.backgroundView setImage:[UIImage imageNamed:@"bg_blur.png"]];
+//    [_backgroundView setContentMode:UIViewContentModeLeft];
+//    UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+//    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
+//    effectView.frame = self.backgroundView.bounds;
+//    effectView.alpha=1.0;
+//     [self.backgroundView addSubview:effectView];
+   
+
 }
 
 #pragma mark - For Status Bar
@@ -72,12 +117,23 @@ typedef enum : NSUInteger {
 {
     return [self.menuItems count];
 }
+-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 55.0;
+}
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    cell.backgroundColor = [UIColor clearColor];
+
+    UIView *backgroundView = [[UIView alloc] initWithFrame:cell.selectedBackgroundView.frame];
+    [backgroundView setBackgroundColor:[UIColor colorWithRed:0/255.f green:0/255.f blue:0/255.f alpha:0.3]];
+    [cell setSelectedBackgroundView:backgroundView];
+
     [cell.textLabel setText:[self.menuItems objectAtIndex:indexPath.row]];
+    cell.textLabel.textColor=[UIColor whiteColor];
+    cell.imageView.image=[UIImage imageNamed:[self.menuImageItems objectAtIndex:indexPath.row]];
 //    if(indexPath.row == 0){
 //        [cell setSelected:YES];
 //    }

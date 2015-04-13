@@ -28,20 +28,14 @@
     self.productImagesArray = [NSArray arrayWithObjects:@"1",@"2",@"3", nil];
     self.recommendationDataArray = [NSArray arrayWithObjects:@"1",@"2",@"3",@"4",@"5",@"6", nil];
     
-    self.scrollview.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width,  self.contentView.frame.size.height);
+    //self.scrollview.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width,  self.contentView.frame.size.height);
     
     [self setupPageControlForProductImagesCollectionView];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-//    [[SlideNavigationController sharedInstance].navigationBar.topItem setTitle:@""];
-  
-    /* Using custom button to add the WHITE back arrow to the leftbarbuttonitem */
-    UIButton *button  = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
-    [button setImage:[UIImage imageNamed:@"menu_icon.png"] forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(backToPreviousScreen) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
-    self.navigationItem.leftBarButtonItem = leftBarButtonItem;
+    
+    [SlideNavigationController sharedInstance].navigationBar.tintColor = [UIColor whiteColor];
     self.navigationItem.title = @"Product Details";
     
     [self loadProductDetails];

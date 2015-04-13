@@ -18,7 +18,7 @@
 
 #define ESTIMOTE_PROXIMITY_UUID             [[NSUUID alloc] initWithUUIDString:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"]
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
-#define k_SlidePixelOffset 200;
+#define k_SlidePixelOffset 212;
 
 
 @interface AppDelegate ()<ESTBeaconManagerDelegate>
@@ -82,32 +82,34 @@
         
         NSLog(@" offer id is%@",notification.userInfo.description);
       
-        ContainerViewController *container = (ContainerViewController *)[self.window rootViewController];
+        // when app in backgroud and notification from beacon arrives then open product details screen
 
         UIApplicationState state = [UIApplication sharedApplication].applicationState;
         BOOL result = (state == UIApplicationStateActive);
         if(!result){
-           
-//            [container.mainScreenViewController loadOffersViewController:[[notification.userInfo valueForKey:@"offerId" ] intValue]];
             
             OffersViewController *offersView=[[OffersViewController alloc] initWithNibName:@"OffersViewController" bundle:[NSBundle mainBundle]];
-            [[SlideNavigationController sharedInstance] popToRootAndSwitchToViewController:offersView withSlideOutAnimation:NO andCompletion:nil];
+             offersView.offerId=[[notification.userInfo valueForKey:@"offerId" ] intValue];
+            
+            ProductDetailViewController* prodDetailVC = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController" bundle:nil];
+            [[SlideNavigationController sharedInstance] popToRootAndSwitchToViewController:prodDetailVC withSlideOutAnimation:NO andCompletion:nil];
+        
             
         }
         else{
-            // show Alert
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"offer Alert"
-                                                                    message:notification.userInfo.description
-                                                                   delegate:nil
-                                                          cancelButtonTitle:@"OK"
-                                                          otherButtonTitles: nil];
-            
-                    [alert show];
-            // On Okay show him to Offer
+            // if app in use and beacon notification arrives then remove it from widget and open up the offer popup screen
+           
+            [self clearNotifications];
             
              GlobalVariables * globals=[GlobalVariables getInstance];
-//            [globals showOfferPopUp:[notification.userInfo valueForKey:@"offerDescription"] andMessage:notification.userInfo.description onController:self.window.rootViewController  ];
-            [self clearNotifications];
+            CGRect mainFrame = [UIScreen mainScreen].bounds;
+                UIGraphicsBeginImageContext(CGSizeMake(mainFrame.size.width, mainFrame.size.height));
+                [self.window.rootViewController.view drawViewHierarchyInRect:CGRectMake(0, 0, mainFrame.size.width, mainFrame.size.height) afterScreenUpdates:YES];
+                UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+                UIGraphicsEndImageContext();
+            
+                [globals showOfferPopUp:[notification.userInfo valueForKey:@"offerDescription" ] andMessage:[notification.userInfo valueForKey:@"offerDescription" ] onController:self.window.rootViewController withImage:image];
+            
         }
      
 }
@@ -169,9 +171,13 @@
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys: [UIColor whiteColor],NSForegroundColorAttributeName, nil]];
     
     //slideController.rightMenu = menuViewController;
+    
+    CGRect frame=[[UIScreen mainScreen]bounds ];
+    
     slideController.leftMenu = menuViewController;
     slideController.menuRevealAnimationDuration = .18;
-    [SlideNavigationController sharedInstance].portraitSlideOffset = k_SlidePixelOffset;
+    [SlideNavigationController sharedInstance].portraitSlideOffset =frame.size.width-k_SlidePixelOffset;
+    
     
     // Creating a custom bar button for right menu
     UIButton *button  = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
