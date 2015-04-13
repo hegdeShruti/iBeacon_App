@@ -114,7 +114,8 @@
             sectionLogo.tag=[GlobalVariables getSectionId:beacon.macAddress]+OFFER_TAG_OFFSET;
             sectionLogo.tagNo=[self getTag:beacon.position];
             [tagList setValue:[NSNumber numberWithInt:sectionLogo.tagNo] forKey:[NSString stringWithFormat:@"%ld",sectionLogo.tag-1000]];
-            [sectionLogo setBackgroundImage:[UIImage imageNamed:@"map-pin-red.png"] forState: UIControlStateNormal] ;
+//            if(sectionLogo.tagNo == 104)
+//                [sectionLogo setBackgroundImage:[UIImage imageNamed:@"map-pin-red.png"] forState: UIControlStateNormal];
             [sectionLogo addTarget:self action:@selector(showOffer:) forControlEvents:UIControlEventTouchUpInside];
             [self.indoorLocationView drawObject:sectionLogo withPosition:[ESTPoint pointWithX:beacon.position.x y:beacon.position.y]];
         }
@@ -135,11 +136,9 @@
                @[@0,@1,@0,@1,@1,@1,@1,@0,@1,@0], //7
                @[@0,@1,@1,@0,@1,@0,@0,@0,@1,@0], //8
                @[@0,@1,@1,@1,@1,@1,@1,@1,@1,@0], //9
-               @[@0,@0,@0,@1,@0,@0,@0,@0,@0,@0]//14
+               @[@0,@0,@0,@1,@0,@0,@0,@0,@0,@0]  //14
                ];
     
-    // set default field size
-   // CGFloat size = 45/2;//self.indoorLocationView.frame.size.width/[_plane[0] count];
     _frameWidthFactor = self.indoorLocationView.frame.size.width/[_plane[0] count];
     _frameHeightFactor = self.indoorLocationView.frame.size.height/[_plane count];
     
@@ -159,7 +158,7 @@
             if ([num integerValue] == 0) {
                 [l setTitle:@"X" forState:UIControlStateNormal];
                 l.backgroundColor = [UIColor clearColor];
-//                [l setTitleColor:[UIColor clearColor] forState:UIControlStateNormal];
+                [l setTitleColor:[UIColor clearColor] forState:UIControlStateNormal];
             } else {
                 l.backgroundColor = [UIColor clearColor];
 
@@ -177,7 +176,7 @@
             //[l addTarget:self action:@selector(actionField:) forControlEvents:UIControlEventTouchUpInside];
             [self.indoorLocationView addSubview:l];
             
-            // add path path point
+            // add path point
             AOPathPoint *p = [[AOPathPoint alloc] initWithTag:l.tag];
             [_pathManager.pointList addObject:p];
         }
@@ -190,27 +189,18 @@
         [connectionList enumerateObjectsUsingBlock:^(UIButton *b, NSUInteger idx, BOOL *stop) {
             AOPathConnection *c = [[AOPathConnection alloc] init];
             if (p.tag == 76) {
-                // its very hard to get on this field
                 c.weight = 10;
             }
             c.point = [_pathManager getPathPointWithTag:b.tag];
             [p addConnection:c];
         }];
     }
-//
-//    _startField = (UIButton*)[self.indoorLocationView viewWithTag:133];
-//    _startField.backgroundColor = [UIColor greenColor];
-    
-//    _person = [[UIImageView alloc] initWithFrame:_startField.frame];
-//    _person.contentMode = UIViewContentModeScaleAspectFit;
-//    _person.image = [UIImage imageNamed:@"person.png"];
-//    [self.indoorLocationView addSubview:_person];
     
 }
 - (void)showOffer:(id)sender{
     
     NSLog(@"offer  %@",self.globals.offersDataArray);
-    [((OfferButton *)sender)setBackgroundImage:[UIImage imageNamed:@"map-pin-green.png"] forState: UIControlStateNormal] ;
+    [((OfferButton *)sender)setBackgroundImage:[UIImage imageNamed:@"map-pin-green.png"] forState: UIControlStateNormal];
     SectionIdentifier section=(((OfferButton *)sender).tag)- OFFER_TAG_OFFSET
     ((OfferButton *)sender).secTitle=[GlobalVariables returnTitleForSection:section];
     ((OfferButton *)sender).offerMsg=@"You have 50% off on selected items";
@@ -233,8 +223,7 @@
             
         }
     }
-//    [self.globals showOfferPopUpWithTitle:((OfferButton *)sender).secTitle message:((OfferButton *)sender).offerMsg andDelegate:self];
-    //    ((OfferButton *)sender).offerMsg=@"You have 50% off on selected items";
+    [self.globals showOfferPopUpWithTitle:((OfferButton *)sender).secTitle message:((OfferButton *)sender).offerMsg andDelegate:self];
     
 }
 
@@ -257,8 +246,6 @@
                    inLocation:(ESTLocation *)location
 {
     [self.indoorLocationView updatePosition:position];
-    NSLog(@"Normal POsition %f,%f",position.x,position.y);
-//    NSLog(@"POsition is %f,%f", fabsf(ceilf(-4.5) -5),ceilf(-4.5) +5);
     
     float positionX,positionY;
     positionX = ceilf(position.y);
@@ -267,11 +254,9 @@
     positionX=positionX > 0 ?positionX-4:positionX-5;
     positionX=fabsf(positionX);
     positionY=positionY < 0 ?positionY+6:positionY+5;
-    NSLog(@"POsition is %f,%f", positionX,positionY);
 
     int row=roundf(positionX);
     int column=roundf(positionY);
-    NSLog(@"%d,%d",row,column);
     int tagNo=row*20+column;
     _startField.backgroundColor = [UIColor clearColor];
     [_startField setBackgroundImage:nil forState:UIControlStateNormal];
@@ -319,7 +304,6 @@
         }
         self.autocompleteTableView.hidden = YES;
         
-        
     }
     else{
         [self.filteredProductList removeAllObjects];
@@ -362,9 +346,6 @@
     
     UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
     self.searchBar.text = selectedCell.textLabel.text;
-    
-//    [self goPressed];
-    
     self.autocompleteTableView.hidden = YES;
     
 }
@@ -466,8 +447,8 @@
 
 // we need this method to easily generate connections for basic 2d game plane
 - (NSArray*)getConnectionListForTag:(long)tag {
-    int row = tag/20;
-    int col = tag-row*20;
+    int row = (int)tag/20;
+    int col = (int)tag-row*20;
     
     NSString *titleX = @"X";
     
