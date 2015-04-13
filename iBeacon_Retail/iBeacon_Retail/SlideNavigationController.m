@@ -738,9 +738,13 @@ static SlideNavigationController *singletonInstance;
     else
         currentMenu = (translation.x > 0) ? MenuLeft : MenuRight;
     
-    if (![self shouldDisplayMenu:currentMenu forViewController:self.topViewController])
+#pragma marks ALTERING THE LIBRARY WITH '|| currentMenu == MenuRight' CONDITION TO DISABLE THE RIGHT SLIDE AND STILL ENABLING THE RIGHT MENU BUTTON ON SLIDECONTROLLER
+    if (![self shouldDisplayMenu:currentMenu forViewController:self.topViewController] || currentMenu == MenuRight){
+        if(currentMenu == MenuRight){
+            [self closeMenuWithCompletion:nil];
+        }
         return;
-    
+    }
     [self prepareMenuForReveal:currentMenu];
     
     if (aPanRecognizer.state == UIGestureRecognizerStateBegan)
