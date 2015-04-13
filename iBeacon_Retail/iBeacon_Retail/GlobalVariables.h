@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "StoreLocationMapViewController.h"
+#import "CartViewController.h"
 #import "Constants.h"
 #import "ESTLocationBuilder.h"
 @class CartItem;
@@ -59,5 +60,6 @@ typedef enum {
 +(void)addItemToCart: (CartItem*) cartItem;
 +(void)removeItemFromCart: (CartItem*) cartItem;
 +(NSMutableArray*)getCartItems;
+-(void)loadCartScreen;
 
 @end

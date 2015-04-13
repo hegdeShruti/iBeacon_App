@@ -10,6 +10,7 @@
 #import "SlideNavigationController.h"
 #import "MenuViewController.h"
 #import "ProductViewController.h"
+#import "GlobalVariables.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

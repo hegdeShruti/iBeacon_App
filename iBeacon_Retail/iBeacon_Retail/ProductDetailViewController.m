@@ -36,6 +36,15 @@
     [super viewWillAppear:animated];
     
     [SlideNavigationController sharedInstance].navigationBar.tintColor = [UIColor whiteColor];
+    
+    
+    /* Using custom button to add the WHITE back arrow to the leftbarbuttonitem */
+    UIButton *button  = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
+    [button setImage:[UIImage imageNamed:@"icon_cart.png"] forState:UIControlStateNormal];
+    [button addTarget:[GlobalVariables getInstance] action:@selector(loadCartScreen) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rtBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.rightBarButtonItem = rtBarButtonItem;
+    
     self.navigationItem.title = @"Product Details";
     
     [self loadProductDetails];

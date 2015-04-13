@@ -55,6 +55,11 @@
 {
     [super viewWillAppear:animated];
     self.navigationItem.title = @"Products";
+    if([globals.productDataArray count]>0){
+        self.products = self.searchFilteredProducts = globals.productDataArray;
+    }
+    
+    [self.prodCollectionView reloadData];
 }
 
 -(void) getProductListing{
@@ -213,6 +218,11 @@
 
 #pragma mark Slide view delegate method
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu
+{
+    return YES;
+}
+
+- (BOOL)slideNavigationControllerShouldDisplayRightMenu
 {
     return YES;
 }

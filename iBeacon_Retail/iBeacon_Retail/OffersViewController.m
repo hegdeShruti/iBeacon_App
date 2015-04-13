@@ -171,4 +171,9 @@ globals=[GlobalVariables getInstance];
 {
     return YES;
 }
+
+- (BOOL)slideNavigationControllerShouldDisplayRightMenu
+{
+    return YES;
+}
 @end

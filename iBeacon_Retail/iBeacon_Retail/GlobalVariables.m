@@ -212,4 +212,9 @@ static GlobalVariables *instance = nil;
     instance.storeLocationController = vc;
     return vc;
 }
+
+-(void)loadCartScreen{
+    CartViewController* cartScreen = [[CartViewController alloc] initWithNibName:@"CartViewController" bundle:nil];
+    [[SlideNavigationController sharedInstance] pushViewController:cartScreen animated:YES];
+}
 @end
