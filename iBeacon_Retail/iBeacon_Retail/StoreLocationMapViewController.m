@@ -14,6 +14,7 @@
 #import "OfferButton.h"
 #import "GlobalVariables.h"
 #import "AOShortestPath.h"
+#define OFFER_TAG_OFFSET 1000;
 
 @interface StoreLocationMapViewController () <ESTIndoorLocationManagerDelegate>
 
@@ -28,8 +29,12 @@
 @property (strong, nonatomic) UIButton *targetField;
 
 @property (strong, nonatomic) UIImageView *person;
+@property (assign, nonatomic) int startTag;
 
 @property (assign, nonatomic) BOOL search;
+
+@property (assign, nonatomic) CGFloat frameWidthFactor;
+@property (assign, nonatomic) CGFloat frameHeightFactor;
 
 @end
 
@@ -61,7 +66,7 @@
     }
     
     self.title = self.location.name;
-
+    
     self.autocompleteTableView.delegate = self;
     self.autocompleteTableView.dataSource = self;
     self.autocompleteTableView.hidden = YES;
@@ -75,81 +80,102 @@
     self.globals.isUserOnTheMapScreen = YES;
     [self.globals getOffers];
     
-//    self.indoorLocationView.backgroundColor = [UIColor clearColor];
-//    
-//    self.indoorLocationView.rotateOnPositionUpdate=NO;
-//    
-//    self.indoorLocationView.showWallLengthLabels    = NO;
-//    
-//    // self.indoorLocationView.frame = CGRectMake(self.indoorLocationView.frame.origin.x, self.indoorLocationView.frame.origin.y, 350, 350);
-//    
-//    self.indoorLocationView.locationBorderColor     = [UIColor clearColor];
-//    self.indoorLocationView.locationBorderThickness = 4;
-//    self.indoorLocationView.doorColor               = [UIColor brownColor];
-//    self.indoorLocationView.doorThickness           = 6;
-//    self.indoorLocationView.traceColor              = [UIColor blueColor];
-//    self.indoorLocationView.traceThickness          = 2;
-//    self.indoorLocationView.wallLengthLabelsColor   = [UIColor blackColor];
-//    
-//    [self.indoorLocationView drawLocation:self.location];
-//    
-//    // You can change the avatar using positionImage property of ESTIndoorLocationView class.
-////    self.indoorLocationView.positionImage = [UIImage imageNamed:@"arrow.png"];
-//    
-//    UIImageView *img=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 300, 290)];
-//    [img setImage:[UIImage imageNamed:@"map.png"]];
-//    [self.indoorLocationView drawObject:img withPosition:[ESTPoint pointWithX:0 y:0]];
-//    
-//    for(ESTPositionedBeacon *beacon in self.location.beacons){
-//        OfferButton *sectionLogo = [[OfferButton alloc] initWithFrame:CGRectMake(0,0, 30, 50)];
-//        sectionLogo.tag=[GlobalVariables getSectionId:beacon.macAddress];
-//        [sectionLogo setBackgroundImage:[UIImage imageNamed:@"map-pin-red.png"] forState: UIControlStateNormal] ;
-//        [sectionLogo addTarget:self action:@selector(showOffer:) forControlEvents:UIControlEventTouchUpInside];
-//        [self.indoorLocationView drawObject:sectionLogo withPosition:[ESTPoint pointWithX:beacon.position.x y:beacon.position.y]];
-//    }
-//
-//    [self.manager startIndoorLocation:self.location];
+        self.indoorLocationView.backgroundColor = [UIColor clearColor];
+    
+        self.indoorLocationView.rotateOnPositionUpdate=NO;
+    
+        self.indoorLocationView.showWallLengthLabels    = NO;
+    
+        // self.indoorLocationView.frame = CGRectMake(self.indoorLocationView.frame.origin.x, self.indoorLocationView.frame.origin.y, 350, 350);
+    
+        self.indoorLocationView.locationBorderColor     = [UIColor clearColor];
+        self.indoorLocationView.locationBorderThickness = 4;
+        self.indoorLocationView.doorColor               = [UIColor brownColor];
+        self.indoorLocationView.doorThickness           = 6;
+        self.indoorLocationView.traceColor              = [UIColor blueColor];
+        self.indoorLocationView.traceThickness          = 2;
+        self.indoorLocationView.wallLengthLabelsColor   = [UIColor blackColor];
+    
+        [self.indoorLocationView drawLocation:self.location];
+    
+        // You can change the avatar using positionImage property of ESTIndoorLocationView class.
+    //    self.indoorLocationView.positionImage = [UIImage imageNamed:@"arrow.png"];
+    self.indoorLocationView.positionView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [self.indoorLocationView.positionView setBackgroundColor:[UIColor clearColor]];
+        UIImageView *img=[[UIImageView alloc]initWithFrame:CGRectMake(-47, 0, 320, 320)];
+        [img setImage:[UIImage imageNamed:@"StoreMap.png"]];
+        img.layer.borderColor = (__bridge CGColorRef)([UIColor blackColor]);
+        img.layer.borderWidth = 4.0;
+        [self.indoorLocationView addSubview:img];
+    
+    NSMutableDictionary *tagList=[NSMutableDictionary dictionary];
+        for(ESTPositionedBeacon *beacon in self.location.beacons){
+            OfferButton *sectionLogo = [[OfferButton alloc] initWithFrame:CGRectMake(0,0, 30, 50)];
+            sectionLogo.tag=[GlobalVariables getSectionId:beacon.macAddress]+OFFER_TAG_OFFSET;
+            sectionLogo.tagNo=[self getTag:beacon.position];
+            [tagList setValue:[NSNumber numberWithInt:sectionLogo.tagNo] forKey:[NSString stringWithFormat:@"%ld",sectionLogo.tag-1000]];
+            [sectionLogo setBackgroundImage:[UIImage imageNamed:@"map-pin-red.png"] forState: UIControlStateNormal] ;
+            [sectionLogo addTarget:self action:@selector(showOffer:) forControlEvents:UIControlEventTouchUpInside];
+            [self.indoorLocationView drawObject:sectionLogo withPosition:[ESTPoint pointWithX:beacon.position.x y:beacon.position.y]];
+        }
+    
+        [self.manager startIndoorLocation:self.location];
     
     _pathManager = [[AOShortestPath alloc] init];
     _pathManager.pointList = [NSMutableArray array];
     
     // create visual structure of plane
     _plane = @[
-               @[@1,@0,@1,@1,@1,@1,@1],
-               @[@1,@1,@1,@0,@0,@0,@1],
-               @[@1,@0,@1,@0,@1,@0,@1],
-               @[@1,@0,@0,@0,@1,@0,@1],
-               @[@1,@0,@1,@0,@1,@1,@1],
-               @[@1,@0,@1,@0,@0,@1,@1],
-               @[@1,@0,@1,@0,@1,@1,@1],
-               @[@1,@0,@1,@0,@1,@1,@1],
-               @[@1,@0,@1,@1,@1,@1,@1]
+               @[@0,@0,@0,@0,@0,@0,@0,@0,@0,@0], //1
+               @[@0,@0,@1,@1,@1,@1,@1,@1,@1,@0], //2
+               @[@0,@1,@0,@0,@1,@0,@0,@0,@1,@0], //3
+               @[@0,@1,@0,@1,@1,@1,@1,@0,@1,@0], //4
+               @[@0,@1,@1,@1,@0,@0,@1,@1,@1,@0], //5
+               @[@0,@1,@0,@1,@0,@0,@1,@0,@1,@0], //6
+               @[@0,@1,@0,@1,@1,@1,@1,@0,@1,@0], //7
+               @[@0,@1,@1,@0,@1,@0,@0,@0,@1,@0], //8
+               @[@0,@1,@1,@1,@1,@1,@1,@1,@1,@0], //9
+               @[@0,@0,@0,@1,@0,@0,@0,@0,@0,@0]//14
                ];
     
     // set default field size
-    CGFloat size = 45;//self.indoorLocationView.frame.size.width/[_plane[0] count];
+   // CGFloat size = 45/2;//self.indoorLocationView.frame.size.width/[_plane[0] count];
+    _frameWidthFactor = self.indoorLocationView.frame.size.width/[_plane[0] count];
+    _frameHeightFactor = self.indoorLocationView.frame.size.height/[_plane count];
     
     // generate plans's fields
     for (int i = 0; i<_plane.count; i++) {
         NSArray *row = _plane[i];
         for (int j=0; j<row.count; j++) {
-            UIButton *l = [[UIButton alloc] initWithFrame:CGRectMake(j*size, i*size+50, size, size)];
-            l.tag = i*10 + j + 1;
-            l.backgroundColor = [UIColor whiteColor];
-            l.layer.borderColor = [UIColor whiteColor].CGColor;
-            l.layer.borderWidth = 1;
+            UIButton *l = [[UIButton alloc] initWithFrame:CGRectMake(j*_frameWidthFactor-47, i*_frameHeightFactor, _frameWidthFactor, _frameHeightFactor)];
+            l.tag = i*20 + j + 1;
+            l.backgroundColor = [UIColor clearColor];
+            l.layer.borderColor = [UIColor clearColor].CGColor;
+            l.layer.borderWidth = 0;
+            if (![[tagList allValues] containsObject:[NSNumber numberWithInteger:l.tag]]) {
+                l.userInteractionEnabled=NO;
+            }
             NSNumber *num = _plane[i][j];
             if ([num integerValue] == 0) {
                 [l setTitle:@"X" forState:UIControlStateNormal];
-                l.backgroundColor = [UIColor blackColor];
+                l.backgroundColor = [UIColor clearColor];
+//                [l setTitleColor:[UIColor clearColor] forState:UIControlStateNormal];
             } else {
+                l.backgroundColor = [UIColor clearColor];
+
                 //[l setTitle:[NSString stringWithFormat:@"%d%d", i, j] forState:UIControlStateNormal];
             }
-            if (l.tag == 76) {
-                l.backgroundColor = [UIColor whiteColor];
+            if (![[tagList allValues] containsObject:[NSNumber numberWithInteger:l.tag]]) {
+                l.userInteractionEnabled=NO;
             }
-            [l addTarget:self action:@selector(actionField:) forControlEvents:UIControlEventTouchUpInside];
-            [self.view addSubview:l];
+            else{
+               [l setTitle:@"" forState:UIControlStateNormal]; 
+            }
+            if (l.tag == 76) {
+                l.backgroundColor = [UIColor clearColor];
+            }
+            //[l addTarget:self action:@selector(actionField:) forControlEvents:UIControlEventTouchUpInside];
+            [self.indoorLocationView addSubview:l];
             
             // add path path point
             AOPathPoint *p = [[AOPathPoint alloc] initWithTag:l.tag];
@@ -171,45 +197,45 @@
             [p addConnection:c];
         }];
     }
+//
+//    _startField = (UIButton*)[self.indoorLocationView viewWithTag:133];
+//    _startField.backgroundColor = [UIColor greenColor];
     
-    _startField = (UIButton*)[self.view viewWithTag:1];
-    _startField.backgroundColor = [UIColor greenColor];
+//    _person = [[UIImageView alloc] initWithFrame:_startField.frame];
+//    _person.contentMode = UIViewContentModeScaleAspectFit;
+//    _person.image = [UIImage imageNamed:@"person.png"];
+//    [self.indoorLocationView addSubview:_person];
     
-    _person = [[UIImageView alloc] initWithFrame:_startField.frame];
-    _person.contentMode = UIViewContentModeScaleAspectFit;
-    _person.image = [UIImage imageNamed:@"person.png"];
-    [self.view addSubview:_person];
-
 }
 - (void)showOffer:(id)sender{
     
     NSLog(@"offer  %@",self.globals.offersDataArray);
     [((OfferButton *)sender)setBackgroundImage:[UIImage imageNamed:@"map-pin-green.png"] forState: UIControlStateNormal] ;
-    ((OfferButton *)sender).secTitle=[GlobalVariables returnTitleForSection:((OfferButton *)sender).tag];
+    SectionIdentifier section=(((OfferButton *)sender).tag)- OFFER_TAG_OFFSET
+    ((OfferButton *)sender).secTitle=[GlobalVariables returnTitleForSection:section];
     ((OfferButton *)sender).offerMsg=@"You have 50% off on selected items";
-
-    NSArray *resultOfferArray=[self.globals.offersDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"%K == %d", @"sectionId",((OfferButton *)sender).tag]];
+    
+    NSArray *resultOfferArray=[self.globals.offersDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"%K == %d", @"sectionId",section]];
     NSDictionary *resultOffer;
     if (resultOfferArray !=nil &&  [resultOfferArray count ]!=0)
-    resultOffer=[resultOfferArray objectAtIndex:0 ];
+        resultOffer=[resultOfferArray objectAtIndex:0 ];
     
     if (resultOffer!=nil && [resultOffer count ]!=0) {
-    for (id offer in [self.indoorLocationView subviews]) {
-        if([offer isKindOfClass:[OfferButton class]] ){
-            NSLog(@"tag %lu  %d",((OfferButton *)offer).tag , [[resultOffer valueForKey:@"sectionId"] intValue]);
-            if ([[resultOffer valueForKey:@"sectionId"] intValue]==((OfferButton *)offer).tag){
-                [((OfferButton *)offer)setBackgroundImage:[UIImage imageNamed:@"map-pin-green.png"] forState: UIControlStateNormal];
-                ((OfferButton *)sender).offerMsg=[NSString stringWithFormat:@"%@\n%@",[resultOffer valueForKey:@"offerHeading"],[resultOffer valueForKey:@"offerDescription"]];
-
+        for (id offer in [self.indoorLocationView subviews]) {
+            if([offer isKindOfClass:[OfferButton class]] ){
+                NSLog(@"tag %lu  %d",((OfferButton *)offer).tag , [[resultOffer valueForKey:@"sectionId"] intValue]);
+                if ([[resultOffer valueForKey:@"sectionId"] intValue]==((OfferButton *)offer).tag){
+                    [((OfferButton *)offer)setBackgroundImage:[UIImage imageNamed:@"map-pin-green.png"] forState: UIControlStateNormal];
+                    ((OfferButton *)sender).offerMsg=[NSString stringWithFormat:@"%@\n%@",[resultOffer valueForKey:@"offerHeading"],[resultOffer valueForKey:@"offerDescription"]];
+                    
+                }
             }
+            
         }
-
     }
-    }
-    [self.globals showOfferPopUpWithTitle:((OfferButton *)sender).secTitle message:((OfferButton *)sender).offerMsg andDelegate:self];
-    //abcd
-//    ((OfferButton *)sender).offerMsg=@"You have 50% off on selected items";
-
+//    [self.globals showOfferPopUpWithTitle:((OfferButton *)sender).secTitle message:((OfferButton *)sender).offerMsg andDelegate:self];
+    //    ((OfferButton *)sender).offerMsg=@"You have 50% off on selected items";
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -231,6 +257,28 @@
                    inLocation:(ESTLocation *)location
 {
     [self.indoorLocationView updatePosition:position];
+    NSLog(@"Normal POsition %f,%f",position.x,position.y);
+//    NSLog(@"POsition is %f,%f", fabsf(ceilf(-4.5) -5),ceilf(-4.5) +5);
+    
+    float positionX,positionY;
+    positionX = ceilf(position.y);
+    positionY = ceilf(position.x);
+    
+    positionX=positionX > 0 ?positionX-4:positionX-5;
+    positionX=fabsf(positionX);
+    positionY=positionY < 0 ?positionY+6:positionY+5;
+    NSLog(@"POsition is %f,%f", positionX,positionY);
+
+    int row=roundf(positionX);
+    int column=roundf(positionY);
+    NSLog(@"%d,%d",row,column);
+    int tagNo=row*20+column;
+    _startField.backgroundColor = [UIColor clearColor];
+    [_startField setBackgroundImage:nil forState:UIControlStateNormal];
+    _startField = (UIButton*)[self.indoorLocationView viewWithTag:tagNo];
+    //_startField.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"arrow.png"]];
+    [_startField setBackgroundImage:[UIImage imageNamed:@"user.png"] forState:UIControlStateNormal];
+
 }
 
 - (void)indoorLocationManager:(ESTIndoorLocationManager *)manager didFailToUpdatePositionWithError:(NSError *)error
@@ -247,9 +295,10 @@
     NSDictionary *resultProduct=[[self.globals.productDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"%K == %@", @"productName",searchBar.text]] objectAtIndex:0];
     for (id offer in [self.indoorLocationView subviews]) {
         if([offer isKindOfClass:[OfferButton class]] )
-            if ([[resultProduct valueForKey:@"sectionId"] intValue]==((OfferButton *)offer).tag){
+            if ([[resultProduct valueForKey:@"sectionId"] intValue]==((OfferButton *)offer).tag-1000){
                 NSLog(@"tag %lu  %d",((OfferButton *)offer).tag , [[resultProduct valueForKey:@"sectionId"] intValue]);
                 [((OfferButton *)offer)setBackgroundImage:[UIImage imageNamed:@"map-pin-green.png"] forState: UIControlStateNormal];
+                [self actionField:(UIButton *)[self.indoorLocationView viewWithTag:((OfferButton *)offer).tagNo]];
             }
     }
     
@@ -277,9 +326,10 @@
         NSString* searchStr = [NSString stringWithFormat:@"*%@*",searchText];
         [self.filteredProductList addObjectsFromArray:[self.globals.productDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"%K like %@", @"productName",searchStr]]];
         NSLog(@"%@",self.filteredProductList);
-        // searchBar.text= [[filtered objectAtIndex:0]valueForKey:@"productName"];
+        //searchBar.text= [[filtered objectAtIndex:0]valueForKey:@"productName"];
         [self.autocompleteTableView reloadData];
         self.autocompleteTableView.hidden = NO;
+        
     }
 }
 #pragma mark UITableViewDataSource methods
@@ -313,7 +363,7 @@
     UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
     self.searchBar.text = selectedCell.textLabel.text;
     
-    // [self goPressed];
+//    [self goPressed];
     
     self.autocompleteTableView.hidden = YES;
     
@@ -333,9 +383,14 @@
 }
 
 - (void)actionField:(UIButton*)sender {
-    if (!_search) {
+    [self clearPath:nil];
+    if([sender.titleLabel.text isEqualToString:@"X"]){
+        NSLog(@"Its a wall !!");
+    }
+    else if (!_search) {
+        [self clearPath:nil];
         _search = YES;
-        sender.backgroundColor = [UIColor greenColor];
+//        sender.backgroundColor = [UIColor greenColor];
         _targetField = sender;
         
         AOPathPoint *startPoint = [_pathManager getPathPointWithTag:_startField.tag];
@@ -345,34 +400,47 @@
             NSMutableArray *buttonPath = [NSMutableArray array];
             for (AOPathPoint *p in path) {
                 UIButton *but = (UIButton*)[self.view viewWithTag:p.tag];
-                UIView *dotView = [[UIView alloc]initWithFrame:CGRectMake(but.frame.size.width/2 - 5, but.frame.size.height/2 - 5, 10, 10)];
-                dotView.layer.cornerRadius = 2.0;
-                dotView.backgroundColor = [UIColor redColor];
-                [but addSubview:dotView];
-                //but.backgroundColor = [UIColor redColor];
+                if(![but.currentTitle isEqualToString:@"X"] && but.tag!=_startField.tag){
+                    UIView *dotView = [[UIView alloc]initWithFrame:CGRectMake(but.frame.size.width/2-5, but.frame.size.height/2 - 5, 32, 32)];
+//                    dotView.layer.cornerRadius = 2.0;
+                    dotView.backgroundColor = [UIColor blueColor];
+                    dotView.alpha=0.4;
+                    [but addSubview:dotView];
+                }
+
+                //but.backgroundColor = [UIColor blueColor];
                 [buttonPath addObject:but];
             }
             [self animate:buttonPath withCompletion:^{
-                for (UIButton *b in self.view.subviews) {
-                    if ([b isKindOfClass:[UIButton class]]) {
-                        if ([b.currentTitle isEqualToString:@"X"]) {
-                            b.backgroundColor = [UIColor blackColor];
-                        } else if (b.tag == 76) {
-                            b.backgroundColor = [UIColor whiteColor];
-                        } else {
-                            b.backgroundColor = [UIColor whiteColor];
-                            [b.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
-                        }
-                    }
-                }
                 _search = NO;
-                _startField = _targetField;
+//               _startField = _targetField;
                 _startField.backgroundColor = [UIColor greenColor];
+                [_startField setBackgroundImage:[UIImage imageNamed:@"user.png"] forState:UIControlStateNormal];
+
             }];
         } else {
             _search = NO;
         }
     }
+}
+
+-(IBAction)clearPath:(id)sender{
+    _targetField.backgroundColor = [UIColor clearColor];
+    for (UIButton *b in _indoorLocationView.subviews) {
+        if ([b isKindOfClass:[UIButton class]]) {
+            if ([b.currentTitle isEqualToString:@"X"]) {
+                b.backgroundColor = [UIColor clearColor];
+            } else if (b.tag == 76) {
+                b.backgroundColor = [UIColor clearColor];
+            } else {
+                if(b.tag < 1000){
+                    b.backgroundColor = [UIColor clearColor];
+                    [b.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+                }
+            }
+        }
+    }
+    
 }
 
 - (void)animate:(NSArray*)path withCompletion:(void(^)())completion {
@@ -398,38 +466,55 @@
 
 // we need this method to easily generate connections for basic 2d game plane
 - (NSArray*)getConnectionListForTag:(long)tag {
-    int row = tag/10;
-    int col = tag-row*10;
+    int row = tag/20;
+    int col = tag-row*20;
     
     NSString *titleX = @"X";
     
     NSMutableArray *cons = [NSMutableArray array];
     if (col-1 > 0) {
-        UIButton *but = (UIButton*)[self.view viewWithTag:(row*10+col-1)];
+        UIButton *but = (UIButton*)[self.view viewWithTag:(row*20+col-1)];
         if (![but.currentTitle isEqualToString:titleX]) {
             [cons addObject:but];
         }
     }
     if (col+1 < [_plane[0] count]+1) {
-        UIButton *but = (UIButton*)[self.view viewWithTag:(row*10+col+1)];
+        UIButton *but = (UIButton*)[self.view viewWithTag:(row*20+col+1)];
         if (![but.currentTitle isEqualToString:titleX]) {
             [cons addObject:but];
         }
     }
     if (row-1 >= 0) {
-        UIButton *but = (UIButton*)[self.view viewWithTag:((row-1)*10+col)];
+        UIButton *but = (UIButton*)[self.view viewWithTag:((row-1)*20+col)];
         if (![but.currentTitle isEqualToString:titleX]) {
             [cons addObject:but];
         }
     }
     if (row+1 < [_plane count]) {
-        UIButton *but = (UIButton*)[self.view viewWithTag:((row+1)*10+col)];
+        UIButton *but = (UIButton*)[self.view viewWithTag:((row+1)*20+col)];
         if (![but.currentTitle isEqualToString:titleX]) {
             [cons addObject:but];
         }
     }
     
     return cons;
+}
+
+-(int)getTag:(ESTOrientedPoint *)beaconPosition{
+    float positionX,positionY;
+    positionX = ceilf(beaconPosition.y);
+    positionY = ceilf(beaconPosition.x);
+    
+    positionX=positionX > 0 ?positionX-4:positionX-5;
+    positionX=fabsf(positionX);
+    positionY=positionY < 0 ?positionY+6:positionY+5;
+    NSLog(@"POsition is %f,%f", positionX,positionY);
+    
+    int row=roundf(positionX);
+    int column=roundf(positionY);
+    int tagNo=row*20+column;
+    return tagNo;
+
 }
 
 #pragma mark Slide view delegate method

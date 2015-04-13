@@ -11,4 +11,6 @@
 @interface OfferButton : UIButton
 @property (nonatomic, strong) NSString *secTitle;
 @property (nonatomic, strong) NSString *offerMsg;
+@property (nonatomic, assign) int tagNo;
+
 @end

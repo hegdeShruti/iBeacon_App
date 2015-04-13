@@ -117,6 +117,22 @@
 		B17C01AA1ABAA28F00542233 /* OfferButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B17C01A71ABAA28F00542233 /* OfferButton.m */; };
 		B17C01AB1ABAA28F00542233 /* OfferPopupMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B17C01A91ABAA28F00542233 /* OfferPopupMenu.m */; };
 		B1C0A4031AD563B200FBB027 /* AOShortestPath.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C0A4021AD563B200FBB027 /* AOShortestPath.m */; };
+		EF12789D1ADBD11E003CA791 /* Cart.png in Resources */ = {isa = PBXBuildFile; fileRef = EF12788D1ADBD11E003CA791 /* Cart.png */; };
+		EF12789E1ADBD11E003CA791 /* Cart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF12788E1ADBD11E003CA791 /* Cart@2x.png */; };
+		EF12789F1ADBD11E003CA791 /* Cart@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF12788F1ADBD11E003CA791 /* Cart@3x.png */; };
+		EF1278A01ADBD11E003CA791 /* Logout.png in Resources */ = {isa = PBXBuildFile; fileRef = EF1278901ADBD11E003CA791 /* Logout.png */; };
+		EF1278A11ADBD11E003CA791 /* Logout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF1278911ADBD11E003CA791 /* Logout@2x.png */; };
+		EF1278A21ADBD11E003CA791 /* Logout@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF1278921ADBD11E003CA791 /* Logout@3x.png */; };
+		EF1278A31ADBD11E003CA791 /* Map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF1278931ADBD11E003CA791 /* Map@2x.png */; };
+		EF1278A41ADBD11E003CA791 /* Map@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF1278941ADBD11E003CA791 /* Map@3x.png */; };
+		EF1278A51ADBD11E003CA791 /* offer.png in Resources */ = {isa = PBXBuildFile; fileRef = EF1278951ADBD11E003CA791 /* offer.png */; };
+		EF1278A61ADBD11E003CA791 /* offer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF1278961ADBD11E003CA791 /* offer@2x.png */; };
+		EF1278A71ADBD11E003CA791 /* offer@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF1278971ADBD11E003CA791 /* offer@3x.png */; };
+		EF1278A81ADBD11E003CA791 /* product.png in Resources */ = {isa = PBXBuildFile; fileRef = EF1278981ADBD11E003CA791 /* product.png */; };
+		EF1278A91ADBD11E003CA791 /* product@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF1278991ADBD11E003CA791 /* product@2x.png */; };
+		EF1278AA1ADBD11E003CA791 /* product@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF12789A1ADBD11E003CA791 /* product@3x.png */; };
+		EF1278AB1ADBD11E003CA791 /* StoreMap.png in Resources */ = {isa = PBXBuildFile; fileRef = EF12789B1ADBD11E003CA791 /* StoreMap.png */; };
+		EF1278AC1ADBD11E003CA791 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = EF12789C1ADBD11E003CA791 /* user.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -310,6 +326,22 @@
 		B19CB4931AB97804006C7575 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		B1C0A4011AD563B200FBB027 /* AOShortestPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOShortestPath.h; sourceTree = "<group>"; };
 		B1C0A4021AD563B200FBB027 /* AOShortestPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOShortestPath.m; sourceTree = "<group>"; };
+		EF12788D1ADBD11E003CA791 /* Cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cart.png; sourceTree = "<group>"; };
+		EF12788E1ADBD11E003CA791 /* Cart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cart@2x.png"; sourceTree = "<group>"; };
+		EF12788F1ADBD11E003CA791 /* Cart@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cart@3x.png"; sourceTree = "<group>"; };
+		EF1278901ADBD11E003CA791 /* Logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logout.png; sourceTree = "<group>"; };
+		EF1278911ADBD11E003CA791 /* Logout@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logout@2x.png"; sourceTree = "<group>"; };
+		EF1278921ADBD11E003CA791 /* Logout@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logout@3x.png"; sourceTree = "<group>"; };
+		EF1278931ADBD11E003CA791 /* Map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Map@2x.png"; sourceTree = "<group>"; };
+		EF1278941ADBD11E003CA791 /* Map@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Map@3x.png"; sourceTree = "<group>"; };
+		EF1278951ADBD11E003CA791 /* offer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = offer.png; sourceTree = "<group>"; };
+		EF1278961ADBD11E003CA791 /* offer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "offer@2x.png"; sourceTree = "<group>"; };
+		EF1278971ADBD11E003CA791 /* offer@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "offer@3x.png"; sourceTree = "<group>"; };
+		EF1278981ADBD11E003CA791 /* product.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = product.png; sourceTree = "<group>"; };
+		EF1278991ADBD11E003CA791 /* product@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "product@2x.png"; sourceTree = "<group>"; };
+		EF12789A1ADBD11E003CA791 /* product@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "product@3x.png"; sourceTree = "<group>"; };
+		EF12789B1ADBD11E003CA791 /* StoreMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StoreMap.png; sourceTree = "<group>"; };
+		EF12789C1ADBD11E003CA791 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -721,6 +753,22 @@
 		B19CB4901AB95998006C7575 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				EF12788D1ADBD11E003CA791 /* Cart.png */,
+				EF12788E1ADBD11E003CA791 /* Cart@2x.png */,
+				EF12788F1ADBD11E003CA791 /* Cart@3x.png */,
+				EF1278901ADBD11E003CA791 /* Logout.png */,
+				EF1278911ADBD11E003CA791 /* Logout@2x.png */,
+				EF1278921ADBD11E003CA791 /* Logout@3x.png */,
+				EF1278931ADBD11E003CA791 /* Map@2x.png */,
+				EF1278941ADBD11E003CA791 /* Map@3x.png */,
+				EF1278951ADBD11E003CA791 /* offer.png */,
+				EF1278961ADBD11E003CA791 /* offer@2x.png */,
+				EF1278971ADBD11E003CA791 /* offer@3x.png */,
+				EF1278981ADBD11E003CA791 /* product.png */,
+				EF1278991ADBD11E003CA791 /* product@2x.png */,
+				EF12789A1ADBD11E003CA791 /* product@3x.png */,
+				EF12789B1ADBD11E003CA791 /* StoreMap.png */,
+				EF12789C1ADBD11E003CA791 /* user.png */,
 				458F3CB31ACA71FB0099F2E6 /* arrow.png */,
 				458F3CB41ACA71FB0099F2E6 /* map-pin-green.png */,
 				458F3CB51ACA71FB0099F2E6 /* map-pin-red.png */,
@@ -816,8 +864,10 @@
 			files = (
 				45526A481AB048B300E6F7C3 /* tick@2x.png in Resources */,
 				45526A461AB048B300E6F7C3 /* screen8_beacon_green@2x.png in Resources */,
+				EF1278A91ADBD11E003CA791 /* product@2x.png in Resources */,
 				45526A2D1AB048B300E6F7C3 /* 8b.mov in Resources */,
 				45526A381AB048B300E6F7C3 /* beacongrey@2x.png in Resources */,
+				EF1278AA1ADBD11E003CA791 /* product@3x.png in Resources */,
 				45E8D6C01AC2DBF300E107F2 /* Config.plist in Resources */,
 				45526A451AB048B300E6F7C3 /* screen8_beacon_gray_trans@2x.png in Resources */,
 				81DB9E3B1AD3955F004E9C64 /* OfferPopupViewController.xib in Resources */,
@@ -825,13 +875,17 @@
 				45526A2C1AB048B300E6F7C3 /* 8a.mov in Resources */,
 				45526A421AB048B300E6F7C3 /* navigation_guy@2x.png in Resources */,
 				45526A2A1AB048B300E6F7C3 /* 5a.mov in Resources */,
+				EF1278A71ADBD11E003CA791 /* offer@3x.png in Resources */,
+				EF1278A61ADBD11E003CA791 /* offer@2x.png in Resources */,
 				45526A2F1AB048B300E6F7C3 /* 5a_first_frame@2x.png in Resources */,
 				45526A441AB048B300E6F7C3 /* screen8_beacon_gray@2x.png in Resources */,
+				EF1278AB1ADBD11E003CA791 /* StoreMap.png in Resources */,
 				45526A311AB048B300E6F7C3 /* 8a_first_frame@2x.png in Resources */,
 				45526A3E1AB048B300E6F7C3 /* beaconMintSmall.png in Resources */,
 				458F3CC11ACA9CC50099F2E6 /* ProductDetailViewController.xib in Resources */,
 				455269A41AB0443D00E6F7C3 /* location.json in Resources */,
 				45849EA01AD4F2FC00FF7A1F /* menu-button@2x.png in Resources */,
+				EF12789D1ADBD11E003CA791 /* Cart.png in Resources */,
 				45526A301AB048B300E6F7C3 /* 5b_first_frame@2x.png in Resources */,
 				45526A3B1AB048B300E6F7C3 /* beaconIcySmall.png in Resources */,
 				45526A2B1AB048B300E6F7C3 /* 5b.mov in Resources */,
@@ -839,6 +893,7 @@
 				45DA40781AC13E1F00D86C8A /* CartViewController.xib in Resources */,
 				45526A341AB048B300E6F7C3 /* beacon_grey@2x.png in Resources */,
 				45849E9F1AD4F2FC00FF7A1F /* menu-button.png in Resources */,
+				EF12789F1ADBD11E003CA791 /* Cart@3x.png in Resources */,
 				0AF77D781AA0363800B57B8C /* Main.storyboard in Resources */,
 				45526A371AB048B300E6F7C3 /* beaconBlueberrySmall@2x.png in Resources */,
 				81A633DC1AD79A25002F927F /* CustomHeaderView.xib in Resources */,
@@ -857,20 +912,29 @@
 				456167821AD3B38F007F2396 /* ProductImageCollectionViewCell.xib in Resources */,
 				81AE088F1AA71F1900CD7F75 /* OffersViewController.xib in Resources */,
 				45526A2E1AB048B300E6F7C3 /* 8c.mov in Resources */,
+				EF1278AC1ADBD11E003CA791 /* user.png in Resources */,
 				455269A21AB03FDD00E6F7C3 /* StoreLocationMapViewController.xib in Resources */,
 				45526A321AB048B300E6F7C3 /* 8b_first_frame@2x.png in Resources */,
+				EF1278A51ADBD11E003CA791 /* offer.png in Resources */,
 				45526A3F1AB048B300E6F7C3 /* beaconMintSmall@2x.png in Resources */,
 				45526A491AB048B300E6F7C3 /* welcome@2x.png in Resources */,
 				45526A4B1AB048B300E6F7C3 /* wall_bump.wav in Resources */,
+				EF1278A31ADBD11E003CA791 /* Map@2x.png in Resources */,
 				45526A3A1AB048B300E6F7C3 /* beaconicy@2x.png in Resources */,
+				EF1278A81ADBD11E003CA791 /* product.png in Resources */,
+				EF12789E1ADBD11E003CA791 /* Cart@2x.png in Resources */,
 				45526A391AB048B300E6F7C3 /* beaconGreySmall@2x.png in Resources */,
+				EF1278A41ADBD11E003CA791 /* Map@3x.png in Resources */,
+				EF1278A21ADBD11E003CA791 /* Logout@3x.png in Resources */,
 				458F3CB91ACA71FB0099F2E6 /* map-pin-red.png in Resources */,
 				45526A4A1AB048B300E6F7C3 /* SixBeaconsView.xib in Resources */,
 				45526A331AB048B300E6F7C3 /* 8c_first_frame@2x.png in Resources */,
 				B17C01A41AB9B35C00542233 /* Test_MenSection.png in Resources */,
+				EF1278A01ADBD11E003CA791 /* Logout.png in Resources */,
 				0AF77D7A1AA0363800B57B8C /* Images.xcassets in Resources */,
 				4556001D1AD2981D0034BBD2 /* ProductRecommendationCollectionViewCell.xib in Resources */,
 				B17C01A51AB9B35C00542233 /* Test_Women'sSection.png in Resources */,
+				EF1278A11ADBD11E003CA791 /* Logout@2x.png in Resources */,
 				45E8D6C51AC3E38E00E107F2 /* CartTableViewCell.xib in Resources */,
 				45526A3C1AB048B300E6F7C3 /* beaconIcySmall@2x.png in Resources */,
 				45526A411AB048B300E6F7C3 /* instructions@2x.png in Resources */,
