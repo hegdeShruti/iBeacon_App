@@ -19,6 +19,7 @@
 //@property(nonatomic,strong) NSString *sizeUnit;
 @property(nonatomic,strong) NSString *colour;
 @property(nonatomic,strong) NSString *beaconId;
+@property(nonatomic,strong) NSString *prodImage;
 @property(nonatomic,assign) NSInteger sectionId;
 
 

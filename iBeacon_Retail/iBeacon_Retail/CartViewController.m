@@ -11,6 +11,7 @@
 @interface CartViewController ()
 
 @property(nonatomic,strong)NetworkOperations *networks;
+@property(nonatomic,assign) NSInteger *total;
 
 @end
 
@@ -23,7 +24,9 @@
 //    [self.tableview registerClass:[CartTableViewCell class] forCellReuseIdentifier:@"Cell"];
     [self.tableview registerNib:[UINib nibWithNibName:@"CartTableViewCell" bundle:nil] forCellReuseIdentifier:@"Cell"];
     [self getCartListing];
+    self.total=0;
     [self.tableview reloadData];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -62,7 +65,23 @@
     cell.prodDescription.text = prodObject.prodDescription;
     cell.price.text = prodObject.price;
     cell.subTotal.text = prodObject.price;
+    NSString *str=[prodObject.price  substringFromIndex:1];
+    self.total+=[str intValue];
+    self.totalValue.text=[NSString stringWithFormat:@"$%zd",self.total];
+   // cell.prodImage.image=[UIImage imageNamed:prodObject.prodImage];
     return cell;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return YES if you want the specified item to be editable.
+    return YES;
+}
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        //add code here for when you hit delete
+    }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

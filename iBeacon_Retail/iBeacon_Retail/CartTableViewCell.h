@@ -16,4 +16,5 @@
 @property (nonatomic,weak) IBOutlet UILabel* prodDescription;
 @property (nonatomic,weak) IBOutlet UILabel* price;
 @property (nonatomic,weak) IBOutlet UILabel* subTotal;
+@property (weak, nonatomic) IBOutlet UIImageView *prodImage;
 @end

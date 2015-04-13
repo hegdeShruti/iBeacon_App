@@ -90,7 +90,7 @@
 //    NSLog(@"Collection tag: %d",collectionView.tag );
     if(collectionView.tag == 1){ // this is the product images collection view
         ProductImageCollectionViewCell* cell = (ProductImageCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"ProductImageCell" forIndexPath:indexPath];
-        cell.prodImage.image = [UIImage imageNamed: @"jacket.jpg"];
+        cell.prodImage.image = [UIImage imageNamed:self.product.prodImage ];
         return cell;
         
     }else{
@@ -140,6 +140,7 @@
 }
 
 - (IBAction)addProductToCart:(id)sender {
+   
         NSDictionary* tempDic = [[NSDictionary alloc] initWithObjectsAndKeys:self.product,@"product",[NSNumber numberWithInteger:1],@"quantity", nil];
         CartItem* cartItem = [[CartItem alloc] initWithDictionary:tempDic];
         [GlobalVariables addItemToCart:cartItem];

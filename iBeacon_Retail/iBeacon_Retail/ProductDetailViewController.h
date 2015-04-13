@@ -18,6 +18,7 @@
 @property (nonatomic,strong) NSArray* productImagesArray;
 @property (nonatomic,strong) NSArray* recommendationDataArray;
 @property (nonatomic,strong) Products* product;
+@property(nonatomic,strong) NSString *selectedImage;
 
 @property (strong, nonatomic) IBOutlet UIPageControl* pageControl;
 @property (weak, nonatomic) IBOutlet UIView *containerView;

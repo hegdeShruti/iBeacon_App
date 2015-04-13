@@ -79,6 +79,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="jacket" width="82" height="96"/>
+        <image name="jacket" width="225" height="225"/>
     </resources>
 </document>

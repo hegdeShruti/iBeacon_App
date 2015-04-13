@@ -17,7 +17,7 @@
 @interface ProductViewController ()
 @property(nonatomic,strong) Products * product;
 @property(nonatomic,strong)NetworkOperations *networks;
-//@property(nonatomic,strong) NSMutableArray *productDataArray;
+@property(nonatomic,strong) NSMutableArray *productImagesArray;
 @property(nonatomic,strong) GlobalVariables *globals;
 @end
 
@@ -30,6 +30,7 @@
     globals=[GlobalVariables getInstance];
     UINib *cellNib = [UINib nibWithNibName:@"prodCell" bundle:nil];
     [self.prodCollectionView registerNib:cellNib forCellWithReuseIdentifier:@"prodCell"];
+     self.productImagesArray = [[NSMutableArray alloc ]initWithObjects:@"jacket.png",@"perfume.png",@"gown.png",@"watch.png",@"dryer.png",@"shoes.png",@"jacket.png",nil];
     if(![globals.productDataArray count]>0){
           [self getProductListing];
     }
@@ -120,13 +121,13 @@
     //cell.backgroundColor = [UIColor whiteColor];
     
     Products *prodObject= [[Products alloc] initWithDictionary:[self.searchFilteredProducts objectAtIndex:indexPath.row]];
-
+    prodObject.prodImage=[self.productImagesArray objectAtIndex:indexPath.row];
     cell.product = prodObject;
     cell.productName.text=prodObject.prodName;
     cell.prodDescription.text = prodObject.prodDescription;
     cell.offerPrice.text = prodObject.price;
     cell.size.text = prodObject.size;
-    
+    cell.productImage.image= [UIImage imageNamed:prodObject.prodImage ];
     cell.availableColor1.backgroundColor = [UIColor redColor];
     cell.availableColor1.layer.cornerRadius = (CGFloat)cell.availableColor1.frame.size.height/2;
     
@@ -147,13 +148,14 @@
 {
     
     Products *prodObject= [[Products alloc] initWithDictionary:[self.searchFilteredProducts objectAtIndex:indexPath.row]];
+    prodObject.prodImage=[self.productImagesArray objectAtIndex:indexPath.row];
 //    NSDictionary* tempDic = [[NSDictionary alloc] initWithObjectsAndKeys:prodObject,@"product",[NSNumber numberWithInteger:1],@"quantity", nil];
 //    CartItem* cartItem = [[CartItem alloc] initWithDictionary:tempDic];
 //    [GlobalVariables addItemToCart:cartItem];
     
     ProductDetailViewController* prodDetailVC = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController" bundle:nil];
     prodDetailVC.product = prodObject;
-    
+   // prodDetailVC.selectedImage=;
     [[SlideNavigationController sharedInstance] pushViewController:prodDetailVC animated:YES];
 //    [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:prodDetailVC withSlideOutAnimation:NO andCompletion:nil];
 //    test.view.frame = self.view.frame;

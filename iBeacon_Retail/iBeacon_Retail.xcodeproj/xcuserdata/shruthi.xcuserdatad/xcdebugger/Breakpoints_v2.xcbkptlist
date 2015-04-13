@@ -73,22 +73,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "iBeacon_Retail/OffersViewController.m"
-            timestampString = "450106448.657758"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "iBeacon_Retail/GlobalVariables.m"
             timestampString = "450103995.437272"
             startingColumnNumber = "9223372036854775807"
@@ -105,12 +89,12 @@
                   symbolName = "-[GlobalVariables showOfferPopUp:andMessage:onController:withImage:]"
                   moduleName = "iBeacon_Retail"
                   urlString = "file:///Users/shruthi/Downloads/IOS_Workspace/iBeacon_App/iBeacon_Retail/iBeacon_Retail/GlobalVariables.m"
-                  timestampString = "450105933.509942"
+                  timestampString = "450620150.787655"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "60"
-                  endingLineNumber = "60"
-                  offsetFromSymbolStart = "256">
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "312">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -119,11 +103,11 @@
                   symbolName = "__68-[GlobalVariables showOfferPopUp:andMessage:onController:withImage:]_block_invoke"
                   moduleName = "iBeacon_Retail"
                   urlString = "file:///Users/shruthi/Downloads/IOS_Workspace/iBeacon_App/iBeacon_Retail/iBeacon_Retail/GlobalVariables.m"
-                  timestampString = "450105933.510125"
+                  timestampString = "450620150.787855"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "60"
-                  endingLineNumber = "60"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
                   offsetFromSymbolStart = "24">
                </Location>
             </Locations>
@@ -141,7 +125,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "28"
             endingLineNumber = "28"
-            landmarkName = "-viewDidLoad"
+            landmarkName = "-initWithNibName:bundle:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -157,8 +141,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "20"
             endingLineNumber = "20"
-            landmarkName = "-initWithNibName:bundle:"
-            landmarkType = "5">
+            landmarkName = "@interface OfferPopupViewController()"
+            landmarkType = "2">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
