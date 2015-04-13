@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
@@ -8,34 +8,24 @@
             <connections>
                 <outlet property="prodCollectionView" destination="0US-iZ-Zkm" id="lN4-v7-ii8"/>
                 <outlet property="searchBar" destination="9AA-lB-B6N" id="bXR-H4-cXQ"/>
+                <outlet property="searchDisplayController" destination="1ft-ZJ-uIW" id="tBY-41-hT8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SWn-et-vP9">
-                    <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                    <color key="barTintColor" red="0.2901960784" green="0.66666666669999997" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
-                    <textAttributes key="titleTextAttributes">
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </textAttributes>
-                    <items>
-                        <navigationItem title="Products" id="Ejg-LW-Fth"/>
-                    </items>
-                </navigationBar>
-                <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="9AA-lB-B6N">
-                    <rect key="frame" x="0.0" y="64" width="320" height="44"/>
-                    <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <textInputTraits key="textInputTraits"/>
+                <searchBar contentMode="redraw" placeholder="Search Product" backgroundImage="blue_sq" translatesAutoresizingMaskIntoConstraints="NO" id="9AA-lB-B6N">
+                    <rect key="frame" x="0.0" y="-1" width="600" height="44"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="e3f-Vy-5b0"/>
                     </connections>
                 </searchBar>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="0US-iZ-Zkm">
-                    <rect key="frame" x="0.0" y="108" width="320" height="460"/>
+                    <rect key="frame" x="0.0" y="43" width="600" height="557"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="1Fc-Tp-Xn5">
@@ -52,24 +42,27 @@
             </subviews>
             <color key="backgroundColor" red="0.2901960784" green="0.66666666669999997" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="SWn-et-vP9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1Jb-PH-X7Y"/>
                 <constraint firstItem="0US-iZ-Zkm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Ja8-xP-Xpi"/>
-                <constraint firstItem="9AA-lB-B6N" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="Ka4-nj-7pi"/>
+                <constraint firstItem="9AA-lB-B6N" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="-1" id="Ka4-nj-7pi"/>
                 <constraint firstAttribute="trailing" secondItem="0US-iZ-Zkm" secondAttribute="trailing" id="LKF-MC-Bca"/>
-                <constraint firstAttribute="trailing" secondItem="SWn-et-vP9" secondAttribute="trailing" id="LoK-ss-Va3"/>
-                <constraint firstItem="SWn-et-vP9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="TNa-2t-8lJ"/>
                 <constraint firstAttribute="bottom" secondItem="0US-iZ-Zkm" secondAttribute="bottom" id="a4Y-70-l3F"/>
                 <constraint firstItem="9AA-lB-B6N" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cJC-gE-nym"/>
                 <constraint firstAttribute="trailing" secondItem="9AA-lB-B6N" secondAttribute="trailing" id="xYS-8E-nVf"/>
                 <constraint firstItem="0US-iZ-Zkm" firstAttribute="top" secondItem="9AA-lB-B6N" secondAttribute="bottom" id="xxf-Fu-4BI"/>
             </constraints>
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+            <nil key="simulatedStatusBarMetrics"/>
             <point key="canvasLocation" x="-99" y="297"/>
         </view>
+        <searchDisplayController id="1ft-ZJ-uIW">
+            <connections>
+                <outlet property="delegate" destination="-1" id="7fm-JD-x8z"/>
+                <outlet property="searchContentsController" destination="-1" id="YSW-qx-FfQ"/>
+                <outlet property="searchResultsDataSource" destination="-1" id="tNf-p2-ZbT"/>
+                <outlet property="searchResultsDelegate" destination="-1" id="tK2-OD-s4d"/>
+            </connections>
+        </searchDisplayController>
     </objects>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
+    <resources>
+        <image name="blue_sq" width="1" height="1"/>
+    </resources>
 </document>

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "StoreLocationMapViewController.h"
 #import "Constants.h"
+#import "ESTLocationBuilder.h"
 @class CartItem;
 
 typedef enum {
@@ -51,6 +52,7 @@ typedef enum {
 +(NSString *)returnTitleForRegion:(RegionIdentifier)inRegion;
 +(NSString*)getBeaconMacAddress:(int)sectionId;
 +(int)getSectionId:(NSString *)macAddress;
++(StoreLocationMapViewController*)getStoreMap;
 +(NSString *)returnTitleForSection:(SectionIdentifier)sectionId;
 -(void) getOffers;
 

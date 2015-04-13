@@ -163,6 +163,9 @@
     
     SlideNavigationController *slideController = [[SlideNavigationController alloc] initWithRootViewController:rootViewControllerForSlideMenu];
     [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:74/255.0 green:170/255.0 blue:192/255.0 alpha:1.0]];
+    [[UINavigationBar appearance] setTranslucent:NO];
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"blue_sq"] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setShadowImage:[UIImage imageNamed:@"blue_sq"]];
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys: [UIColor whiteColor],NSForegroundColorAttributeName, nil]];
     
     //slideController.rightMenu = menuViewController;

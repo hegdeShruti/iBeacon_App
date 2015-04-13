@@ -23,5 +23,6 @@
 
 
 
-- (instancetype)initWithDictionary:(NSDictionary*)prodcutData;
+- (instancetype)initWithDictionary:(NSDictionary*)productData;
+
 @end

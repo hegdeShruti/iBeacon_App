@@ -22,7 +22,12 @@
 
 @interface ProductViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate,UISearchBarDelegate, SlideNavigationControllerDelegate>
 
+@property (nonatomic,strong) NSMutableArray *products;
+@property (nonatomic,strong) NSArray *searchFilteredProducts;
+
+
 @property (nonatomic,weak) id<productViewControllerDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UICollectionView *prodCollectionView;
 @property (nonatomic,weak) IBOutlet UISearchBar* searchBar;
+
 @end

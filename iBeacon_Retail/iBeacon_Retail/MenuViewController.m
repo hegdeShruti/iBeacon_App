@@ -101,7 +101,8 @@ typedef enum : NSUInteger {
             vc = (CartViewController*)[[CartViewController alloc] initWithNibName:@"CartViewController" bundle:nil];
             break;
         case map:
-            vc = [self loadStoreMap:(StoreLocationMapViewController*)vc];
+//            vc = [self loadStoreMap:(StoreLocationMapViewController*)vc];
+            vc = [GlobalVariables getStoreMap];
             break;
         case logout:
             alert = [[UIAlertView alloc] initWithTitle:@"Warning"
@@ -145,6 +146,7 @@ typedef enum : NSUInteger {
     }
 }
 
+#pragma mark - this method is DEPRECATED
 -(StoreLocationMapViewController*)loadStoreMap:(StoreLocationMapViewController*) vc{
     NSString *path = [[NSBundle mainBundle] pathForResource:@"location" ofType:@"json"];
     NSString *content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];

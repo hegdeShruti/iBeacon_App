@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "ProductImageCollectionViewCell.h"
 #import "ProductRecommendationCollectionViewCell.h"
+#import "StoreLocationMapViewController.h"
+#import "GlobalVariables.h"
 #import "Products.h"
 
 

@@ -64,7 +64,7 @@
     NSLog(@"The product Api is %@",[dict objectForKey:@"Prod_Api"]);
  // send block as parameter to get callbacks
     [self.networks fetchDataFromServer:[dict objectForKey:@"Prod_Api"] withreturnMethod:^(NSMutableArray* data){
-        globals.productDataArray=data;
+        self.products = self.searchFilteredProducts = globals.productDataArray=data;
         NSLog(@"The product Api is %lu",(unsigned long)[globals.productDataArray count]);
         dispatch_async(dispatch_get_main_queue(), ^
                        {
@@ -74,16 +74,27 @@
     }];
    // [self.prodCollectionView reloadData];
     
-}
-
-#pragma mark - For Status Bar
--(UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleLightContent;
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+/*
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
+
+#pragma mark - For Status Bar
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
 
 #pragma Collection view delegate methods
@@ -95,7 +106,7 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section
 {
-    return [globals.productDataArray count];
+    return [self.searchFilteredProducts count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath; {
@@ -103,7 +114,7 @@
     cell.frame = CGRectMake(0, cell.frame.origin.y, self.prodCollectionView.frame.size.width, cell.frame.size.height);
     //cell.backgroundColor = [UIColor whiteColor];
     
-    Products *prodObject= [[Products alloc] initWithDictionary:[globals.productDataArray objectAtIndex:indexPath.row]];
+    Products *prodObject= [[Products alloc] initWithDictionary:[self.searchFilteredProducts objectAtIndex:indexPath.row]];
 
     cell.product = prodObject;
     cell.productName.text=prodObject.prodName;
@@ -130,7 +141,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    Products *prodObject= [[Products alloc] initWithDictionary:[globals.productDataArray objectAtIndex:indexPath.row]];
+    Products *prodObject= [[Products alloc] initWithDictionary:[self.searchFilteredProducts objectAtIndex:indexPath.row]];
 //    NSDictionary* tempDic = [[NSDictionary alloc] initWithObjectsAndKeys:prodObject,@"product",[NSNumber numberWithInteger:1],@"quantity", nil];
 //    CartItem* cartItem = [[CartItem alloc] initWithDictionary:tempDic];
 //    [GlobalVariables addItemToCart:cartItem];
@@ -170,20 +181,35 @@
     [searchBar resignFirstResponder];
 }
 
-//- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-//
-//}
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    if(searchText.length == 0){
+        [self filterRetailerList];
+    }else{
+        searchBar.showsCancelButton = YES;
+    }
+    if([[searchBar.text stringByTrimmingCharactersInSet:[NSCharacterSet  whitespaceAndNewlineCharacterSet]] isEqualToString:@""]) return;
+    [self filterRetailerList];
+//    [searchBar resignFirstResponder];
 }
-*/
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar{
+    searchBar.showsCancelButton = NO;
+    return YES;
+}
+
+-(void)filterRetailerList
+{
+    NSPredicate *searchKeyWordPredicate;    
+    //Setting predicate if there is a keyword entered in the searchbar
+    NSString* trimmedString = [self.searchBar.text stringByTrimmingCharactersInSet:[NSCharacterSet  whitespaceAndNewlineCharacterSet]];
+    if(trimmedString.length > 0){
+                searchKeyWordPredicate = [NSPredicate predicateWithFormat:@"productName CONTAINS[cd] %@",trimmedString];
+    }else{
+        searchKeyWordPredicate = [NSPredicate predicateWithValue:YES]; // returns all products
+    }
+//    NSArray*  temp =  [[NSArray alloc] initWithArray:[self.products filteredArrayUsingPredicate:searchKeyWordPredicate]];
+    self.searchFilteredProducts = [self.products filteredArrayUsingPredicate:searchKeyWordPredicate];
+    [self.prodCollectionView reloadData];
+}
 
 #pragma mark Slide view delegate method
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu

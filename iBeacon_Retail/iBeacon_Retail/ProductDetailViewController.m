@@ -133,8 +133,8 @@
 }
 
 - (IBAction)locateProduct:(UIButton *)sender {
-    ViewController* temp = [ViewController getInstance];
-    [temp.productNavigationViewController popViewControllerAnimated:YES];
+    StoreLocationMapViewController* storeMap = [GlobalVariables getStoreMap];
+    [[SlideNavigationController sharedInstance] pushViewController:storeMap animated:YES];
 }
 
 - (IBAction)addProductToCart:(id)sender {
