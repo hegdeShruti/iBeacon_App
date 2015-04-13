@@ -207,6 +207,7 @@
     }
     }
     [self.globals showOfferPopUpWithTitle:((OfferButton *)sender).secTitle message:((OfferButton *)sender).offerMsg andDelegate:self];
+    //abcd
 //    ((OfferButton *)sender).offerMsg=@"You have 50% off on selected items";
 
 }
