@@ -7,7 +7,6 @@
 //
 
 #import "ProductDetailViewController.h"
-#import "ViewController.h"
 
 @interface ProductDetailViewController ()
 @end

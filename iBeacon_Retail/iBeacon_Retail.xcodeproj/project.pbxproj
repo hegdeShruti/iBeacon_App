@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0AF77D6F1AA0363800B57B8C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF77D6E1AA0363800B57B8C /* main.m */; };
 		0AF77D721AA0363800B57B8C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF77D711AA0363800B57B8C /* AppDelegate.m */; };
-		0AF77D751AA0363800B57B8C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF77D741AA0363800B57B8C /* ViewController.m */; };
 		0AF77D781AA0363800B57B8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AF77D761AA0363800B57B8C /* Main.storyboard */; };
 		0AF77D7A1AA0363800B57B8C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AF77D791AA0363800B57B8C /* Images.xcassets */; };
 		0AF77D7D1AA0363800B57B8C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AF77D7B1AA0363800B57B8C /* LaunchScreen.xib */; };
@@ -95,7 +94,6 @@
 		814BC9621AA4404800164B30 /* ProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 814BC9601AA4404800164B30 /* ProductViewController.xib */; };
 		814BC9661AA4634900164B30 /* prodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 814BC9641AA4634900164B30 /* prodCell.m */; };
 		814BC9671AA4634900164B30 /* prodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 814BC9651AA4634900164B30 /* prodCell.xib */; };
-		8186A0A01AA7775D00BB5AC4 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8186A09F1AA7775C00BB5AC4 /* ViewController.xib */; };
 		818747701AC185BF00C7E043 /* libEstimoteSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8187476E1AC185A600C7E043 /* libEstimoteSDK.a */; };
 		818849B71AB94952005A06BF /* Offers.m in Sources */ = {isa = PBXBuildFile; fileRef = 818849B61AB94952005A06BF /* Offers.m */; };
 		818849BB1AB98B14005A06BF /* productGridCellCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 818849B91AB98B14005A06BF /* productGridCellCollectionViewCell.m */; };
@@ -107,7 +105,6 @@
 		81AE088F1AA71F1900CD7F75 /* OffersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81AE088D1AA71F1900CD7F75 /* OffersViewController.xib */; };
 		81AE08931AA720D200CD7F75 /* OffersTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE08911AA720D200CD7F75 /* OffersTableCell.m */; };
 		81AE08941AA720D200CD7F75 /* OffersTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81AE08921AA720D200CD7F75 /* OffersTableCell.xib */; };
-		81AE089A1AA7672200CD7F75 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE08961AA7672200CD7F75 /* ContainerViewController.m */; };
 		81AE089B1AA7672200CD7F75 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE08981AA7672200CD7F75 /* MenuViewController.m */; };
 		81AE089C1AA7672200CD7F75 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81AE08991AA7672200CD7F75 /* MenuViewController.xib */; };
 		81AF71091AAF1AD800B350B6 /* BeaconMonitoringModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AF71081AAF1AD800B350B6 /* BeaconMonitoringModel.m */; };
@@ -138,8 +135,6 @@
 		0AF77D6E1AA0363800B57B8C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0AF77D701AA0363800B57B8C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0AF77D711AA0363800B57B8C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		0AF77D731AA0363800B57B8C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		0AF77D741AA0363800B57B8C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		0AF77D771AA0363800B57B8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0AF77D791AA0363800B57B8C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0AF77D7C1AA0363800B57B8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -254,7 +249,6 @@
 		814BC9631AA4634900164B30 /* prodCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prodCell.h; sourceTree = "<group>"; };
 		814BC9641AA4634900164B30 /* prodCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = prodCell.m; sourceTree = "<group>"; };
 		814BC9651AA4634900164B30 /* prodCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = prodCell.xib; sourceTree = "<group>"; };
-		8186A09F1AA7775C00BB5AC4 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		818747561AC185A600C7E043 /* ESTBeacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeacon.h; sourceTree = "<group>"; };
 		818747571AC185A600C7E043 /* ESTBeaconDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeaconDefinitions.h; sourceTree = "<group>"; };
 		818747581AC185A600C7E043 /* ESTBeaconFirmwareVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTBeaconFirmwareVO.h; sourceTree = "<group>"; };
@@ -296,8 +290,6 @@
 		81AE08901AA720D200CD7F75 /* OffersTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OffersTableCell.h; sourceTree = "<group>"; };
 		81AE08911AA720D200CD7F75 /* OffersTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OffersTableCell.m; sourceTree = "<group>"; };
 		81AE08921AA720D200CD7F75 /* OffersTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OffersTableCell.xib; sourceTree = "<group>"; };
-		81AE08951AA7672200CD7F75 /* ContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerViewController.h; sourceTree = "<group>"; };
-		81AE08961AA7672200CD7F75 /* ContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
 		81AE08971AA7672200CD7F75 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		81AE08981AA7672200CD7F75 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		81AE08991AA7672200CD7F75 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
@@ -376,11 +368,6 @@
 			children = (
 				0AF77D701AA0363800B57B8C /* AppDelegate.h */,
 				0AF77D711AA0363800B57B8C /* AppDelegate.m */,
-				8186A09F1AA7775C00BB5AC4 /* ViewController.xib */,
-				0AF77D731AA0363800B57B8C /* ViewController.h */,
-				0AF77D741AA0363800B57B8C /* ViewController.m */,
-				81AE08951AA7672200CD7F75 /* ContainerViewController.h */,
-				81AE08961AA7672200CD7F75 /* ContainerViewController.m */,
 				81AE08971AA7672200CD7F75 /* MenuViewController.h */,
 				81AE08981AA7672200CD7F75 /* MenuViewController.m */,
 				81A633DB1AD79A25002F927F /* CustomHeaderView.xib */,
@@ -845,7 +832,6 @@
 				458F3CC11ACA9CC50099F2E6 /* ProductDetailViewController.xib in Resources */,
 				455269A41AB0443D00E6F7C3 /* location.json in Resources */,
 				45849EA01AD4F2FC00FF7A1F /* menu-button@2x.png in Resources */,
-				8186A0A01AA7775D00BB5AC4 /* ViewController.xib in Resources */,
 				45526A301AB048B300E6F7C3 /* 5b_first_frame@2x.png in Resources */,
 				45526A3B1AB048B300E6F7C3 /* beaconIcySmall.png in Resources */,
 				45526A2B1AB048B300E6F7C3 /* 5b.mov in Resources */,
@@ -917,7 +903,6 @@
 				45E8D6C41AC3E38E00E107F2 /* CartTableViewCell.m in Sources */,
 				81AE089B1AA7672200CD7F75 /* MenuViewController.m in Sources */,
 				45849E9D1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
-				0AF77D751AA0363800B57B8C /* ViewController.m in Sources */,
 				458F3CC01ACA9CC50099F2E6 /* ProductDetailViewController.m in Sources */,
 				81AE088E1AA71F1900CD7F75 /* OffersViewController.m in Sources */,
 				811165761AB1AEF1003629E0 /* LoginViewController.m in Sources */,
@@ -938,7 +923,6 @@
 				81A633DF1AD79BC0002F927F /* CustomHeaderView.m in Sources */,
 				456167811AD3B38F007F2396 /* ProductImageCollectionViewCell.m in Sources */,
 				81AF71091AAF1AD800B350B6 /* BeaconMonitoringModel.m in Sources */,
-				81AE089A1AA7672200CD7F75 /* ContainerViewController.m in Sources */,
 				45849E9E1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */,
 				0AF77D6F1AA0363800B57B8C /* main.m in Sources */,
 			);

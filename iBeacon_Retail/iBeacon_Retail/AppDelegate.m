@@ -11,7 +11,6 @@
 #import "ESTBeaconManager.h"
 #import "ESTBeaconRegion.h"
 #import "OffersViewController.h"
-#import "ContainerViewController.h"
 #import "BeaconMonitoringModel.h"
 #import "GlobalVariables.h"
 #import "LoginViewController.h"
@@ -27,14 +26,12 @@
 @property(nonatomic,strong)ESTBeaconManager *beaconManager;
 @property (nonatomic, strong) ESTBeaconRegion *regionMenSection;
 @property (nonatomic, strong) BeaconMonitoringModel *beaconOperations;
-@property (nonatomic,strong) ContainerViewController *containerViewController;
 @property (nonatomic,strong) LoginViewController *loginViewController;
 
 @end
 
 @implementation AppDelegate
 @synthesize beaconOperations;
-@synthesize containerViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     

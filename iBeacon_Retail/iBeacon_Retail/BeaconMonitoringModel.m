@@ -12,7 +12,6 @@
 #import "ESTBeaconManager.h"
 #import "ESTBeaconRegion.h"
 #import "OffersViewController.h"
-#import "ContainerViewController.h"
 #import "BeaconMonitoringModel.h"
 #import "GlobalVariables.h"
 

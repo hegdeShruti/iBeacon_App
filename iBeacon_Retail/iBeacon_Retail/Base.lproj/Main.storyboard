@@ -173,25 +173,6 @@
             </objects>
             <point key="canvasLocation" x="-169" y="308"/>
         </scene>
-        <!--Container View Controller-->
-        <scene sceneID="ufC-wZ-h7g">
-            <objects>
-                <viewController storyboardIdentifier="ContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vXZ-lx-hvc" customClass="ContainerViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="181" y="309"/>
-        </scene>
     </scenes>
     <resources>
         <image name="bg" width="320" height="568"/>
@@ -201,7 +182,7 @@
         <image name="login_btn" width="57" height="57"/>
         <image name="logo" width="207" height="148"/>
         <image name="pass_icon" width="15" height="18"/>
-        <image name="text_box" width="266" height="33"/>
+        <image name="text_box" width="265" height="33"/>
         <image name="twitter" width="21" height="21"/>
         <image name="user_icon" width="17" height="18"/>
     </resources>
