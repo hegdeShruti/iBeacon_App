@@ -46,7 +46,7 @@
         self.price=[decoder decodeObjectForKey:@"price"];
         self.size=[decoder decodeObjectForKey:@"size"];
         self.colour=[decoder decodeObjectForKey:@"colour"];
-    }
+        self.prodImage = [decoder decodeObjectForKey:@"productImage"];    }
     return self;
 }
 
@@ -59,6 +59,8 @@
     [encoder encodeObject:self.price forKey:@"price"];
     [encoder encodeObject:self.size forKey:@"size"];
     [encoder encodeObject:self.colour forKey:@"colour"];
+    [encoder encodeObject:self.prodImage forKey:@"productImage"];
+
 }
 
 @end

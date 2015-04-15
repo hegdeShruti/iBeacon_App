@@ -71,7 +71,9 @@
     NSString *str=[prodObject.price  substringFromIndex:1];
     self.total+=[str intValue];
     self.totalValue.text=[NSString stringWithFormat:@"$%zd",self.total];
-   // cell.prodImage.image=[UIImage imageNamed:prodObject.prodImage];
+    
+    //NSLog(@"Product Image = %@",prodObject.prodImage );
+    cell.prodImage.image=[UIImage imageNamed:prodObject.prodImage];
     return cell;
 }
 

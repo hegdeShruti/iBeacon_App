@@ -79,6 +79,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="prodDescription" destination="fsN-mW-zPv" id="0m7-fD-hrF"/>
+                <outlet property="prodImage" destination="xpl-MO-DCG" id="g0s-J7-lXo"/>
                 <outlet property="productName" destination="H8c-E4-tdj" id="d9Z-1j-Th9"/>
                 <outlet property="subTotal" destination="zrO-Ss-j4t" id="Op9-gh-P0o"/>
             </connections>
