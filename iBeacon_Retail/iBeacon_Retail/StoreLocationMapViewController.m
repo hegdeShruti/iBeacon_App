@@ -45,6 +45,7 @@
 @property(nonatomic,strong)NSMutableArray *kidSectionTagArray;
 @property(nonatomic,strong)NSMutableArray *menSectionTagArray;
 
+@property(nonatomic,strong)IBOutlet UIImageView *productImage;
 
 @end
 
@@ -95,7 +96,7 @@ BOOL isSearchEnabled = NO;
     
     [super viewWillAppear:animated];
     [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                                                                  [UIColor blackColor],
+                                                                                                  [UIColor whiteColor],
                                                                                                   NSForegroundColorAttributeName,
                                                                                                   nil]
                                                                                         forState:UIControlStateNormal];
@@ -171,7 +172,7 @@ BOOL isSearchEnabled = NO;
                 [l setTitle:@"X" forState:UIControlStateNormal];
                 l.backgroundColor = [UIColor clearColor];
             } else {
-                l.backgroundColor = [UIColor greenColor];
+                l.backgroundColor = [UIColor clearColor];
             }
 
             [self.indoorLocationView addSubview:l];
@@ -301,6 +302,7 @@ BOOL isSearchEnabled = NO;
     //show the description ...
     self.labelView.hidden = NO;
     self.textLabel.text = [NSString stringWithFormat:@"The product %@ is available in the %@",[resultProduct valueForKey:@"productName"],[GlobalVariables returnTitleForSection:[[resultProduct valueForKey:@"sectionId"] intValue]]];
+    self.productImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[resultProduct valueForKey:@"productName"]]];
     isSearchEnabled = YES;
     [self actionField:(UIButton *)[self.indoorLocationView viewWithTag:but.tag]];
     
@@ -351,12 +353,12 @@ BOOL isSearchEnabled = NO;
         cell = [[UITableViewCell alloc]
                 initWithStyle:UITableViewCellStyleDefault reuseIdentifier:AutoCompleteRowIdentifier];
     }
-    
+    cell.backgroundColor = [UIColor colorWithRed:192.0/255.0 green:232.0/255.0 blue:237.0/255.0 alpha:0.7];
     cell.textLabel.text = [[self.filteredProductList objectAtIndex:indexPath.row]valueForKey:@"productName"];
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 30;
+    return 44;
 }
 #pragma mark UITableViewDelegate methods
 
