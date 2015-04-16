@@ -84,7 +84,7 @@ BOOL isSearchEnabled = NO;
 - (void)viewWillAppear:(BOOL)animated
 {
     UIButton *rtButton  = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
-    [rtButton setImage:[UIImage imageNamed:@"user.png"] forState:UIControlStateNormal];
+    [rtButton setImage:[UIImage imageNamed:@"clear.png"] forState:UIControlStateNormal];
     [rtButton addTarget:self action:@selector(clearPath:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rtButton];
     [SlideNavigationController sharedInstance].rightBarButtonItem = rightBarButtonItem;
@@ -120,7 +120,7 @@ BOOL isSearchEnabled = NO;
     //    self.indoorLocationView.positionImage = [UIImage imageNamed:@"arrow.png"];
     self.indoorLocationView.positionView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
     [self.indoorLocationView.positionView setBackgroundColor:[UIColor clearColor]];
-        UIImageView *img=[[UIImageView alloc]initWithFrame:CGRectMake(-47, 0, 320, 320)];
+        UIImageView *img=[[UIImageView alloc]initWithFrame:CGRectMake(-47, 0, 410, 410)];
         [img setImage:[UIImage imageNamed:@"StoreMap.png"]];
         img.layer.borderColor = (__bridge CGColorRef)([UIColor blackColor]);
         img.layer.borderWidth = 4.0;
@@ -148,8 +148,8 @@ BOOL isSearchEnabled = NO;
     
     // set default field size
    // CGFloat size = 45/2;//self.indoorLocationView.frame.size.width/[_plane[0] count];
-    _frameWidthFactor = self.indoorLocationView.frame.size.width/[_plane[0] count];
-    _frameHeightFactor = self.indoorLocationView.frame.size.height/[_plane count];
+    _frameWidthFactor = 410/[_plane[0] count];
+    _frameHeightFactor = 410/[_plane count];
     
     // generate plans's fields
     for (int i = 0; i<_plane.count; i++) {
@@ -313,8 +313,6 @@ BOOL isSearchEnabled = NO;
                 [self actionField:(UIButton *)[self.indoorLocationView viewWithTag:((OfferButton *)offer).tagNo]];
             }
     }
-    
-    
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {

@@ -119,6 +119,7 @@
 		B17C01AA1ABAA28F00542233 /* OfferButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B17C01A71ABAA28F00542233 /* OfferButton.m */; };
 		B17C01AB1ABAA28F00542233 /* OfferPopupMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B17C01A91ABAA28F00542233 /* OfferPopupMenu.m */; };
 		B1C0A4031AD563B200FBB027 /* AOShortestPath.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C0A4021AD563B200FBB027 /* AOShortestPath.m */; };
+		B1FEB0851ADFD4DA00F12F3A /* clear.png in Resources */ = {isa = PBXBuildFile; fileRef = B1FEB0841ADFD4DA00F12F3A /* clear.png */; };
 		EF12789D1ADBD11E003CA791 /* Cart.png in Resources */ = {isa = PBXBuildFile; fileRef = EF12788D1ADBD11E003CA791 /* Cart.png */; };
 		EF12789E1ADBD11E003CA791 /* Cart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF12788E1ADBD11E003CA791 /* Cart@2x.png */; };
 		EF12789F1ADBD11E003CA791 /* Cart@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF12788F1ADBD11E003CA791 /* Cart@3x.png */; };
@@ -332,6 +333,7 @@
 		B19CB4931AB97804006C7575 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		B1C0A4011AD563B200FBB027 /* AOShortestPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOShortestPath.h; sourceTree = "<group>"; };
 		B1C0A4021AD563B200FBB027 /* AOShortestPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOShortestPath.m; sourceTree = "<group>"; };
+		B1FEB0841ADFD4DA00F12F3A /* clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clear.png; sourceTree = "<group>"; };
 		EF12788D1ADBD11E003CA791 /* Cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cart.png; sourceTree = "<group>"; };
 		EF12788E1ADBD11E003CA791 /* Cart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cart@2x.png"; sourceTree = "<group>"; };
 		EF12788F1ADBD11E003CA791 /* Cart@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cart@3x.png"; sourceTree = "<group>"; };
@@ -793,6 +795,7 @@
 				458F3CB31ACA71FB0099F2E6 /* arrow.png */,
 				458F3CB41ACA71FB0099F2E6 /* map-pin-green.png */,
 				458F3CB51ACA71FB0099F2E6 /* map-pin-red.png */,
+				B1FEB0841ADFD4DA00F12F3A /* clear.png */,
 				458F3CB61ACA71FB0099F2E6 /* map.png */,
 				B17C01A01AB9B35C00542233 /* Test_Kid'sSection.png */,
 				B17C01A11AB9B35C00542233 /* Test_MenSection.png */,
@@ -950,6 +953,7 @@
 				EF1278A21ADBD11E003CA791 /* Logout@3x.png in Resources */,
 				458F3CB91ACA71FB0099F2E6 /* map-pin-red.png in Resources */,
 				45526A4A1AB048B300E6F7C3 /* SixBeaconsView.xib in Resources */,
+				B1FEB0851ADFD4DA00F12F3A /* clear.png in Resources */,
 				45526A331AB048B300E6F7C3 /* 8c_first_frame@2x.png in Resources */,
 				B17C01A41AB9B35C00542233 /* Test_MenSection.png in Resources */,
 				EF1278A01ADBD11E003CA791 /* Logout.png in Resources */,
