@@ -11,6 +11,7 @@
 #import "ESTLocation.h"
 #import "ESTIndoorLocationView.h"
 #import "SlideNavigationController.h"
+#import "MapPathGenerator.h"
 
 @interface StoreLocationMapViewController : UIViewController<UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource,SlideNavigationControllerDelegate>
 
@@ -18,7 +19,7 @@
 @property (nonatomic, retain) IBOutlet UITableView *autocompleteTableView;
 @property (nonatomic, retain) NSMutableArray *filteredProductList;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-
+@property (nonatomic, assign) IBOutlet MapPathGenerator *pathGeneratorView;
 - (instancetype)initWithLocation:(ESTLocation *)location;
 
 @end

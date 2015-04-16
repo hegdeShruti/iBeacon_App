@@ -218,8 +218,9 @@ BOOL isKidsOfferShown = NO;
 
 -(void)showPopUpForOffer{
     if(self.globals.isUserOnTheMapScreen){
-        [self.globals showOfferPopUpWithTitle:[GlobalVariables returnTitleForRegion:self.beaconRegion] andMessage:@"You have 50% off on selected items"];
-        ;
+//        [self.globals showOfferPopUpWithTitle:[GlobalVariables returnTitleForRegion:self.beaconRegion] andMessage:@"You have 50% off on selected items"];
+//        ;
+//        [self.globals showOfferPopUp:[GlobalVariables returnTitleForRegion:self.beaconRegion] andMessage:@"You have 50% off on selected items"] onController:nil withImage:nil];
     }
 
 }
