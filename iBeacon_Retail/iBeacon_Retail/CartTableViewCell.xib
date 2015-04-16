@@ -16,16 +16,16 @@
                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VB8-g7-RXy">
                         <rect key="frame" x="0.0" y="1" width="320" height="140"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Product Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8c-E4-tdj">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8c-E4-tdj">
                                 <rect key="frame" x="102" y="13" width="210" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Nsg-Wj-Fgs"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="jacket" translatesAutoresizingMaskIntoConstraints="NO" id="xpl-MO-DCG">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jacket" translatesAutoresizingMaskIntoConstraints="NO" id="xpl-MO-DCG">
                                 <rect key="frame" x="6" y="13" width="88" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="88" id="8a4-8U-tnI"/>
@@ -54,27 +54,37 @@
                                 <color key="textColor" red="0.21176470589999999" green="0.71764705880000002" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AO3-UE-6hu">
+                                <rect key="frame" x="10" y="138" width="300" height="1"/>
+                                <color key="backgroundColor" red="0.72470801767676774" green="0.72470801767676774" blue="0.72470801767676774" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="uzo-KG-n6e"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <constraints>
                             <constraint firstItem="H8c-E4-tdj" firstAttribute="leading" secondItem="xpl-MO-DCG" secondAttribute="trailing" constant="8" id="C97-vi-18c"/>
+                            <constraint firstItem="AO3-UE-6hu" firstAttribute="leading" secondItem="VB8-g7-RXy" secondAttribute="leading" constant="10" id="Gq0-5e-N3P"/>
                             <constraint firstItem="fsN-mW-zPv" firstAttribute="leading" secondItem="xpl-MO-DCG" secondAttribute="trailing" constant="8" id="I4e-di-eio"/>
                             <constraint firstAttribute="trailing" secondItem="zrO-Ss-j4t" secondAttribute="trailing" constant="8" id="MPd-OX-nKd"/>
-                            <constraint firstItem="xpl-MO-DCG" firstAttribute="top" secondItem="VB8-g7-RXy" secondAttribute="top" constant="12" id="MrD-NO-snu"/>
-                            <constraint firstItem="zrO-Ss-j4t" firstAttribute="top" secondItem="fsN-mW-zPv" secondAttribute="bottom" constant="5" id="UO0-iU-yz7"/>
+                            <constraint firstItem="xpl-MO-DCG" firstAttribute="top" secondItem="VB8-g7-RXy" secondAttribute="top" constant="13" id="MrD-NO-snu"/>
+                            <constraint firstItem="zrO-Ss-j4t" firstAttribute="top" secondItem="fsN-mW-zPv" secondAttribute="bottom" constant="4" id="UO0-iU-yz7"/>
                             <constraint firstItem="xpl-MO-DCG" firstAttribute="leading" secondItem="VB8-g7-RXy" secondAttribute="leading" constant="6" id="eOZ-xO-fHu"/>
+                            <constraint firstAttribute="trailing" secondItem="AO3-UE-6hu" secondAttribute="trailing" constant="10" id="ewB-T3-a7c"/>
                             <constraint firstAttribute="trailing" secondItem="H8c-E4-tdj" secondAttribute="trailing" constant="8" id="gd0-iF-3HW"/>
+                            <constraint firstAttribute="bottom" secondItem="AO3-UE-6hu" secondAttribute="bottom" constant="1" id="lX1-9H-mhN"/>
                             <constraint firstAttribute="trailing" secondItem="fsN-mW-zPv" secondAttribute="trailing" constant="8" id="qIV-Ue-Dnk"/>
                             <constraint firstItem="fsN-mW-zPv" firstAttribute="top" secondItem="H8c-E4-tdj" secondAttribute="bottom" constant="4" id="rN7-R8-A0A"/>
                             <constraint firstAttribute="bottom" secondItem="zrO-Ss-j4t" secondAttribute="bottom" constant="5" id="tIE-q7-fmR"/>
-                            <constraint firstItem="H8c-E4-tdj" firstAttribute="top" secondItem="VB8-g7-RXy" secondAttribute="top" constant="12" id="xl3-qP-pfR"/>
+                            <constraint firstItem="H8c-E4-tdj" firstAttribute="top" secondItem="VB8-g7-RXy" secondAttribute="top" constant="13" id="xl3-qP-pfR"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="VB8-g7-RXy" secondAttribute="trailing" id="8vu-4M-QCV"/>
                     <constraint firstItem="VB8-g7-RXy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="H3W-mD-NPe"/>
-                    <constraint firstItem="VB8-g7-RXy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="fMJ-ns-yg7"/>
-                    <constraint firstAttribute="bottom" secondItem="VB8-g7-RXy" secondAttribute="bottom" id="ih4-6W-unD"/>
+                    <constraint firstItem="VB8-g7-RXy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="1" id="fMJ-ns-yg7"/>
+                    <constraint firstAttribute="bottom" secondItem="VB8-g7-RXy" secondAttribute="bottom" constant="-1" id="ih4-6W-unD"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

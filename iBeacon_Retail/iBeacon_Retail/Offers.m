@@ -28,7 +28,7 @@
         self.sectionId= (NSInteger)[offerData valueForKey:@"sectionId"];
         self.beaconId =  [offerData valueForKey:@"beaconId"];
         self.productId =(NSInteger) [offerData valueForKey:@"productId"];
-        
+        self.isExitOffer= (BOOL)[offerData valueForKey:@"onExitOffer"];
         
     }
     return self;

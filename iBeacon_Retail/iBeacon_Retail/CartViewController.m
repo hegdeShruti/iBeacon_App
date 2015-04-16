@@ -11,7 +11,7 @@
 @interface CartViewController ()
 
 @property(nonatomic,strong)NetworkOperations *networks;
-@property(nonatomic,assign) NSInteger *total;
+@property(nonatomic,assign) float total;
 
 @end
 
@@ -26,6 +26,7 @@
     [self getCartListing];
     self.total=0;
     [self.tableview reloadData];
+    
     
 }
 
@@ -69,8 +70,8 @@
     cell.price.text = prodObject.price;
     cell.subTotal.text = prodObject.price;
     NSString *str=[prodObject.price  substringFromIndex:1];
-    self.total+=[str intValue];
-    self.totalValue.text=[NSString stringWithFormat:@"$%zd",self.total];
+    self.total+=[str floatValue];
+    self.totalValue.text=[NSString stringWithFormat:@"$%f",self.total];
     
     //NSLog(@"Product Image = %@",prodObject.prodImage );
     cell.prodImage.image=[UIImage imageNamed:prodObject.prodImage];
@@ -86,6 +87,9 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         //add code here for when you hit delete
+        CartItem* item = (CartItem*)[self.tableData objectAtIndex:indexPath.row];
+        [GlobalVariables removeItemFromCart:item];
+        [self getCartListing];
     }
 }
 

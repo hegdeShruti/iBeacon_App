@@ -95,6 +95,8 @@
         
     }else{
         ProductRecommendationCollectionViewCell* cell = (ProductRecommendationCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"RecommendationCell" forIndexPath:indexPath];
+        cell.layer.cornerRadius=10.0f;
+        cell.productImage.image=[UIImage imageNamed:self.product.prodImage];
         return cell;
     }
 }
@@ -142,6 +144,7 @@
 - (IBAction)addProductToCart:(id)sender {
    
         NSDictionary* tempDic = [[NSDictionary alloc] initWithObjectsAndKeys:self.product,@"product",[NSNumber numberWithInteger:1],@"quantity", nil];
+    self.cartButton.titleLabel.textColor=[UIColor whiteColor];
         CartItem* cartItem = [[CartItem alloc] initWithDictionary:tempDic];
         [GlobalVariables addItemToCart:cartItem];
 }

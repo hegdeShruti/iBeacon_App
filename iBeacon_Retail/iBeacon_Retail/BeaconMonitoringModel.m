@@ -14,6 +14,8 @@
 #import "OffersViewController.h"
 #import "BeaconMonitoringModel.h"
 #import "GlobalVariables.h"
+#import "Products.h"
+#import "Offers.h"
 
 
 @interface BeaconMonitoringModel ()<ESTBeaconManagerDelegate>
@@ -45,10 +47,12 @@ BOOL isKidsOfferShown = NO;
 }
 
 -(void)startBeaconOperations{
+   
     [ESTConfig setupAppID:nil andAppToken:nil];
     self.beaconManager = [[ESTBeaconManager alloc] init];
     self.beaconManager.delegate = self;
     self.globals=[GlobalVariables getInstance];
+    
     // read config values from plist and assign it to parameters
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Config" ofType:@"plist"];
     dict = [[NSDictionary alloc] initWithContentsOfFile:path];
@@ -103,6 +107,9 @@ BOOL isKidsOfferShown = NO;
 #pragma beaconmanager Delegate method
 - (void)beaconManager:(ESTBeaconManager *)manager didEnterRegion:(ESTBeaconRegion *)region
 {
+    
+   
+    NSInteger offerId=0;
    
     @synchronized(self) {
         UILocalNotification *notification = [UILocalNotification new];
@@ -111,8 +118,8 @@ BOOL isKidsOfferShown = NO;
             self.globals.hasUsercrossedEntrance=YES;
             if(self.globals.hasUserEnteredTheStore){
                 notification.alertBody = @"Thank you for visiting Us";
-                NSDictionary *userInformation=[[NSDictionary alloc] initWithObjectsAndKeys:@"6",@"offerId",[GlobalVariables returnTitleForSection:6],@"offerDescription", nil];
-                notification.userInfo=userInformation;
+                offerId=1;
+                
                 self.globals.hasUserEnteredTheStore=NO;
                 self.globals.hasUserGotMenSectionOffers=NO;
                 self.globals.hasUserGotWOmenSectionOffers=NO;
@@ -121,41 +128,33 @@ BOOL isKidsOfferShown = NO;
                 [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
             }
             
-            //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location"
-            //                                                        message:@"Yor r @ main entrance."
-            //                                                       delegate:nil
-            //                                              cancelButtonTitle:@"OK"
-            //                                              otherButtonTitles: nil];
-            //
-            //        [alert show];
-            
         }
         else  if([region.identifier isEqualToString:@"ENTRYBEACON" ] && !self.globals.hasUserEnteredTheStore && self.globals.hasUsercrossedEntrance){
-//            else  if([region.identifier isEqualToString:@"ENTRYBEACON" ] ){
+            // else  if([region.identifier isEqualToString:@"ENTRYBEACON" ] ){
             notification.alertBody = @"Welcome to Tavant Store..Check for offers here";
-            NSDictionary *userInformation=[[NSDictionary alloc] initWithObjectsAndKeys:@"1",@"offerId",[GlobalVariables returnTitleForSection:1],@"offerDescription", nil];
-            notification.userInfo=userInformation;
+
+            offerId=5;
+         
             self.globals.hasUserEnteredTheStore=YES;
             self.globals.hasUserEntredEntryBeacon=YES;
         }
         else if([region.identifier isEqualToString:@"MENSECTIONBEACON"]&& !self.globals.hasUserGotMenSectionOffers &&  self.globals.hasUserEntredEntryBeacon ){
             notification.alertBody = @"Visit Men section to avail the exiting offers.";
-            NSDictionary *userInformation=[[NSDictionary alloc] initWithObjectsAndKeys:@"2",@"offerId",[GlobalVariables returnTitleForSection:2],@"offerDescription", nil];
-            notification.userInfo=userInformation;
+            offerId=2;
+           
             self.globals.hasUserGotMenSectionOffers=YES;
             
             
         }
         else if([region.identifier isEqualToString:@"WOMENSECTIONBEACON"]&& !self.globals.hasUserGotWOmenSectionOffers && self.globals.hasUserEntredEntryBeacon){
             notification.alertBody = @"Visit Women section to avail the exiting offers.";
-            NSDictionary *userInformation=[[NSDictionary alloc] initWithObjectsAndKeys:@"3",@"offerId",[GlobalVariables returnTitleForSection:3],@"offerDescription", nil];
-            notification.userInfo=userInformation;
+            offerId=3;
+           
             self.globals.hasUserGotWOmenSectionOffers=YES;
         }
         else if([region.identifier isEqualToString:@"KIDSECTIONBEACON"]&& !self.globals.hasUserGotKidSectionOffers && self.globals.hasUserEntredEntryBeacon){
             notification.alertBody = @"Visit Kids section to avail the exiting offers.";
-            NSDictionary *userInformation=[[NSDictionary alloc] initWithObjectsAndKeys:@"4",@"offerId",[GlobalVariables returnTitleForSection:4],@"offerDescription", nil];
-            notification.userInfo=userInformation;
+            offerId=4;
             self.globals.hasUserGotKidSectionOffers=YES;
         }
         
@@ -163,7 +162,12 @@ BOOL isKidsOfferShown = NO;
             notification.alertBody=nil;
         }
         if(notification.alertBody){
+           
+            
+            NSDictionary *userInformation=[[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%ld",(long)offerId],@"offerID",@"SALE SALE SALE!",@"offerHeader" ,nil];
+            notification.userInfo=userInformation;
             [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+            
         }
 
     }
@@ -229,19 +233,8 @@ BOOL isKidsOfferShown = NO;
 {
      UILocalNotification *notification = [UILocalNotification new];
     if([region.identifier isEqualToString:@"ENTRYBEACON"] && self.globals.hasUserEnteredTheStore){
-//       notification.alertBody = @"Thank you for visiting Us";
-//        self.globals.hasUserEnteredTheStore=NO;
-//        self.globals.hasUserGotMenSectionOffers=NO;
-//        self.globals.hasUserGotWOmenSectionOffers=NO;
-//         self.globals.hasUserEntredEntryBeacon=NO;
-//         [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+
     }
-//     if([region.identifier isEqualToString:@"MAINENTRANCEBEACON"] && self.globals.hasUserEnteredTheStore){
-//        notification.alertBody = @"Thank you for visiting Us";
-//        self.globals.hasUserEnteredTheStore=NO;
-//         self.globals.hasUsercrossedEntrance=NO;
-//        [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
-//    }
     
    
     

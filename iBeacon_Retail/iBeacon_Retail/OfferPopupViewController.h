@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Offers.h"
+
 #import "Products.h"
 
 @interface OfferPopupViewController : UIViewController
@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *offerDescription;
 @property (weak, nonatomic) IBOutlet UIImageView *productImage;
 - (IBAction)hidePopup:(id)sender;
-@property(nonatomic,strong) Offers * offersObject;
+@property(nonatomic,strong) Products * productObject;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 
 @end

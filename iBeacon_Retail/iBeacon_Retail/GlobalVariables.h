@@ -11,6 +11,7 @@
 #import "CartViewController.h"
 #import "Constants.h"
 #import "ESTLocationBuilder.h"
+#import "Offers.h"
 @class CartItem;
 
 typedef enum {
@@ -43,12 +44,13 @@ typedef enum {
 @property(nonatomic,strong) NSMutableArray *offersDataArray;
 @property(nonatomic,strong) NSMutableArray *productDataArray;
 @property(nonatomic,strong) NSMutableArray *cartDataArray;
+@property(nonatomic,strong) NSMutableArray *productImagesArray;
 @property(nonatomic,strong)StoreLocationMapViewController *storeLocationController;
 //@property(nonatomic,assign) BOOL hasALreadyLoggedIn;
 
 +( GlobalVariables *) getInstance;
 - (void)showOfferPopUpWithTitle:(NSString *)inTitle andMessage:(NSString *)inMessage  ;
-- (void)showOfferPopUp:(NSString *)inTitle andMessage:(NSString *)inMessage onController:(id) controller withImage:(UIImage *)image ;
+- (void)showOfferPopUp:(Products *)prodInfo andMessage:(NSString *)inMessage onController:(id) controller withImage:(UIImage *)image ;
 - (void)showOfferPopUpWithTitle:(NSString *)inTitle message:(NSString *)inMessage andDelegate:(id)delegate;
 +(NSString *)returnTitleForRegion:(RegionIdentifier)inRegion;
 +(NSString*)getBeaconMacAddress:(int)sectionId;
@@ -59,7 +61,11 @@ typedef enum {
 
 +(void)addItemToCart: (CartItem*) cartItem;
 +(void)removeItemFromCart: (CartItem*) cartItem;
++(void) getAllProductsFromServer;
 +(NSMutableArray*)getCartItems;
 -(void)loadCartScreen;
+
++(Products *)getProductWithID:(NSInteger) id;
++(Offers *)getOfferWithID:(NSInteger) id;
 
 @end

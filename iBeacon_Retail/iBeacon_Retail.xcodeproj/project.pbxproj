@@ -99,6 +99,8 @@
 		818849BB1AB98B14005A06BF /* productGridCellCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 818849B91AB98B14005A06BF /* productGridCellCollectionViewCell.m */; };
 		818849BC1AB98B14005A06BF /* productGridCellCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 818849BA1AB98B14005A06BF /* productGridCellCollectionViewCell.xib */; };
 		81948B4B1AB6AA9C002A6FE6 /* Products.m in Sources */ = {isa = PBXBuildFile; fileRef = 81948B4A1AB6AA9C002A6FE6 /* Products.m */; };
+		81A22FE51ADFB56900F7BA2A /* CheckoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A22FE31ADFB56900F7BA2A /* CheckoutViewController.m */; };
+		81A22FE61ADFB56900F7BA2A /* CheckoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81A22FE41ADFB56900F7BA2A /* CheckoutViewController.xib */; };
 		81A633DC1AD79A25002F927F /* CustomHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81A633DB1AD79A25002F927F /* CustomHeaderView.xib */; };
 		81A633DF1AD79BC0002F927F /* CustomHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A633DE1AD79BC0002F927F /* CustomHeaderView.m */; };
 		81AE088E1AA71F1900CD7F75 /* OffersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE088C1AA71F1900CD7F75 /* OffersViewController.m */; };
@@ -298,6 +300,9 @@
 		818849BA1AB98B14005A06BF /* productGridCellCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = productGridCellCollectionViewCell.xib; sourceTree = "<group>"; };
 		81948B491AB6AA9C002A6FE6 /* Products.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Products.h; sourceTree = "<group>"; };
 		81948B4A1AB6AA9C002A6FE6 /* Products.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Products.m; sourceTree = "<group>"; };
+		81A22FE21ADFB56900F7BA2A /* CheckoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckoutViewController.h; sourceTree = "<group>"; };
+		81A22FE31ADFB56900F7BA2A /* CheckoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckoutViewController.m; sourceTree = "<group>"; };
+		81A22FE41ADFB56900F7BA2A /* CheckoutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckoutViewController.xib; sourceTree = "<group>"; };
 		81A633DB1AD79A25002F927F /* CustomHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomHeaderView.xib; sourceTree = "<group>"; };
 		81A633DD1AD79BC0002F927F /* CustomHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomHeaderView.h; sourceTree = "<group>"; };
 		81A633DE1AD79BC0002F927F /* CustomHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomHeaderView.m; sourceTree = "<group>"; };
@@ -410,6 +415,7 @@
 				81A633DE1AD79BC0002F927F /* CustomHeaderView.m */,
 				81AE08991AA7672200CD7F75 /* MenuViewController.xib */,
 				0AF77D761AA0363800B57B8C /* Main.storyboard */,
+				81A22FE81ADFB59900F7BA2A /* Checkout */,
 				B19CB4901AB95998006C7575 /* Images */,
 				811165721AB14FFE003629E0 /* Network */,
 				81AF71061AAF1A8F00B350B6 /* Utility */,
@@ -727,6 +733,16 @@
 			path = Headers;
 			sourceTree = "<group>";
 		};
+		81A22FE81ADFB59900F7BA2A /* Checkout */ = {
+			isa = PBXGroup;
+			children = (
+				81A22FE21ADFB56900F7BA2A /* CheckoutViewController.h */,
+				81A22FE31ADFB56900F7BA2A /* CheckoutViewController.m */,
+				81A22FE41ADFB56900F7BA2A /* CheckoutViewController.xib */,
+			);
+			name = Checkout;
+			sourceTree = "<group>";
+		};
 		81AE088A1AA71EED00CD7F75 /* Offers */ = {
 			isa = PBXGroup;
 			children = (
@@ -870,6 +886,7 @@
 				45526A481AB048B300E6F7C3 /* tick@2x.png in Resources */,
 				45526A461AB048B300E6F7C3 /* screen8_beacon_green@2x.png in Resources */,
 				EF1278A91ADBD11E003CA791 /* product@2x.png in Resources */,
+				81A22FE61ADFB56900F7BA2A /* CheckoutViewController.xib in Resources */,
 				45526A2D1AB048B300E6F7C3 /* 8b.mov in Resources */,
 				45526A381AB048B300E6F7C3 /* beacongrey@2x.png in Resources */,
 				EF1278AA1ADBD11E003CA791 /* product@3x.png in Resources */,
@@ -972,6 +989,7 @@
 				45E8D6C41AC3E38E00E107F2 /* CartTableViewCell.m in Sources */,
 				81AE089B1AA7672200CD7F75 /* MenuViewController.m in Sources */,
 				45849E9D1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
+				81A22FE51ADFB56900F7BA2A /* CheckoutViewController.m in Sources */,
 				458F3CC01ACA9CC50099F2E6 /* ProductDetailViewController.m in Sources */,
 				81AE088E1AA71F1900CD7F75 /* OffersViewController.m in Sources */,
 				811165761AB1AEF1003629E0 /* LoginViewController.m in Sources */,

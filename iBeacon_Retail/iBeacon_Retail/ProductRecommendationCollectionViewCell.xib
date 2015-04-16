@@ -25,7 +25,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nike Blue" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HI9-r8-Cr5">
                                 <rect key="frame" x="6" y="89" width="98" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="piS-ij-d2O" userLabel="Separator">
@@ -38,7 +38,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$190.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJN-7y-s95">
                                 <rect key="frame" x="6" y="136" width="100" height="15"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nike Blue" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ysr-3j-BR2" userLabel="caption">
@@ -75,6 +75,9 @@
                 <constraint firstItem="xdy-RW-xLI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="A28-oM-jKE"/>
                 <constraint firstItem="xdy-RW-xLI" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="CMX-6i-afd"/>
             </constraints>
+            <connections>
+                <outlet property="productImage" destination="vth-9M-fOC" id="Sm0-7M-4OT"/>
+            </connections>
             <point key="canvasLocation" x="415" y="346"/>
         </collectionViewCell>
     </objects>

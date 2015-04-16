@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ProductRecommendationCollectionViewCell : UICollectionViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *productImage;
 
 @end

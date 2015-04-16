@@ -17,6 +17,7 @@
 #import "AppDelegate.h"
 #import "ProductDetailViewController.h"
 
+
 @interface OffersViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong) NSMutableArray *offersImageArray;
 @property(nonatomic,strong) NSMutableArray *offersDataArray;
@@ -29,13 +30,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-globals=[GlobalVariables getInstance];
-     self.offersImageArray = [[NSMutableArray alloc ]initWithObjects:@"perfume.png",@"prod1.png",@"shoes.png",@"gown_offer.png",@"watch.png",@"dryer.png",nil];
+    globals=[GlobalVariables getInstance];
+     self.offersImageArray = [[NSMutableArray alloc ]initWithObjects:@"Bvlgari Mens perfume.png",@"prod1.png",@"Nike Basketball shoes.png",@"gown_offer.png",@"Seiko Mens Watch.png",@"Philips Hair dryer.png",nil];
     // Do any additional setup after loading the view from its nib.
     if(![globals.offersDataArray count]>0){
         [self getOffersListing];
         
     }
+   
     
    [self filterOffersforSections];
     
@@ -151,7 +153,7 @@ globals=[GlobalVariables getInstance];
     Products *prodObject;
     if([productsArray count]>0){
         prodObject=[[Products alloc]  initWithDictionary:[productsArray objectAtIndex:0]];
-        prodObject.prodImage=[self.offersImageArray objectAtIndex:indexPath.row] ;
+        prodObject.prodImage=[self.offersImageArray objectAtIndex:indexPath.row];
     }
     
     ProductDetailViewController* prodDetailVC = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController" bundle:nil];

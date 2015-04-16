@@ -712,15 +712,15 @@ static SlideNavigationController *singletonInstance;
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
-	if (self.panGestureSideOffset == 0)
-		return YES;
-	
+//	if (self.panGestureSideOffset == 0)
+//		return YES;
+	// enabling tableview edit for right swipe
 	CGPoint pointInView = [touch locationInView:self.view];
 	CGFloat horizontalSize = [self horizontalSize];
 	
-	return (pointInView.x <= self.panGestureSideOffset || pointInView.x >= horizontalSize - self.panGestureSideOffset)
-		? YES
-		: NO;
+	return (pointInView.x >= horizontalSize/2)
+		? NO
+		: YES;
 }
 
 - (void)panDetected:(UIPanGestureRecognizer *)aPanRecognizer
@@ -741,7 +741,7 @@ static SlideNavigationController *singletonInstance;
 #pragma marks ALTERING THE LIBRARY WITH '|| currentMenu == MenuRight' CONDITION TO DISABLE THE RIGHT SLIDE AND STILL ENABLING THE RIGHT MENU BUTTON ON SLIDECONTROLLER
     if (![self shouldDisplayMenu:currentMenu forViewController:self.topViewController] || currentMenu == MenuRight){
         if(currentMenu == MenuRight){
-            [self closeMenuWithCompletion:nil];
+            //[self closeMenuWithCompletion:nil];
         }
         return;
     }

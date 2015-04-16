@@ -14,7 +14,7 @@
 
 
 @implementation GlobalVariables
-@synthesize hasUserEnteredTheStore , hasUserGotWOmenSectionOffers, hasUserGotKidSectionOffers,hasUserGotMenSectionOffers,isUserOnTheMapScreen;
+@synthesize hasUserEnteredTheStore , hasUserGotWOmenSectionOffers, hasUserGotKidSectionOffers,hasUserGotMenSectionOffers,isUserOnTheMapScreen,offersDataArray,productDataArray;
 
 static GlobalVariables *instance = nil;
 
@@ -34,6 +34,8 @@ static GlobalVariables *instance = nil;
             instance.productDataArray=nil;
             instance.offersDataArray=nil;
             instance.isUserOnTheMapScreen = NO;
+            instance.productImagesArray=nil;
+           instance.productImagesArray=[[NSMutableArray alloc ]initWithObjects:@"jacket.png",@"perfume.png",@"gown.png",@"watch.png",@"dryer.png",@"shoes.png",@"jacket.png",nil];
            // instance.hasALreadyLoggedIn=NO;
         }
     }
@@ -51,15 +53,20 @@ static GlobalVariables *instance = nil;
 }
 
 // method that presents popup on existing screen on any beacon notification
-- (void)showOfferPopUp:(NSString *)inTitle andMessage:(NSString *)inMessage onController:(id) controller withImage:(UIImage *)sourceImage {
+- (void)showOfferPopUp:(Products *)prodInfo  andMessage:(NSString *)inMessage onController:(id) controller withImage:(UIImage *)sourceImage {
   
     OfferPopupViewController *offerPopup=[[OfferPopupViewController alloc] initWithNibName:@"OfferPopupViewController" bundle:[NSBundle mainBundle]];
-
+    offerPopup.productObject=prodInfo;
    
     [controller presentViewController:offerPopup animated:YES completion:^{
         // Adding blur effect on the snapshot taken
         offerPopup.backgroundImage.image=sourceImage;
-       offerPopup.offerHeader.text=inTitle;
+       offerPopup.offerHeader.text=inMessage;
+         offerPopup.productName.text=prodInfo.prodName;
+        offerPopup.offerDescription.text=inMessage;
+        if(prodInfo.prodImage){
+        offerPopup.productImage.image=[UIImage imageNamed:prodInfo.prodImage];
+        }
         UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
         UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
         effectView.frame = offerPopup.backgroundImage.bounds;
@@ -186,6 +193,35 @@ static GlobalVariables *instance = nil;
 
 +(void)removeItemFromCart: (CartItem*) cartItem{
     
+    NSMutableArray* cartItems = [NSMutableArray arrayWithArray:[self getCartItems]];
+    if([cartItems count] != 0){
+        NSInteger index=0;
+        for(CartItem* item in cartItems)
+        {
+            if([item.product.prodName isEqualToString:cartItem.product.prodName]){
+               
+                    
+                    index = [cartItems indexOfObject:item];
+                [cartItems removeObjectAtIndex:index];
+                NSData *archivedObject = [NSKeyedArchiver archivedDataWithRootObject:cartItems];
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                [defaults setObject:archivedObject forKey:@"CartItems"];
+                [defaults synchronize];
+
+                break;
+                
+            }
+        }
+//        if ([cartItems containsObject:cartItem]) {
+//            
+//             index = [cartItems indexOfObject:cartItem];
+//        } else {
+//            NSLog(@"is not present in cart item arry");
+//        }
+      
+        
+    }
+
 }
 
 +(NSMutableArray*)getCartItems{
@@ -213,6 +249,59 @@ static GlobalVariables *instance = nil;
     instance.storeLocationController = vc;
     return vc;
 }
+
++(void)getAllProductsFromServer{
+    NetworkOperations *networks;
+    networks=[[NetworkOperations alloc] init];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Config" ofType:@"plist"];
+    NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:path];
+    NSLog(@"The product Api is %@",[dict objectForKey:@"Offers_Api"]);
+    // send block as parameter to get callbacks
+    [networks fetchDataFromServer:[dict objectForKey:@"Offers_Api"] withreturnMethod:^(NSMutableArray* data){
+        instance.offersDataArray=data;
+        NSLog(@"The product Api is %lu",(unsigned long)[instance.offersDataArray count]);
+        dispatch_async(dispatch_get_main_queue(), ^
+                       {
+                           
+                           [networks fetchDataFromServer:[dict objectForKey:@"Prod_Api"] withreturnMethod:^(NSMutableArray* data){
+                               instance.productDataArray=data;
+                               NSLog(@"The product Api is %lu",(unsigned long)[instance.offersDataArray count]);
+                               dispatch_async(dispatch_get_main_queue(), ^
+                                              {
+                                                  
+                                                  
+                                                  
+                                                  
+                                              });
+                           }];
+                          
+                           
+                       });
+    }];
+}
+
++(Products *) getProductWithID:(NSInteger)id{
+      NSArray *productsArray = [instance.productDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(offerid == %d)",id]];
+      Products *prodObject;
+    // tentetive for demo purpose
+    
+    if([productsArray count]>0){
+        prodObject=[[Products alloc]  initWithDictionary:[productsArray objectAtIndex:0]];
+        prodObject.prodImage=[NSString stringWithFormat:@"%@.png",prodObject.prodName];
+    }
+    return prodObject;
+}
+
++(Offers *) getOfferWithID:(NSInteger)id{
+    NSArray *offersArray = [instance.offersDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(offerId == %d)", id]];
+    Offers *offerObject;
+    if([offersArray count]>0){
+        offerObject=[[Offers alloc]  initWithDictionary:[offersArray objectAtIndex:0]];
+    }
+    return offerObject;
+
+}
+
 
 -(void)loadCartScreen{
     CartViewController* cartScreen = [[CartViewController alloc] initWithNibName:@"CartViewController" bundle:nil];

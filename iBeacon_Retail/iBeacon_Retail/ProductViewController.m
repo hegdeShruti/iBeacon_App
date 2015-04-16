@@ -17,7 +17,7 @@
 @interface ProductViewController ()
 @property(nonatomic,strong) Products * product;
 @property(nonatomic,strong)NetworkOperations *networks;
-@property(nonatomic,strong) NSMutableArray *productImagesArray;
+//@property(nonatomic,strong) NSMutableArray *productImagesArray;
 @property(nonatomic,strong) GlobalVariables *globals;
 @end
 
@@ -30,26 +30,19 @@
     globals=[GlobalVariables getInstance];
     UINib *cellNib = [UINib nibWithNibName:@"prodCell" bundle:nil];
     [self.prodCollectionView registerNib:cellNib forCellWithReuseIdentifier:@"prodCell"];
-     self.productImagesArray = [[NSMutableArray alloc ]initWithObjects:@"jacket.png",@"perfume.png",@"gown.png",@"watch.png",@"dryer.png",@"shoes.png",@"jacket.png",nil];
+   
     if(![globals.productDataArray count]>0){
           [self getProductListing];
     }
+//    else{
+//        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Network Error"
+//                                                          message:@"No products fetched from server"
+//                                                         delegate:nil
+//                                                cancelButtonTitle:@"OK"
+//                                                otherButtonTitles:nil, nil];
+//        [message show];
+//    }
     
-    /*
-    for (UIView *subview in self.searchBar.subviews)
-    {
-        for (UIView *subSubview in subview.subviews)
-        {
-            if ([subSubview conformsToProtocol:@protocol(UITextInputTraits)])
-            {
-                UITextField *textField = (UITextField *)subSubview;
-//                [textField setKeyboardAppearance: UIKeyboardAppearanceAlert];
-                textField.returnKeyType = UIReturnKeyDefault;
-                break;
-            }
-        }
-    }*/
-  
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -82,6 +75,7 @@
                            [self.prodCollectionView reloadData];
                            
                        });
+        
     }];
    // [self.prodCollectionView reloadData];
     
@@ -126,23 +120,23 @@
     //cell.backgroundColor = [UIColor whiteColor];
     
     Products *prodObject= [[Products alloc] initWithDictionary:[self.searchFilteredProducts objectAtIndex:indexPath.row]];
-    prodObject.prodImage=[self.productImagesArray objectAtIndex:indexPath.row];
+    prodObject.prodImage=[NSString stringWithFormat:@"%@.png",prodObject.prodName];
     cell.product = prodObject;
     cell.productName.text=prodObject.prodName;
     cell.prodDescription.text = prodObject.prodDescription;
     cell.offerPrice.text = prodObject.price;
     cell.size.text = prodObject.size;
     cell.productImage.image= [UIImage imageNamed:prodObject.prodImage ];
-    cell.availableColor1.backgroundColor = [UIColor redColor];
+  //  cell.availableColor1.backgroundColor = [UIColor redColor];
     cell.availableColor1.layer.cornerRadius = (CGFloat)cell.availableColor1.frame.size.height/2;
     
-    cell.availableColor2.backgroundColor = [UIColor blueColor];
+  //  cell.availableColor2.backgroundColor = [UIColor blueColor];
     cell.availableColor2.layer.cornerRadius = (CGFloat)cell.availableColor2.frame.size.height/2;
     
-    cell.availableColor3.backgroundColor = [UIColor blackColor];
+  //  cell.availableColor3.backgroundColor = [UIColor blackColor];
     cell.availableColor3.layer.cornerRadius = (CGFloat)cell.availableColor3.frame.size.height/2;
     
-    cell.availableColor4.backgroundColor = [UIColor yellowColor];
+   // cell.availableColor4.backgroundColor = [UIColor yellowColor];
     cell.availableColor4.layer.cornerRadius = (CGFloat)cell.availableColor4.frame.size.height/2;
     
     return cell;
@@ -153,7 +147,7 @@
 {
     
     Products *prodObject= [[Products alloc] initWithDictionary:[self.searchFilteredProducts objectAtIndex:indexPath.row]];
-    prodObject.prodImage=[self.productImagesArray objectAtIndex:indexPath.row];
+    prodObject.prodImage=[NSString stringWithFormat:@"%@.png",prodObject.prodName];
 //    NSDictionary* tempDic = [[NSDictionary alloc] initWithObjectsAndKeys:prodObject,@"product",[NSNumber numberWithInteger:1],@"quantity", nil];
 //    CartItem* cartItem = [[CartItem alloc] initWithDictionary:tempDic];
 //    [GlobalVariables addItemToCart:cartItem];

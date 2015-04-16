@@ -14,6 +14,9 @@
 #import "BeaconMonitoringModel.h"
 #import "GlobalVariables.h"
 #import "LoginViewController.h"
+#import "Products.h"
+#import "Offers.h"
+
 
 #define ESTIMOTE_PROXIMITY_UUID             [[NSUUID alloc] initWithUUIDString:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"]
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
@@ -35,14 +38,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-//    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
-//    {
-//        UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0,320, 20)];
-//        view.backgroundColor=[UIColor colorWithRed:230/255.0 green:143/255.0 blue:34/255.0 alpha:1.0];
-//        [self.window.rootViewController.view addSubview:view];
-//    }
-
-    //[[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:74/255.0 green:170/255.0 blue:192/255.0 alpha:1.0]];
+    // get all prodict and offer related data app open
+    [GlobalVariables getAllProductsFromServer];
+    
+    // start monitoring for beacons
     beaconOperations=[[BeaconMonitoringModel alloc] init];
     [beaconOperations startBeaconOperations];
     [self loadSlideNotifications];
@@ -80,15 +79,22 @@
         NSLog(@" offer id is%@",notification.userInfo.description);
       
         // when app in backgroud and notification from beacon arrives then open product details screen
-
+        GlobalVariables * globals=[GlobalVariables getInstance];
+        CGRect mainFrame = [UIScreen mainScreen].bounds;
+        UIGraphicsBeginImageContext(CGSizeMake(mainFrame.size.width, mainFrame.size.height));
+        [self.window.rootViewController.view drawViewHierarchyInRect:CGRectMake(0, 0, mainFrame.size.width, mainFrame.size.height) afterScreenUpdates:YES];
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        // global method to get product and offers based on offerID
+        Products *prodObject=  [GlobalVariables getProductWithID:[[notification.userInfo valueForKey:@"offerID" ] intValue]];
+        Offers *offerObject= [GlobalVariables getOfferWithID:[[notification.userInfo valueForKey:@"offerID" ] intValue]];
+       
         UIApplicationState state = [UIApplication sharedApplication].applicationState;
         BOOL result = (state == UIApplicationStateActive);
         if(!result){
             
-            OffersViewController *offersView=[[OffersViewController alloc] initWithNibName:@"OffersViewController" bundle:[NSBundle mainBundle]];
-             offersView.offerId=[[notification.userInfo valueForKey:@"offerId" ] intValue];
-            
             ProductDetailViewController* prodDetailVC = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController" bundle:nil];
+            prodDetailVC.product=prodObject;
             [[SlideNavigationController sharedInstance] popToRootAndSwitchToViewController:prodDetailVC withSlideOutAnimation:NO andCompletion:nil];
         
             
@@ -97,15 +103,9 @@
             // if app in use and beacon notification arrives then remove it from widget and open up the offer popup screen
            
             [self clearNotifications];
-            
-             GlobalVariables * globals=[GlobalVariables getInstance];
-            CGRect mainFrame = [UIScreen mainScreen].bounds;
-                UIGraphicsBeginImageContext(CGSizeMake(mainFrame.size.width, mainFrame.size.height));
-                [self.window.rootViewController.view drawViewHierarchyInRect:CGRectMake(0, 0, mainFrame.size.width, mainFrame.size.height) afterScreenUpdates:YES];
-                UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-                UIGraphicsEndImageContext();
-            
-                [globals showOfferPopUp:[notification.userInfo valueForKey:@"offerDescription" ] andMessage:[notification.userInfo valueForKey:@"offerDescription" ] onController:self.window.rootViewController withImage:image];
+           
+                    [globals showOfferPopUp:prodObject andMessage:offerObject.offerHeading
+                           onController:self.window.rootViewController withImage:image];
             
         }
      
@@ -125,12 +125,7 @@
      UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     if([defaults boolForKey:@"hasALreadyLoggedIn"]){
      
-//        if (!containerViewController) {
-//           
-//            containerViewController = [storyboard instantiateViewControllerWithIdentifier:@"ContainerViewController"];
-//            
-//        }
-//        [self loadSlideMenuInstance];
+
         
         self.window.rootViewController=[self loadSlideMenuInstance];
     }

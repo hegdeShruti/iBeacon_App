@@ -34,6 +34,7 @@
 
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *sizeButtonCollectionView;
 
+@property (weak, nonatomic) IBOutlet UIButton *cartButton;
 - (IBAction)pageControlChanged:(UIPageControl *)sender;
 - (IBAction)sizeButtonSelected:(id)sender;
 - (IBAction)locateProduct:(UIButton *)sender;

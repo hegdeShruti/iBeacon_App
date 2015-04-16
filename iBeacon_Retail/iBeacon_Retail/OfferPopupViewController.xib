@@ -10,6 +10,7 @@
                 <outlet property="backgroundImage" destination="IRB-lP-eMM" id="9nt-9q-32q"/>
                 <outlet property="offerDescription" destination="zcW-w6-KJa" id="CA8-1X-yGw"/>
                 <outlet property="offerHeader" destination="GmK-Rp-0Js" id="nh2-tA-Im6"/>
+                <outlet property="popupVisibleView" destination="YLz-Hs-d3N" id="rwK-vK-23R"/>
                 <outlet property="productImage" destination="Knb-WQ-FcS" id="uAf-mj-ffy"/>
                 <outlet property="productName" destination="J6b-pg-Tb1" id="aLt-G6-5Ai"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -56,6 +57,11 @@
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="kRI-Mv-iQY" secondAttribute="height" multiplier="13:21" id="OW8-vV-P6y"/>
                             </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <variation key="default">
                                 <mask key="constraints">
                                     <exclude reference="OW8-vV-P6y"/>
@@ -101,7 +107,7 @@
                                 </mask>
                             </variation>
                         </view>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shoe_square" translatesAutoresizingMaskIntoConstraints="NO" id="Knb-WQ-FcS">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shoe_square" translatesAutoresizingMaskIntoConstraints="NO" id="Knb-WQ-FcS">
                             <rect key="frame" x="148" y="95" width="245" height="185"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="245" id="Xnb-Ld-GAd"/>
@@ -111,14 +117,23 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nike Running Shoes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GmK-Rp-0Js">
                             <rect key="frame" x="16" y="16" width="516" height="35"/>
                             <constraints>
+                                <constraint firstAttribute="height" constant="35" id="1KD-4Z-BNr"/>
                                 <constraint firstAttribute="height" constant="35" id="JUt-oT-Zjz"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="JUt-oT-Zjz"/>
+                                </mask>
+                            </variation>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Running shoes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6b-pg-Tb1">
                             <rect key="frame" x="8" y="59" width="524" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="JfO-A2-UOm"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -139,6 +154,7 @@
                         <constraint firstAttribute="trailing" secondItem="J6b-pg-Tb1" secondAttribute="trailing" constant="8" id="3p0-9o-iMe"/>
                         <constraint firstItem="Knb-WQ-FcS" firstAttribute="top" secondItem="J6b-pg-Tb1" secondAttribute="bottom" constant="15" id="8HL-4K-ftj"/>
                         <constraint firstItem="kRI-Mv-iQY" firstAttribute="leading" secondItem="YLz-Hs-d3N" secondAttribute="leading" id="Egn-ON-2Um"/>
+                        <constraint firstItem="GmK-Rp-0Js" firstAttribute="top" secondItem="YLz-Hs-d3N" secondAttribute="top" constant="16" id="HUb-J4-Xjd"/>
                         <constraint firstAttribute="bottom" secondItem="A0h-z5-8e6" secondAttribute="bottom" id="PJE-Df-bdc"/>
                         <constraint firstItem="GmK-Rp-0Js" firstAttribute="top" secondItem="YLz-Hs-d3N" secondAttribute="top" constant="16" id="POY-6C-vGw"/>
                         <constraint firstItem="rrd-kd-rro" firstAttribute="top" secondItem="YLz-Hs-d3N" secondAttribute="top" id="UbU-RM-au6"/>
@@ -155,12 +171,17 @@
                         <constraint firstAttribute="trailing" secondItem="kRI-Mv-iQY" secondAttribute="trailing" id="sg5-nS-uX3"/>
                         <constraint firstItem="Knb-WQ-FcS" firstAttribute="top" secondItem="J6b-pg-Tb1" secondAttribute="bottom" constant="15" id="tsM-7b-Ses"/>
                         <constraint firstItem="kRI-Mv-iQY" firstAttribute="top" secondItem="YLz-Hs-d3N" secondAttribute="top" id="v4Y-qx-q0b"/>
+                        <constraint firstItem="J6b-pg-Tb1" firstAttribute="top" secondItem="GmK-Rp-0Js" secondAttribute="bottom" constant="8" id="wqw-xO-nAy"/>
                         <constraint firstAttribute="centerX" secondItem="Knb-WQ-FcS" secondAttribute="centerX" id="xz3-ab-mib"/>
+                        <constraint firstItem="Knb-WQ-FcS" firstAttribute="top" secondItem="J6b-pg-Tb1" secondAttribute="bottom" constant="15" id="yBq-vj-kiY"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
+                            <exclude reference="POY-6C-vGw"/>
+                            <exclude reference="cMy-sd-kgh"/>
                             <exclude reference="1fx-7m-acw"/>
                             <exclude reference="8HL-4K-ftj"/>
+                            <exclude reference="tsM-7b-Ses"/>
                         </mask>
                     </variation>
                 </view>

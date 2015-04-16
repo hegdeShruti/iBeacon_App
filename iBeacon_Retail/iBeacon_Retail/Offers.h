@@ -16,6 +16,7 @@
 @property(nonatomic,strong)NSString *offerDescription;
 @property(nonatomic,assign) NSString *beaconId;
 @property(nonatomic,assign) NSInteger sectionId;
+@property(nonatomic,assign) BOOL isExitOffer;
 
 
 - (instancetype)initWithDictionary:(NSDictionary*)offerData;

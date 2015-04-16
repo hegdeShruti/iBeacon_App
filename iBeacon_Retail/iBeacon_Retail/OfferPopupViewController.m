@@ -16,6 +16,8 @@
 @property(nonatomic,strong) NSString *prodName;
 @property(nonatomic,strong) NSString *OfferDetails;
 
+@property (weak, nonatomic) IBOutlet UIView *popupVisibleView;
+
 - (IBAction)openProductDetails:(id)sender;
 
 @end
@@ -25,6 +27,7 @@
     self =[super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.backgroundImage.image = [UIImage imageNamed:@"bg.png"];
+        self.popupVisibleView.layer.cornerRadius=5.0f;
     }
     return self;
 }
@@ -61,6 +64,7 @@
 - (IBAction)openProductDetails:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
     ProductDetailViewController* prodDetailVC = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController" bundle:nil];
+    prodDetailVC.product=self.productObject;
     [[SlideNavigationController sharedInstance] popToRootAndSwitchToViewController:prodDetailVC withSlideOutAnimation:NO andCompletion:nil];
     
 }
