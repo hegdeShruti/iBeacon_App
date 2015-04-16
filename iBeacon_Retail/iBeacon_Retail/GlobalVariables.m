@@ -203,12 +203,13 @@ static GlobalVariables *instance = nil;
 
 +(StoreLocationMapViewController*)getStoreMap{
     StoreLocationMapViewController* vc;
-    if(instance.storeLocationController == nil){
+    //TODO:Bandhavi
+   // if(instance.storeLocationController == nil){
         NSString *path = [[NSBundle mainBundle] pathForResource:@"location" ofType:@"json"];
         NSString *content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
         ESTLocation *location = [ESTLocationBuilder parseFromJSON:content];
         vc = [[StoreLocationMapViewController alloc] initWithLocation:location];        
-    }
+    //}
     instance.storeLocationController = vc;
     return vc;
 }
