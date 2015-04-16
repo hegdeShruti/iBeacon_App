@@ -47,6 +47,11 @@ globals=[GlobalVariables getInstance];
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    UIButton *rtButton  = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
+    [rtButton setImage:[UIImage imageNamed:@"icon_cart.png"] forState:UIControlStateNormal];
+    [rtButton addTarget:[GlobalVariables getInstance] action:@selector(loadCartScreen) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rtButton];
+    [SlideNavigationController sharedInstance].rightBarButtonItem = rightBarButtonItem;
     [[SlideNavigationController sharedInstance].navigationBar.topItem setTitle:@"Offers"];
     [self.offersTableView reloadData];
 }

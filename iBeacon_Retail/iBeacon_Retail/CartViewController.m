@@ -29,10 +29,13 @@
     
 }
 
+-(void)viewWillLayoutSubviews{
+    [[SlideNavigationController sharedInstance].navigationBar.topItem setTitle:@"Cart"];
+}
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[SlideNavigationController sharedInstance].navigationBar.topItem setTitle:@"Cart"];
     [self getCartListing];
 }
 
@@ -54,7 +57,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CartTableViewCell* cell = (CartTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"Cell"];;
+    CartTableViewCell* cell = (CartTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
     CartItem* item = (CartItem*)[self.tableData objectAtIndex:indexPath.row];
     

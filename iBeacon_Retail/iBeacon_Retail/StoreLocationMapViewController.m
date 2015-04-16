@@ -83,8 +83,18 @@ BOOL isSearchEnabled = NO;
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+    UIButton *rtButton  = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
+    [rtButton setImage:[UIImage imageNamed:@"user.png"] forState:UIControlStateNormal];
+    [rtButton addTarget:self action:@selector(clearPath:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rtButton];
+    [SlideNavigationController sharedInstance].rightBarButtonItem = rightBarButtonItem;
     
+    [super viewWillAppear:animated];
+    [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                                                  [UIColor blackColor],
+                                                                                                  NSForegroundColorAttributeName,
+                                                                                                  nil]
+                                                                                        forState:UIControlStateNormal];
     self.globals.isUserOnTheMapScreen = YES;
     [self.globals getOffers];
     
@@ -309,7 +319,6 @@ BOOL isSearchEnabled = NO;
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];
-    
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {

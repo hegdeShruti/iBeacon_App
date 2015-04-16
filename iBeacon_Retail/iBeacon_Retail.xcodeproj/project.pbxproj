@@ -343,8 +343,8 @@
 		EF12789A1ADBD11E003CA791 /* product@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "product@3x.png"; sourceTree = "<group>"; };
 		EF12789B1ADBD11E003CA791 /* StoreMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StoreMap.png; sourceTree = "<group>"; };
 		EF12789C1ADBD11E003CA791 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
-		EF962C9F1ADE84D500727551 /* MapPathGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapPathGenerator.h; sourceTree = "<group>"; };
-		EF962CA01ADE84D500727551 /* MapPathGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPathGenerator.m; sourceTree = "<group>"; };
+		EF962C9F1ADE84D500727551 /* MapPathGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapPathGenerator.h; path = ../MapPathGenerator.h; sourceTree = "<group>"; };
+		EF962CA01ADE84D500727551 /* MapPathGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapPathGenerator.m; path = ../MapPathGenerator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -383,8 +383,6 @@
 		0AF77D601AA0363800B57B8C = {
 			isa = PBXGroup;
 			children = (
-				EF962C9F1ADE84D500727551 /* MapPathGenerator.h */,
-				EF962CA01ADE84D500727551 /* MapPathGenerator.m */,
 				0AF77D6B1AA0363800B57B8C /* iBeacon_Retail */,
 				0AF77D851AA0363800B57B8C /* iBeacon_RetailTests */,
 				0AF77D6A1AA0363800B57B8C /* Products */,
@@ -464,6 +462,8 @@
 		4552699D1AB03F8500E6F7C3 /* StoreLocationMap */ = {
 			isa = PBXGroup;
 			children = (
+				EF962C9F1ADE84D500727551 /* MapPathGenerator.h */,
+				EF962CA01ADE84D500727551 /* MapPathGenerator.m */,
 				B1C0A4011AD563B200FBB027 /* AOShortestPath.h */,
 				B1C0A4021AD563B200FBB027 /* AOShortestPath.m */,
 				B17C01A61ABAA28F00542233 /* OfferButton.h */,
