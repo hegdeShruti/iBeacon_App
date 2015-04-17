@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface CheckoutViewController : UIViewController
-
+- (IBAction)dismissVIew:(id)sender;
+@property(nonatomic,weak) IBOutlet UIButton *dismissButton;
+- (IBAction)cancelButtnClick:(id)sender;
 @end

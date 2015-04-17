@@ -5,7 +5,11 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CheckouViewController"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CheckoutViewController">
+            <connections>
+                <outlet property="view" destination="2L3-0D-mMt" id="1Bh-83-xf6"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="2L3-0D-mMt">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -23,6 +27,9 @@
                             <state key="normal">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="dismissVIew:" destination="-1" eventType="touchUpInside" id="aEo-3G-DKz"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>
@@ -55,44 +62,153 @@
                                 </mask>
                             </variation>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Checkout" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hO-16-Rag">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Checkout" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hO-16-Rag">
                             <rect key="frame" x="64" y="32" width="412" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="5Aq-ed-3cK"/>
+                            </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
-                            <color key="textColor" red="0.53279956910713255" green="0.52134460912135161" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.3803921569" green="0.6588235294" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total : $120" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvd-eH-Of3">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total : $120" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvd-eH-Of3">
                             <rect key="frame" x="111" y="177" width="319" height="34"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
-                            <color key="textColor" red="0.98588230300000002" green="0.32641860119999999" blue="0.065284144899999993" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="206" id="NZT-wt-eT6"/>
+                                <constraint firstAttribute="height" constant="34" id="wBt-l7-bDc"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="22"/>
+                            <color key="textColor" red="0.3803921569" green="0.6588235294" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="NZT-wt-eT6"/>
+                                </mask>
+                            </variation>
+                            <variation key="heightClass=regular-widthClass=compact">
+                                <mask key="constraints">
+                                    <include reference="NZT-wt-eT6"/>
+                                </mask>
+                            </variation>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thank you for vising US" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KaP-Xk-G0R">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank you for visiting US" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KaP-Xk-G0R">
                             <rect key="frame" x="70" y="101" width="401" height="21"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="m6b-MV-UoO">
+                                    <variation key="heightClass=regular-widthClass=compact" constant="55"/>
+                                </constraint>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                            <color key="textColor" red="0.50479403409090917" green="0.50479403409090917" blue="0.50479403409090917" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cmx-Ql-yle">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cmx-Ql-yle">
                             <rect key="frame" x="146" y="252" width="248" height="30"/>
+                            <color key="backgroundColor" red="0.57039141410000005" green="0.57039141410000005" blue="0.57039141410000005" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="206" id="HWg-SR-QI7">
+                                    <variation key="heightClass=regular-widthClass=compact" constant="220"/>
+                                </constraint>
+                                <constraint firstAttribute="height" constant="30" id="nw5-oF-tsu">
+                                    <variation key="heightClass=regular-widthClass=compact" constant="32"/>
+                                </constraint>
+                            </constraints>
                             <state key="normal" title="Cancel">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="HWg-SR-QI7"/>
+                                </mask>
+                            </variation>
+                            <variation key="heightClass=regular-widthClass=compact">
+                                <mask key="constraints">
+                                    <include reference="HWg-SR-QI7"/>
+                                </mask>
+                            </variation>
+                            <connections>
+                                <action selector="cancelButtnClick:" destination="-1" eventType="touchUpInside" id="TW8-G3-g1p"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdl-WF-yXz">
-                            <rect key="frame" x="146" y="334" width="248" height="30"/>
-                            <state key="normal" title="Buy with Apple pay">
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdl-WF-yXz">
+                            <rect key="frame" x="160" y="334" width="220" height="51"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="51" id="GQt-ms-isk">
+                                    <variation key="heightClass=regular-widthClass=compact" constant="32"/>
+                                </constraint>
+                            </constraints>
+                            <state key="normal" image="Buy_with">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="GQt-ms-isk"/>
+                                </mask>
+                            </variation>
+                            <variation key="heightClass=regular-widthClass=compact">
+                                <mask key="constraints">
+                                    <include reference="GQt-ms-isk"/>
+                                </mask>
+                            </variation>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="bdl-WF-yXz" firstAttribute="top" secondItem="Cmx-Ql-yle" secondAttribute="bottom" constant="52" id="8W2-op-iXo">
+                            <variation key="heightClass=regular-widthClass=compact" constant="50"/>
+                        </constraint>
+                        <constraint firstAttribute="centerX" secondItem="Cmx-Ql-yle" secondAttribute="centerX" id="Cwb-Hi-zfV"/>
+                        <constraint firstItem="bdl-WF-yXz" firstAttribute="leading" secondItem="PXd-mN-LY4" secondAttribute="leading" constant="60" id="Etn-FW-yKI"/>
+                        <constraint firstItem="jvd-eH-Of3" firstAttribute="leading" secondItem="PXd-mN-LY4" secondAttribute="leading" constant="111" id="GYj-u6-0gI"/>
+                        <constraint firstAttribute="trailing" secondItem="KaP-Xk-G0R" secondAttribute="trailing" constant="69" id="HQ5-ZC-7RY"/>
                         <constraint firstItem="fwU-6h-ZlV" firstAttribute="top" secondItem="PXd-mN-LY4" secondAttribute="top" id="Ltj-af-hu4"/>
                         <constraint firstAttribute="bottom" secondItem="fwU-6h-ZlV" secondAttribute="bottom" id="Me5-Ub-Khn"/>
+                        <constraint firstItem="jvd-eH-Of3" firstAttribute="top" secondItem="KaP-Xk-G0R" secondAttribute="bottom" constant="55" id="Ozx-lG-XZD">
+                            <variation key="heightClass=regular-widthClass=compact" constant="60"/>
+                        </constraint>
+                        <constraint firstItem="3hO-16-Rag" firstAttribute="leading" secondItem="PXd-mN-LY4" secondAttribute="leading" constant="64" id="Wzf-4k-MNy"/>
+                        <constraint firstAttribute="trailing" secondItem="3hO-16-Rag" secondAttribute="trailing" constant="64" id="axe-1e-yig"/>
+                        <constraint firstAttribute="trailing" secondItem="Cmx-Ql-yle" secondAttribute="trailing" constant="146" id="bKu-6Z-eP0">
+                            <variation key="heightClass=regular-widthClass=compact" constant="110"/>
+                        </constraint>
+                        <constraint firstAttribute="trailing" secondItem="jvd-eH-Of3" secondAttribute="trailing" constant="110" id="eZi-gL-eca"/>
+                        <constraint firstItem="3hO-16-Rag" firstAttribute="top" secondItem="PXd-mN-LY4" secondAttribute="top" constant="32" id="fyw-co-xl0"/>
+                        <constraint firstAttribute="centerX" secondItem="jvd-eH-Of3" secondAttribute="centerX" id="hdh-Yl-aPN"/>
+                        <constraint firstItem="Cmx-Ql-yle" firstAttribute="top" secondItem="jvd-eH-Of3" secondAttribute="bottom" constant="41" id="iN6-Ih-60i"/>
                         <constraint firstAttribute="trailing" secondItem="fwU-6h-ZlV" secondAttribute="trailing" id="pHp-oT-ehL"/>
+                        <constraint firstItem="KaP-Xk-G0R" firstAttribute="top" secondItem="3hO-16-Rag" secondAttribute="bottom" constant="25" id="tx5-tc-CX2">
+                            <variation key="heightClass=regular-widthClass=compact" constant="20"/>
+                        </constraint>
                         <constraint firstItem="fwU-6h-ZlV" firstAttribute="leading" secondItem="PXd-mN-LY4" secondAttribute="leading" id="wjv-6X-6P0"/>
+                        <constraint firstAttribute="trailing" secondItem="bdl-WF-yXz" secondAttribute="trailing" constant="60" id="wpe-2x-iHv"/>
+                        <constraint firstItem="KaP-Xk-G0R" firstAttribute="leading" secondItem="PXd-mN-LY4" secondAttribute="leading" constant="70" id="zlb-fQ-XBc"/>
+                        <constraint firstItem="Cmx-Ql-yle" firstAttribute="leading" secondItem="PXd-mN-LY4" secondAttribute="leading" constant="146" id="zwv-IY-8MW">
+                            <variation key="heightClass=regular-widthClass=compact" constant="111"/>
+                        </constraint>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="hdh-Yl-aPN"/>
+                            <exclude reference="Cwb-Hi-zfV"/>
+                            <exclude reference="8W2-op-iXo"/>
+                            <exclude reference="Etn-FW-yKI"/>
+                            <exclude reference="wpe-2x-iHv"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <mask key="constraints">
+                            <exclude reference="GYj-u6-0gI"/>
+                            <exclude reference="eZi-gL-eca"/>
+                            <include reference="hdh-Yl-aPN"/>
+                            <include reference="Cwb-Hi-zfV"/>
+                            <exclude reference="bKu-6Z-eP0"/>
+                            <exclude reference="zwv-IY-8MW"/>
+                            <include reference="8W2-op-iXo"/>
+                            <include reference="Etn-FW-yKI"/>
+                            <include reference="wpe-2x-iHv"/>
+                        </mask>
+                    </variation>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -112,9 +228,9 @@
             </constraints>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="Fb1-WY-JMQ"/>
                     <exclude reference="YXY-kP-TeV"/>
                     <exclude reference="dXT-c3-M8P"/>
-                    <exclude reference="Fb1-WY-JMQ"/>
                     <exclude reference="hdf-J8-Kae"/>
                 </mask>
             </variation>
@@ -122,6 +238,7 @@
         </view>
     </objects>
     <resources>
+        <image name="Buy_with" width="463" height="67"/>
         <image name="bg-1" width="320" height="568"/>
         <image name="bg_blur" width="320" height="568"/>
     </resources>

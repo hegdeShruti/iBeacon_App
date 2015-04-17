@@ -34,4 +34,11 @@
 }
 */
 
+- (IBAction)dismissVIew:(id)sender {
+     [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)cancelButtnClick:(id)sender {
+     [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
 @end

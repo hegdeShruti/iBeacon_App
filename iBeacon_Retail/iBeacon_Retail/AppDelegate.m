@@ -16,6 +16,7 @@
 #import "LoginViewController.h"
 #import "Products.h"
 #import "Offers.h"
+#import "CheckoutViewController.h"
 
 
 #define ESTIMOTE_PROXIMITY_UUID             [[NSUUID alloc] initWithUUIDString:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"]
@@ -88,28 +89,48 @@
         // global method to get product and offers based on offerID
         Products *prodObject=  [GlobalVariables getProductWithID:[[notification.userInfo valueForKey:@"offerID" ] intValue]];
         Offers *offerObject= [GlobalVariables getOfferWithID:[[notification.userInfo valueForKey:@"offerID" ] intValue]];
-       
         UIApplicationState state = [UIApplication sharedApplication].applicationState;
         BOOL result = (state == UIApplicationStateActive);
-        if(!result){
+// if project object not null then check for beacon conditions
+     if(prodObject){
+       
+         if(!result){
             
-            ProductDetailViewController* prodDetailVC = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController" bundle:nil];
-            prodDetailVC.product=prodObject;
-            [[SlideNavigationController sharedInstance] popToRootAndSwitchToViewController:prodDetailVC withSlideOutAnimation:NO andCompletion:nil];
+             ProductDetailViewController* prodDetailVC = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController" bundle:nil];
+             prodDetailVC.product=prodObject;
+             [[SlideNavigationController sharedInstance] popToRootAndSwitchToViewController:prodDetailVC withSlideOutAnimation:NO andCompletion:nil];
         
             
-        }
-        else{
+         }
+         else {
             // if app in use and beacon notification arrives then remove it from widget and open up the offer popup screen
            
             [self clearNotifications];
-           
-                    [globals showOfferPopUp:prodObject andMessage:offerObject.offerHeading
+            if(offerObject.isExitOffer){
+                    NSMutableArray *cartItems=[NSMutableArray arrayWithArray:[GlobalVariables getCartItems]];
+                    if([cartItems count]>0 ){
+                // show checkout screen with billing details
+                        CheckoutViewController *checkout=[[CheckoutViewController alloc]initWithNibName:@"CheckoutViewController" bundle:[NSBundle mainBundle] ];
+                        [self.window.rootViewController presentViewController:checkout animated:NO completion:nil];
+                    }
+                    else if(![cartItems count]>0 ){// when app in foreground and cart empty and user exits
+                        [self clearNotifications];
+                
+                            [globals showOfferPopUp:prodObject andMessage:offerObject.offerHeading
                            onController:self.window.rootViewController withImage:image];
-            
-        }
+                        }
+            }
+            else{
+                    [globals showOfferPopUp:prodObject andMessage:offerObject.offerHeading
+                       onController:self.window.rootViewController withImage:image];
+
+            }
+           
+        
+         }
+     }
      
-}
+    }
 }
 
 - (void) clearNotifications {

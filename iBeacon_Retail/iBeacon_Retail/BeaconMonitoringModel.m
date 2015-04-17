@@ -118,7 +118,7 @@ BOOL isKidsOfferShown = NO;
             self.globals.hasUsercrossedEntrance=YES;
             if(self.globals.hasUserEnteredTheStore){
                 notification.alertBody = @"Thank you for visiting Us";
-                offerId=1;
+                offerId=5;
                 
                 self.globals.hasUserEnteredTheStore=NO;
                 self.globals.hasUserGotMenSectionOffers=NO;
@@ -133,12 +133,13 @@ BOOL isKidsOfferShown = NO;
             // else  if([region.identifier isEqualToString:@"ENTRYBEACON" ] ){
             notification.alertBody = @"Welcome to Tavant Store..Check for offers here";
 
-            offerId=5;
+            offerId=1;
          
             self.globals.hasUserEnteredTheStore=YES;
             self.globals.hasUserEntredEntryBeacon=YES;
         }
         else if([region.identifier isEqualToString:@"MENSECTIONBEACON"]&& !self.globals.hasUserGotMenSectionOffers &&  self.globals.hasUserEntredEntryBeacon ){
+        //else if([region.identifier isEqualToString:@"MENSECTIONBEACON"]){
             notification.alertBody = @"Visit Men section to avail the exiting offers.";
             offerId=2;
            

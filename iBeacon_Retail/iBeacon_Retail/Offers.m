@@ -12,7 +12,7 @@
 - (instancetype)init
 {
     if ((self = [super init])) {
-        //
+        self.isExitOffer=NO;
     }
     return self;
 }
@@ -28,7 +28,12 @@
         self.sectionId= (NSInteger)[offerData valueForKey:@"sectionId"];
         self.beaconId =  [offerData valueForKey:@"beaconId"];
         self.productId =(NSInteger) [offerData valueForKey:@"productId"];
-        self.isExitOffer= (BOOL)[offerData valueForKey:@"onExitOffer"];
+        if([[offerData valueForKey:@"onExitOffer"] intValue]>0){
+            self.isExitOffer= YES;
+        }
+        else{
+            self.isExitOffer= NO;
+        }
         
     }
     return self;

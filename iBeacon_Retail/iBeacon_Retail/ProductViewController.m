@@ -59,6 +59,7 @@
     }
     
     [self.prodCollectionView reloadData];
+   
 }
 
 -(void) getProductListing{
@@ -121,6 +122,7 @@
     
     Products *prodObject= [[Products alloc] initWithDictionary:[self.searchFilteredProducts objectAtIndex:indexPath.row]];
     prodObject.prodImage=[NSString stringWithFormat:@"%@.png",prodObject.prodName];
+   // NSLog(@"Image Name is %@",prodObject.prodImage);
     cell.product = prodObject;
     cell.productName.text=prodObject.prodName;
     cell.prodDescription.text = prodObject.prodDescription;
