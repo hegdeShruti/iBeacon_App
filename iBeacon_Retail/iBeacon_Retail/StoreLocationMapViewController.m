@@ -226,14 +226,29 @@ BOOL isSearchEnabled = NO;
     if (resultOfferArray !=nil &&  [resultOfferArray count ]!=0)
         resultOffer=[resultOfferArray objectAtIndex:0 ];
     int offerID = [self getOfferbasedOnID:section];
-    Products *prodObject=  [GlobalVariables getProductWithID:[[resultOffer valueForKey:@"productId" ] intValue]];
+    int prodId;
+    switch (offerID) {
+        case 2:
+            prodId=1;
+            break;
+        case 3:
+            prodId=6;
+            break;
+        case 6:
+            prodId=5;
+            break;
+        default:
+            break;
+    }
+    Products *prodObject=  [GlobalVariables getProductWithID:offerIDå];
     Offers *offerObject= [GlobalVariables getOfferWithID:offerID];
     CGRect mainFrame = [UIScreen mainScreen].bounds;
     UIGraphicsBeginImageContext(CGSizeMake(mainFrame.size.width, mainFrame.size.height));
     [self.view drawViewHierarchyInRect:CGRectMake(0, 0, mainFrame.size.width, mainFrame.size.height) afterScreenUpdates:YES];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    if (offerObject!=nil) {
+    if (prodObject!=nil) {
+
         [self.globals showOfferPopUp:prodObject andMessage:offerObject.offerHeading onController:self withImage:image];
     }
     //    ((OfferButton *)sender).offerMsg=@"You have 50% off on selected items";
@@ -330,7 +345,7 @@ BOOL isSearchEnabled = NO;
     else{
         [self.filteredProductList removeAllObjects];
         NSString* searchStr = [NSString stringWithFormat:@"*%@*",searchText];
-        [self.filteredProductList addObjectsFromArray:[self.globals.productDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"%K like %@", @"productName",searchStr]]];
+        [self.filteredProductList addObjectsFromArray:[self.globals.productDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"%K like[c] %@", @"productName",searchStr]]];
         NSLog(@"%@",self.filteredProductList);
         //searchBar.text= [[filtered objectAtIndex:0]valueForKey:@"productName"];
         [self.autocompleteTableView reloadData];
@@ -391,14 +406,7 @@ BOOL isSearchEnabled = NO;
 - (void)actionField:(UIButton*)sender {
     [self clearPath:nil];
     [_startField setBackgroundImage:[UIImage imageNamed:@"person.png"] forState:UIControlStateNormal];
-    if(!isSearchEnabled){
-        //check women's section ...
-        if([_wommenSectionTagArray containsObject:[NSNumber numberWithInteger:sender.tag]])
-            [self.globals showOfferPopUp:@"test" andMessage:@"test 123" onController:self withImage:[UIImage imageNamed:@"map-pin-green.png"]];
-        
-    }
-    else{
-       // [self clearPath:nil];
+     // [self clearPath:nil];
         [_startField setBackgroundImage:[UIImage imageNamed:@"person.png"] forState:UIControlStateNormal];
         
         if([sender.titleLabel.text isEqualToString:@"X"]){
@@ -428,6 +436,7 @@ BOOL isSearchEnabled = NO;
                 }
                 
                 [_pathGeneratorView setPathList:_pathArray];
+                _pathGeneratorView.hidden=NO;
                 
                 [self animate:buttonPath withCompletion:^{
                     _search = NO;
@@ -440,12 +449,15 @@ BOOL isSearchEnabled = NO;
                 _search = NO;
             }
         }
-    }
 }
 
 -(IBAction)clearPath:(id)sender{
     //    _targetField.backgroundColor = [UIColor clearColor];
     [_searchBar resignFirstResponder];
+    _searchBar.text = @"";
+    _labelView.hidden = NO;
+    _autocompleteTableView.hidden = YES;
+    _pathGeneratorView.hidden=YES;
     
     for (UIButton *b in _indoorLocationView.subviews) {
         if ([b isKindOfClass:[UIButton class]]) {

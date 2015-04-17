@@ -20,17 +20,33 @@
 }
 -(void)drawPath{
     UIBezierPath *path=[UIBezierPath bezierPath];
+    CGPoint currentPoint;
+    bool isSearchEnabled=NO;
     for (int i=0; i<_pathList.count; i++) {
-        CGPoint currentPoint=[(NSValue *)[_pathList objectAtIndex:i] CGPointValue];
+        isSearchEnabled=YES;
+        currentPoint=[(NSValue *)[_pathList objectAtIndex:i] CGPointValue];
         if(i==0)
            [path moveToPoint:currentPoint];
         else
             [path addLineToPoint:currentPoint];
     }
     
-    [[UIColor greenColor] set];
-    [path setLineWidth:3.0];
+    [[UIColor colorWithRed:61.0/255.0 green:185.0/255.0 blue:180.0/255.0 alpha:1.0] set];
+    [path setLineWidth:7.0];
     [path stroke];
+    [[UIColor colorWithRed:61.0/255.0 green:185.0/255.0 blue:180.0/255.0 alpha:1.0] set];
+    [path setLineWidth:7.0];
+    [path stroke];
+    UIImageView *pin=[[UIImageView alloc]initWithFrame:CGRectMake(currentPoint.x, currentPoint.y, 10, 20)];
+//    pin.backgroundColor=[UIColor yellowColor];
+    [pin setImage:[UIImage imageNamed:@"map-pin-green.png"]];
+    [self addSubview:pin];
+    pin.hidden=YES;
+    if (isSearchEnabled==YES) {
+        pin.hidden=YES;
+    }
+
+    
 }
 
 
