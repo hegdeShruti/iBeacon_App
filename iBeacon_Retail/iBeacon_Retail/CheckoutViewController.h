@@ -12,4 +12,7 @@
 - (IBAction)dismissVIew:(id)sender;
 @property(nonatomic,weak) IBOutlet UIButton *dismissButton;
 - (IBAction)cancelButtnClick:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+
 @end

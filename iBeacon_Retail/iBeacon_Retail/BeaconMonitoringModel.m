@@ -110,7 +110,7 @@ BOOL isKidsOfferShown = NO;
     
    
     NSInteger offerId=0;
-   
+    NSString *offerHeading=[[NSString alloc] init];
     @synchronized(self) {
         UILocalNotification *notification = [UILocalNotification new];
         // if user is near outside beacon and he has already visted shop not that event as exit and clear all flags
@@ -119,7 +119,7 @@ BOOL isKidsOfferShown = NO;
             if(self.globals.hasUserEnteredTheStore){
                 notification.alertBody = @"Thank you for visiting Us";
                 offerId=5;
-                
+                offerHeading= @"Exit Offers";
                 self.globals.hasUserEnteredTheStore=NO;
                 self.globals.hasUserGotMenSectionOffers=NO;
                 self.globals.hasUserGotWOmenSectionOffers=NO;
@@ -132,8 +132,8 @@ BOOL isKidsOfferShown = NO;
         else  if([region.identifier isEqualToString:@"ENTRYBEACON" ] && !self.globals.hasUserEnteredTheStore && self.globals.hasUsercrossedEntrance){
             // else  if([region.identifier isEqualToString:@"ENTRYBEACON" ] ){
             notification.alertBody = @"Welcome to Tavant Store..Check for offers here";
-
-            offerId=1;
+             offerHeading= @"Welcome to the Store check for offers here";
+            offerId=6;
          
             self.globals.hasUserEnteredTheStore=YES;
             self.globals.hasUserEntredEntryBeacon=YES;
@@ -141,7 +141,8 @@ BOOL isKidsOfferShown = NO;
         else if([region.identifier isEqualToString:@"MENSECTIONBEACON"]&& !self.globals.hasUserGotMenSectionOffers &&  self.globals.hasUserEntredEntryBeacon ){
         //else if([region.identifier isEqualToString:@"MENSECTIONBEACON"]){
             notification.alertBody = @"Visit Men section to avail the exiting offers.";
-            offerId=2;
+          offerHeading= @"Rush soon to men section for exciting offers";
+            offerId=4;
            
             self.globals.hasUserGotMenSectionOffers=YES;
             
@@ -149,13 +150,14 @@ BOOL isKidsOfferShown = NO;
         }
         else if([region.identifier isEqualToString:@"WOMENSECTIONBEACON"]&& !self.globals.hasUserGotWOmenSectionOffers && self.globals.hasUserEntredEntryBeacon){
             notification.alertBody = @"Visit Women section to avail the exiting offers.";
-            offerId=3;
-           
+            offerId=1;
+           offerHeading= @"SALE @ women section";
             self.globals.hasUserGotWOmenSectionOffers=YES;
         }
         else if([region.identifier isEqualToString:@"KIDSECTIONBEACON"]&& !self.globals.hasUserGotKidSectionOffers && self.globals.hasUserEntredEntryBeacon){
             notification.alertBody = @"Visit Kids section to avail the exiting offers.";
-            offerId=4;
+            offerHeading= @"Rush soon to kid section";
+            offerId=2;
             self.globals.hasUserGotKidSectionOffers=YES;
         }
         
@@ -165,7 +167,7 @@ BOOL isKidsOfferShown = NO;
         if(notification.alertBody){
            
             
-            NSDictionary *userInformation=[[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%ld",(long)offerId],@"offerID",@"SALE SALE SALE!",@"offerHeader" ,nil];
+            NSDictionary *userInformation=[[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%ld",(long)offerId],@"offerID",offerHeading,@"offerHeader" ,nil];
             notification.userInfo=userInformation;
             [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
             

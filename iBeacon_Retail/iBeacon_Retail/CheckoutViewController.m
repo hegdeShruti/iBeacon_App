@@ -16,6 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.cancelButton.layer.borderColor=[[UIColor blackColor] CGColor];
+    self.cancelButton.layer.cornerRadius=2.0f;
+    self.cancelButton.layer.borderWidth=1.0f;
     // Do any additional setup after loading the view from its nib.
 }
 

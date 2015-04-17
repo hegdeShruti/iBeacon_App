@@ -31,7 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     globals=[GlobalVariables getInstance];
-     self.offersImageArray = [[NSMutableArray alloc ]initWithObjects:@"Bvlgari Mens perfume.png",@"prod1.png",@"Nike Mens Basketball shoes.png",@"gown_offer.png",@"Seiko Mens Watch.png",@"Philips Hair dryer.png",nil];
+     self.offersImageArray = [[NSMutableArray alloc ]initWithObjects:@"AND gown.png",@"prod1.png",@"Nike Mens Basketball shoes.png",@"Bvlgari Mens perfume.png",@"Seiko Mens Watch.png",@"Philips Hair dryer.png",nil];
     // Do any additional setup after loading the view from its nib.
     if(![globals.offersDataArray count]>0){
         [self getOffersListing];

@@ -63,7 +63,7 @@ static GlobalVariables *instance = nil;
         offerPopup.backgroundImage.image=sourceImage;
        offerPopup.offerHeader.text=inMessage;
          offerPopup.productName.text=prodInfo.prodName;
-        offerPopup.offerDescription.text=inMessage;
+        offerPopup.offerDescription.text=prodInfo.prodDescription;
         if(prodInfo.prodImage){
         offerPopup.productImage.image=[UIImage imageNamed:prodInfo.prodImage];
         }

@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CheckoutViewController">
             <connections>
+                <outlet property="cancelButton" destination="Cmx-Ql-yle" id="fGu-lL-l2e"/>
                 <outlet property="view" destination="2L3-0D-mMt" id="1Bh-83-xf6"/>
             </connections>
         </placeholder>
@@ -91,7 +92,7 @@
                                 </mask>
                             </variation>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank you for visiting US" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KaP-Xk-G0R">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are items added to your cart" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KaP-Xk-G0R">
                             <rect key="frame" x="70" y="101" width="401" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="m6b-MV-UoO">
@@ -104,19 +105,15 @@
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cmx-Ql-yle">
                             <rect key="frame" x="146" y="252" width="248" height="30"/>
-                            <color key="backgroundColor" red="0.57039141410000005" green="0.57039141410000005" blue="0.57039141410000005" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="206" id="HWg-SR-QI7">
-                                    <variation key="heightClass=regular-widthClass=compact" constant="220"/>
+                                    <variation key="heightClass=regular-widthClass=compact" constant="296"/>
                                 </constraint>
                                 <constraint firstAttribute="height" constant="30" id="nw5-oF-tsu">
                                     <variation key="heightClass=regular-widthClass=compact" constant="32"/>
                                 </constraint>
                             </constraints>
-                            <state key="normal" title="Cancel">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
+                            <state key="normal" title="Cancel"/>
                             <variation key="default">
                                 <mask key="constraints">
                                     <exclude reference="HWg-SR-QI7"/>
@@ -131,7 +128,7 @@
                                 <action selector="cancelButtnClick:" destination="-1" eventType="touchUpInside" id="TW8-G3-g1p"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdl-WF-yXz">
+                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdl-WF-yXz">
                             <rect key="frame" x="160" y="334" width="220" height="51"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="51" id="GQt-ms-isk">
@@ -159,9 +156,13 @@
                             <variation key="heightClass=regular-widthClass=compact" constant="50"/>
                         </constraint>
                         <constraint firstAttribute="centerX" secondItem="Cmx-Ql-yle" secondAttribute="centerX" id="Cwb-Hi-zfV"/>
-                        <constraint firstItem="bdl-WF-yXz" firstAttribute="leading" secondItem="PXd-mN-LY4" secondAttribute="leading" constant="60" id="Etn-FW-yKI"/>
+                        <constraint firstItem="bdl-WF-yXz" firstAttribute="leading" secondItem="PXd-mN-LY4" secondAttribute="leading" constant="60" id="Etn-FW-yKI">
+                            <variation key="heightClass=regular-widthClass=compact" constant="22"/>
+                        </constraint>
                         <constraint firstItem="jvd-eH-Of3" firstAttribute="leading" secondItem="PXd-mN-LY4" secondAttribute="leading" constant="111" id="GYj-u6-0gI"/>
-                        <constraint firstAttribute="trailing" secondItem="KaP-Xk-G0R" secondAttribute="trailing" constant="69" id="HQ5-ZC-7RY"/>
+                        <constraint firstAttribute="trailing" secondItem="KaP-Xk-G0R" secondAttribute="trailing" constant="69" id="HQ5-ZC-7RY">
+                            <variation key="heightClass=regular-widthClass=compact" constant="15"/>
+                        </constraint>
                         <constraint firstItem="fwU-6h-ZlV" firstAttribute="top" secondItem="PXd-mN-LY4" secondAttribute="top" id="Ltj-af-hu4"/>
                         <constraint firstAttribute="bottom" secondItem="fwU-6h-ZlV" secondAttribute="bottom" id="Me5-Ub-Khn"/>
                         <constraint firstItem="jvd-eH-Of3" firstAttribute="top" secondItem="KaP-Xk-G0R" secondAttribute="bottom" constant="55" id="Ozx-lG-XZD">
@@ -181,8 +182,12 @@
                             <variation key="heightClass=regular-widthClass=compact" constant="20"/>
                         </constraint>
                         <constraint firstItem="fwU-6h-ZlV" firstAttribute="leading" secondItem="PXd-mN-LY4" secondAttribute="leading" id="wjv-6X-6P0"/>
-                        <constraint firstAttribute="trailing" secondItem="bdl-WF-yXz" secondAttribute="trailing" constant="60" id="wpe-2x-iHv"/>
-                        <constraint firstItem="KaP-Xk-G0R" firstAttribute="leading" secondItem="PXd-mN-LY4" secondAttribute="leading" constant="70" id="zlb-fQ-XBc"/>
+                        <constraint firstAttribute="trailing" secondItem="bdl-WF-yXz" secondAttribute="trailing" constant="60" id="wpe-2x-iHv">
+                            <variation key="heightClass=regular-widthClass=compact" constant="22"/>
+                        </constraint>
+                        <constraint firstItem="KaP-Xk-G0R" firstAttribute="leading" secondItem="PXd-mN-LY4" secondAttribute="leading" constant="70" id="zlb-fQ-XBc">
+                            <variation key="heightClass=regular-widthClass=compact" constant="15"/>
+                        </constraint>
                         <constraint firstItem="Cmx-Ql-yle" firstAttribute="leading" secondItem="PXd-mN-LY4" secondAttribute="leading" constant="146" id="zwv-IY-8MW">
                             <variation key="heightClass=regular-widthClass=compact" constant="111"/>
                         </constraint>

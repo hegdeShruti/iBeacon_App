@@ -93,7 +93,7 @@
         BOOL result = (state == UIApplicationStateActive);
 // if project object not null then check for beacon conditions
      if(prodObject){
-       
+         prodObject.prodDescription=offerObject.offerHeading;
          if(!result){
             
              ProductDetailViewController* prodDetailVC = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController" bundle:nil];
@@ -116,12 +116,12 @@
                     else if(![cartItems count]>0 ){// when app in foreground and cart empty and user exits
                         [self clearNotifications];
                 
-                            [globals showOfferPopUp:prodObject andMessage:offerObject.offerHeading
+                            [globals showOfferPopUp:prodObject andMessage:[notification.userInfo valueForKey:@"offerHeader" ]
                            onController:self.window.rootViewController withImage:image];
                         }
             }
             else{
-                    [globals showOfferPopUp:prodObject andMessage:offerObject.offerHeading
+                    [globals showOfferPopUp:prodObject andMessage:[notification.userInfo valueForKey:@"offerHeader" ]
                        onController:self.window.rootViewController withImage:image];
 
             }
