@@ -128,8 +128,6 @@ BOOL isSearchEnabled = NO;
 //    UIImageView *img=[[UIImageView alloc]initWithFrame:CGRectMake(-47, 0, 320, 320)];
     UIImageView *img=[[UIImageView alloc]initWithFrame:CGRectMake(-47, 0, 410, 410)];
     [img setImage:[UIImage imageNamed:@"map.png"]];
-    img.layer.borderColor = (__bridge CGColorRef)([UIColor blackColor]);
-    img.layer.borderWidth = 4.0;
     [self.indoorLocationView addSubview:img];
     
     
@@ -170,6 +168,7 @@ BOOL isSearchEnabled = NO;
             NSNumber *num = _plane[i][j];
             if ([num integerValue] == 0) {
                 [l setTitle:@"X" forState:UIControlStateNormal];
+                l.titleLabel.textColor=[UIColor clearColor];
                 l.backgroundColor = [UIColor clearColor];
             } else {
                 l.backgroundColor = [UIColor clearColor];
@@ -177,18 +176,15 @@ BOOL isSearchEnabled = NO;
 
             [self.indoorLocationView addSubview:l];
             if((i>2&&i<7)&& j<3){
-                l.backgroundColor = [UIColor purpleColor];
                 [_wommenSectionTagArray addObject:[NSNumber numberWithInt:l.tag]];
                 [l addTarget:self action:@selector(showOffer:) forControlEvents:UIControlEventTouchUpInside];
             }
             if((i>2&&i<7)&& j>6){
-                l.backgroundColor = [UIColor purpleColor];
                 [_kidSectionTagArray addObject:[NSNumber numberWithInt:l.tag]];
                 [l addTarget:self action:@selector(showOffer:) forControlEvents:UIControlEventTouchUpInside];
                 
             }
             if((j>2&&j<7)&& i<3){
-                l.backgroundColor = [UIColor purpleColor];
                 [_menSectionTagArray addObject:[NSNumber numberWithInt:l.tag]];
                 [l addTarget:self action:@selector(showOffer:) forControlEvents:UIControlEventTouchUpInside];
             }
@@ -232,8 +228,9 @@ BOOL isSearchEnabled = NO;
     [self.view drawViewHierarchyInRect:CGRectMake(0, 0, mainFrame.size.width, mainFrame.size.height) afterScreenUpdates:YES];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-
-    [self.globals showOfferPopUp:prodObject andMessage:offerObject.offerHeading onController:self withImage:image];
+    if (prodObject!=nil) {
+        [self.globals showOfferPopUp:prodObject andMessage:offerObject.offerHeading onController:self withImage:image];
+    }
     //    ((OfferButton *)sender).offerMsg=@"You have 50% off on selected items";
     
 }
@@ -443,6 +440,8 @@ BOOL isSearchEnabled = NO;
 
 -(IBAction)clearPath:(id)sender{
     //    _targetField.backgroundColor = [UIColor clearColor];
+    [_searchBar resignFirstResponder];
+    
     for (UIButton *b in _indoorLocationView.subviews) {
         if ([b isKindOfClass:[UIButton class]]) {
             if ([b.currentTitle isEqualToString:@"X"]) {

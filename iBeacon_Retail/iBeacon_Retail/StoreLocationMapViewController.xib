@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StoreLocationMapViewController">
@@ -39,6 +39,17 @@ Flat 20 % Off on Nike Basketball Shoes</string>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Nike Basketball shoes" translatesAutoresizingMaskIntoConstraints="NO" id="ZE1-GQ-xOx">
                                     <rect key="frame" x="8" y="13" width="137" height="117"/>
                                 </imageView>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="30" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="JYe-5R-C2A">
+                                    <rect key="frame" x="0.0" y="1" width="600" height="143"/>
+                                    <color key="backgroundColor" red="0.75294117650000003" green="0.92941176469999998" blue="0.93725490199999995" alpha="1" colorSpace="deviceRGB"/>
+                                    <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <color key="sectionIndexBackgroundColor" red="0.75294117650000003" green="0.90980392160000001" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="sectionIndexTrackingBackgroundColor" red="0.75294117650000003" green="0.92941176469999998" blue="0.93725490199999995" alpha="1" colorSpace="deviceRGB"/>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-1" id="0AE-5w-JJc"/>
+                                        <outlet property="delegate" destination="-1" id="wM2-Fm-ZdY"/>
+                                    </connections>
+                                </tableView>
                             </subviews>
                             <color key="backgroundColor" red="0.75294117650000003" green="0.90980392160000001" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
@@ -55,16 +66,16 @@ Flat 20 % Off on Nike Basketball Shoes</string>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GDi-jD-4KQ">
                             <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         </imageView>
-                        <searchBar contentMode="redraw" placeholder="Search" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VX5-Om-zrG">
+                        <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="VX5-Om-zrG">
                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="LKp-EJ-TBy"/>
                             </constraints>
-                            <color key="barTintColor" red="0.23921568627450915" green="0.70631167763157898" blue="0.79191509046052633" alpha="1" colorSpace="deviceRGB"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="barTintColor" red="0.23921568630000001" green="0.70631167760000002" blue="0.79191509049999997" alpha="1" colorSpace="deviceRGB"/>
                             <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             <scopeButtonTitles>
-                                <string>Title</string>
-                                <string>Title</string>
+                                <string></string>
                             </scopeButtonTitles>
                             <connections>
                                 <outlet property="delegate" destination="-1" id="Vgc-Dh-XeJ"/>
@@ -90,28 +101,14 @@ Flat 20 % Off on Nike Basketball Shoes</string>
                             <rect key="frame" x="47" y="189" width="553" height="478"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="30" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="JYe-5R-C2A">
-                            <rect key="frame" x="0.0" y="45" width="600" height="143"/>
-                            <color key="backgroundColor" red="0.75294117650000003" green="0.92941176469999998" blue="0.93725490199999995" alpha="1" colorSpace="deviceRGB"/>
-                            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <color key="sectionIndexBackgroundColor" red="0.75294117650000003" green="0.90980392160000001" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
-                            <color key="sectionIndexTrackingBackgroundColor" red="0.75294117650000003" green="0.92941176469999998" blue="0.93725490199999995" alpha="1" colorSpace="deviceRGB"/>
-                            <connections>
-                                <outlet property="dataSource" destination="-1" id="0AE-5w-JJc"/>
-                                <outlet property="delegate" destination="-1" id="wM2-Fm-ZdY"/>
-                            </connections>
-                        </tableView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="lkI-XJ-yQT" secondAttribute="bottom" constant="-67" id="0uO-6J-nS6"/>
                         <constraint firstItem="GDi-jD-4KQ" firstAttribute="trailing" secondItem="VX5-Om-zrG" secondAttribute="leading" id="3ab-E8-gcV"/>
-                        <constraint firstItem="JYe-5R-C2A" firstAttribute="leading" secondItem="f63-ao-5ff" secondAttribute="leading" id="6vq-1H-fs3"/>
                         <constraint firstItem="lkI-XJ-yQT" firstAttribute="top" secondItem="QEz-bZ-YhF" secondAttribute="top" constant="189" id="7IN-VU-9XK"/>
                         <constraint firstItem="lkI-XJ-yQT" firstAttribute="top" secondItem="f63-ao-5ff" secondAttribute="bottom" constant="1" id="FN7-LG-BK9"/>
-                        <constraint firstItem="lkI-XJ-yQT" firstAttribute="trailing" secondItem="JYe-5R-C2A" secondAttribute="trailing" id="Jbs-6a-S5G"/>
                         <constraint firstAttribute="trailing" secondItem="F00-Zi-Lt0" secondAttribute="trailing" constant="-47" id="Khm-Ak-tbY"/>
-                        <constraint firstItem="JYe-5R-C2A" firstAttribute="top" secondItem="VX5-Om-zrG" secondAttribute="bottom" constant="1" id="PKd-Pd-Lqp"/>
                         <constraint firstItem="lkI-XJ-yQT" firstAttribute="trailing" secondItem="f63-ao-5ff" secondAttribute="trailing" id="Rd6-90-bgL"/>
                         <constraint firstItem="GDi-jD-4KQ" firstAttribute="bottom" secondItem="VX5-Om-zrG" secondAttribute="top" id="RzB-qe-Pbt"/>
                         <constraint firstAttribute="trailing" secondItem="VX5-Om-zrG" secondAttribute="trailing" id="Xh4-rJ-noZ"/>
@@ -121,11 +118,9 @@ Flat 20 % Off on Nike Basketball Shoes</string>
                         <constraint firstItem="GDi-jD-4KQ" firstAttribute="top" secondItem="VX5-Om-zrG" secondAttribute="top" id="g9y-Wa-75L"/>
                         <constraint firstItem="VX5-Om-zrG" firstAttribute="leading" secondItem="QEz-bZ-YhF" secondAttribute="leading" id="keV-nj-nB8"/>
                         <constraint firstItem="f63-ao-5ff" firstAttribute="leading" secondItem="QEz-bZ-YhF" secondAttribute="leading" id="r8x-LK-V8o"/>
-                        <constraint firstItem="JYe-5R-C2A" firstAttribute="leading" secondItem="GDi-jD-4KQ" secondAttribute="leading" id="tkN-6d-5YV"/>
                         <constraint firstAttribute="bottom" secondItem="F00-Zi-Lt0" secondAttribute="bottom" constant="1" id="tzT-37-tny"/>
                         <constraint firstItem="F00-Zi-Lt0" firstAttribute="leading" secondItem="lkI-XJ-yQT" secondAttribute="leading" id="uql-On-LQT"/>
                         <constraint firstAttribute="trailing" secondItem="f63-ao-5ff" secondAttribute="trailing" id="vJg-cf-4cp"/>
-                        <constraint firstItem="lkI-XJ-yQT" firstAttribute="top" secondItem="JYe-5R-C2A" secondAttribute="bottom" constant="1" id="wrp-Hm-ls7"/>
                         <constraint firstItem="f63-ao-5ff" firstAttribute="top" secondItem="VX5-Om-zrG" secondAttribute="bottom" id="zt2-Yg-bZ0"/>
                     </constraints>
                 </view>
