@@ -27,9 +27,9 @@ typedef enum {
 typedef enum {
     
     ENTRANCE=0,
-    MENSECTION=2,
-    WOMENSECTION=1,
-    KIDSECTION=4
+    MENSECTION=1,
+    WOMENSECTION=2,
+    KIDSECTION=3
 } SectionIdentifier;
 
 @interface GlobalVariables : NSObject

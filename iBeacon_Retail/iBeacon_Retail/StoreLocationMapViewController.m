@@ -72,6 +72,7 @@ BOOL isSearchEnabled = NO;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //_productImage.image = [UIImage imageNamed:@"user.png"];
     if (![ESTConfig isAuthorized])
     {
         //TODO:  this info can be found in the app secion of account details of the account/user the beacons are registered to (www.cloud.estimote.com)
@@ -136,6 +137,8 @@ BOOL isSearchEnabled = NO;
     _pathManager = [[AOShortestPath alloc] init];
     _pathManager.pointList = [NSMutableArray array];
      _wommenSectionTagArray = [NSMutableArray array];
+    _kidSectionTagArray = [NSMutableArray array];
+    _menSectionTagArray = [NSMutableArray array];
     // create visual structure of plane
     _plane = @[
                @[@0,@0,@0,@0,@0,@0,@0,@0,@0,@0], //1
@@ -168,7 +171,9 @@ BOOL isSearchEnabled = NO;
             NSNumber *num = _plane[i][j];
             if ([num integerValue] == 0) {
                 [l setTitle:@"X" forState:UIControlStateNormal];
-                l.titleLabel.textColor=[UIColor clearColor];
+                [l setTitleColor:[UIColor clearColor] forState:UIControlStateNormal];
+//                l.titleLabel.textColor=[UIColor clearColor];
+//                [l.titleLabel setTextColor:[UIColor greenColor]];
                 l.backgroundColor = [UIColor clearColor];
             } else {
                 l.backgroundColor = [UIColor clearColor];
@@ -220,15 +225,15 @@ BOOL isSearchEnabled = NO;
     NSDictionary *resultOffer;
     if (resultOfferArray !=nil &&  [resultOfferArray count ]!=0)
         resultOffer=[resultOfferArray objectAtIndex:0 ];
-    
-    Products *prodObject=  [GlobalVariables getProductWithID:[[resultOffer valueForKey:@"offerID" ] intValue]];
-    Offers *offerObject= [GlobalVariables getOfferWithID:[[resultOffer valueForKey:@"offerID" ] intValue]];
+    int offerID = [self getOfferbasedOnID:section];
+    Products *prodObject=  [GlobalVariables getProductWithID:[[resultOffer valueForKey:@"productId" ] intValue]];
+    Offers *offerObject= [GlobalVariables getOfferWithID:offerID];
     CGRect mainFrame = [UIScreen mainScreen].bounds;
     UIGraphicsBeginImageContext(CGSizeMake(mainFrame.size.width, mainFrame.size.height));
     [self.view drawViewHierarchyInRect:CGRectMake(0, 0, mainFrame.size.width, mainFrame.size.height) afterScreenUpdates:YES];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    if (prodObject!=nil) {
+    if (offerObject!=nil) {
         [self.globals showOfferPopUp:prodObject andMessage:offerObject.offerHeading onController:self withImage:image];
     }
     //    ((OfferButton *)sender).offerMsg=@"You have 50% off on selected items";
@@ -564,6 +569,25 @@ BOOL isSearchEnabled = NO;
     }
     return section;
 }
+
+-(int)getOfferbasedOnID:(int)section{
+    int offerID=0 ;
+    switch (section) {
+        case 3:
+            offerID = 2;
+            break;
+        case 1:
+            offerID = 3;
+            break;
+        case 2:
+            offerID = 6;
+            break;
+        default:
+            break;
+    }
+    return offerID;
+}
+
 
 #pragma mark Slide view delegate method
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu

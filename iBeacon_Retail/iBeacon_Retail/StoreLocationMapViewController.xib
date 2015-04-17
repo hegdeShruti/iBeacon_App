@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StoreLocationMapViewController">
@@ -29,17 +29,17 @@
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUQ-id-Mmv">
                                     <rect key="frame" x="153" y="13" width="439" height="117"/>
-                                    <string key="text">Rush to the Men's Section 
+                                    <string key="text">Rush to the Kid's Section 
 
-Flat 20 % Off on Nike Basketball Shoes</string>
+Flat 20 % Off on Liliput Baby Jacket</string>
                                     <fontDescription key="fontDescription" type="italicSystem" pointSize="20"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Nike Basketball shoes" translatesAutoresizingMaskIntoConstraints="NO" id="ZE1-GQ-xOx">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Liliput baby frock" translatesAutoresizingMaskIntoConstraints="NO" id="ZE1-GQ-xOx">
                                     <rect key="frame" x="8" y="13" width="137" height="117"/>
                                 </imageView>
-                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="30" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="JYe-5R-C2A">
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" rowHeight="30" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="JYe-5R-C2A">
                                     <rect key="frame" x="0.0" y="1" width="600" height="143"/>
                                     <color key="backgroundColor" red="0.75294117650000003" green="0.92941176469999998" blue="0.93725490199999995" alpha="1" colorSpace="deviceRGB"/>
                                     <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -118,6 +118,7 @@ Flat 20 % Off on Nike Basketball Shoes</string>
                         <constraint firstItem="GDi-jD-4KQ" firstAttribute="top" secondItem="VX5-Om-zrG" secondAttribute="top" id="g9y-Wa-75L"/>
                         <constraint firstItem="VX5-Om-zrG" firstAttribute="leading" secondItem="QEz-bZ-YhF" secondAttribute="leading" id="keV-nj-nB8"/>
                         <constraint firstItem="f63-ao-5ff" firstAttribute="leading" secondItem="QEz-bZ-YhF" secondAttribute="leading" id="r8x-LK-V8o"/>
+                        <constraint firstItem="GDi-jD-4KQ" firstAttribute="leading" secondItem="VX5-Om-zrG" secondAttribute="leading" id="rbW-KA-Pno"/>
                         <constraint firstAttribute="bottom" secondItem="F00-Zi-Lt0" secondAttribute="bottom" constant="1" id="tzT-37-tny"/>
                         <constraint firstItem="F00-Zi-Lt0" firstAttribute="leading" secondItem="lkI-XJ-yQT" secondAttribute="leading" id="uql-On-LQT"/>
                         <constraint firstAttribute="trailing" secondItem="f63-ao-5ff" secondAttribute="trailing" id="vJg-cf-4cp"/>
@@ -137,6 +138,6 @@ Flat 20 % Off on Nike Basketball Shoes</string>
         </view>
     </objects>
     <resources>
-        <image name="Nike Basketball shoes" width="225" height="225"/>
+        <image name="Liliput baby frock" width="225" height="225"/>
     </resources>
 </document>
