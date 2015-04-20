@@ -295,7 +295,7 @@ BOOL isSearchEnabled = NO;
     NSDictionary *resultProduct=[[self.globals.productDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"%K == %@", @"productName",searchBar.text]] objectAtIndex:0];
     
     UIButton *but=(UIButton *)[self.indoorLocationView viewWithTag:[self getTagForSectionID:[[resultProduct valueForKey:@"sectionId"]intValue]]];
-    [but setBackgroundImage:[UIImage imageNamed:@"map-pin-green.png"] forState: UIControlStateNormal];
+//    [but setBackgroundImage:[UIImage imageNamed:@"map-pin-green.png"] forState: UIControlStateNormal];
     //show the description ...
     self.labelView.hidden = NO;
     self.textLabel.text = [NSString stringWithFormat:@"The product %@ is available in the %@",[resultProduct valueForKey:@"productName"],[GlobalVariables returnTitleForSection:[[resultProduct valueForKey:@"sectionId"] intValue]]];
