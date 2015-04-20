@@ -56,7 +56,6 @@ BOOL isSearchEnabled = NO;
 - (instancetype)initWithLocation:(ESTLocation *)location
 {
     self = [super init];
-    //    self = [super initWithNibName:@"StoreLocationMapViewController" bundle:nil];
     if (self)
     {
         self.manager = [[ESTIndoorLocationManager alloc] init];
@@ -72,7 +71,6 @@ BOOL isSearchEnabled = NO;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //_productImage.image = [UIImage imageNamed:@"user.png"];
     if (![ESTConfig isAuthorized])
     {
         //TODO:  this info can be found in the app secion of account details of the account/user the beacons are registered to (www.cloud.estimote.com)
@@ -110,8 +108,6 @@ BOOL isSearchEnabled = NO;
     
     self.indoorLocationView.showWallLengthLabels    = NO;
     
-    // self.indoorLocationView.frame = CGRectMake(self.indoorLocationView.frame.origin.x, self.indoorLocationView.frame.origin.y, 350, 350);
-    
     self.indoorLocationView.locationBorderColor     = [UIColor clearColor];
     self.indoorLocationView.locationBorderThickness = 4;
     self.indoorLocationView.doorColor               = [UIColor brownColor];
@@ -123,10 +119,8 @@ BOOL isSearchEnabled = NO;
     [self.indoorLocationView drawLocation:self.location];
     
     // You can change the avatar using positionImage property of ESTIndoorLocationView class.
-    //    self.indoorLocationView.positionImage = [UIImage imageNamed:@"arrow.png"];
     self.indoorLocationView.positionView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
     [self.indoorLocationView.positionView setBackgroundColor:[UIColor clearColor]];
-//    UIImageView *img=[[UIImageView alloc]initWithFrame:CGRectMake(-47, 0, 320, 320)];
     UIImageView *img=[[UIImageView alloc]initWithFrame:CGRectMake(-47, 0, 410, 410)];
     [img setImage:[UIImage imageNamed:@"map.png"]];
     [self.indoorLocationView addSubview:img];
@@ -154,9 +148,7 @@ BOOL isSearchEnabled = NO;
                ];
     
     // set default field size
-    // CGFloat size = 45/2;//self.indoorLocationView.frame.size.width/[_plane[0] count];
-//    _frameWidthFactor = self.indoorLocationView.frame.size.width/[_plane[0] count];
-//    _frameHeightFactor = self.indoorLocationView.frame.size.height/[_plane count];
+
     _frameWidthFactor = 410/[_plane[0] count];
     _frameHeightFactor = 410/[_plane count];
     // generate plans's fields
@@ -172,8 +164,6 @@ BOOL isSearchEnabled = NO;
             if ([num integerValue] == 0) {
                 [l setTitle:@"X" forState:UIControlStateNormal];
                 [l setTitleColor:[UIColor clearColor] forState:UIControlStateNormal];
-//                l.titleLabel.textColor=[UIColor clearColor];
-//                [l.titleLabel setTextColor:[UIColor greenColor]];
                 l.backgroundColor = [UIColor clearColor];
             } else {
                 l.backgroundColor = [UIColor clearColor];
@@ -181,16 +171,16 @@ BOOL isSearchEnabled = NO;
 
             [self.indoorLocationView addSubview:l];
             if((i>2&&i<7)&& j<3){
-                [_wommenSectionTagArray addObject:[NSNumber numberWithInt:l.tag]];
+                [_wommenSectionTagArray addObject:[NSNumber numberWithInteger:l.tag]];
                 [l addTarget:self action:@selector(showOffer:) forControlEvents:UIControlEventTouchUpInside];
             }
             if((i>2&&i<7)&& j>6){
-                [_kidSectionTagArray addObject:[NSNumber numberWithInt:l.tag]];
+                [_kidSectionTagArray addObject:[NSNumber numberWithInteger:l.tag]];
                 [l addTarget:self action:@selector(showOffer:) forControlEvents:UIControlEventTouchUpInside];
                 
             }
             if((j>2&&j<7)&& i<3){
-                [_menSectionTagArray addObject:[NSNumber numberWithInt:l.tag]];
+                [_menSectionTagArray addObject:[NSNumber numberWithInteger:l.tag]];
                 [l addTarget:self action:@selector(showOffer:) forControlEvents:UIControlEventTouchUpInside];
             }
             // add path path point
@@ -205,10 +195,6 @@ BOOL isSearchEnabled = NO;
         NSArray *connectionList = [self getConnectionListForTag:p.tag];
         [connectionList enumerateObjectsUsingBlock:^(UIButton *b, NSUInteger idx, BOOL *stop) {
             AOPathConnection *c = [[AOPathConnection alloc] init];
-//            if (p.tag == 76) {
-//                // its very hard to get on this field
-//                c.weight = 10;
-//            }
             c.point = [_pathManager getPathPointWithTag:b.tag];
             [p addConnection:c];
         }];
@@ -219,7 +205,7 @@ BOOL isSearchEnabled = NO;
     
     NSLog(@"offer  %@",self.globals.offersDataArray);
     
-    SectionIdentifier section=[self getSectionID:((UIButton *)sender).tag];
+    SectionIdentifier section=[self getSectionID:(int)((UIButton *)sender).tag];
     
     NSArray *resultOfferArray=[self.globals.offersDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"%K == %d", @"sectionId",section]];
     NSDictionary *resultOffer;
@@ -240,7 +226,7 @@ BOOL isSearchEnabled = NO;
         default:
             break;
     }
-    Products *prodObject=  [GlobalVariables getProductWithID:offerIDå];
+    Products *prodObject=  [GlobalVariables getProductWithID:offerID];
     Offers *offerObject= [GlobalVariables getOfferWithID:offerID];
     CGRect mainFrame = [UIScreen mainScreen].bounds;
     UIGraphicsBeginImageContext(CGSizeMake(mainFrame.size.width, mainFrame.size.height));
@@ -251,7 +237,6 @@ BOOL isSearchEnabled = NO;
 
         [self.globals showOfferPopUp:prodObject andMessage:offerObject.offerHeading onController:self withImage:image];
     }
-    //    ((OfferButton *)sender).offerMsg=@"You have 50% off on selected items";
     
 }
 
@@ -274,8 +259,6 @@ BOOL isSearchEnabled = NO;
                    inLocation:(ESTLocation *)location
 {
     [self.indoorLocationView updatePosition:position];
-    NSLog(@"Normal POsition %f,%f",position.x,position.y);
-    //    NSLog(@"POsition is %f,%f", fabsf(ceilf(-4.5) -5),ceilf(-4.5) +5);
     
     float positionX,positionY;
     positionX = ceilf(position.y);
@@ -288,15 +271,12 @@ BOOL isSearchEnabled = NO;
     
     int row=roundf(positionX);
     int column=roundf(positionY);
-    NSLog(@"%d,%d",row,column);
     int tagNo=row*20+column;
     if (_startField.tag!=tagNo) {
-        //        _startField.backgroundColor = [UIColor clearColor];
         [_startField setBackgroundImage:nil forState:UIControlStateNormal];
     }
     
     _startField = (UIButton*)[self.indoorLocationView viewWithTag:tagNo];
-    //_startField.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"arrow.png"]];
     [_startField setBackgroundImage:[UIImage imageNamed:@"person.png"] forState:UIControlStateNormal];
     
 }
@@ -332,7 +312,6 @@ BOOL isSearchEnabled = NO;
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    NSLog(@"The product Api is %lu",(unsigned long)[self.globals.productDataArray count]);
     if ([searchText isEqualToString:@""]) {
         for (id offer in [self.indoorLocationView subviews]) {
             if([offer isKindOfClass:[OfferButton class]] )
@@ -346,7 +325,6 @@ BOOL isSearchEnabled = NO;
         [self.filteredProductList removeAllObjects];
         NSString* searchStr = [NSString stringWithFormat:@"*%@*",searchText];
         [self.filteredProductList addObjectsFromArray:[self.globals.productDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"%K like[c] %@", @"productName",searchStr]]];
-        NSLog(@"%@",self.filteredProductList);
         //searchBar.text= [[filtered objectAtIndex:0]valueForKey:@"productName"];
         [self.autocompleteTableView reloadData];
         self.autocompleteTableView.hidden = NO;
@@ -383,9 +361,6 @@ BOOL isSearchEnabled = NO;
     
     UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
     self.searchBar.text = selectedCell.textLabel.text;
-    
-    //    [self goPressed];
-    
     self.autocompleteTableView.hidden = YES;
     
 }
@@ -406,16 +381,13 @@ BOOL isSearchEnabled = NO;
 - (void)actionField:(UIButton*)sender {
     [self clearPath:nil];
     [_startField setBackgroundImage:[UIImage imageNamed:@"person.png"] forState:UIControlStateNormal];
-     // [self clearPath:nil];
         [_startField setBackgroundImage:[UIImage imageNamed:@"person.png"] forState:UIControlStateNormal];
         
         if([sender.titleLabel.text isEqualToString:@"X"]){
             NSLog(@"Its a wall !!");
         }
         else if (!_search) {
-         //   [self clearPath:nil];
             _search = YES;
-            //        sender.backgroundColor = [UIColor greenColor];
             _targetField = sender;
             
             AOPathPoint *startPoint = [_pathManager getPathPointWithTag:_startField.tag];
@@ -440,8 +412,6 @@ BOOL isSearchEnabled = NO;
                 
                 [self animate:buttonPath withCompletion:^{
                     _search = NO;
-                    //               _startField = _targetField;
-                    //                _startField.backgroundColor = [UIColor greenColor];
                     [_startField setBackgroundImage:[UIImage imageNamed:@"person.png"] forState:UIControlStateNormal];
                     
                 }];
@@ -452,7 +422,6 @@ BOOL isSearchEnabled = NO;
 }
 
 -(IBAction)clearPath:(id)sender{
-    //    _targetField.backgroundColor = [UIColor clearColor];
     [_searchBar resignFirstResponder];
     _searchBar.text = @"";
     _labelView.hidden = NO;
@@ -500,8 +469,8 @@ BOOL isSearchEnabled = NO;
 
 // we need this method to easily generate connections for basic 2d game plane
 - (NSArray*)getConnectionListForTag:(long)tag {
-    int row = tag/20;
-    int col = tag-row*20;
+    int row = (int)tag/20;
+    int col = (int)tag-row*20;
     
     NSString *titleX = @"X";
     

@@ -38,7 +38,6 @@
     [path setLineWidth:7.0];
     [path stroke];
     UIImageView *pin=[[UIImageView alloc]initWithFrame:CGRectMake(currentPoint.x, currentPoint.y, 10, 20)];
-//    pin.backgroundColor=[UIColor yellowColor];
     [pin setImage:[UIImage imageNamed:@"map-pin-green.png"]];
     [self addSubview:pin];
     pin.hidden=YES;
