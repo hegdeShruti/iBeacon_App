@@ -7,7 +7,6 @@
 //
 
 #import "GlobalVariables.h"
-#import "OfferPopupMenu.h"
 #import "NetworkOperations.h"
 #import "CartItem.h"
 #import "OfferPopupViewController.h"
@@ -47,15 +46,11 @@ static GlobalVariables *instance = nil;
     return instance;
 }
 
-- (void)showOfferPopUpWithTitle:(NSString *)inTitle andMessage:(NSString *)inMessage{
-    [self showOfferPopUpWithTitle:inTitle message:inTitle andDelegate:nil];
-   }
-- (void)showOfferPopUpWithTitle:(NSString *)inTitle message:(NSString *)inMessage andDelegate:(id)delegate{
-    OfferPopupMenu *popup = [[OfferPopupMenu alloc]initWithTitle:inTitle message:inMessage];
-    popup.menuStyle = MenuStyleOval;
-    popup.delegate=delegate;
-    [popup showMenuInParentViewController:self.storeLocationController withCenter:self.storeLocationController.indoorLocationView.center];
-}
+//- (void)showOfferPopUpWithTitle:(NSString *)inTitle andMessage:(NSString *)inMessage{
+//    [self showOfferPopUpWithTitle:inTitle message:inTitle andDelegate:nil];
+//   }
+//- (void)showOfferPopUpWithTitle:(NSString *)inTitle message:(NSString *)inMessage andDelegate:(id)delegate{
+//}
 
 // method that presents popup on existing screen on any beacon notification
 - (void)showOfferPopUp:(Products *)prodInfo  andMessage:(NSString *)inMessage onController:(id) controller withImage:(UIImage *)sourceImage {
