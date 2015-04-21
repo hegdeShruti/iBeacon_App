@@ -12,6 +12,7 @@
 #import "Constants.h"
 #import "GlobalVariables.h"
 #import "AOShortestPath.h"
+#import "UIImageView+WebCache.h"
 
 @interface StoreLocationMapViewController () <ESTIndoorLocationManagerDelegate>
 
@@ -468,16 +469,17 @@ BOOL isSearchEnabled = NO;
         searchBar.text = @"";
         return;
     }
-    NSLog(@"%@",self.globals.productDataArray);
     NSArray *tempArray = [self.globals.productDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"%K == %@", @"productName",searchBar.text]];
     if([tempArray count] > 0){
         NSDictionary *resultProduct=[tempArray objectAtIndex:0];
+        Products *product = [(Products *)[Products alloc] initWithDictionary:resultProduct];
         UIButton *but=(UIButton *)[self.indoorLocationView viewWithTag:[self getTagForSectionID:[[resultProduct valueForKey:@"sectionId"]intValue]]];
         //    [but setBackgroundImage:[UIImage imageNamed:@"map-pin-green.png"] forState: UIControlStateNormal];
         //show the description ...
         self.labelView.hidden = NO;
-        self.textLabel.text = [NSString stringWithFormat:@"The product %@ is available in the %@",[resultProduct valueForKey:@"productName"],[GlobalVariables returnTitleForSection:[[resultProduct valueForKey:@"sectionId"] intValue]]];
-        self.productImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[resultProduct valueForKey:@"productName"]]];
+        self.textLabel.text = [NSString stringWithFormat:@"The product %@ is available in the %@",product.prodName,[GlobalVariables returnTitleForSection:[[resultProduct valueForKey:@"sectionId"] intValue]]];
+        [self.productImage sd_setImageWithURL:[NSURL URLWithString:[product.prodImage stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] ] placeholderImage:[UIImage imageNamed:@"1.png"]];
+       // self.productImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[resultProduct valueForKey:@"productName"]]];
         isSearchEnabled = YES;
         [self actionField:(UIButton *)[self.indoorLocationView viewWithTag:but.tag]];
 
