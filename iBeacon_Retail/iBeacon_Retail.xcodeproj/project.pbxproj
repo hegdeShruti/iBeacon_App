@@ -86,7 +86,6 @@
 		45E8D6C01AC2DBF300E107F2 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 45E8D6BF1AC2DBF300E107F2 /* Config.plist */; };
 		45E8D6C41AC3E38E00E107F2 /* CartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E8D6C21AC3E38E00E107F2 /* CartTableViewCell.m */; };
 		45E8D6C51AC3E38E00E107F2 /* CartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45E8D6C31AC3E38E00E107F2 /* CartTableViewCell.xib */; };
-		45E8D6CA1AC58EB400E107F2 /* CartItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E8D6C91AC58EB400E107F2 /* CartItem.m */; };
 		811165711AB14FF8003629E0 /* GlobalVariables.m in Sources */ = {isa = PBXBuildFile; fileRef = 811165701AB14FF8003629E0 /* GlobalVariables.m */; };
 		811165761AB1AEF1003629E0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 811165741AB1AEF0003629E0 /* LoginViewController.m */; };
 		811C42FA1AE68476001B0AC5 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 811C42DA1AE68476001B0AC5 /* MKAnnotationView+WebCache.m */; };
@@ -116,6 +115,8 @@
 		818849BB1AB98B14005A06BF /* productGridCellCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 818849B91AB98B14005A06BF /* productGridCellCollectionViewCell.m */; };
 		818849BC1AB98B14005A06BF /* productGridCellCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 818849BA1AB98B14005A06BF /* productGridCellCollectionViewCell.xib */; };
 		81948B4B1AB6AA9C002A6FE6 /* Products.m in Sources */ = {isa = PBXBuildFile; fileRef = 81948B4A1AB6AA9C002A6FE6 /* Products.m */; };
+		819BD6751AE68A41004D0C87 /* CartItem.h in Sources */ = {isa = PBXBuildFile; fileRef = 45E8D6C81AC58EB400E107F2 /* CartItem.h */; };
+		819BD6761AE68A41004D0C87 /* CartItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E8D6C91AC58EB400E107F2 /* CartItem.m */; };
 		81A22FE51ADFB56900F7BA2A /* CheckoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A22FE31ADFB56900F7BA2A /* CheckoutViewController.m */; };
 		81A22FE61ADFB56900F7BA2A /* CheckoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81A22FE41ADFB56900F7BA2A /* CheckoutViewController.xib */; };
 		81A633DC1AD79A25002F927F /* CustomHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81A633DB1AD79A25002F927F /* CustomHeaderView.xib */; };
@@ -1072,6 +1073,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				819BD6751AE68A41004D0C87 /* CartItem.h in Sources */,
+				819BD6761AE68A41004D0C87 /* CartItem.m in Sources */,
 				4576AE781AE64C9E001D1FF5 /* MenuViewController.m in Sources */,
 				45849EA11AD4F2FC00FF7A1F /* SlideNavigationController.m in Sources */,
 				81948B4B1AB6AA9C002A6FE6 /* Products.m in Sources */,
@@ -1106,10 +1109,8 @@
 				81AF710C1AB00E4800B350B6 /* NetworkOperations.m in Sources */,
 				EF962CA11ADE84D500727551 /* MapPathGenerator.m in Sources */,
 				45849E9B1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorScale.m in Sources */,
-		811C430C1AE68490001B0AC5 /* Section.m in Sources */,
+				811C430C1AE68490001B0AC5 /* Section.m in Sources */,
 				811C43061AE68476001B0AC5 /* UIImage+WebP.m in Sources */,
-				B17C01AB1ABAA28F00542233 /* OfferPopupMenu.m in Sources 
-				45E8D6CA1AC58EB400E107F2 /* CartItem.m in Sources */,
 				811C43021AE68476001B0AC5 /* SDWebImagePrefetcher.m in Sources */,
 				811C43051AE68476001B0AC5 /* UIImage+MultiFormat.m in Sources */,
 				811C42FD1AE68476001B0AC5 /* SDWebImageCompat.m in Sources */,
@@ -1262,7 +1263,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = iBeacon_Retail/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/iBeacon_Retail/EstimoteSDK/**",
@@ -1290,7 +1291,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = iBeacon_Retail/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/iBeacon_Retail/EstimoteSDK/**",
