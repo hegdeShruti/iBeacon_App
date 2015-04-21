@@ -29,5 +29,5 @@
 @property (nonatomic,weak) id<productViewControllerDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UICollectionView *prodCollectionView;
 @property (nonatomic,weak) IBOutlet UISearchBar* searchBar;
-
+@property (nonatomic, strong) NSArray *entries;
 @end

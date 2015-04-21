@@ -134,6 +134,7 @@
     cell.offerDescription.text=offerObject.offerHeading;
     cell.offerInfo.text=offerObject.offerDescription;
     cell.offerImage.image=[UIImage imageNamed:[self.offersImageArray objectAtIndex:indexPath.row]];
+    
     // Configure Cell
         return cell;
 }
@@ -153,7 +154,7 @@
     Products *prodObject;
     if([productsArray count]>0){
         prodObject=[[Products alloc]  initWithDictionary:[productsArray objectAtIndex:0]];
-        prodObject.prodImage=[self.offersImageArray objectAtIndex:indexPath.row];
+       // prodObject.prodImage=[self.offersImageArray objectAtIndex:indexPath.row];
     }
     
     ProductDetailViewController* prodDetailVC = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController" bundle:nil];

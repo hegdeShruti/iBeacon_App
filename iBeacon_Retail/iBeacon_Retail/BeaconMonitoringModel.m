@@ -149,12 +149,14 @@ BOOL isKidsOfferShown = NO;
             
         }
         else if([region.identifier isEqualToString:@"WOMENSECTIONBEACON"]&& !self.globals.hasUserGotWOmenSectionOffers && self.globals.hasUserEntredEntryBeacon){
+           // else if([region.identifier isEqualToString:@"WOMENSECTIONBEACON"]){
             notification.alertBody = @"Visit Women section to avail the exiting offers.";
             offerId=1;
            offerHeading= @"SALE @ women section";
             self.globals.hasUserGotWOmenSectionOffers=YES;
         }
         else if([region.identifier isEqualToString:@"KIDSECTIONBEACON"]&& !self.globals.hasUserGotKidSectionOffers && self.globals.hasUserEntredEntryBeacon){
+       // else if([region.identifier isEqualToString:@"KIDSECTIONBEACON"]){
             notification.alertBody = @"Visit Kids section to avail the exiting offers.";
             offerHeading= @"Rush soon to kid section";
             offerId=2;

@@ -46,8 +46,12 @@ typedef enum {
 @property(nonatomic,strong) NSMutableArray *productDataArray;
 @property(nonatomic,strong) NSMutableArray *cartDataArray;
 @property(nonatomic,strong) NSMutableArray *productImagesArray;
+@property(nonatomic,strong) NSMutableArray *sectionBeaconArray;
+@property(nonatomic,strong)StoreLocationMapViewController *storeLocationController;
 
-@property(nonatomic,strong) StoreLocationMapViewController *storeLocationController;
+
+
+
 
 //@property(nonatomic,assign) BOOL hasALreadyLoggedIn;
 

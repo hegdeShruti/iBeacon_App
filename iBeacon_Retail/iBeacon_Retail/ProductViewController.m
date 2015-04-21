@@ -13,12 +13,17 @@
 #import "NetworkOperations.h"
 #import "GlobalVariables.h"
 
+#import "UIImageView+WebCache.h"
+
+
+
 
 @interface ProductViewController ()
 @property(nonatomic,strong) Products * product;
 @property(nonatomic,strong)NetworkOperations *networks;
 //@property(nonatomic,strong) NSMutableArray *productImagesArray;
 @property(nonatomic,strong) GlobalVariables *globals;
+
 @end
 
 @implementation ProductViewController
@@ -34,14 +39,6 @@
     if(![globals.productDataArray count]>0){
           [self getProductListing];
     }
-//    else{
-//        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Network Error"
-//                                                          message:@"No products fetched from server"
-//                                                         delegate:nil
-//                                                cancelButtonTitle:@"OK"
-//                                                otherButtonTitles:nil, nil];
-//        [message show];
-//    }
     
 }
 
@@ -121,14 +118,20 @@
     //cell.backgroundColor = [UIColor whiteColor];
     
     Products *prodObject= [[Products alloc] initWithDictionary:[self.searchFilteredProducts objectAtIndex:indexPath.row]];
-    prodObject.prodImage=[NSString stringWithFormat:@"%@.png",prodObject.prodName];
-   // NSLog(@"Image Name is %@",prodObject.prodImage);
+   // prodObject.prodImage=[NSString stringWithFormat:@"%@.png",prodObject.prodName];
+    
     cell.product = prodObject;
     cell.productName.text=prodObject.prodName;
     cell.prodDescription.text = prodObject.prodDescription;
     cell.offerPrice.text = prodObject.price;
     cell.size.text = prodObject.size;
-    cell.productImage.image= [UIImage imageNamed:prodObject.prodImage ];
+    
+    //  using SDWEbimage for lazy loading of images
+    NSString* result = [prodObject.prodImage stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    [cell.productImage sd_setImageWithURL:[NSURL URLWithString:result] placeholderImage:[UIImage imageNamed:@"1.png"]];
+
+    
   //  cell.availableColor1.backgroundColor = [UIColor redColor];
     cell.availableColor1.layer.cornerRadius = (CGFloat)cell.availableColor1.frame.size.height/2;
     
@@ -149,7 +152,7 @@
 {
     
     Products *prodObject= [[Products alloc] initWithDictionary:[self.searchFilteredProducts objectAtIndex:indexPath.row]];
-    prodObject.prodImage=[NSString stringWithFormat:@"%@.png",prodObject.prodName];
+  //  prodObject.prodImage=[NSString stringWithFormat:@"%@.png",prodObject.prodName];
 //    NSDictionary* tempDic = [[NSDictionary alloc] initWithObjectsAndKeys:prodObject,@"product",[NSNumber numberWithInteger:1],@"quantity", nil];
 //    CartItem* cartItem = [[CartItem alloc] initWithDictionary:tempDic];
 //    [GlobalVariables addItemToCart:cartItem];

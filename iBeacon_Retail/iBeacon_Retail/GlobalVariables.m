@@ -7,7 +7,6 @@
 //
 
 #import "GlobalVariables.h"
-#import "OfferPopupMenu.h"
 #import "NetworkOperations.h"
 #import "CartItem.h"
 #import "OfferPopupViewController.h"
@@ -40,22 +39,18 @@ static GlobalVariables *instance = nil;
             instance.offersDataArray=nil;
             instance.isUserOnTheMapScreen = NO;
             instance.productImagesArray=nil;
-           instance.productImagesArray=[[NSMutableArray alloc ]initWithObjects:@"jacket.png",@"perfume.png",@"gown.png",@"watch.png",@"dryer.png",@"shoes.png",@"jacket.png",nil];
-           // instance.hasALreadyLoggedIn=NO;
-        }
+            instance.sectionBeaconArray=nil;
+            instance.productImagesArray=[[NSMutableArray alloc ]initWithObjects:@"jacket.png",@"perfume.png",@"gown.png",@"watch.png",@"dryer.png",@"shoes.png",@"jacket.png",nil];
+                   }
     }
     return instance;
 }
 
-- (void)showOfferPopUpWithTitle:(NSString *)inTitle andMessage:(NSString *)inMessage{
-    [self showOfferPopUpWithTitle:inTitle message:inTitle andDelegate:nil];
-   }
-- (void)showOfferPopUpWithTitle:(NSString *)inTitle message:(NSString *)inMessage andDelegate:(id)delegate{
-    OfferPopupMenu *popup = [[OfferPopupMenu alloc]initWithTitle:inTitle message:inMessage];
-    popup.menuStyle = MenuStyleOval;
-    popup.delegate=delegate;
-    [popup showMenuInParentViewController:self.storeLocationController withCenter:self.storeLocationController.indoorLocationView.center];
-}
+//- (void)showOfferPopUpWithTitle:(NSString *)inTitle andMessage:(NSString *)inMessage{
+//    [self showOfferPopUpWithTitle:inTitle message:inTitle andDelegate:nil];
+//   }
+//- (void)showOfferPopUpWithTitle:(NSString *)inTitle message:(NSString *)inMessage andDelegate:(id)delegate{
+//}
 
 // method that presents popup on existing screen on any beacon notification
 - (void)showOfferPopUp:(Products *)prodInfo  andMessage:(NSString *)inMessage onController:(id) controller withImage:(UIImage *)sourceImage {
@@ -70,7 +65,7 @@ static GlobalVariables *instance = nil;
          offerPopup.productName.text=prodInfo.prodName;
         offerPopup.offerDescription.text=prodInfo.prodDescription;
         if(prodInfo.prodImage){
-        offerPopup.productImage.image=[UIImage imageNamed:prodInfo.prodImage];
+        offerPopup.productImage.image=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:prodInfo.prodImage]]];
         }
         UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
         UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
@@ -264,24 +259,14 @@ static GlobalVariables *instance = nil;
     // send block as parameter to get callbacks
     [networks fetchDataFromServer:[dict objectForKey:@"Offers_Api"] withreturnMethod:^(NSMutableArray* data){
         instance.offersDataArray=data;
-        NSLog(@"The product Api is %lu",(unsigned long)[instance.offersDataArray count]);
-        dispatch_async(dispatch_get_main_queue(), ^
-                       {
-                           
-                           [networks fetchDataFromServer:[dict objectForKey:@"Prod_Api"] withreturnMethod:^(NSMutableArray* data){
-                               instance.productDataArray=data;
-                               NSLog(@"The product Api is %lu",(unsigned long)[instance.offersDataArray count]);
-                               dispatch_async(dispatch_get_main_queue(), ^
-                                              {
-                                                  
-                                                  
-                                                  
-                                                  
-                                              });
-                           }];
+        NSLog(@"The offer Api is %lu",(unsigned long)[instance.offersDataArray count]);
+      
+                           [networks fetchDataFromServer:[dict objectForKey:@"Section_Api"] withreturnMethod:^(NSMutableArray* data){
+                               instance.sectionBeaconArray=data;
+                               NSLog(@"The section Api is %lu",(unsigned long)[instance.sectionBeaconArray count]);
+                            }];
                           
-                           
-                       });
+        
     }];
 }
 

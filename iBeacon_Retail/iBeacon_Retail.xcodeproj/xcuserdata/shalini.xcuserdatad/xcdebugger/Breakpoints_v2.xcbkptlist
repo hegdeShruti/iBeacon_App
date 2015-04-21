@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iBeacon_Retail/GlobalVariables.m"
-            timestampString = "450866127.395325"
+            timestampString = "451284485.474327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
             landmarkName = "+getSectionId:"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iBeacon_Retail/StoreLocationMapViewController.m"
-            timestampString = "451224227.857042"
+            timestampString = "451303840.309604"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "410"
-            endingLineNumber = "410"
+            startingLineNumber = "285"
+            endingLineNumber = "285"
             landmarkName = "-actionField:"
             landmarkType = "5">
          </BreakpointContent>
