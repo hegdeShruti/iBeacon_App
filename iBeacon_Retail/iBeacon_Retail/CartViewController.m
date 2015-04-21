@@ -7,6 +7,7 @@
 //
 
 #import "CartViewController.h"
+#import "UIImageView+WebCache.h"
 
 @interface CartViewController ()
 
@@ -74,7 +75,8 @@
     self.totalValue.text=[NSString stringWithFormat:@"$%.2f",self.total];
     
     //NSLog(@"Product Image = %@",prodObject.prodImage );
-    cell.prodImage.image=[UIImage imageNamed:prodObject.prodImage];
+    [cell.prodImage sd_setImageWithURL:[NSURL URLWithString:[prodObject.prodImage stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]] placeholderImage:[UIImage imageNamed:@"1.png"]];
+    //cell.prodImage.image=[UIImage imageNamed:prodObject.prodImage];
     return cell;
 }
 
