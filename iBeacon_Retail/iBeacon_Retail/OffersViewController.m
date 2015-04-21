@@ -134,6 +134,7 @@
     cell.offerDescription.text=offerObject.offerHeading;
     cell.offerInfo.text=offerObject.offerDescription;
     cell.offerImage.image=[UIImage imageNamed:[self.offersImageArray objectAtIndex:indexPath.row]];
+    
     // Configure Cell
         return cell;
 }

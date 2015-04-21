@@ -19,18 +19,19 @@
 }
 
 
-- (instancetype)initWithDictionary:(NSDictionary*)nutrientData
+- (instancetype)initWithDictionary:(NSDictionary*)productData
 {
     
     if ((self = [super init])) {
-        self.productId =(NSInteger) [nutrientData valueForKey:@"productId"];
-        self.beaconId =[nutrientData valueForKey:@"beaconId"];
-        self.sectionId =(NSInteger) [nutrientData valueForKey:@"sectionId"];
-        self.prodName=[nutrientData valueForKey:@"productName"];
-        self.prodDescription=[nutrientData valueForKey:@"productDescription"];
-        self.price=[nutrientData valueForKey:@"price"];
-        self.size=[nutrientData valueForKey:@"size"];
-        self.colour=[nutrientData valueForKey:@"colour"];        
+        self.productId =(NSInteger) [productData valueForKey:@"productId"];
+        self.beaconId =[productData valueForKey:@"beaconId"];
+        self.sectionId =(NSInteger) [productData valueForKey:@"sectionId"];
+        self.prodName=[productData valueForKey:@"productName"];
+        self.prodDescription=[productData valueForKey:@"productDescription"];
+        self.price=[productData valueForKey:@"price"];
+        self.size=[productData valueForKey:@"size"];
+        self.colour=[productData valueForKey:@"colour"];
+        self.prodImage = [productData valueForKey:@"productImageUrl"];
     }
     return self;
 }
@@ -46,7 +47,7 @@
         self.price=[decoder decodeObjectForKey:@"price"];
         self.size=[decoder decodeObjectForKey:@"size"];
         self.colour=[decoder decodeObjectForKey:@"colour"];
-        self.prodImage = [decoder decodeObjectForKey:@"productImage"];    }
+        self.prodImage = [decoder decodeObjectForKey:@"productImageUrl"];    }
     return self;
 }
 
@@ -59,7 +60,7 @@
     [encoder encodeObject:self.price forKey:@"price"];
     [encoder encodeObject:self.size forKey:@"size"];
     [encoder encodeObject:self.colour forKey:@"colour"];
-    [encoder encodeObject:self.prodImage forKey:@"productImage"];
+    [encoder encodeObject:self.prodImage forKey:@"productImageUrl"];
 
 }
 

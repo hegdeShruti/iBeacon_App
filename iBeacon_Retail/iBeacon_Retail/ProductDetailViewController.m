@@ -7,6 +7,7 @@
 //
 
 #import "ProductDetailViewController.h"
+#import "UIImageView+WebCache.h"
 
 @interface ProductDetailViewController ()
 @end
@@ -90,13 +91,15 @@
 //    NSLog(@"Collection tag: %d",collectionView.tag );
     if(collectionView.tag == 1){ // this is the product images collection view
         ProductImageCollectionViewCell* cell = (ProductImageCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"ProductImageCell" forIndexPath:indexPath];
-        cell.prodImage.image = [UIImage imageNamed:self.product.prodImage ];
+       // cell.prodImage.image = [UIImage imageNamed:self.product.prodImage ];
+        [cell.prodImage sd_setImageWithURL:[NSURL URLWithString:[self.product.prodImage stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]] placeholderImage:[UIImage imageNamed:@"1.png"]];
         return cell;
         
     }else{
         ProductRecommendationCollectionViewCell* cell = (ProductRecommendationCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"RecommendationCell" forIndexPath:indexPath];
-        cell.layer.cornerRadius=10.0f;
-        cell.productImage.image=[UIImage imageNamed:self.product.prodImage];
+        cell.layer.cornerRadius=5.0f;
+       // cell.productImage.image=[UIImage imageNamed:self.product.prodImage];
+         [cell.productImage sd_setImageWithURL:[NSURL URLWithString:[self.product.prodImage stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] ] placeholderImage:[UIImage imageNamed:@"1.png"]];
         return cell;
     }
 }
