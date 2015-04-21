@@ -27,7 +27,7 @@
     self.productImagesArray = [NSArray arrayWithObjects:@"1",@"2",@"3", nil];
     self.recommendationDataArray = [NSArray arrayWithObjects:@"1",@"2",@"3",@"4",@"5",@"6", nil];
     
-    //self.scrollview.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width,  self.contentView.frame.size.height);
+    self.scrollview.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width,  self.contentView.frame.size.height);
     
     [self setupPageControlForProductImagesCollectionView];
 }

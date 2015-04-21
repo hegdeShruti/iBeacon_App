@@ -80,6 +80,11 @@
                                                                 <constraint firstAttribute="height" secondItem="LRS-C0-2qD" secondAttribute="height" id="XzK-cY-86y"/>
                                                                 <constraint firstItem="LRS-C0-2qD" firstAttribute="leading" secondItem="otc-2S-Qqb" secondAttribute="leading" id="dyl-ka-EST"/>
                                                             </constraints>
+                                                            <variation key="default">
+                                                                <mask key="constraints">
+                                                                    <exclude reference="3Nm-fD-Zvw"/>
+                                                                </mask>
+                                                            </variation>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XJ6-ko-Qg5">
                                                             <rect key="frame" x="0.0" y="240" width="414" height="40"/>
@@ -97,6 +102,7 @@
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="QRy-ed-Ew7" secondAttribute="height" multiplier="15:4" id="C3n-zE-56b"/>
                                                                         <constraint firstAttribute="width" secondItem="QRy-ed-Ew7" secondAttribute="height" multiplier="13:4" id="Qxo-X9-bIo"/>
+                                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="YEL-Zn-v53"/>
                                                                         <constraint firstAttribute="width" secondItem="QRy-ed-Ew7" secondAttribute="height" multiplier="13:4" id="wr3-jW-wcW"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -108,6 +114,7 @@
                                                                         <mask key="constraints">
                                                                             <exclude reference="C3n-zE-56b"/>
                                                                             <exclude reference="Qxo-X9-bIo"/>
+                                                                            <exclude reference="wr3-jW-wcW"/>
                                                                         </mask>
                                                                     </variation>
                                                                     <connections>
@@ -132,6 +139,7 @@
                                                                 <constraint firstItem="QRy-ed-Ew7" firstAttribute="leading" secondItem="XJ6-ko-Qg5" secondAttribute="leading" id="gcb-ji-wyY"/>
                                                                 <constraint firstAttribute="bottom" secondItem="UiH-2b-Hs6" secondAttribute="bottom" constant="-9" id="k2V-8J-xoA"/>
                                                                 <constraint firstAttribute="trailing" secondItem="UiH-2b-Hs6" secondAttribute="trailing" constant="187" id="kbX-tR-49L"/>
+                                                                <constraint firstItem="UiH-2b-Hs6" firstAttribute="leading" relation="lessThanOrEqual" secondItem="QRy-ed-Ew7" secondAttribute="trailing" constant="58" id="x0b-jw-OlV"/>
                                                             </constraints>
                                                             <variation key="default">
                                                                 <mask key="constraints">
@@ -209,16 +217,21 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nike Court Running Shoes - Men" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="RcZ-Ga-fJv">
-                                                                    <rect key="frame" x="8" y="11" width="300" height="25"/>
+                                                                    <rect key="frame" x="8" y="11" width="300" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="RcZ-Ga-fJv" secondAttribute="height" multiplier="12:1" id="VId-d2-WTh"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
+                                                                    <variation key="default">
+                                                                        <mask key="constraints">
+                                                                            <exclude reference="VId-d2-WTh"/>
+                                                                        </mask>
+                                                                    </variation>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sports shoe for men" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="vMW-wR-EbC">
-                                                                    <rect key="frame" x="8" y="40" width="300" height="16"/>
+                                                                    <rect key="frame" x="8" y="37" width="300" height="16"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="22" id="T6W-6z-5cv"/>
                                                                         <constraint firstAttribute="width" secondItem="vMW-wR-EbC" secondAttribute="height" multiplier="150:11" id="TOr-Wn-8A7"/>
@@ -241,6 +254,11 @@
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                                     <color key="textColor" red="0.2901960784" green="0.66666666669999997" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
+                                                                    <variation key="default">
+                                                                        <mask key="constraints">
+                                                                            <exclude reference="DfY-dm-LXh"/>
+                                                                        </mask>
+                                                                    </variation>
                                                                 </label>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iH7-tV-mMC">
                                                                     <rect key="frame" x="0.0" y="64" width="414" height="1"/>
@@ -278,6 +296,7 @@
                                                             </constraints>
                                                             <variation key="default">
                                                                 <mask key="constraints">
+                                                                    <exclude reference="KG4-na-TYt"/>
                                                                     <exclude reference="w8h-1T-oFp"/>
                                                                     <exclude reference="FFP-Zn-PUN"/>
                                                                     <exclude reference="dGB-09-uAV"/>
@@ -555,6 +574,7 @@
                                                             </constraints>
                                                             <variation key="default">
                                                                 <mask key="constraints">
+                                                                    <exclude reference="HdB-9S-Lnf"/>
                                                                     <exclude reference="oeq-cf-mv8"/>
                                                                     <exclude reference="NHB-AE-d3h"/>
                                                                     <exclude reference="Ruo-ok-jV8"/>
@@ -638,6 +658,11 @@
                                                         <constraint firstItem="146-3n-23y" firstAttribute="leading" secondItem="hk0-yr-cRj" secondAttribute="leading" constant="10" id="pYI-Mm-L2p"/>
                                                         <constraint firstItem="1uW-vM-hFp" firstAttribute="top" secondItem="5Jb-L4-OWH" secondAttribute="bottom" id="zd0-ih-LJ4"/>
                                                     </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="oX4-ZH-9af"/>
+                                                        </mask>
+                                                    </variation>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QP3-Yf-7ku">
                                                     <rect key="frame" x="0.0" y="660" width="414" height="130"/>
@@ -668,6 +693,11 @@
                                                         <constraint firstItem="Ihh-WZ-hsr" firstAttribute="top" secondItem="QP3-Yf-7ku" secondAttribute="top" constant="5" id="SHu-ER-ZMx"/>
                                                         <constraint firstAttribute="trailing" secondItem="Ihh-WZ-hsr" secondAttribute="trailing" id="wa9-PM-wWD"/>
                                                     </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="48C-TI-JPB"/>
+                                                        </mask>
+                                                    </variation>
                                                 </view>
                                             </subviews>
                                             <constraints>
