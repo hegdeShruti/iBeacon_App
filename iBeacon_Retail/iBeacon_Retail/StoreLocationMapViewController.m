@@ -10,11 +10,8 @@
 #import "ESTIndoorLocationManager.h"
 #import "ESTIndoorLocationView.h"
 #import "Constants.h"
-#import "OfferPopupMenu.h"
-#import "OfferButton.h"
 #import "GlobalVariables.h"
 #import "AOShortestPath.h"
-#define OFFER_TAG_OFFSET 1000;
 
 @interface StoreLocationMapViewController () <ESTIndoorLocationManagerDelegate>
 
@@ -46,6 +43,8 @@
 @property(nonatomic,strong)NSMutableArray *menSectionTagArray;
 
 @property(nonatomic,strong)IBOutlet UIImageView *productImage;
+@property (assign, nonatomic) CGFloat frameWidth;
+@property (assign, nonatomic) CGFloat frameHeight;
 
 @end
 
@@ -77,12 +76,13 @@ BOOL isSearchEnabled = NO;
         [ESTConfig setupAppID:@"app_16ipimrjvr" andAppToken:@"c370acc9642ae3ca99dfc571dc25b646"];
     }
     
-    self.title = self.location.name;
+    self.title = @"Store Map";
     
     self.autocompleteTableView.delegate = self;
     self.autocompleteTableView.dataSource = self;
     self.autocompleteTableView.hidden = YES;
-    
+   
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -94,6 +94,7 @@ BOOL isSearchEnabled = NO;
     [SlideNavigationController sharedInstance].rightBarButtonItem = rightBarButtonItem;
     
     [super viewWillAppear:animated];
+    
     [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                                                                   [UIColor whiteColor],
                                                                                                   NSForegroundColorAttributeName,
@@ -103,11 +104,8 @@ BOOL isSearchEnabled = NO;
     [self.globals getOffers];
     
     self.indoorLocationView.backgroundColor = [UIColor clearColor];
-    
     self.indoorLocationView.rotateOnPositionUpdate=NO;
-    
     self.indoorLocationView.showWallLengthLabels    = NO;
-    
     self.indoorLocationView.locationBorderColor     = [UIColor clearColor];
     self.indoorLocationView.locationBorderThickness = 4;
     self.indoorLocationView.doorColor               = [UIColor brownColor];
@@ -115,18 +113,20 @@ BOOL isSearchEnabled = NO;
     self.indoorLocationView.traceColor              = [UIColor blueColor];
     self.indoorLocationView.traceThickness          = 2;
     self.indoorLocationView.wallLengthLabelsColor   = [UIColor blackColor];
-    
     [self.indoorLocationView drawLocation:self.location];
-    
     // You can change the avatar using positionImage property of ESTIndoorLocationView class.
     self.indoorLocationView.positionView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
     [self.indoorLocationView.positionView setBackgroundColor:[UIColor clearColor]];
-    UIImageView *img=[[UIImageView alloc]initWithFrame:CGRectMake(-47, 0, 410, 410)];
+
+    
+    self.frameWidth=self.view.frame.size.width>400?410:320;
+    self.frameHeight=self.frameWidth;
+    UIImageView *img=[[UIImageView alloc]initWithFrame:CGRectMake(-46, 0, self.frameWidth+2,self.frameHeight)];
     [img setImage:[UIImage imageNamed:@"map.png"]];
     [self.indoorLocationView addSubview:img];
     
-    
     [self.manager startIndoorLocation:self.location];
+    
     
     _pathManager = [[AOShortestPath alloc] init];
     _pathManager.pointList = [NSMutableArray array];
@@ -149,8 +149,8 @@ BOOL isSearchEnabled = NO;
     
     // set default field size
 
-    _frameWidthFactor = 410/[_plane[0] count];
-    _frameHeightFactor = 410/[_plane count];
+    _frameWidthFactor = self.frameWidth/[_plane[0] count];
+    _frameHeightFactor = self.frameHeight/[_plane count];
     // generate plans's fields
     for (int i = 0; i<_plane.count; i++) {
         NSArray *row = _plane[i];
@@ -199,6 +199,7 @@ BOOL isSearchEnabled = NO;
             [p addConnection:c];
         }];
     }
+    
     
 }
 - (void)showOffer:(id)sender{
@@ -252,137 +253,11 @@ BOOL isSearchEnabled = NO;
 
 //-(void)showAlertForSection:
 
-#pragma mark - ESTIndoorLocationManager delegate
-
-- (void)indoorLocationManager:(ESTIndoorLocationManager *)manager
-            didUpdatePosition:(ESTOrientedPoint *)position
-                   inLocation:(ESTLocation *)location
-{
-    [self.indoorLocationView updatePosition:position];
-    
-    float positionX,positionY;
-    positionX = ceilf(position.y);
-    positionY = ceilf(position.x);
-    
-    positionX=positionX > 0 ?positionX-4:positionX-5;
-    positionX=fabsf(positionX);
-    positionY=positionY < 0 ?positionY+6:positionY+5;
-    NSLog(@"POsition is %f,%f", positionX,positionY);
-    
-    int row=roundf(positionX);
-    int column=roundf(positionY);
-    int tagNo=row*20+column;
-    if (_startField.tag!=tagNo) {
-        [_startField setBackgroundImage:nil forState:UIControlStateNormal];
-    }
-    
-    _startField = (UIButton*)[self.indoorLocationView viewWithTag:tagNo];
-    [_startField setBackgroundImage:[UIImage imageNamed:@"person.png"] forState:UIControlStateNormal];
-    
-}
-
-- (void)indoorLocationManager:(ESTIndoorLocationManager *)manager didFailToUpdatePositionWithError:(NSError *)error
-{
-}
-
-#pragma searchBar delegates
-
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    [searchBar resignFirstResponder];
-    if ([self.filteredProductList count]==0) {
-        return;
-    }
-    NSDictionary *resultProduct=[[self.globals.productDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"%K == %@", @"productName",searchBar.text]] objectAtIndex:0];
-    
-    UIButton *but=(UIButton *)[self.indoorLocationView viewWithTag:[self getTagForSectionID:[[resultProduct valueForKey:@"sectionId"]intValue]]];
-    [but setBackgroundImage:[UIImage imageNamed:@"map-pin-green.png"] forState: UIControlStateNormal];
-    //show the description ...
-    self.labelView.hidden = NO;
-    self.textLabel.text = [NSString stringWithFormat:@"The product %@ is available in the %@",[resultProduct valueForKey:@"productName"],[GlobalVariables returnTitleForSection:[[resultProduct valueForKey:@"sectionId"] intValue]]];
-    self.productImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[resultProduct valueForKey:@"productName"]]];
-    isSearchEnabled = YES;
-    [self actionField:(UIButton *)[self.indoorLocationView viewWithTag:but.tag]];
-    
-    
-}
-
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    [searchBar resignFirstResponder];
-    
-}
-
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    if ([searchText isEqualToString:@""]) {
-        for (id offer in [self.indoorLocationView subviews]) {
-            if([offer isKindOfClass:[OfferButton class]] )
-                [((OfferButton *)offer)setBackgroundImage:[UIImage imageNamed:@"map-pin-red.png"] forState: UIControlStateNormal];
-        }
-        self.autocompleteTableView.hidden = YES;
-        
-        
-    }
-    else{
-        [self.filteredProductList removeAllObjects];
-        NSString* searchStr = [NSString stringWithFormat:@"*%@*",searchText];
-        [self.filteredProductList addObjectsFromArray:[self.globals.productDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"%K like[c] %@", @"productName",searchStr]]];
-        //searchBar.text= [[filtered objectAtIndex:0]valueForKey:@"productName"];
-        [self.autocompleteTableView reloadData];
-        self.autocompleteTableView.hidden = NO;
-        
-    }
-}
-#pragma mark UITableViewDataSource methods
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger) section {
-    return self.filteredProductList.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self.filteredProductList count]==0) {
-        return nil;
-    }
-    UITableViewCell *cell = nil;
-    static NSString *AutoCompleteRowIdentifier = @"AutoCompleteRowIdentifier";
-    cell = [tableView dequeueReusableCellWithIdentifier:AutoCompleteRowIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc]
-                initWithStyle:UITableViewCellStyleDefault reuseIdentifier:AutoCompleteRowIdentifier];
-    }
-    cell.backgroundColor = [UIColor colorWithRed:192.0/255.0 green:232.0/255.0 blue:237.0/255.0 alpha:0.7];
-    cell.textLabel.text = [[self.filteredProductList objectAtIndex:indexPath.row]valueForKey:@"productName"];
-    return cell;
-}
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 44;
-}
-#pragma mark UITableViewDelegate methods
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
-    self.searchBar.text = selectedCell.textLabel.text;
-    self.autocompleteTableView.hidden = YES;
-    
-}
-
-#pragma OfferPopupMenuDelegate methods
-
--(void)menu:(OfferPopupMenu*)menu willDismissWithSelectedItemAtIndex:(NSUInteger)index{
-    
-}
--(void)menuwillDismiss:(OfferPopupMenu *)menu{
-    for (id offer in [self.indoorLocationView subviews]) {
-        if([offer isKindOfClass:[OfferButton class]] )
-            [((OfferButton *)offer)setBackgroundImage:[UIImage imageNamed:@"map-pin-red.png"] forState: UIControlStateNormal];
-    }
-    
-}
 
 - (void)actionField:(UIButton*)sender {
     [self clearPath:nil];
     [_startField setBackgroundImage:[UIImage imageNamed:@"person.png"] forState:UIControlStateNormal];
-        [_startField setBackgroundImage:[UIImage imageNamed:@"person.png"] forState:UIControlStateNormal];
-        
+    
         if([sender.titleLabel.text isEqualToString:@"X"]){
             NSLog(@"Its a wall !!");
         }
@@ -399,8 +274,8 @@ BOOL isSearchEnabled = NO;
                 for (AOPathPoint *p in path) {
                     UIButton *but = (UIButton*)[self.view viewWithTag:p.tag];
                     if(![but.currentTitle isEqualToString:@"X"] ){
-                        float w=p.tag%20*41-16-47;
-                        float h=p.tag/20*41+16;
+                        float w=p.tag%20*_frameWidthFactor-16-47;
+                        float h=p.tag/20*_frameWidthFactor+16;
                         
                         [self.pathArray addObject:[NSValue valueWithCGPoint:CGPointMake(w, h)]];
                         NSLog(@"tag  %ld  point %@   %@",p.tag,[NSValue valueWithCGPoint:CGPointMake(w, h)],but.currentTitle);
@@ -409,12 +284,8 @@ BOOL isSearchEnabled = NO;
                 
                 [_pathGeneratorView setPathList:_pathArray];
                 _pathGeneratorView.hidden=NO;
-                
-                [self animate:buttonPath withCompletion:^{
                     _search = NO;
-                    [_startField setBackgroundImage:[UIImage imageNamed:@"person.png"] forState:UIControlStateNormal];
-                    
-                }];
+                
             } else {
                 _search = NO;
             }
@@ -444,27 +315,6 @@ BOOL isSearchEnabled = NO;
         }
     }
     
-}
-
-- (void)animate:(NSArray*)path withCompletion:(void(^)())completion {
-    NSMutableArray *animatePoints = [NSMutableArray array];
-    for (UIButton *field in path) {
-        void (^p)(void) = ^{
-            _person.center = field.center;
-        };
-        [animatePoints addObject:p];
-    }
-    
-    float duration = 0.1;
-    long numberOfKeyframes = path.count;
-    [UIView animateKeyframesWithDuration:duration*numberOfKeyframes delay:0.0 options:UIViewKeyframeAnimationOptionCalculationModePaced animations:^{
-        for (long i=0; i<numberOfKeyframes; i++) {
-            [UIView addKeyframeWithRelativeStartTime:duration*i relativeDuration:duration animations:animatePoints[i]];
-        }
-        
-    } completion:^(BOOL finished) {
-        completion();
-    }];
 }
 
 // we need this method to easily generate connections for basic 2d game plane
@@ -511,7 +361,7 @@ BOOL isSearchEnabled = NO;
     positionX=positionX > 0 ?positionX-4:positionX-5;
     positionX=fabsf(positionX);
     positionY=positionY < 0 ?positionY+6:positionY+5;
-    NSLog(@"POsition is %f,%f", positionX,positionY);
+    //NSLog(@"POsition is %f,%f", positionX,positionY);
     
     int row=roundf(positionX);
     int column=roundf(positionY);
@@ -569,6 +419,128 @@ BOOL isSearchEnabled = NO;
     return offerID;
 }
 
+#pragma mark - ESTIndoorLocationManager delegate
+
+- (void)indoorLocationManager:(ESTIndoorLocationManager *)manager
+            didUpdatePosition:(ESTOrientedPoint *)position
+                   inLocation:(ESTLocation *)location
+{
+    [self.indoorLocationView updatePosition:position];
+    
+    float positionX,positionY;
+    positionX = ceilf(position.y);
+    positionY = ceilf(position.x);
+    
+    positionX=positionX > 0 ?positionX-4:positionX-5;
+    positionX=fabsf(positionX);
+    positionY=positionY < 0 ?positionY+6:positionY+5;
+    NSLog(@"POsition is %f,%f", positionX,positionY);
+    
+    int row=roundf(positionX);
+    int column=roundf(positionY);
+    int tagNo=row*20+column;
+    if (_startField.tag!=tagNo) {
+        [_startField setBackgroundImage:nil forState:UIControlStateNormal];
+    }
+    
+    _startField = (UIButton*)[self.indoorLocationView viewWithTag:tagNo];
+    [_startField setBackgroundImage:[UIImage imageNamed:@"person.png"] forState:UIControlStateNormal];
+    
+}
+
+- (void)indoorLocationManager:(ESTIndoorLocationManager *)manager didFailToUpdatePositionWithError:(NSError *)error
+{
+}
+
+-(void)showNoItemAlert{
+    UIAlertView *noItemAlertView = [[UIAlertView alloc] initWithTitle:@"The item searched for is not found in the store" message:@"" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    [noItemAlertView show];
+    self.autocompleteTableView.hidden = YES;
+    self.labelView.hidden = NO;
+}
+
+#pragma searchBar delegates
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
+    if ([self.filteredProductList count]==0 || [self.filteredProductList containsObject:searchBar.text]) {
+        [self showNoItemAlert];
+        searchBar.text = @"";
+        return;
+    }
+    NSLog(@"%@",self.globals.productDataArray);
+    NSArray *tempArray = [self.globals.productDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"%K == %@", @"productName",searchBar.text]];
+    if([tempArray count] > 0){
+        NSDictionary *resultProduct=[tempArray objectAtIndex:0];
+        UIButton *but=(UIButton *)[self.indoorLocationView viewWithTag:[self getTagForSectionID:[[resultProduct valueForKey:@"sectionId"]intValue]]];
+        //    [but setBackgroundImage:[UIImage imageNamed:@"map-pin-green.png"] forState: UIControlStateNormal];
+        //show the description ...
+        self.labelView.hidden = NO;
+        self.textLabel.text = [NSString stringWithFormat:@"The product %@ is available in the %@",[resultProduct valueForKey:@"productName"],[GlobalVariables returnTitleForSection:[[resultProduct valueForKey:@"sectionId"] intValue]]];
+        self.productImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[resultProduct valueForKey:@"productName"]]];
+        isSearchEnabled = YES;
+        [self actionField:(UIButton *)[self.indoorLocationView viewWithTag:but.tag]];
+
+    }
+    else{
+        [self showNoItemAlert];
+        searchBar.text = @"";
+    }
+    
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
+    
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    if ([searchText isEqualToString:@""]) {
+        self.autocompleteTableView.hidden = YES;
+    }
+    else{
+        [self.filteredProductList removeAllObjects];
+        NSString* searchStr = [NSString stringWithFormat:@"*%@*",searchText];
+        [self.filteredProductList addObjectsFromArray:[self.globals.productDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"%K like[c] %@", @"productName",searchStr]]];
+        //searchBar.text= [[filtered objectAtIndex:0]valueForKey:@"productName"];
+        [self.autocompleteTableView reloadData];
+        self.autocompleteTableView.hidden = NO;
+        
+    }
+}
+#pragma mark UITableViewDataSource methods
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger) section {
+    return self.filteredProductList.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self.filteredProductList count]==0) {
+        return nil;
+    }
+    UITableViewCell *cell = nil;
+    static NSString *AutoCompleteRowIdentifier = @"AutoCompleteRowIdentifier";
+    cell = [tableView dequeueReusableCellWithIdentifier:AutoCompleteRowIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]
+                initWithStyle:UITableViewCellStyleDefault reuseIdentifier:AutoCompleteRowIdentifier];
+    }
+    cell.backgroundColor = [UIColor colorWithRed:192.0/255.0 green:232.0/255.0 blue:237.0/255.0 alpha:0.7];
+    cell.textLabel.text = [[self.filteredProductList objectAtIndex:indexPath.row]valueForKey:@"productName"];
+    return cell;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 44;
+}
+#pragma mark UITableViewDelegate methods
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+    self.searchBar.text = selectedCell.textLabel.text;
+    self.autocompleteTableView.hidden = YES;
+    
+}
 
 #pragma mark Slide view delegate method
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu
@@ -579,4 +551,5 @@ BOOL isSearchEnabled = NO;
 {
     return YES;
 }
+
 @end

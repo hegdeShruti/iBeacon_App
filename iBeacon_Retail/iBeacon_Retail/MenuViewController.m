@@ -9,21 +9,12 @@
 #import "MenuViewController.h"
 #import "ESTBeaconManager.h"
 #import "ESTConfig.h"
+#import "GlobalVariables.h"
 #import "ESTBeaconManager.h"
 #import "ESTBeaconRegion.h"
 #import "ESTIndoorLocationManager.h"
 #import "ESTConfig.h"
 #import "ESTLocationBuilder.h"
-
-typedef enum : NSUInteger {
-    products=0,
-    offers,
-    cart,
-    map,
-    logout
-} menuItems;
-
-
 
 @interface MenuViewController ()
 
@@ -57,6 +48,12 @@ typedef enum : NSUInteger {
  //   [self setBlurredBackground];
     
 }
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+}
+
 
 -(UIView *) headerView {
     if (!_headerView) {
@@ -134,9 +131,15 @@ typedef enum : NSUInteger {
     [cell.textLabel setText:[self.menuItems objectAtIndex:indexPath.row]];
     cell.textLabel.textColor=[UIColor whiteColor];
     cell.imageView.image=[UIImage imageNamed:[self.menuImageItems objectAtIndex:indexPath.row]];
-//    if(indexPath.row == 0){
-//        [cell setSelected:YES];
-//    }
+    
+    if(indexPath.row == 0)
+    {
+        [tableView
+         selectRowAtIndexPath:indexPath
+         animated:TRUE
+         scrollPosition:UITableViewScrollPositionNone
+         ];
+    }
     return cell;
 }
 
@@ -147,20 +150,20 @@ typedef enum : NSUInteger {
     UIAlertView *alert;
     switch(indexPath.row)
     {
-        case products:
+        case BeaconRetailProductIndex:
             vc = (ProductViewController*)[[ProductViewController alloc] initWithNibName:@"ProductViewController" bundle:nil];
             break;
-        case offers:
+        case BeaconRetailOffersIndex:
             vc = (OffersViewController*)[[OffersViewController alloc] initWithNibName:@"OffersViewController" bundle:nil];
             break;
-        case cart:
+        case BeaconRetailCartIndex:
             vc = (CartViewController*)[[CartViewController alloc] initWithNibName:@"CartViewController" bundle:nil];
             break;
-        case map:
+        case BeaconRetailMapIndex:
 //            vc = [self loadStoreMap:(StoreLocationMapViewController*)vc];
             vc = [GlobalVariables getStoreMap];
             break;
-        case logout:
+        case BeaconRetailLogoutIndex:
             alert = [[UIAlertView alloc] initWithTitle:@"Warning"
                                                             message:@"Are you sure you want logout."
                                                            delegate:self
@@ -171,7 +174,7 @@ typedef enum : NSUInteger {
         default:
             break;
     }
-    if(indexPath.row != logout){        
+    if(indexPath.row != BeaconRetailLogoutIndex){
         [[SlideNavigationController sharedInstance] popToRootAndSwitchToViewController:vc withSlideOutAnimation:NO andCompletion:nil];
     }
 }

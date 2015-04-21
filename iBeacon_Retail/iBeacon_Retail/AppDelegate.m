@@ -160,7 +160,7 @@
 -(UINavigationController*)loadSlideMenuInstance{
     
         // this is where you define the view for the left panel
-        MenuViewController *menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+//        MenuViewController *menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
         ProductViewController* rootViewControllerForSlideMenu = [[ProductViewController alloc] initWithNibName:@"ProductViewController" bundle:nil];
     
 //        menuViewController.view.tag = LEFT_PANEL_TAG;
@@ -187,7 +187,7 @@
     
     CGRect frame=[[UIScreen mainScreen]bounds ];
     
-    slideController.leftMenu = menuViewController;
+    slideController.leftMenu = [GlobalVariables getLeftMenu];
     slideController.menuRevealAnimationDuration = .18;
     [SlideNavigationController sharedInstance].portraitSlideOffset =frame.size.width-k_SlidePixelOffset;
     

@@ -31,12 +31,18 @@
 @property (weak, nonatomic) IBOutlet UIButton *locateProductButton;
 @property (weak, nonatomic) IBOutlet UILabel *productName;
 @property (weak, nonatomic) IBOutlet UILabel *productDescription;
+@property (weak, nonatomic) IBOutlet UILabel *productPrice;
 
+@property (weak, nonatomic) IBOutlet UILabel *productCostBaseLabel;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *sizeButtonCollectionView;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *colorButtonCollectionView;
 
 @property (weak, nonatomic) IBOutlet UIButton *cartButton;
 - (IBAction)pageControlChanged:(UIPageControl *)sender;
 - (IBAction)sizeButtonSelected:(id)sender;
+- (IBAction)colorButtonSelected:(id)sender;
 - (IBAction)locateProduct:(UIButton *)sender;
 - (IBAction)addProductToCart:(id)sender;
+
+
 @end

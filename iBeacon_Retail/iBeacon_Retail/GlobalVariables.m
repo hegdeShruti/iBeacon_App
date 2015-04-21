@@ -7,15 +7,19 @@
 //
 
 #import "GlobalVariables.h"
-#import "OfferPopupMenu.h"
 #import "NetworkOperations.h"
 #import "CartItem.h"
 #import "OfferPopupViewController.h"
+#import "MenuViewController.h"
+
+@interface GlobalVariables()
+    @property (nonatomic,strong)  MenuViewController * leftMenu;
+@end
 
 
 @implementation GlobalVariables
-@synthesize hasUserEnteredTheStore , hasUserGotWOmenSectionOffers, hasUserGotKidSectionOffers,hasUserGotMenSectionOffers,isUserOnTheMapScreen,offersDataArray,productDataArray;
 
+@synthesize hasUserEnteredTheStore , hasUserGotWOmenSectionOffers, hasUserGotKidSectionOffers,hasUserGotMenSectionOffers,isUserOnTheMapScreen,offersDataArray,productDataArray;
 static GlobalVariables *instance = nil;
 
 +(GlobalVariables *)getInstance
@@ -42,15 +46,11 @@ static GlobalVariables *instance = nil;
     return instance;
 }
 
-- (void)showOfferPopUpWithTitle:(NSString *)inTitle andMessage:(NSString *)inMessage{
-    [self showOfferPopUpWithTitle:inTitle message:inTitle andDelegate:nil];
-   }
-- (void)showOfferPopUpWithTitle:(NSString *)inTitle message:(NSString *)inMessage andDelegate:(id)delegate{
-    OfferPopupMenu *popup = [[OfferPopupMenu alloc]initWithTitle:inTitle message:inMessage];
-    popup.menuStyle = MenuStyleOval;
-    popup.delegate=delegate;
-    [popup showMenuInParentViewController:self.storeLocationController withCenter:self.storeLocationController.indoorLocationView.center];
-}
+//- (void)showOfferPopUpWithTitle:(NSString *)inTitle andMessage:(NSString *)inMessage{
+//    [self showOfferPopUpWithTitle:inTitle message:inTitle andDelegate:nil];
+//   }
+//- (void)showOfferPopUpWithTitle:(NSString *)inTitle message:(NSString *)inMessage andDelegate:(id)delegate{
+//}
 
 // method that presents popup on existing screen on any beacon notification
 - (void)showOfferPopUp:(Products *)prodInfo  andMessage:(NSString *)inMessage onController:(id) controller withImage:(UIImage *)sourceImage {
@@ -295,6 +295,19 @@ static GlobalVariables *instance = nil;
 
 -(void)loadCartScreen{
     CartViewController* cartScreen = [[CartViewController alloc] initWithNibName:@"CartViewController" bundle:nil];
+//    MenuViewController* menuvc = (MenuViewController*)[SlideNavigationController sharedInstance].leftBarButtonItem;
+    NSIndexPath* path = [NSIndexPath indexPathForRow: BeaconRetailCartIndex inSection:0];
+    [instance.leftMenu.tableview selectRowAtIndexPath:path animated:NO scrollPosition:UITableViewScrollPositionMiddle];
     [[SlideNavigationController sharedInstance] pushViewController:cartScreen animated:YES];
 }
+
++(MenuViewController *)getLeftMenu{
+    if(instance.leftMenu == nil ){
+        instance.leftMenu = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+    }
+    return instance.leftMenu;
+}
+
+
+
 @end

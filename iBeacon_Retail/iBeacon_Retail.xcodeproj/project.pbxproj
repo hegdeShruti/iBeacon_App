@@ -66,6 +66,7 @@
 		4556001D1AD2981D0034BBD2 /* ProductRecommendationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4556001B1AD2981D0034BBD2 /* ProductRecommendationCollectionViewCell.xib */; };
 		456167811AD3B38F007F2396 /* ProductImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4561677F1AD3B38F007F2396 /* ProductImageCollectionViewCell.m */; };
 		456167821AD3B38F007F2396 /* ProductImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 456167801AD3B38F007F2396 /* ProductImageCollectionViewCell.xib */; };
+		4576AE781AE64C9E001D1FF5 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE08981AA7672200CD7F75 /* MenuViewController.m */; };
 		45849E9A1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 45849E8C1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorFade.m */; };
 		45849E9B1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorScale.m in Sources */ = {isa = PBXBuildFile; fileRef = 45849E8E1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorScale.m */; };
 		45849E9C1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 45849E901AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorScaleAndFade.m */; };
@@ -123,7 +124,6 @@
 		81AE088F1AA71F1900CD7F75 /* OffersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81AE088D1AA71F1900CD7F75 /* OffersViewController.xib */; };
 		81AE08931AA720D200CD7F75 /* OffersTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE08911AA720D200CD7F75 /* OffersTableCell.m */; };
 		81AE08941AA720D200CD7F75 /* OffersTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81AE08921AA720D200CD7F75 /* OffersTableCell.xib */; };
-		81AE089B1AA7672200CD7F75 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE08981AA7672200CD7F75 /* MenuViewController.m */; };
 		81AE089C1AA7672200CD7F75 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81AE08991AA7672200CD7F75 /* MenuViewController.xib */; };
 		81AF71091AAF1AD800B350B6 /* BeaconMonitoringModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AF71081AAF1AD800B350B6 /* BeaconMonitoringModel.m */; };
 		81AF710C1AB00E4800B350B6 /* NetworkOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AF710B1AB00E4800B350B6 /* NetworkOperations.m */; };
@@ -132,9 +132,8 @@
 		B17C01A31AB9B35C00542233 /* Test_Kid'sSection.png in Resources */ = {isa = PBXBuildFile; fileRef = B17C01A01AB9B35C00542233 /* Test_Kid'sSection.png */; };
 		B17C01A41AB9B35C00542233 /* Test_MenSection.png in Resources */ = {isa = PBXBuildFile; fileRef = B17C01A11AB9B35C00542233 /* Test_MenSection.png */; };
 		B17C01A51AB9B35C00542233 /* Test_Women'sSection.png in Resources */ = {isa = PBXBuildFile; fileRef = B17C01A21AB9B35C00542233 /* Test_Women'sSection.png */; };
-		B17C01AA1ABAA28F00542233 /* OfferButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B17C01A71ABAA28F00542233 /* OfferButton.m */; };
-		B17C01AB1ABAA28F00542233 /* OfferPopupMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B17C01A91ABAA28F00542233 /* OfferPopupMenu.m */; };
 		B1C0A4031AD563B200FBB027 /* AOShortestPath.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C0A4021AD563B200FBB027 /* AOShortestPath.m */; };
+		B1C3233D1AE6771C00C01893 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C3233C1AE6771C00C01893 /* map.png */; };
 		EF12789D1ADBD11E003CA791 /* Cart.png in Resources */ = {isa = PBXBuildFile; fileRef = EF12788D1ADBD11E003CA791 /* Cart.png */; };
 		EF12789E1ADBD11E003CA791 /* Cart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF12788E1ADBD11E003CA791 /* Cart@2x.png */; };
 		EF12789F1ADBD11E003CA791 /* Cart@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF12788F1ADBD11E003CA791 /* Cart@3x.png */; };
@@ -154,7 +153,6 @@
 		EF962CA11ADE84D500727551 /* MapPathGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = EF962CA01ADE84D500727551 /* MapPathGenerator.m */; };
 		EF962CA81ADFD84D00727551 /* clear.png in Resources */ = {isa = PBXBuildFile; fileRef = EF962CA71ADFD84D00727551 /* clear.png */; };
 		EF962CAC1ADFD8A100727551 /* person.png in Resources */ = {isa = PBXBuildFile; fileRef = EF962CAB1ADFD8A100727551 /* person.png */; };
-		EF962CAE1ADFE41900727551 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = EF962CAD1ADFE41900727551 /* map.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -378,13 +376,10 @@
 		B17C01A01AB9B35C00542233 /* Test_Kid'sSection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Test_Kid'sSection.png"; sourceTree = "<group>"; };
 		B17C01A11AB9B35C00542233 /* Test_MenSection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Test_MenSection.png; sourceTree = "<group>"; };
 		B17C01A21AB9B35C00542233 /* Test_Women'sSection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Test_Women'sSection.png"; sourceTree = "<group>"; };
-		B17C01A61ABAA28F00542233 /* OfferButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfferButton.h; sourceTree = "<group>"; };
-		B17C01A71ABAA28F00542233 /* OfferButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfferButton.m; sourceTree = "<group>"; };
-		B17C01A81ABAA28F00542233 /* OfferPopupMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfferPopupMenu.h; sourceTree = "<group>"; };
-		B17C01A91ABAA28F00542233 /* OfferPopupMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfferPopupMenu.m; sourceTree = "<group>"; };
 		B19CB4931AB97804006C7575 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		B1C0A4011AD563B200FBB027 /* AOShortestPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOShortestPath.h; sourceTree = "<group>"; };
 		B1C0A4021AD563B200FBB027 /* AOShortestPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOShortestPath.m; sourceTree = "<group>"; };
+		B1C3233C1AE6771C00C01893 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		EF12788D1ADBD11E003CA791 /* Cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cart.png; sourceTree = "<group>"; };
 		EF12788E1ADBD11E003CA791 /* Cart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cart@2x.png"; sourceTree = "<group>"; };
 		EF12788F1ADBD11E003CA791 /* Cart@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cart@3x.png"; sourceTree = "<group>"; };
@@ -405,7 +400,6 @@
 		EF962CA01ADE84D500727551 /* MapPathGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapPathGenerator.m; path = ../MapPathGenerator.m; sourceTree = "<group>"; };
 		EF962CA71ADFD84D00727551 /* clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clear.png; sourceTree = "<group>"; };
 		EF962CAB1ADFD8A100727551 /* person.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person.png; sourceTree = "<group>"; };
-		EF962CAD1ADFE41900727551 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -529,10 +523,6 @@
 				EF962CA01ADE84D500727551 /* MapPathGenerator.m */,
 				B1C0A4011AD563B200FBB027 /* AOShortestPath.h */,
 				B1C0A4021AD563B200FBB027 /* AOShortestPath.m */,
-				B17C01A61ABAA28F00542233 /* OfferButton.h */,
-				B17C01A71ABAA28F00542233 /* OfferButton.m */,
-				B17C01A81ABAA28F00542233 /* OfferPopupMenu.h */,
-				B17C01A91ABAA28F00542233 /* OfferPopupMenu.m */,
 				4552699E1AB03FDD00E6F7C3 /* StoreLocationMapViewController.h */,
 				4552699F1AB03FDD00E6F7C3 /* StoreLocationMapViewController.m */,
 				455269A01AB03FDD00E6F7C3 /* StoreLocationMapViewController.xib */,
@@ -873,7 +863,7 @@
 		B19CB4901AB95998006C7575 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				EF962CAD1ADFE41900727551 /* map.png */,
+				B1C3233C1AE6771C00C01893 /* map.png */,
 				EF962CAB1ADFD8A100727551 /* person.png */,
 				EF962CA71ADFD84D00727551 /* clear.png */,
 				EF12788D1ADBD11E003CA791 /* Cart.png */,
@@ -1011,7 +1001,7 @@
 				EF12789D1ADBD11E003CA791 /* Cart.png in Resources */,
 				45526A301AB048B300E6F7C3 /* 5b_first_frame@2x.png in Resources */,
 				45526A3B1AB048B300E6F7C3 /* beaconIcySmall.png in Resources */,
-				EF962CAE1ADFE41900727551 /* map.png in Resources */,
+				B1C3233D1AE6771C00C01893 /* map.png in Resources */,
 				45526A2B1AB048B300E6F7C3 /* 5b.mov in Resources */,
 				45526A471AB048B300E6F7C3 /* screen8_beacon_purple@2x.png in Resources */,
 				45DA40781AC13E1F00D86C8A /* CartViewController.xib in Resources */,
@@ -1082,15 +1072,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4576AE781AE64C9E001D1FF5 /* MenuViewController.m in Sources */,
 				45849EA11AD4F2FC00FF7A1F /* SlideNavigationController.m in Sources */,
 				81948B4B1AB6AA9C002A6FE6 /* Products.m in Sources */,
 				4556001C1AD2981D0034BBD2 /* ProductRecommendationCollectionViewCell.m in Sources */,
 				81AE08931AA720D200CD7F75 /* OffersTableCell.m in Sources */,
-				B17C01AA1ABAA28F00542233 /* OfferButton.m in Sources */,
 				818849BB1AB98B14005A06BF /* productGridCellCollectionViewCell.m in Sources */,
 				B1C0A4031AD563B200FBB027 /* AOShortestPath.m in Sources */,
 				45E8D6C41AC3E38E00E107F2 /* CartTableViewCell.m in Sources */,
-				81AE089B1AA7672200CD7F75 /* MenuViewController.m in Sources */,
 				45849E9D1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
 				81A22FE51ADFB56900F7BA2A /* CheckoutViewController.m in Sources */,
 				458F3CC01ACA9CC50099F2E6 /* ProductDetailViewController.m in Sources */,
@@ -1117,9 +1106,9 @@
 				81AF710C1AB00E4800B350B6 /* NetworkOperations.m in Sources */,
 				EF962CA11ADE84D500727551 /* MapPathGenerator.m in Sources */,
 				45849E9B1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorScale.m in Sources */,
-				811C430C1AE68490001B0AC5 /* Section.m in Sources */,
+		811C430C1AE68490001B0AC5 /* Section.m in Sources */,
 				811C43061AE68476001B0AC5 /* UIImage+WebP.m in Sources */,
-				B17C01AB1ABAA28F00542233 /* OfferPopupMenu.m in Sources */,
+				B17C01AB1ABAA28F00542233 /* OfferPopupMenu.m in Sources 
 				45E8D6CA1AC58EB400E107F2 /* CartItem.m in Sources */,
 				811C43021AE68476001B0AC5 /* SDWebImagePrefetcher.m in Sources */,
 				811C43051AE68476001B0AC5 /* UIImage+MultiFormat.m in Sources */,
