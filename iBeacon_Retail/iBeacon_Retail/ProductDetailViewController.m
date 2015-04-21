@@ -96,7 +96,7 @@
         
     }else{
         ProductRecommendationCollectionViewCell* cell = (ProductRecommendationCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"RecommendationCell" forIndexPath:indexPath];
-        cell.layer.cornerRadius=10.0f;
+        cell.layer.cornerRadius=5.0f;
         cell.productImage.image=[UIImage imageNamed:self.product.prodImage];
         return cell;
     }

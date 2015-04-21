@@ -234,6 +234,7 @@
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$999.99" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="OWt-v2-Jll">
                                                                     <rect key="frame" x="316" y="0.0" width="93" height="65"/>
+                                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="OWt-v2-Jll" secondAttribute="height" multiplier="93:65" id="DfY-dm-LXh"/>
                                                                     </constraints>
@@ -707,15 +708,16 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I0q-Pe-vNK">
                             <rect key="frame" x="0.0" y="691" width="414" height="45"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="biF-ni-fh6">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="biF-ni-fh6">
                                     <rect key="frame" x="207" y="0.0" width="207" height="45"/>
-                                    <color key="backgroundColor" red="0.3803921569" green="0.6588235294" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.2901960784" green="0.66666666669999997" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="biF-ni-fh6" secondAttribute="height" multiplier="5:1" constant="-18" id="DZf-um-mIE"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                    <state key="normal" title="ADD TO CART">
-                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="16"/>
+                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <state key="normal" title="  ADD TO CART" image="add to cart _icon">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
@@ -781,6 +783,7 @@
     <resources>
         <image name="Color_box_normal" width="23" height="23"/>
         <image name="Loaction_icon" width="20" height="20"/>
+        <image name="add to cart _icon" width="21" height="20"/>
         <image name="sizebox_normal" width="28" height="28"/>
         <image name="sizebox_selected" width="28" height="28"/>
     </resources>
