@@ -361,7 +361,7 @@ BOOL isSearchEnabled = NO;
     positionX=positionX > 0 ?positionX-4:positionX-5;
     positionX=fabsf(positionX);
     positionY=positionY < 0 ?positionY+6:positionY+5;
-    NSLog(@"POsition is %f,%f", positionX,positionY);
+    //NSLog(@"POsition is %f,%f", positionX,positionY);
     
     int row=roundf(positionX);
     int column=roundf(positionY);
@@ -452,24 +452,40 @@ BOOL isSearchEnabled = NO;
 {
 }
 
+-(void)showNoItemAlert{
+    UIAlertView *noItemAlertView = [[UIAlertView alloc] initWithTitle:@"The item searched for is not found in the store" message:@"" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    [noItemAlertView show];
+    self.autocompleteTableView.hidden = YES;
+    self.labelView.hidden = NO;
+}
+
 #pragma searchBar delegates
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];
-    if ([self.filteredProductList count]==0) {
+    if ([self.filteredProductList count]==0 || [self.filteredProductList containsObject:searchBar.text]) {
+        [self showNoItemAlert];
+        searchBar.text = @"";
         return;
     }
-    NSDictionary *resultProduct=[[self.globals.productDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"%K == %@", @"productName",searchBar.text]] objectAtIndex:0];
-    
-    UIButton *but=(UIButton *)[self.indoorLocationView viewWithTag:[self getTagForSectionID:[[resultProduct valueForKey:@"sectionId"]intValue]]];
-    //    [but setBackgroundImage:[UIImage imageNamed:@"map-pin-green.png"] forState: UIControlStateNormal];
-    //show the description ...
-    self.labelView.hidden = NO;
-    self.textLabel.text = [NSString stringWithFormat:@"The product %@ is available in the %@",[resultProduct valueForKey:@"productName"],[GlobalVariables returnTitleForSection:[[resultProduct valueForKey:@"sectionId"] intValue]]];
-    self.productImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[resultProduct valueForKey:@"productName"]]];
-    isSearchEnabled = YES;
-    [self actionField:(UIButton *)[self.indoorLocationView viewWithTag:but.tag]];
-    
+    NSLog(@"%@",self.globals.productDataArray);
+    NSArray *tempArray = [self.globals.productDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"%K == %@", @"productName",searchBar.text]];
+    if([tempArray count] > 0){
+        NSDictionary *resultProduct=[tempArray objectAtIndex:0];
+        UIButton *but=(UIButton *)[self.indoorLocationView viewWithTag:[self getTagForSectionID:[[resultProduct valueForKey:@"sectionId"]intValue]]];
+        //    [but setBackgroundImage:[UIImage imageNamed:@"map-pin-green.png"] forState: UIControlStateNormal];
+        //show the description ...
+        self.labelView.hidden = NO;
+        self.textLabel.text = [NSString stringWithFormat:@"The product %@ is available in the %@",[resultProduct valueForKey:@"productName"],[GlobalVariables returnTitleForSection:[[resultProduct valueForKey:@"sectionId"] intValue]]];
+        self.productImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[resultProduct valueForKey:@"productName"]]];
+        isSearchEnabled = YES;
+        [self actionField:(UIButton *)[self.indoorLocationView viewWithTag:but.tag]];
+
+    }
+    else{
+        [self showNoItemAlert];
+        searchBar.text = @"";
+    }
     
 }
 
