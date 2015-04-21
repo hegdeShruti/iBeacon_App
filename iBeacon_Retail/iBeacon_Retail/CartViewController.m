@@ -71,7 +71,7 @@
     cell.subTotal.text = prodObject.price;
     NSString *str=[prodObject.price  substringFromIndex:1];
     self.total+=[str floatValue];
-    self.totalValue.text=[NSString stringWithFormat:@"$%f",self.total];
+    self.totalValue.text=[NSString stringWithFormat:@"$%.2f",self.total];
     
     //NSLog(@"Product Image = %@",prodObject.prodImage );
     cell.prodImage.image=[UIImage imageNamed:prodObject.prodImage];

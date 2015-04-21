@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -12,9 +12,11 @@
                 <outlet property="contentView" destination="UDd-EF-rXR" id="JAZ-lv-cFs"/>
                 <outlet property="locateProductButton" destination="QRy-ed-Ew7" id="mgI-MM-Rvl"/>
                 <outlet property="pageControl" destination="UiH-2b-Hs6" id="Hxg-Hg-QpY"/>
+                <outlet property="productCostBaseLabel" destination="mGj-5l-Hbq" id="L67-Lv-mGZ"/>
                 <outlet property="productDescription" destination="0Kc-MO-skW" id="RSB-Ev-wwJ"/>
                 <outlet property="productImageCollectionView" destination="LRS-C0-2qD" id="Zlg-6Y-cmT"/>
                 <outlet property="productName" destination="RcZ-Ga-fJv" id="Xnq-zA-BOc"/>
+                <outlet property="productPrice" destination="OWt-v2-Jll" id="LVf-2K-L3d"/>
                 <outlet property="recommendationCollectionView" destination="Ihh-WZ-hsr" id="1w6-8G-FYB"/>
                 <outlet property="scrollview" destination="a2I-jz-ZEg" id="jdp-5v-Al1"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -25,6 +27,11 @@
                 <outletCollection property="sizeButtonCollectionView" destination="0Ra-Fv-CVd" id="ReD-9m-BGq"/>
                 <outletCollection property="sizeButtonCollectionView" destination="L5j-o4-No4" id="DDY-Gg-5Sb"/>
                 <outletCollection property="sizeButtonCollectionView" destination="uP4-sq-ZD8" id="lTU-lU-Fms"/>
+                <outletCollection property="colorButtonCollectionView" destination="E6B-f3-Jgh" id="AYh-sK-wej"/>
+                <outletCollection property="colorButtonCollectionView" destination="ZWL-uS-sFv" id="Xe4-BP-SCU"/>
+                <outletCollection property="colorButtonCollectionView" destination="2ns-vR-ccj" id="ltd-Zs-YxF"/>
+                <outletCollection property="colorButtonCollectionView" destination="fbp-bM-S0a" id="x8Z-zj-CWp"/>
+                <outletCollection property="colorButtonCollectionView" destination="aB3-d4-4eJ" id="yOZ-oa-sj9"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -380,10 +387,13 @@
                                                                         <constraint firstAttribute="height" constant="35" id="hxh-1A-vxF"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                    <state key="normal">
+                                                                    <state key="normal" backgroundImage="Color_box_normal">
                                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="colorButtonSelected:" destination="-1" eventType="touchUpInside" id="MZg-wx-hgS"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZWL-uS-sFv">
                                                                     <rect key="frame" x="49" y="105" width="35" height="35"/>
@@ -393,10 +403,13 @@
                                                                         <constraint firstAttribute="height" constant="35" id="sEd-Ha-o7K"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                    <state key="normal">
+                                                                    <state key="normal" backgroundImage="Color_box_normal">
                                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="colorButtonSelected:" destination="-1" eventType="touchUpInside" id="kWv-TX-N89"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ns-vR-ccj">
                                                                     <rect key="frame" x="90" y="105" width="35" height="35"/>
@@ -406,10 +419,13 @@
                                                                         <constraint firstAttribute="height" constant="35" id="gzB-0d-7N9"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                    <state key="normal">
+                                                                    <state key="normal" backgroundImage="Color_box_normal">
                                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="colorButtonSelected:" destination="-1" eventType="touchUpInside" id="ZSm-Qq-J91"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbp-bM-S0a">
                                                                     <rect key="frame" x="172" y="105" width="35" height="35"/>
@@ -418,10 +434,13 @@
                                                                         <constraint firstAttribute="height" constant="35" id="xds-2b-fV1"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                    <state key="normal" backgroundImage="sizebox_normal">
+                                                                    <state key="normal" backgroundImage="Color_box_normal">
                                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="colorButtonSelected:" destination="-1" eventType="touchUpInside" id="aRm-kL-niq"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5j-o4-No4">
                                                                     <rect key="frame" x="213" y="35" width="35" height="35"/>
@@ -461,10 +480,13 @@
                                                                         <constraint firstAttribute="height" constant="35" id="jox-H6-Ul3"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                    <state key="normal">
+                                                                    <state key="normal" backgroundImage="Color_box_normal">
                                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="colorButtonSelected:" destination="-1" eventType="touchUpInside" id="HK6-xa-z8r"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFX-qb-Asj">
                                                                     <rect key="frame" x="8" y="78" width="398" height="21"/>
@@ -757,6 +779,7 @@
         </view>
     </objects>
     <resources>
+        <image name="Color_box_normal" width="23" height="23"/>
         <image name="Loaction_icon" width="20" height="20"/>
         <image name="sizebox_normal" width="28" height="28"/>
         <image name="sizebox_selected" width="28" height="28"/>

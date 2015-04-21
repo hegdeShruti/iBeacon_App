@@ -47,6 +47,7 @@
     self.navigationItem.title = @"Product Details";
     
     [self loadProductDetails];
+    [self setColorButtonsRoundedCorner];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -149,6 +150,16 @@
         [GlobalVariables addItemToCart:cartItem];
 }
 
+- (IBAction)colorButtonSelected:(id)sender {
+    UIButton* selectedButton = (UIButton*) sender;
+    for (UIButton* button in self.colorButtonCollectionView){
+        [button setBackgroundImage:[UIImage imageNamed:@"Color_box_normal"] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    }
+    [selectedButton setBackgroundImage:[UIImage imageNamed:@"Color_box_selected"] forState:UIControlStateNormal];
+    [selectedButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+}
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     CGFloat pageWidth = self.productImageCollectionView.frame.size.width;
@@ -174,5 +185,15 @@
 {
     self.productName.text = self.product.prodName;
     self.productDescription.text = self.product.prodDescription;
+    self.productPrice.text = self.product.price;
+    self.productCostBaseLabel.text = self.product.price;
 }
+
+-(void)setColorButtonsRoundedCorner{
+    for (UIButton* button in self.colorButtonCollectionView){
+        button.layer.cornerRadius = 6;
+    }
+}
+
+
 @end
