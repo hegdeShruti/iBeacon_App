@@ -13,6 +13,7 @@
 #import "ESTLocationBuilder.h"
 #import "Offers.h"
 @class CartItem;
+@class MenuViewController;
 
 typedef enum {
     
@@ -45,7 +46,9 @@ typedef enum {
 @property(nonatomic,strong) NSMutableArray *productDataArray;
 @property(nonatomic,strong) NSMutableArray *cartDataArray;
 @property(nonatomic,strong) NSMutableArray *productImagesArray;
-@property(nonatomic,strong)StoreLocationMapViewController *storeLocationController;
+
+@property(nonatomic,strong) StoreLocationMapViewController *storeLocationController;
+
 //@property(nonatomic,assign) BOOL hasALreadyLoggedIn;
 
 +( GlobalVariables *) getInstance;
@@ -56,6 +59,7 @@ typedef enum {
 +(NSString*)getBeaconMacAddress:(int)sectionId;
 +(int)getSectionId:(NSString *)macAddress;
 +(StoreLocationMapViewController*)getStoreMap;
++(MenuViewController*)getLeftMenu;
 +(NSString *)returnTitleForSection:(SectionIdentifier)sectionId;
 -(void) getOffers;
 

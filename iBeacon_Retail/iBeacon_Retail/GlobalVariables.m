@@ -11,11 +11,16 @@
 #import "NetworkOperations.h"
 #import "CartItem.h"
 #import "OfferPopupViewController.h"
+#import "MenuViewController.h"
+
+@interface GlobalVariables()
+    @property (nonatomic,strong)  MenuViewController * leftMenu;
+@end
 
 
 @implementation GlobalVariables
-@synthesize hasUserEnteredTheStore , hasUserGotWOmenSectionOffers, hasUserGotKidSectionOffers,hasUserGotMenSectionOffers,isUserOnTheMapScreen,offersDataArray,productDataArray;
 
+@synthesize hasUserEnteredTheStore , hasUserGotWOmenSectionOffers, hasUserGotKidSectionOffers,hasUserGotMenSectionOffers,isUserOnTheMapScreen,offersDataArray,productDataArray;
 static GlobalVariables *instance = nil;
 
 +(GlobalVariables *)getInstance
@@ -305,6 +310,19 @@ static GlobalVariables *instance = nil;
 
 -(void)loadCartScreen{
     CartViewController* cartScreen = [[CartViewController alloc] initWithNibName:@"CartViewController" bundle:nil];
+//    MenuViewController* menuvc = (MenuViewController*)[SlideNavigationController sharedInstance].leftBarButtonItem;
+    NSIndexPath* path = [NSIndexPath indexPathForRow: BeaconRetailCartIndex inSection:0];
+    [instance.leftMenu.tableview selectRowAtIndexPath:path animated:NO scrollPosition:UITableViewScrollPositionMiddle];
     [[SlideNavigationController sharedInstance] pushViewController:cartScreen animated:YES];
 }
+
++(MenuViewController *)getLeftMenu{
+    if(instance.leftMenu == nil ){
+        instance.leftMenu = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+    }
+    return instance.leftMenu;
+}
+
+
+
 @end

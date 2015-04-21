@@ -16,6 +16,13 @@
 #import "AppDelegate.h"
 #import "CustomHeaderView.h"
 
+typedef NS_ENUM(NSInteger, BeconRetailMenuIndex) {
+    BeaconRetailProductIndex=0,
+    BeaconRetailOffersIndex,
+    BeaconRetailCartIndex,
+    BeaconRetailMapIndex,
+    BeaconRetailLogoutIndex
+};
 
 @protocol MenuViewControllerDelegate <NSObject,UIAlertViewDelegate>
 
@@ -23,14 +30,15 @@
 - (void)menuItemSelected:(int) menuItem;
 @end
 
-typedef enum {
-    productsMenuIndex = 0,
-    offersMenuIndex = 1,
-    cartMenuIndex = 2,
-    mapMenuIndex = 3,
-    logoutIndex=4,
-//    productDetailMenuIndex = 5,
-} menuIndexes;
+//typedef enum : NSUInteger {
+//    products=0,
+//    offers,
+//    cart,
+//    map,
+//    logout
+//} menuIndex;
+
+
 
 @interface MenuViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundView;

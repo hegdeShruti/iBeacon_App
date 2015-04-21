@@ -66,6 +66,7 @@
 		4556001D1AD2981D0034BBD2 /* ProductRecommendationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4556001B1AD2981D0034BBD2 /* ProductRecommendationCollectionViewCell.xib */; };
 		456167811AD3B38F007F2396 /* ProductImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4561677F1AD3B38F007F2396 /* ProductImageCollectionViewCell.m */; };
 		456167821AD3B38F007F2396 /* ProductImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 456167801AD3B38F007F2396 /* ProductImageCollectionViewCell.xib */; };
+		4576AE781AE64C9E001D1FF5 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE08981AA7672200CD7F75 /* MenuViewController.m */; };
 		45849E9A1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 45849E8C1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorFade.m */; };
 		45849E9B1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorScale.m in Sources */ = {isa = PBXBuildFile; fileRef = 45849E8E1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorScale.m */; };
 		45849E9C1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 45849E901AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorScaleAndFade.m */; };
@@ -106,7 +107,6 @@
 		81AE088F1AA71F1900CD7F75 /* OffersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81AE088D1AA71F1900CD7F75 /* OffersViewController.xib */; };
 		81AE08931AA720D200CD7F75 /* OffersTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE08911AA720D200CD7F75 /* OffersTableCell.m */; };
 		81AE08941AA720D200CD7F75 /* OffersTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81AE08921AA720D200CD7F75 /* OffersTableCell.xib */; };
-		81AE089B1AA7672200CD7F75 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE08981AA7672200CD7F75 /* MenuViewController.m */; };
 		81AE089C1AA7672200CD7F75 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81AE08991AA7672200CD7F75 /* MenuViewController.xib */; };
 		81AF71091AAF1AD800B350B6 /* BeaconMonitoringModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AF71081AAF1AD800B350B6 /* BeaconMonitoringModel.m */; };
 		81AF710C1AB00E4800B350B6 /* NetworkOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AF710B1AB00E4800B350B6 /* NetworkOperations.m */; };
@@ -987,6 +987,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4576AE781AE64C9E001D1FF5 /* MenuViewController.m in Sources */,
 				45849EA11AD4F2FC00FF7A1F /* SlideNavigationController.m in Sources */,
 				81948B4B1AB6AA9C002A6FE6 /* Products.m in Sources */,
 				4556001C1AD2981D0034BBD2 /* ProductRecommendationCollectionViewCell.m in Sources */,
@@ -995,7 +996,6 @@
 				818849BB1AB98B14005A06BF /* productGridCellCollectionViewCell.m in Sources */,
 				B1C0A4031AD563B200FBB027 /* AOShortestPath.m in Sources */,
 				45E8D6C41AC3E38E00E107F2 /* CartTableViewCell.m in Sources */,
-				81AE089B1AA7672200CD7F75 /* MenuViewController.m in Sources */,
 				45849E9D1AD4F2FC00FF7A1F /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
 				81A22FE51ADFB56900F7BA2A /* CheckoutViewController.m in Sources */,
 				458F3CC01ACA9CC50099F2E6 /* ProductDetailViewController.m in Sources */,
