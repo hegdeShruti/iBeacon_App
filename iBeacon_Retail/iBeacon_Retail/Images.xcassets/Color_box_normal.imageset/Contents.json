@@ -8,12 +8,12 @@
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "Color_box_normal@2x.png"
+      "filename" : "Color_box_normal@2x.PNG"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "Color_box_normal@3x.png"
+      "filename" : "Color_box_normal@3x.PNG"
     }
   ],
   "info" : {

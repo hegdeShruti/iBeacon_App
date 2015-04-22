@@ -769,7 +769,7 @@
         </view>
     </objects>
     <resources>
-        <image name="Color_box_normal" width="23" height="23"/>
+        <image name="Color_box_normal" width="26" height="26"/>
         <image name="Loaction_icon" width="20" height="20"/>
         <image name="add to cart _icon" width="21" height="20"/>
         <image name="sizebox_normal" width="28" height="28"/>
