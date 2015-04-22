@@ -713,7 +713,7 @@
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="mGj-5l-Hbq" secondAttribute="height" multiplier="5:1" constant="-18" id="MIw-ya-CCr"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="25"/>
+                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="24"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                     <variation key="default">
