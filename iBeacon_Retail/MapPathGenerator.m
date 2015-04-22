@@ -53,8 +53,8 @@
     animateStrokeEnd.fromValue = [NSNumber numberWithFloat:0.0f];
     animateStrokeEnd.toValue   = [NSNumber numberWithFloat:1.0f];
     [progressLayer addAnimation:animateStrokeEnd forKey:nil];
-    UIImageView *pin=[[UIImageView alloc]initWithFrame:CGRectMake(currentPoint.x, currentPoint.y-10, 10, 20)];
-    [pin setImage:[UIImage imageNamed:@"map-pin-green.png"]];
+    UIImageView *pin=[[UIImageView alloc]initWithFrame:CGRectMake(currentPoint.x, currentPoint.y-15, 25, 25)];
+    [pin setImage:[UIImage imageNamed:@"map-pin-red.png"]];
     [self.layer addSublayer:pin.layer];
     pin.hidden=YES;
     if (isSearchEnabled==YES) {
