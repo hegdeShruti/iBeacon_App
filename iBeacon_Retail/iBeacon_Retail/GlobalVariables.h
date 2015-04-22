@@ -72,6 +72,7 @@ typedef enum {
 +(void) getAllProductsFromServer;
 +(NSMutableArray*)getCartItems;
 -(void)loadCartScreen;
++(void)loadStoreMapScreen;
 
 +(Products *)getProductWithID:(NSInteger) id;
 +(Offers *)getOfferWithID:(NSInteger) id;

@@ -27,8 +27,10 @@
     
     self.productImagesArray = [NSArray arrayWithObjects:@"1",@"2",@"3", nil];
     self.recommendationDataArray = [NSArray arrayWithObjects:@"1",@"2",@"3",@"4",@"5",@"6", nil];
+    [self.cartButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+    [self.cartButton setTitleColor:[UIColor grayColor] forState:UIControlStateSelected];
     
-    self.scrollview.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width,  self.contentView.frame.size.height);
+//    self.scrollview.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width,  self.contentView.frame.size.height);
     
     [self setupPageControlForProductImagesCollectionView];
 }
@@ -98,7 +100,7 @@
         
     }else{
         ProductRecommendationCollectionViewCell* cell = (ProductRecommendationCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"RecommendationCell" forIndexPath:indexPath];
-        cell.layer.cornerRadius=5.0f;
+        cell.layer.cornerRadius=2.5f;
        // cell.productImage.image=[UIImage imageNamed:self.product.prodImage];
          [cell.productImage sd_setImageWithURL:[NSURL URLWithString:[self.product.prodImage stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] ] placeholderImage:[UIImage imageNamed:@"1.png"]];
 
@@ -142,16 +144,22 @@
 }
 
 - (IBAction)locateProduct:(UIButton *)sender {
-    StoreLocationMapViewController* storeMap = [GlobalVariables getStoreMap];
-    [[SlideNavigationController sharedInstance] pushViewController:storeMap animated:YES];
+//    StoreLocationMapViewController* storeMap = [GlobalVariables getStoreMap];
+//    [[SlideNavigationController sharedInstance] pushViewController:storeMap animated:YES];
+    [GlobalVariables loadStoreMapScreen];
 }
 
 - (IBAction)addProductToCart:(id)sender {
    
         NSDictionary* tempDic = [[NSDictionary alloc] initWithObjectsAndKeys:self.product,@"product",[NSNumber numberWithInteger:1],@"quantity", nil];
-    self.cartButton.titleLabel.textColor=[UIColor whiteColor];
+//    self.cartButton.titleLabel.textColor=[UIColor whiteColor];
         CartItem* cartItem = [[CartItem alloc] initWithDictionary:tempDic];
         [GlobalVariables addItemToCart:cartItem];
+    [self.cartButton setBackgroundColor:[UIColor colorWithRed:74/255.00 green:170/255.00 blue:192/255.00 alpha:1.0]];
+}
+
+- (IBAction)highlightAddToCartButton:(id)sender {
+    [self.cartButton setBackgroundColor:[UIColor colorWithRed:60/255.00 green:145/255.00 blue:165/255.00 alpha:1.0]];
 }
 
 - (IBAction)colorButtonSelected:(id)sender {
