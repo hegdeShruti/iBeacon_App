@@ -106,24 +106,11 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cmx-Ql-yle">
                             <rect key="frame" x="146" y="252" width="248" height="30"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="206" id="HWg-SR-QI7">
-                                    <variation key="heightClass=regular-widthClass=compact" constant="296"/>
-                                </constraint>
                                 <constraint firstAttribute="height" constant="30" id="nw5-oF-tsu">
                                     <variation key="heightClass=regular-widthClass=compact" constant="32"/>
                                 </constraint>
                             </constraints>
                             <state key="normal" title="Cancel"/>
-                            <variation key="default">
-                                <mask key="constraints">
-                                    <exclude reference="HWg-SR-QI7"/>
-                                </mask>
-                            </variation>
-                            <variation key="heightClass=regular-widthClass=compact">
-                                <mask key="constraints">
-                                    <include reference="HWg-SR-QI7"/>
-                                </mask>
-                            </variation>
                             <connections>
                                 <action selector="cancelButtnClick:" destination="-1" eventType="touchUpInside" id="TW8-G3-g1p"/>
                             </connections>
@@ -155,6 +142,7 @@
                         <constraint firstItem="bdl-WF-yXz" firstAttribute="top" secondItem="Cmx-Ql-yle" secondAttribute="bottom" constant="52" id="8W2-op-iXo">
                             <variation key="heightClass=regular-widthClass=compact" constant="50"/>
                         </constraint>
+                        <constraint firstItem="Cmx-Ql-yle" firstAttribute="leading" secondItem="PXd-mN-LY4" secondAttribute="leading" constant="22" id="ARo-co-AnT"/>
                         <constraint firstAttribute="centerX" secondItem="Cmx-Ql-yle" secondAttribute="centerX" id="Cwb-Hi-zfV"/>
                         <constraint firstItem="bdl-WF-yXz" firstAttribute="leading" secondItem="PXd-mN-LY4" secondAttribute="leading" constant="60" id="Etn-FW-yKI">
                             <variation key="heightClass=regular-widthClass=compact" constant="22"/>
@@ -185,6 +173,7 @@
                         <constraint firstAttribute="trailing" secondItem="bdl-WF-yXz" secondAttribute="trailing" constant="60" id="wpe-2x-iHv">
                             <variation key="heightClass=regular-widthClass=compact" constant="22"/>
                         </constraint>
+                        <constraint firstAttribute="trailing" secondItem="Cmx-Ql-yle" secondAttribute="trailing" constant="22" id="ws9-dl-AqL"/>
                         <constraint firstItem="KaP-Xk-G0R" firstAttribute="leading" secondItem="PXd-mN-LY4" secondAttribute="leading" constant="70" id="zlb-fQ-XBc">
                             <variation key="heightClass=regular-widthClass=compact" constant="15"/>
                         </constraint>
@@ -195,7 +184,9 @@
                     <variation key="default">
                         <mask key="constraints">
                             <exclude reference="hdh-Yl-aPN"/>
+                            <exclude reference="ARo-co-AnT"/>
                             <exclude reference="Cwb-Hi-zfV"/>
+                            <exclude reference="ws9-dl-AqL"/>
                             <exclude reference="8W2-op-iXo"/>
                             <exclude reference="Etn-FW-yKI"/>
                             <exclude reference="wpe-2x-iHv"/>
@@ -206,8 +197,10 @@
                             <exclude reference="GYj-u6-0gI"/>
                             <exclude reference="eZi-gL-eca"/>
                             <include reference="hdh-Yl-aPN"/>
+                            <include reference="ARo-co-AnT"/>
                             <include reference="Cwb-Hi-zfV"/>
                             <exclude reference="bKu-6Z-eP0"/>
+                            <include reference="ws9-dl-AqL"/>
                             <exclude reference="zwv-IY-8MW"/>
                             <include reference="8W2-op-iXo"/>
                             <include reference="Etn-FW-yKI"/>

@@ -239,9 +239,13 @@ BOOL isKidsOfferShown = NO;
                 self.globals.hasUserGotWOmenSectionOffers=NO;
                 self.globals.hasUserEntredEntryBeacon=NO;
                 self.globals.hasUserGotKidSectionOffers=NO;
+            
                 [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
            // }
             
+        }
+        else if([region.identifier isEqualToString:@"MAINENTRANCEBEACON"]&&self.globals.hasUsercrossedEntrance  && ((beaconObj.proximity==CLProximityFar)||(beaconObj.proximity==CLProximityUnknown)) ){
+              self.globals.hasUsercrossedEntrance=NO;
         }
         else  if([region.identifier isEqualToString:@"ENTRYBEACON" ]&& !self.globals.hasUserEntredEntryBeacon && ((beaconObj.proximity==CLProximityImmediate)||(beaconObj.proximity==CLProximityNear))){
             // else  if([region.identifier isEqualToString:@"ENTRYBEACON" ] ){
@@ -306,9 +310,9 @@ BOOL isKidsOfferShown = NO;
 
 - (void)beaconManager:(ESTBeaconManager *)manager didExitRegion:(ESTBeaconRegion *)region
 {
-     UILocalNotification *notification = [UILocalNotification new];
-    if([region.identifier isEqualToString:@"ENTRYBEACON"] && self.globals.hasUserEnteredTheStore){
-
+     //UILocalNotification *notification = [UILocalNotification new];
+    if([region.identifier isEqualToString:@"MAINENTRANCEBEACON"] && self.globals.hasUsercrossedEntrance){
+        self.globals.hasUsercrossedEntrance=NO;
     }
     
    
