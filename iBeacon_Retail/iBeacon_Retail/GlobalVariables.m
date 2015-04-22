@@ -307,12 +307,23 @@ static GlobalVariables *instance = nil;
 //    MenuViewController* menuvc = (MenuViewController*)[SlideNavigationController sharedInstance].leftBarButtonItem;
     NSIndexPath* path = [NSIndexPath indexPathForRow: BeaconRetailCartIndex inSection:0];
     [instance.leftMenu.tableview selectRowAtIndexPath:path animated:NO scrollPosition:UITableViewScrollPositionMiddle];
+    instance.leftMenu.currentIndex = BeaconRetailCartIndex;
     [[SlideNavigationController sharedInstance] pushViewController:cartScreen animated:YES];
+}
+
++(void)loadStoreMapScreen{
+//    CartViewController* cartScreen = [[CartViewController alloc] initWithNibName:@"CartViewController" bundle:nil];
+    //    MenuViewController* menuvc = (MenuViewController*)[SlideNavigationController sharedInstance].leftBarButtonItem;
+    NSIndexPath* path = [NSIndexPath indexPathForRow: BeaconRetailMapIndex inSection:0];
+    [instance.leftMenu.tableview selectRowAtIndexPath:path animated:NO scrollPosition:UITableViewScrollPositionMiddle];
+    instance.leftMenu.currentIndex = BeaconRetailMapIndex;
+    [[SlideNavigationController sharedInstance] pushViewController:[self getStoreMap] animated:YES];
 }
 
 +(MenuViewController *)getLeftMenu{
     if(instance.leftMenu == nil ){
         instance.leftMenu = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+        instance.leftMenu.currentIndex = BeaconRetailProductIndex;
     }
     return instance.leftMenu;
 }

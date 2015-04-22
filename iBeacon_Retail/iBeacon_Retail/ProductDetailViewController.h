@@ -43,6 +43,7 @@
 - (IBAction)colorButtonSelected:(id)sender;
 - (IBAction)locateProduct:(UIButton *)sender;
 - (IBAction)addProductToCart:(id)sender;
+- (IBAction)highlightAddToCartButton:(id)sender;
 
 
 @end
