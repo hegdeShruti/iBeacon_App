@@ -41,6 +41,9 @@ typedef NS_ENUM(NSInteger, BeconRetailMenuIndex) {
 
 
 @interface MenuViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+
+@property (nonatomic,assign) NSInteger currentIndex;
+
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundView;
 @property (weak, nonatomic) IBOutlet UIImageView *userIcon;
 @property (weak, nonatomic) IBOutlet UIView *tableHeader;

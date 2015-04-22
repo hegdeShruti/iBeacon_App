@@ -54,38 +54,23 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cay-FX-dyX">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="280"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="otc-2S-Qqb">
+                                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="LRS-C0-2qD">
                                                             <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
-                                                            <subviews>
-                                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="LRS-C0-2qD">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
-                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="xMa-Rj-cOl">
-                                                                        <size key="itemSize" width="414" height="240"/>
-                                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                                    </collectionViewFlowLayout>
-                                                                    <connections>
-                                                                        <outlet property="dataSource" destination="-1" id="83C-rY-5G9"/>
-                                                                        <outlet property="delegate" destination="-1" id="61F-Jv-bbe"/>
-                                                                    </connections>
-                                                                </collectionView>
-                                                            </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" secondItem="LRS-C0-2qD" secondAttribute="width" id="0eM-XS-Bbg"/>
-                                                                <constraint firstAttribute="width" secondItem="otc-2S-Qqb" secondAttribute="height" multiplier="69:40" id="3Nm-fD-Zvw"/>
-                                                                <constraint firstItem="LRS-C0-2qD" firstAttribute="top" secondItem="otc-2S-Qqb" secondAttribute="top" id="VbI-eO-XLC"/>
-                                                                <constraint firstAttribute="height" secondItem="LRS-C0-2qD" secondAttribute="height" id="XzK-cY-86y"/>
-                                                                <constraint firstItem="LRS-C0-2qD" firstAttribute="leading" secondItem="otc-2S-Qqb" secondAttribute="leading" id="dyl-ka-EST"/>
+                                                                <constraint firstAttribute="height" constant="240" id="ymP-2i-IJj"/>
                                                             </constraints>
-                                                            <variation key="default">
-                                                                <mask key="constraints">
-                                                                    <exclude reference="3Nm-fD-Zvw"/>
-                                                                </mask>
-                                                            </variation>
-                                                        </view>
+                                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="xMa-Rj-cOl">
+                                                                <size key="itemSize" width="414" height="240"/>
+                                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                            </collectionViewFlowLayout>
+                                                            <connections>
+                                                                <outlet property="dataSource" destination="-1" id="83C-rY-5G9"/>
+                                                                <outlet property="delegate" destination="-1" id="61F-Jv-bbe"/>
+                                                            </connections>
+                                                        </collectionView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XJ6-ko-Qg5">
                                                             <rect key="frame" x="0.0" y="240" width="414" height="40"/>
                                                             <subviews>
@@ -158,46 +143,31 @@
                                                         </view>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstItem="LRS-C0-2qD" firstAttribute="top" secondItem="cay-FX-dyX" secondAttribute="top" id="13x-zy-ROJ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="LRS-C0-2qD" secondAttribute="trailing" id="2uJ-GJ-IKp"/>
                                                         <constraint firstAttribute="bottom" secondItem="XJ6-ko-Qg5" secondAttribute="bottom" id="5s4-yM-k0b"/>
-                                                        <constraint firstItem="XJ6-ko-Qg5" firstAttribute="top" secondItem="otc-2S-Qqb" secondAttribute="bottom" id="7DC-9F-xKn"/>
-                                                        <constraint firstItem="otc-2S-Qqb" firstAttribute="top" secondItem="cay-FX-dyX" secondAttribute="top" id="BHZ-gS-2A4"/>
                                                         <constraint firstItem="XJ6-ko-Qg5" firstAttribute="width" secondItem="cay-FX-dyX" secondAttribute="width" id="Dgn-d8-WAh"/>
                                                         <constraint firstAttribute="bottom" secondItem="XJ6-ko-Qg5" secondAttribute="bottom" id="HOX-Ti-dAh"/>
-                                                        <constraint firstAttribute="trailing" secondItem="otc-2S-Qqb" secondAttribute="trailing" id="Hoq-fU-GEC"/>
-                                                        <constraint firstItem="XJ6-ko-Qg5" firstAttribute="top" secondItem="otc-2S-Qqb" secondAttribute="bottom" id="JYo-LA-fOJ"/>
                                                         <constraint firstItem="XJ6-ko-Qg5" firstAttribute="width" secondItem="cay-FX-dyX" secondAttribute="height" multiplier="207:140" id="Jpb-NH-QF7"/>
-                                                        <constraint firstItem="XJ6-ko-Qg5" firstAttribute="top" secondItem="otc-2S-Qqb" secondAttribute="bottom" id="LFo-iL-3cP"/>
                                                         <constraint firstItem="XJ6-ko-Qg5" firstAttribute="leading" secondItem="cay-FX-dyX" secondAttribute="leading" id="LLA-8o-Jal"/>
-                                                        <constraint firstItem="otc-2S-Qqb" firstAttribute="leading" secondItem="cay-FX-dyX" secondAttribute="leading" id="LXs-aD-mQ0"/>
+                                                        <constraint firstItem="LRS-C0-2qD" firstAttribute="leading" secondItem="cay-FX-dyX" secondAttribute="leading" id="N6K-rj-Ax9"/>
                                                         <constraint firstAttribute="bottom" secondItem="XJ6-ko-Qg5" secondAttribute="bottom" id="PmY-ze-eNU"/>
                                                         <constraint firstItem="XJ6-ko-Qg5" firstAttribute="leading" secondItem="cay-FX-dyX" secondAttribute="leading" id="S6O-cg-bHA"/>
-                                                        <constraint firstItem="XJ6-ko-Qg5" firstAttribute="top" secondItem="otc-2S-Qqb" secondAttribute="bottom" id="ZXr-yD-M8h"/>
-                                                        <constraint firstItem="XJ6-ko-Qg5" firstAttribute="bottom" secondItem="otc-2S-Qqb" secondAttribute="bottom" constant="40" id="ZzI-Y9-vab"/>
-                                                        <constraint firstAttribute="width" secondItem="otc-2S-Qqb" secondAttribute="height" multiplier="69:40" id="akG-Jr-5jA"/>
                                                         <constraint firstAttribute="trailing" secondItem="XJ6-ko-Qg5" secondAttribute="trailing" id="cFp-XS-YSQ"/>
-                                                        <constraint firstAttribute="trailing" secondItem="otc-2S-Qqb" secondAttribute="trailing" id="hbw-qH-E1f"/>
                                                         <constraint firstAttribute="centerX" secondItem="XJ6-ko-Qg5" secondAttribute="centerX" id="nrA-29-bCs"/>
                                                         <constraint firstAttribute="trailing" secondItem="XJ6-ko-Qg5" secondAttribute="trailing" id="o3h-wv-Qfc"/>
+                                                        <constraint firstItem="XJ6-ko-Qg5" firstAttribute="top" secondItem="LRS-C0-2qD" secondAttribute="bottom" id="qGd-th-7zf"/>
                                                         <constraint firstAttribute="height" constant="280" id="r0g-AO-xR6"/>
-                                                        <constraint firstItem="otc-2S-Qqb" firstAttribute="top" secondItem="cay-FX-dyX" secondAttribute="top" id="wJj-vL-Rq4"/>
                                                         <constraint firstAttribute="width" secondItem="cay-FX-dyX" secondAttribute="height" multiplier="207:140" id="x9H-Gk-VwX"/>
-                                                        <constraint firstItem="otc-2S-Qqb" firstAttribute="leading" secondItem="cay-FX-dyX" secondAttribute="leading" id="zaC-bW-m5y"/>
                                                     </constraints>
                                                     <variation key="default">
                                                         <mask key="constraints">
                                                             <exclude reference="x9H-Gk-VwX"/>
-                                                            <exclude reference="Hoq-fU-GEC"/>
-                                                            <exclude reference="akG-Jr-5jA"/>
-                                                            <exclude reference="wJj-vL-Rq4"/>
-                                                            <exclude reference="zaC-bW-m5y"/>
-                                                            <exclude reference="7DC-9F-xKn"/>
                                                             <exclude reference="Dgn-d8-WAh"/>
                                                             <exclude reference="HOX-Ti-dAh"/>
                                                             <exclude reference="Jpb-NH-QF7"/>
-                                                            <exclude reference="LFo-iL-3cP"/>
                                                             <exclude reference="PmY-ze-eNU"/>
                                                             <exclude reference="S6O-cg-bHA"/>
-                                                            <exclude reference="ZXr-yD-M8h"/>
                                                             <exclude reference="cFp-XS-YSQ"/>
                                                             <exclude reference="nrA-29-bCs"/>
                                                         </mask>

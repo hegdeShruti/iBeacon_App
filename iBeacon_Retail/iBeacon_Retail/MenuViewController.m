@@ -43,8 +43,7 @@
 //    UILabel *labelView = [[UILabel alloc] initWithFrame:CGRectMake(XXX, YYY, XXX, YYY)];
 //    [headerView addSubview:labelView];
  //   self.tableview.tableHeaderView = headerView;
-    
-    
+
  //   [self setBlurredBackground];
     
 }
@@ -132,7 +131,7 @@
     cell.textLabel.textColor=[UIColor whiteColor];
     cell.imageView.image=[UIImage imageNamed:[self.menuImageItems objectAtIndex:indexPath.row]];
     
-    if(indexPath.row == 0)
+    if(indexPath.row == self.currentIndex)
     {
         [tableView
          selectRowAtIndexPath:indexPath
