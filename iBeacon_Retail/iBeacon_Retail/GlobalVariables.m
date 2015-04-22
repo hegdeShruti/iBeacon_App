@@ -57,21 +57,32 @@ static GlobalVariables *instance = nil;
   
     OfferPopupViewController *offerPopup=[[OfferPopupViewController alloc] initWithNibName:@"OfferPopupViewController" bundle:[NSBundle mainBundle]];
     offerPopup.productObject=prodInfo;
-   
+    
     [controller presentViewController:offerPopup animated:YES completion:^{
         // Adding blur effect on the snapshot taken
         offerPopup.backgroundImage.image=sourceImage;
-       offerPopup.offerHeader.text=inMessage;
-         offerPopup.productName.text=prodInfo.prodName;
+        offerPopup.offerHeader.text=inMessage;
+        offerPopup.productName.text=prodInfo.prodName;
         offerPopup.offerDescription.text=prodInfo.prodDescription;
+        dispatch_queue_t myqueue = dispatch_queue_create("myqueue", NULL);
+        
+        // execute a task on that queue asynchronously
         if(prodInfo.prodImage){
-        offerPopup.productImage.image=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:prodInfo.prodImage]]];
+            dispatch_async(myqueue, ^{
+                NSString* result = [prodInfo.prodImage stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:result]];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    offerPopup.productImage.image= [UIImage imageWithData:data]; //UI updates should be done on the main thread
+                });
+            });
+            
         }
         UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
         UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
         effectView.frame = offerPopup.backgroundImage.bounds;
         effectView.alpha=0.95;
         [offerPopup.backgroundImage addSubview:effectView];
+
         
     }];
     
@@ -277,7 +288,7 @@ static GlobalVariables *instance = nil;
     
     if([productsArray count]>0){
         prodObject=[[Products alloc]  initWithDictionary:[productsArray objectAtIndex:0]];
-        prodObject.prodImage=[NSString stringWithFormat:@"%@.png",prodObject.prodName];
+       // prodObject.prodImage=[NSString stringWithFormat:@"%@.png",prodObject.prodName];
     }
     return prodObject;
 }
