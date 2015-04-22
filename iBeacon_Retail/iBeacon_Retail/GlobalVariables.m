@@ -11,6 +11,8 @@
 #import "CartItem.h"
 #import "OfferPopupViewController.h"
 #import "MenuViewController.h"
+#import "UIImageView+WebCache.h"
+
 
 @interface GlobalVariables()
     @property (nonatomic,strong)  MenuViewController * leftMenu;
@@ -56,39 +58,42 @@ static GlobalVariables *instance = nil;
 - (void)showOfferPopUp:(Products *)prodInfo  andMessage:(NSString *)inMessage onController:(id) controller withImage:(UIImage *)sourceImage {
   
     OfferPopupViewController *offerPopup=[[OfferPopupViewController alloc] initWithNibName:@"OfferPopupViewController" bundle:[NSBundle mainBundle]];
+    [offerPopup view];
     offerPopup.productObject=prodInfo;
+   
+    
+    offerPopup.productName.text=prodInfo.prodName;
+    offerPopup.offerDescription.text=prodInfo.prodDescription;
+    offerPopup.offerHeader.text=inMessage;
+    
+    // execute a task on that queue asynchronously
+   
+        NSString* result = [prodInfo.prodImage stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+
+        [offerPopup.productImage sd_setImageWithURL:[NSURL URLWithString:result] placeholderImage:[UIImage imageNamed:@"1.png"]];
     
     [controller presentViewController:offerPopup animated:YES completion:^{
         // Adding blur effect on the snapshot taken
-        offerPopup.backgroundImage.image=sourceImage;
-        offerPopup.offerHeader.text=inMessage;
-        offerPopup.productName.text=prodInfo.prodName;
-        offerPopup.offerDescription.text=prodInfo.prodDescription;
-        dispatch_queue_t myqueue = dispatch_queue_create("myqueue", NULL);
-        
-        // execute a task on that queue asynchronously
-        if(prodInfo.prodImage){
-            dispatch_async(myqueue, ^{
-                NSString* result = [prodInfo.prodImage stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-                NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:result]];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    offerPopup.productImage.image= [UIImage imageWithData:data]; //UI updates should be done on the main thread
-                });
-            });
+            offerPopup.backgroundImage.image=sourceImage;
+            UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+            UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
+            effectView.frame = offerPopup.backgroundImage.frame;
+            effectView.alpha=0;
+            [offerPopup.backgroundImage addSubview:effectView];
             
-        }
-        UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-        UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
-        effectView.frame = offerPopup.backgroundImage.bounds;
-        effectView.alpha=0.95;
-        [offerPopup.backgroundImage addSubview:effectView];
+            [UIView animateWithDuration:0.4 animations:^{
+                effectView.alpha = 0.90;
+            }];
 
-        
+            
     }];
+        
     
     
     
-}
+    
+    
+    }
 - (void)blurWithCoreImage:(UIImageView *)baseImageView withSource:(UIImage *)sourceImage
 {
     UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
@@ -288,7 +293,7 @@ static GlobalVariables *instance = nil;
     
     if([productsArray count]>0){
         prodObject=[[Products alloc]  initWithDictionary:[productsArray objectAtIndex:0]];
-       // prodObject.prodImage=[NSString stringWithFormat:@"%@.png",prodObject.prodName];
+
     }
     return prodObject;
 }
@@ -311,6 +316,15 @@ static GlobalVariables *instance = nil;
     [instance.leftMenu.tableview selectRowAtIndexPath:path animated:NO scrollPosition:UITableViewScrollPositionMiddle];
     instance.leftMenu.currentIndex = BeaconRetailCartIndex;
     [[SlideNavigationController sharedInstance] pushViewController:cartScreen animated:YES];
+}
+
++(void)loadStoreMapScreen{
+//    CartViewController* cartScreen = [[CartViewController alloc] initWithNibName:@"CartViewController" bundle:nil];
+    //    MenuViewController* menuvc = (MenuViewController*)[SlideNavigationController sharedInstance].leftBarButtonItem;
+    NSIndexPath* path = [NSIndexPath indexPathForRow: BeaconRetailMapIndex inSection:0];
+    [instance.leftMenu.tableview selectRowAtIndexPath:path animated:NO scrollPosition:UITableViewScrollPositionMiddle];
+    instance.leftMenu.currentIndex = BeaconRetailMapIndex;
+    [[SlideNavigationController sharedInstance] pushViewController:[self getStoreMap] animated:YES];
 }
 
 +(MenuViewController *)getLeftMenu{

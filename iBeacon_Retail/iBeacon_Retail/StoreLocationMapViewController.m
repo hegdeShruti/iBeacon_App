@@ -230,13 +230,16 @@ BOOL isSearchEnabled = NO;
     }
     Products *prodObject=  [GlobalVariables getProductWithID:offerID];
     Offers *offerObject= [GlobalVariables getOfferWithID:offerID];
-    CGRect mainFrame = [UIScreen mainScreen].bounds;
-    UIGraphicsBeginImageContext(CGSizeMake(mainFrame.size.width, mainFrame.size.height));
-    [self.view drawViewHierarchyInRect:CGRectMake(0, 0, mainFrame.size.width, mainFrame.size.height) afterScreenUpdates:YES];
+   // CGRect mainFrame = [UIScreen mainScreen].bounds;
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    UIGraphicsBeginImageContext(window.bounds.size);
+    [window.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
+//    [self.view drawViewHierarchyInRect:CGRectMake(0, 0, mainFrame.size.width, mainFrame.size.height) afterScreenUpdates:YES];
+  //  UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+  //  UIGraphicsEndImageContext();
     if (prodObject!=nil) {
-
         [self.globals showOfferPopUp:prodObject andMessage:offerObject.offerHeading onController:self withImage:image];
     }
     
@@ -435,7 +438,7 @@ BOOL isSearchEnabled = NO;
     positionX=positionX > 0 ?positionX-4:positionX-5;
     positionX=fabsf(positionX);
     positionY=positionY < 0 ?positionY+6:positionY+5;
-    NSLog(@"POsition is %f,%f", positionX,positionY);
+    //NSLog(@"POsition is %f,%f", positionX,positionY);
     
     int row=roundf(positionX);
     int column=roundf(positionY);

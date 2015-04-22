@@ -15,6 +15,8 @@
 @property(nonatomic,strong) NSString *offerHeaderStr;
 @property(nonatomic,strong) NSString *prodName;
 @property(nonatomic,strong) NSString *OfferDetails;
+@property(nonatomic,weak)IBOutlet UIView *descriptionView;
+@property(nonatomic,weak)IBOutlet UIImageView *popUpImage;
 
 @property (weak, nonatomic) IBOutlet UIView *popupVisibleView;
 
@@ -27,9 +29,19 @@
     self =[super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.backgroundImage.image = [UIImage imageNamed:@"bg.png"];
-        self.popupVisibleView.layer.cornerRadius=5.0f;
+
     }
     return self;
+}
+
+-(void)viewWillLayoutSubviews{
+    self.backgroundImage.layer.cornerRadius = 5.0f;
+    self.popupVisibleView.layer.cornerRadius=5.0f;
+     _popUpImage.layer.masksToBounds = YES;
+    _descriptionView.layer.masksToBounds = YES;
+    _descriptionView.layer.cornerRadius = 4.0f;
+    _offerHeader.layer.masksToBounds = YES;
+    _offerHeader.layer.cornerRadius = 4.0f;
 }
 
 - (void)viewDidLoad {

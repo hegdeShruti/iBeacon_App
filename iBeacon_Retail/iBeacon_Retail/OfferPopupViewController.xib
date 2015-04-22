@@ -8,8 +8,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OfferPopupViewController">
             <connections>
                 <outlet property="backgroundImage" destination="IRB-lP-eMM" id="9nt-9q-32q"/>
+                <outlet property="descriptionView" destination="A0h-z5-8e6" id="woD-qU-0jB"/>
                 <outlet property="offerDescription" destination="zcW-w6-KJa" id="CA8-1X-yGw"/>
                 <outlet property="offerHeader" destination="GmK-Rp-0Js" id="nh2-tA-Im6"/>
+                <outlet property="popUpImage" destination="kRI-Mv-iQY" id="2TR-aK-OON"/>
                 <outlet property="popupVisibleView" destination="YLz-Hs-d3N" id="rwK-vK-23R"/>
                 <outlet property="productImage" destination="Knb-WQ-FcS" id="uAf-mj-ffy"/>
                 <outlet property="productName" destination="J6b-pg-Tb1" id="aLt-G6-5Ai"/>
@@ -71,15 +73,15 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A0h-z5-8e6">
                             <rect key="frame" x="0.0" y="340" width="540" height="112"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick Nike Running Shoes  @ 15% off" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zcW-w6-KJa">
-                                    <rect key="frame" x="160" y="16" width="221" height="79"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick Nike Running Shoes  @ 15% off" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="zcW-w6-KJa">
+                                    <rect key="frame" x="8" y="16" width="524" height="79"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="76" id="ut7-3G-oLa"/>
                                         <constraint firstAttribute="width" constant="221" id="wVc-fY-QAq"/>
-                                        <constraint firstAttribute="width" constant="221" id="wbR-Sf-Ha0"/>
+                                        <constraint firstAttribute="width" constant="524" id="wbR-Sf-Ha0"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
-                                    <color key="textColor" red="0.89810211490000003" green="0.89810211490000003" blue="0.89810211490000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                    <color key="textColor" red="0.80768087639999997" green="0.14036458330000001" blue="0.054462919909999997" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                     <variation key="default">
                                         <mask key="constraints">
@@ -89,14 +91,15 @@
                                     </variation>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" red="0.86274509799999999" green="0.01176470588" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="zcW-w6-KJa" secondAttribute="bottom" constant="17" id="4Kt-LZ-Jq9"/>
+                                <constraint firstAttribute="trailing" secondItem="zcW-w6-KJa" secondAttribute="trailing" constant="8" id="CF5-4A-g7x"/>
                                 <constraint firstAttribute="height" constant="112" id="D5q-eK-DA2"/>
                                 <constraint firstAttribute="centerX" secondItem="zcW-w6-KJa" secondAttribute="centerX" id="QGO-bC-f7D"/>
                                 <constraint firstAttribute="centerX" secondItem="zcW-w6-KJa" secondAttribute="centerX" id="Quj-dL-aAI"/>
                                 <constraint firstAttribute="bottom" secondItem="zcW-w6-KJa" secondAttribute="bottom" constant="13" id="TFK-id-x6k"/>
                                 <constraint firstItem="zcW-w6-KJa" firstAttribute="top" secondItem="A0h-z5-8e6" secondAttribute="top" constant="20" id="YQz-1F-crV"/>
+                                <constraint firstItem="zcW-w6-KJa" firstAttribute="leading" secondItem="A0h-z5-8e6" secondAttribute="leading" constant="8" id="ben-Yx-4DC"/>
                                 <constraint firstItem="zcW-w6-KJa" firstAttribute="top" secondItem="A0h-z5-8e6" secondAttribute="top" constant="16" id="kf3-Mt-hBC"/>
                             </constraints>
                             <variation key="default">
@@ -107,21 +110,22 @@
                                 </mask>
                             </variation>
                         </view>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shoe_square" translatesAutoresizingMaskIntoConstraints="NO" id="Knb-WQ-FcS">
-                            <rect key="frame" x="148" y="95" width="245" height="185"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-image.png" translatesAutoresizingMaskIntoConstraints="NO" id="Knb-WQ-FcS">
+                            <rect key="frame" x="148" y="130" width="245" height="185"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="245" id="Xnb-Ld-GAd"/>
                                 <constraint firstAttribute="height" constant="185" id="xab-Ij-Mlv"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nike Running Shoes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GmK-Rp-0Js">
-                            <rect key="frame" x="16" y="16" width="516" height="35"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nike Running Shoes" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="GmK-Rp-0Js">
+                            <rect key="frame" x="0.0" y="0.0" width="540" height="72"/>
+                            <color key="backgroundColor" red="0.80768087639999997" green="0.14036458330000001" blue="0.054462919909999997" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="35" id="1KD-4Z-BNr"/>
+                                <constraint firstAttribute="height" constant="72" id="1KD-4Z-BNr"/>
                                 <constraint firstAttribute="height" constant="35" id="JUt-oT-Zjz"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="23"/>
+                            <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                             <variation key="default">
                                 <mask key="constraints">
@@ -130,11 +134,11 @@
                             </variation>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Running shoes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6b-pg-Tb1">
-                            <rect key="frame" x="8" y="59" width="524" height="21"/>
+                            <rect key="frame" x="8" y="80" width="524" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="JfO-A2-UOm"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -154,7 +158,7 @@
                         <constraint firstAttribute="trailing" secondItem="J6b-pg-Tb1" secondAttribute="trailing" constant="8" id="3p0-9o-iMe"/>
                         <constraint firstItem="Knb-WQ-FcS" firstAttribute="top" secondItem="J6b-pg-Tb1" secondAttribute="bottom" constant="15" id="8HL-4K-ftj"/>
                         <constraint firstItem="kRI-Mv-iQY" firstAttribute="leading" secondItem="YLz-Hs-d3N" secondAttribute="leading" id="Egn-ON-2Um"/>
-                        <constraint firstItem="GmK-Rp-0Js" firstAttribute="top" secondItem="YLz-Hs-d3N" secondAttribute="top" constant="16" id="HUb-J4-Xjd"/>
+                        <constraint firstItem="GmK-Rp-0Js" firstAttribute="top" secondItem="YLz-Hs-d3N" secondAttribute="top" id="HUb-J4-Xjd"/>
                         <constraint firstAttribute="bottom" secondItem="A0h-z5-8e6" secondAttribute="bottom" id="PJE-Df-bdc"/>
                         <constraint firstItem="GmK-Rp-0Js" firstAttribute="top" secondItem="YLz-Hs-d3N" secondAttribute="top" constant="16" id="POY-6C-vGw"/>
                         <constraint firstItem="rrd-kd-rro" firstAttribute="top" secondItem="YLz-Hs-d3N" secondAttribute="top" id="UbU-RM-au6"/>
@@ -163,17 +167,18 @@
                         <constraint firstAttribute="bottom" secondItem="rrd-kd-rro" secondAttribute="bottom" id="YTj-f3-644"/>
                         <constraint firstAttribute="trailing" secondItem="A0h-z5-8e6" secondAttribute="trailing" id="alp-4o-SC3"/>
                         <constraint firstItem="J6b-pg-Tb1" firstAttribute="top" secondItem="GmK-Rp-0Js" secondAttribute="bottom" constant="8" id="cMy-sd-kgh"/>
-                        <constraint firstItem="GmK-Rp-0Js" firstAttribute="leading" secondItem="YLz-Hs-d3N" secondAttribute="leading" constant="16" id="dEl-YL-mZS"/>
+                        <constraint firstItem="GmK-Rp-0Js" firstAttribute="leading" secondItem="YLz-Hs-d3N" secondAttribute="leading" id="dEl-YL-mZS"/>
                         <constraint firstAttribute="bottom" secondItem="kRI-Mv-iQY" secondAttribute="bottom" id="hcw-FQ-aCt"/>
-                        <constraint firstAttribute="trailing" secondItem="GmK-Rp-0Js" secondAttribute="trailing" constant="8" id="ixx-TY-2Sh"/>
+                        <constraint firstAttribute="trailing" secondItem="GmK-Rp-0Js" secondAttribute="trailing" id="ixx-TY-2Sh"/>
                         <constraint firstItem="rrd-kd-rro" firstAttribute="leading" secondItem="YLz-Hs-d3N" secondAttribute="leading" id="jUd-kA-cGN"/>
+                        <constraint firstItem="A0h-z5-8e6" firstAttribute="top" secondItem="Knb-WQ-FcS" secondAttribute="bottom" constant="25" id="q5Q-P2-ZHC"/>
                         <constraint firstItem="A0h-z5-8e6" firstAttribute="leading" secondItem="YLz-Hs-d3N" secondAttribute="leading" id="qBV-8F-V8T"/>
                         <constraint firstAttribute="trailing" secondItem="kRI-Mv-iQY" secondAttribute="trailing" id="sg5-nS-uX3"/>
                         <constraint firstItem="Knb-WQ-FcS" firstAttribute="top" secondItem="J6b-pg-Tb1" secondAttribute="bottom" constant="15" id="tsM-7b-Ses"/>
                         <constraint firstItem="kRI-Mv-iQY" firstAttribute="top" secondItem="YLz-Hs-d3N" secondAttribute="top" id="v4Y-qx-q0b"/>
                         <constraint firstItem="J6b-pg-Tb1" firstAttribute="top" secondItem="GmK-Rp-0Js" secondAttribute="bottom" constant="8" id="wqw-xO-nAy"/>
                         <constraint firstAttribute="centerX" secondItem="Knb-WQ-FcS" secondAttribute="centerX" id="xz3-ab-mib"/>
-                        <constraint firstItem="Knb-WQ-FcS" firstAttribute="top" secondItem="J6b-pg-Tb1" secondAttribute="bottom" constant="15" id="yBq-vj-kiY"/>
+                        <constraint firstItem="Knb-WQ-FcS" firstAttribute="top" secondItem="J6b-pg-Tb1" secondAttribute="bottom" constant="29" id="yBq-vj-kiY"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
@@ -214,6 +219,6 @@
     </objects>
     <resources>
         <image name="bg-1" width="320" height="568"/>
-        <image name="shoe_square" width="540" height="450"/>
+        <image name="no-image.png" width="265" height="265"/>
     </resources>
 </document>

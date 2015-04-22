@@ -135,6 +135,7 @@
 		B17C01A51AB9B35C00542233 /* Test_Women'sSection.png in Resources */ = {isa = PBXBuildFile; fileRef = B17C01A21AB9B35C00542233 /* Test_Women'sSection.png */; };
 		B1C0A4031AD563B200FBB027 /* AOShortestPath.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C0A4021AD563B200FBB027 /* AOShortestPath.m */; };
 		B1C3233D1AE6771C00C01893 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C3233C1AE6771C00C01893 /* map.png */; };
+		B1F1A0CE1AE7C5AD00B10CDE /* no-image.png in Resources */ = {isa = PBXBuildFile; fileRef = B1F1A0CD1AE7C5AD00B10CDE /* no-image.png */; };
 		EF12789D1ADBD11E003CA791 /* Cart.png in Resources */ = {isa = PBXBuildFile; fileRef = EF12788D1ADBD11E003CA791 /* Cart.png */; };
 		EF12789E1ADBD11E003CA791 /* Cart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF12788E1ADBD11E003CA791 /* Cart@2x.png */; };
 		EF12789F1ADBD11E003CA791 /* Cart@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF12788F1ADBD11E003CA791 /* Cart@3x.png */; };
@@ -381,6 +382,7 @@
 		B1C0A4011AD563B200FBB027 /* AOShortestPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOShortestPath.h; sourceTree = "<group>"; };
 		B1C0A4021AD563B200FBB027 /* AOShortestPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOShortestPath.m; sourceTree = "<group>"; };
 		B1C3233C1AE6771C00C01893 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
+		B1F1A0CD1AE7C5AD00B10CDE /* no-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-image.png"; sourceTree = "<group>"; };
 		EF12788D1ADBD11E003CA791 /* Cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cart.png; sourceTree = "<group>"; };
 		EF12788E1ADBD11E003CA791 /* Cart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cart@2x.png"; sourceTree = "<group>"; };
 		EF12788F1ADBD11E003CA791 /* Cart@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cart@3x.png"; sourceTree = "<group>"; };
@@ -864,6 +866,7 @@
 		B19CB4901AB95998006C7575 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B1F1A0CD1AE7C5AD00B10CDE /* no-image.png */,
 				B1C3233C1AE6771C00C01893 /* map.png */,
 				EF962CAB1ADFD8A100727551 /* person.png */,
 				EF962CA71ADFD84D00727551 /* clear.png */,
@@ -1011,6 +1014,7 @@
 				EF12789F1ADBD11E003CA791 /* Cart@3x.png in Resources */,
 				0AF77D781AA0363800B57B8C /* Main.storyboard in Resources */,
 				45526A371AB048B300E6F7C3 /* beaconBlueberrySmall@2x.png in Resources */,
+				B1F1A0CE1AE7C5AD00B10CDE /* no-image.png in Resources */,
 				81A633DC1AD79A25002F927F /* CustomHeaderView.xib in Resources */,
 				B17C01A31AB9B35C00542233 /* Test_Kid'sSection.png in Resources */,
 				45526A431AB048B300E6F7C3 /* screen8_beacon_blue@2x.png in Resources */,
