@@ -11,6 +11,7 @@
 #import "CartItem.h"
 #import "OfferPopupViewController.h"
 #import "MenuViewController.h"
+#import "UIImageView+WebCache.h"
 
 @interface GlobalVariables()
     @property (nonatomic,strong)  MenuViewController * leftMenu;
@@ -56,22 +57,31 @@ static GlobalVariables *instance = nil;
 - (void)showOfferPopUp:(Products *)prodInfo  andMessage:(NSString *)inMessage onController:(id) controller withImage:(UIImage *)sourceImage {
   
     OfferPopupViewController *offerPopup=[[OfferPopupViewController alloc] initWithNibName:@"OfferPopupViewController" bundle:[NSBundle mainBundle]];
+    [offerPopup view];
     offerPopup.productObject=prodInfo;
-   
+    offerPopup.productName.text=prodInfo.prodName;
+    offerPopup.offerDescription.text=prodInfo.prodDescription;
+    offerPopup.offerHeader.text=inMessage;
+    if(prodInfo.prodImage){
+        [offerPopup.productImage sd_setImageWithURL:[NSURL URLWithString:[prodInfo.prodImage stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]] placeholderImage:[UIImage imageNamed:@"1.png"]];
+        // offerPopup.productImage.image=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:prodInfo.prodImage]]];
+    }
+    
+
+
     [controller presentViewController:offerPopup animated:YES completion:^{
         // Adding blur effect on the snapshot taken
         offerPopup.backgroundImage.image=sourceImage;
-       offerPopup.offerHeader.text=inMessage;
-         offerPopup.productName.text=prodInfo.prodName;
-        offerPopup.offerDescription.text=prodInfo.prodDescription;
-        if(prodInfo.prodImage){
-        offerPopup.productImage.image=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:prodInfo.prodImage]]];
-        }
         UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
         UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
-        effectView.frame = offerPopup.backgroundImage.bounds;
-        effectView.alpha=0.95;
+        effectView.frame = offerPopup.backgroundImage.frame;
+        effectView.alpha=0;
         [offerPopup.backgroundImage addSubview:effectView];
+
+        [UIView animateWithDuration:0.4 animations:^{
+            effectView.alpha = 0.90;
+        }];
+
         
     }];
     
@@ -277,7 +287,6 @@ static GlobalVariables *instance = nil;
     
     if([productsArray count]>0){
         prodObject=[[Products alloc]  initWithDictionary:[productsArray objectAtIndex:0]];
-        prodObject.prodImage=[NSString stringWithFormat:@"%@.png",prodObject.prodName];
     }
     return prodObject;
 }
