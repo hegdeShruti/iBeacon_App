@@ -14,6 +14,10 @@
 #import "AOShortestPath.h"
 #import "UIImageView+WebCache.h"
 
+//#import "OfferPopupMenu.h"
+//#import "OfferButton.h"
+#define OFFER_TAG_OFFSET 1000;
+
 @interface StoreLocationMapViewController () <ESTIndoorLocationManagerDelegate>
 
 @property (nonatomic, strong) ESTIndoorLocationManager *manager;
@@ -119,15 +123,23 @@ BOOL isSearchEnabled = NO;
     self.indoorLocationView.positionView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
     [self.indoorLocationView.positionView setBackgroundColor:[UIColor clearColor]];
 
-    
-    self.frameWidth=self.view.frame.size.width>400?410:320;
+        self.frameWidth=self.view.frame.size.width>400?410:320;
     self.frameHeight=self.frameWidth;
-    UIImageView *img=[[UIImageView alloc]initWithFrame:CGRectMake(-46, 0, self.frameWidth+2,self.frameHeight)];
+    UIImageView *img=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.frameWidth,self.frameHeight)];
     [img setImage:[UIImage imageNamed:@"map.png"]];
     [self.indoorLocationView addSubview:img];
     
     [self.manager startIndoorLocation:self.location];
-    
+//    for(ESTPositionedBeacon *beacon in self.location.beacons){
+//        OfferButton *sectionLogo = [[OfferButton alloc] initWithFrame:CGRectMake(0,0, 30, 50)];
+//        sectionLogo.tag=[GlobalVariables getSectionId:beacon.macAddress]+OFFER_TAG_OFFSET;
+//        sectionLogo.tagNo=[self getTag:beacon.position];
+//        // [tagList setValue:[NSNumber numberWithInt:sectionLogo.tagNo] forKey:[NSString stringWithFormat:@"%ld",sectionLogo.tag-1000]];
+//        [sectionLogo setBackgroundImage:[UIImage imageNamed:@"map-pin-red.png"] forState: UIControlStateNormal] ;
+//        [sectionLogo addTarget:self action:@selector(showOffer:) forControlEvents:UIControlEventTouchUpInside];
+//        [self.indoorLocationView drawObject:sectionLogo withPosition:[ESTPoint pointWithX:beacon.position.x y:beacon.position.y]];
+//    }
+
     
     _pathManager = [[AOShortestPath alloc] init];
     _pathManager.pointList = [NSMutableArray array];
@@ -156,7 +168,7 @@ BOOL isSearchEnabled = NO;
     for (int i = 0; i<_plane.count; i++) {
         NSArray *row = _plane[i];
         for (int j=0; j<row.count; j++) {
-            UIButton *l = [[UIButton alloc] initWithFrame:CGRectMake(j*_frameWidthFactor-47, i*_frameHeightFactor, _frameWidthFactor, _frameHeightFactor)];
+            UIButton *l = [[UIButton alloc] initWithFrame:CGRectMake(j*_frameWidthFactor, i*_frameHeightFactor, _frameWidthFactor, _frameHeightFactor)];
             l.tag = i*20 + j + 1;
             l.backgroundColor = [UIColor clearColor];
             l.layer.borderColor = [UIColor clearColor].CGColor;
@@ -278,7 +290,7 @@ BOOL isSearchEnabled = NO;
                 for (AOPathPoint *p in path) {
                     UIButton *but = (UIButton*)[self.view viewWithTag:p.tag];
                     if(![but.currentTitle isEqualToString:@"X"] ){
-                        float w=p.tag%20*_frameWidthFactor-16-47;
+                        float w=p.tag%20*_frameWidthFactor-16;
                         float h=p.tag/20*_frameWidthFactor+16;
                         
                         [self.pathArray addObject:[NSValue valueWithCGPoint:CGPointMake(w, h)]];
