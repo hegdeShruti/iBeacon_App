@@ -44,8 +44,8 @@
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qsS-hp-HBf" userLabel="LoadingIndicatorView">
                     <rect key="frame" x="0.0" y="43" width="600" height="557"/>
                     <subviews>
-                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="lCg-we-djX">
-                            <rect key="frame" x="290" y="290" width="20" height="20"/>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="lCg-we-djX">
+                            <rect key="frame" x="290" y="269" width="20" height="20"/>
                             <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </activityIndicatorView>
                     </subviews>
