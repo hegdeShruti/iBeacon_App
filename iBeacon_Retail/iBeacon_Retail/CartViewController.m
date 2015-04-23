@@ -38,7 +38,15 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self EnablePayButtonOnNavBar:YES];
     [self getCartListing];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self EnablePayButtonOnNavBar:NO];
+    NSLog(@"CART SCREEN UNLOADING");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -122,4 +130,33 @@
 {
     return YES;
 }
+- (BOOL)slideNavigationControllerShouldDisplayRightMenu
+{
+    return YES;
+}
+
+-(void)EnablePayButtonOnNavBar: (BOOL) showPayButton{
+    if(showPayButton == YES)
+    {
+        UIButton *rtButton  = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
+//        [rtButton setImage:[UIImage imageNamed:@"icon_cart.png"] forState:UIControlStateNormal];
+        [rtButton setTitle:@"Pay" forState:UIControlStateNormal];
+        [rtButton addTarget:self action:@selector(payWithApplePay) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rtButton];
+        [SlideNavigationController sharedInstance].rightBarButtonItem = rightBarButtonItem;
+    }else{
+        UIButton *rtButton  = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
+        [rtButton setImage:[UIImage imageNamed:@"icon_cart.png"] forState:UIControlStateNormal];
+        [rtButton addTarget:[GlobalVariables getInstance] action:@selector(loadCartScreen) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rtButton];
+        [SlideNavigationController sharedInstance].rightBarButtonItem = rightBarButtonItem;
+    }
+}
+
+-(void)payWithApplePay{
+    NSLog(@"Load Apple pay screen!!!");
+    UIAlertView* payAlert = [[UIAlertView alloc] initWithTitle:@"Pay with Apple Pay" message:@"Coming Soon!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [payAlert show];
+}
+
 @end
