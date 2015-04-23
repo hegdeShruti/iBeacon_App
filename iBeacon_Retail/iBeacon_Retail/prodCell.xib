@@ -16,7 +16,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SmS-Fb-o4n">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jacket" translatesAutoresizingMaskIntoConstraints="NO" id="l5p-V0-Sup" userLabel="Product Image View">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default_imageHolder" translatesAutoresizingMaskIntoConstraints="NO" id="l5p-V0-Sup" userLabel="Product Image View">
                                 <rect key="frame" x="0.0" y="0.0" width="125" height="150"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XDA-BN-vrg" userLabel="Product Detail View">
@@ -209,7 +209,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="jacket" width="225" height="225"/>
+        <image name="Default_imageHolder" width="51" height="41"/>
         <image name="over_bar" width="4" height="115"/>
         <image name="prod_divider" width="320" height="1"/>
     </resources>

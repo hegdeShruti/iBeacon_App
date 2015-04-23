@@ -286,8 +286,8 @@ static GlobalVariables *instance = nil;
     }];
 }
 
-+(Products *) getProductWithID:(NSInteger)id{
-      NSArray *productsArray = [instance.productDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(offerid == %d)",id]];
++(Products *) getProductWithID:(NSInteger)offerId{
+      NSArray *productsArray = [instance.productDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(offerid == %d)",offerId]];
       Products *prodObject;
     // tentetive for demo purpose
     
@@ -298,8 +298,8 @@ static GlobalVariables *instance = nil;
     return prodObject;
 }
 
-+(Offers *) getOfferWithID:(NSInteger)id{
-    NSArray *offersArray = [instance.offersDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(offerId == %d)", id]];
++(Offers *) getOfferWithID:(NSInteger)offerId{
+    NSArray *offersArray = [instance.offersDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(offerId == %d)", offerId]];
     Offers *offerObject;
     if([offersArray count]>0){
         offerObject=[[Offers alloc]  initWithDictionary:[offersArray objectAtIndex:0]];
@@ -318,13 +318,15 @@ static GlobalVariables *instance = nil;
     [[SlideNavigationController sharedInstance] pushViewController:cartScreen animated:YES];
 }
 
-+(void)loadStoreMapScreen{
++(void)loadStoreMapScreen:(Products *)product{
 //    CartViewController* cartScreen = [[CartViewController alloc] initWithNibName:@"CartViewController" bundle:nil];
     //    MenuViewController* menuvc = (MenuViewController*)[SlideNavigationController sharedInstance].leftBarButtonItem;
     NSIndexPath* path = [NSIndexPath indexPathForRow: BeaconRetailMapIndex inSection:0];
     [instance.leftMenu.tableview selectRowAtIndexPath:path animated:NO scrollPosition:UITableViewScrollPositionMiddle];
     instance.leftMenu.currentIndex = BeaconRetailMapIndex;
-    [[SlideNavigationController sharedInstance] pushViewController:[self getStoreMap] animated:YES];
+    StoreLocationMapViewController* vc=[self getStoreMap];
+    vc.product=product;
+    [[SlideNavigationController sharedInstance] pushViewController:vc animated:YES];
 }
 
 +(MenuViewController *)getLeftMenu{

@@ -160,22 +160,9 @@
 
 -(UINavigationController*)loadSlideMenuInstance{
     
-        // this is where you define the view for the left panel
-//        MenuViewController *menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
-        ProductViewController* rootViewControllerForSlideMenu = [[ProductViewController alloc] initWithNibName:@"ProductViewController" bundle:nil];
-    
-//        menuViewController.view.tag = LEFT_PANEL_TAG;
-//        productsViewController.delegate=self;
+    //This is where you define the view for the left panel
+    ProductViewController* rootViewControllerForSlideMenu = [[ProductViewController alloc] initWithNibName:@"ProductViewController" bundle:nil];
 
-//        self.menuViewController.delegate = self.mainScreenViewController;
-//        // adds the menu view controller in the container view controller (self)
-//        [self.view addSubview:self.menuViewController.view];
-//        [self addChildViewController:self.menuViewController];
-//        [self.menuViewController didMoveToParentViewController:self];
-//        
-//        self.menuViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-//        NSIndexPath *indexPath=[NSIndexPath indexPathForRow:0 inSection:0];
-//        [self.menuViewController.tableview selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionBottom];
     
     SlideNavigationController *slideController = [[SlideNavigationController alloc] initWithRootViewController:rootViewControllerForSlideMenu];
     [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:74/255.0 green:170/255.0 blue:192/255.0 alpha:1.0]];

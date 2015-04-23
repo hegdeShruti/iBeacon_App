@@ -6,6 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProductViewController">
             <connections>
+                <outlet property="loadingIndicator" destination="lCg-we-djX" id="K8D-SX-IfR"/>
+                <outlet property="loadingIndicatorView" destination="qsS-hp-HBf" id="qhO-v1-aki"/>
                 <outlet property="prodCollectionView" destination="0US-iZ-Zkm" id="lN4-v7-ii8"/>
                 <outlet property="searchBar" destination="9AA-lB-B6N" id="bXR-H4-cXQ"/>
                 <outlet property="searchDisplayController" destination="1ft-ZJ-uIW" id="tBY-41-hT8"/>
@@ -24,7 +26,7 @@
                         <outlet property="delegate" destination="-1" id="e3f-Vy-5b0"/>
                     </connections>
                 </searchBar>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="0US-iZ-Zkm">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="0US-iZ-Zkm">
                     <rect key="frame" x="0.0" y="43" width="600" height="557"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
@@ -39,18 +41,42 @@
                         <outlet property="delegate" destination="-1" id="kj8-QP-Nh3"/>
                     </connections>
                 </collectionView>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qsS-hp-HBf" userLabel="LoadingIndicatorView">
+                    <rect key="frame" x="0.0" y="43" width="600" height="557"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="lCg-we-djX">
+                            <rect key="frame" x="290" y="269" width="20" height="20"/>
+                            <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="centerY" secondItem="lCg-we-djX" secondAttribute="centerY" id="Aon-2U-cSJ"/>
+                        <constraint firstAttribute="centerX" secondItem="lCg-we-djX" secondAttribute="centerX" id="aFC-J3-2lh"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.2901960784" green="0.66666666669999997" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="qsS-hp-HBf" secondAttribute="bottom" id="Dza-B2-Ttm"/>
+                <constraint firstAttribute="trailing" secondItem="qsS-hp-HBf" secondAttribute="trailing" id="GRk-97-hhq"/>
                 <constraint firstItem="0US-iZ-Zkm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Ja8-xP-Xpi"/>
                 <constraint firstItem="9AA-lB-B6N" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="-1" id="Ka4-nj-7pi"/>
                 <constraint firstAttribute="trailing" secondItem="0US-iZ-Zkm" secondAttribute="trailing" id="LKF-MC-Bca"/>
+                <constraint firstItem="qsS-hp-HBf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Rrt-sE-J4K"/>
                 <constraint firstAttribute="bottom" secondItem="0US-iZ-Zkm" secondAttribute="bottom" id="a4Y-70-l3F"/>
                 <constraint firstItem="9AA-lB-B6N" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cJC-gE-nym"/>
+                <constraint firstItem="qsS-hp-HBf" firstAttribute="top" secondItem="9AA-lB-B6N" secondAttribute="bottom" id="mrN-dp-yI3"/>
+                <constraint firstItem="qsS-hp-HBf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="peB-ze-97Q"/>
                 <constraint firstAttribute="trailing" secondItem="9AA-lB-B6N" secondAttribute="trailing" id="xYS-8E-nVf"/>
                 <constraint firstItem="0US-iZ-Zkm" firstAttribute="top" secondItem="9AA-lB-B6N" secondAttribute="bottom" id="xxf-Fu-4BI"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Rrt-sE-J4K"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="-99" y="297"/>
         </view>
         <searchDisplayController id="1ft-ZJ-uIW">
