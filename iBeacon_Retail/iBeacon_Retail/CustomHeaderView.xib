@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
@@ -13,24 +13,24 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="atF-Bt-cMR">
                     <rect key="frame" x="0.0" y="0.0" width="212" height="165"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3" translatesAutoresizingMaskIntoConstraints="NO" id="UI4-Se-0eF">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3" translatesAutoresizingMaskIntoConstraints="NO" id="UI4-Se-0eF" userLabel="User Profile Pic">
                             <rect key="frame" x="69" y="32" width="75" height="75"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="75" id="VbE-Xd-fCI"/>
                                 <constraint firstAttribute="height" constant="75" id="eHk-cZ-Vi2"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shruti Hegde" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4e-jR-iDE">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jane Doe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4e-jR-iDE" userLabel="Username Label">
                             <rect key="frame" x="0.0" y="115" width="212" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="ati-lE-C8a"/>
                                 <constraint firstAttribute="width" constant="212" id="cjV-DR-zqz"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AKm-YH-EKz">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AKm-YH-EKz" userLabel="Divider">
                             <rect key="frame" x="31" y="152" width="150" height="1"/>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>

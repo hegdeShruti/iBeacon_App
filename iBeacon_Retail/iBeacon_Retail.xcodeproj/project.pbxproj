@@ -459,7 +459,6 @@
 		0AF77D6B1AA0363800B57B8C /* iBeacon_Retail */ = {
 			isa = PBXGroup;
 			children = (
-				811C42D81AE68476001B0AC5 /* SDWebImage */,
 				0AF77D701AA0363800B57B8C /* AppDelegate.h */,
 				0AF77D711AA0363800B57B8C /* AppDelegate.m */,
 				81AE08971AA7672200CD7F75 /* MenuViewController.h */,
@@ -478,7 +477,7 @@
 				4552699D1AB03F8500E6F7C3 /* StoreLocationMap */,
 				814BC95D1AA4401200164B30 /* Products */,
 				814BC95C1AA4400500164B30 /* Model */,
-				45849E881AD4F2A800FF7A1F /* SlideMenuLibrary */,
+				45430B811AE8FECE001466C6 /* Libraries */,
 				811492CC1AC1A63A009AB358 /* Frameworks */,
 				0AF77D791AA0363800B57B8C /* Images.xcassets */,
 				0AF77D7B1AA0363800B57B8C /* LaunchScreen.xib */,
@@ -517,6 +516,15 @@
 				0AF77D871AA0363800B57B8C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		45430B811AE8FECE001466C6 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				811C42D81AE68476001B0AC5 /* SDWebImage */,
+				45849E881AD4F2A800FF7A1F /* SlideMenuLibrary */,
+			);
+			name = Libraries;
 			sourceTree = "<group>";
 		};
 		4552699D1AB03F8500E6F7C3 /* StoreLocationMap */ = {

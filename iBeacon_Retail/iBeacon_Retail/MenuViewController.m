@@ -119,14 +119,14 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    UIFont* menuFont = [UIFont fontWithName:@"AvenirNext" size:18];
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     cell.backgroundColor = [UIColor clearColor];
 
     UIView *backgroundView = [[UIView alloc] initWithFrame:cell.selectedBackgroundView.frame];
     [backgroundView setBackgroundColor:[UIColor colorWithRed:0/255.f green:0/255.f blue:0/255.f alpha:0.3]];
     [cell setSelectedBackgroundView:backgroundView];
-
+    [cell.textLabel setFont:menuFont];
     [cell.textLabel setText:[self.menuItems objectAtIndex:indexPath.row]];
     cell.textLabel.textColor=[UIColor whiteColor];
     cell.imageView.image=[UIImage imageNamed:[self.menuImageItems objectAtIndex:indexPath.row]];

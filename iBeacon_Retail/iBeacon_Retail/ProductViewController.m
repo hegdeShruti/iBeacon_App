@@ -131,7 +131,7 @@
     //  using SDWEbimage for lazy loading of images
     NSString* result = [prodObject.prodImage stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
-    [cell.productImage sd_setImageWithURL:[NSURL URLWithString:result] placeholderImage:[UIImage imageNamed:@"1.png"]];
+    [cell.productImage sd_setImageWithURL:[NSURL URLWithString:result] placeholderImage:[UIImage imageNamed:@"Default_imageHolder.png"]];
 
     
   //  cell.availableColor1.backgroundColor = [UIColor redColor];

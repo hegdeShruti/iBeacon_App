@@ -160,20 +160,22 @@
 
 -(UINavigationController*)loadSlideMenuInstance{
     
+    CGRect frame=[[UIScreen mainScreen]bounds ];
+    
     //This is where you define the view for the left panel
     ProductViewController* rootViewControllerForSlideMenu = [[ProductViewController alloc] initWithNibName:@"ProductViewController" bundle:nil];
-
     
     SlideNavigationController *slideController = [[SlideNavigationController alloc] initWithRootViewController:rootViewControllerForSlideMenu];
+    slideController.panGestureSideOffset=frame.size.width * .5; // to enable gesture only on half of the screen from the left edge for slide menu pangestures
     [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:74/255.0 green:170/255.0 blue:192/255.0 alpha:1.0]];
     [[UINavigationBar appearance] setTranslucent:NO];
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"blue_sq"] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setShadowImage:[UIImage imageNamed:@"blue_sq"]];
-    [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys: [UIColor whiteColor],NSForegroundColorAttributeName, nil]];
+    [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys: [UIColor whiteColor],NSForegroundColorAttributeName,[UIFont fontWithName:@"AvenirNext-DemiBold" size:18.0], NSFontAttributeName, nil]];
     
     //slideController.rightMenu = menuViewController;
     
-    CGRect frame=[[UIScreen mainScreen]bounds ];
+    
     
     slideController.leftMenu = [GlobalVariables getLeftMenu];
     slideController.menuRevealAnimationDuration = .18;

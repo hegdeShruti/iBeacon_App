@@ -19,13 +19,6 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <searchBar contentMode="redraw" placeholder="Search Product" backgroundImage="blue_sq" translatesAutoresizingMaskIntoConstraints="NO" id="9AA-lB-B6N">
-                    <rect key="frame" x="0.0" y="-1" width="600" height="44"/>
-                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="e3f-Vy-5b0"/>
-                    </connections>
-                </searchBar>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="0US-iZ-Zkm">
                     <rect key="frame" x="0.0" y="43" width="600" height="557"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -55,6 +48,13 @@
                         <constraint firstAttribute="centerX" secondItem="lCg-we-djX" secondAttribute="centerX" id="aFC-J3-2lh"/>
                     </constraints>
                 </view>
+                <searchBar contentMode="redraw" placeholder="Search Product" backgroundImage="blue_sq" translatesAutoresizingMaskIntoConstraints="NO" id="9AA-lB-B6N">
+                    <rect key="frame" x="0.0" y="-1" width="600" height="44"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="e3f-Vy-5b0"/>
+                    </connections>
+                </searchBar>
             </subviews>
             <color key="backgroundColor" red="0.2901960784" green="0.66666666669999997" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
