@@ -30,4 +30,6 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *prodCollectionView;
 @property (nonatomic,weak) IBOutlet UISearchBar* searchBar;
 @property (nonatomic, strong) NSArray *entries;
+@property (weak, nonatomic) IBOutlet UIView *loadingIndicatorView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 @end

@@ -65,12 +65,14 @@
     NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:path];
     NSLog(@"The product Api is %@",[dict objectForKey:@"Prod_Api"]);
  // send block as parameter to get callbacks
+    [self shouldHideLoadingIndicator:NO];
     [self.networks fetchDataFromServer:[dict objectForKey:@"Prod_Api"] withreturnMethod:^(NSMutableArray* data){
         self.products = self.searchFilteredProducts = globals.productDataArray=data;
         NSLog(@"The product Api is %lu",(unsigned long)[globals.productDataArray count]);
         dispatch_async(dispatch_get_main_queue(), ^
                        {
                            [self.prodCollectionView reloadData];
+                           [self shouldHideLoadingIndicator:YES];
                            
                        });
         
@@ -232,5 +234,10 @@
 {
     return YES;
 }
+
+-(void) shouldHideLoadingIndicator:(BOOL) state{
+        self.loadingIndicatorView.hidden=state;
+}
+
 
 @end
