@@ -195,6 +195,7 @@
             vc = (LoginViewController*)[storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
             testAppDelegate = [UIApplication sharedApplication].delegate;
             testAppDelegate.window.rootViewController = vc;
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"hasALreadyLoggedIn"];
         }];
         
     }
