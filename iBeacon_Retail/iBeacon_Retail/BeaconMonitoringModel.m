@@ -233,7 +233,7 @@ BOOL isKidsOfferShown = NO;
             //if(self.globals.hasUserEnteredTheStore){
                 notification.alertBody = @"Thank you for visiting Us";
                 offerId=5;
-                offerHeading= @"Exit Offers";
+                offerHeading= @"Offers Just For You!";
                 self.globals.hasUserEnteredTheStore=NO;
                 self.globals.hasUserGotMenSectionOffers=NO;
                 self.globals.hasUserGotWOmenSectionOffers=NO;

@@ -109,6 +109,7 @@
             if(offerObject.isExitOffer){
                     NSMutableArray *cartItems=[NSMutableArray arrayWithArray:[GlobalVariables getCartItems]];
                     if([cartItems count]>0 ){
+                        
                 // show checkout screen with billing details
                         CheckoutViewController *checkout=[[CheckoutViewController alloc]initWithNibName:@"CheckoutViewController" bundle:[NSBundle mainBundle] ];
                         [self.window.rootViewController presentViewController:checkout animated:NO completion:nil];

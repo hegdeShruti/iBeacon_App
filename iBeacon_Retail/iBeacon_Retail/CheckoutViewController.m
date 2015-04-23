@@ -7,6 +7,7 @@
 //
 
 #import "CheckoutViewController.h"
+#import "CartViewController.h"
 
 @interface CheckoutViewController ()
 
@@ -38,7 +39,11 @@
 */
 
 - (IBAction)dismissVIew:(id)sender {
-     [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        CartViewController* cartView = [[CartViewController alloc] initWithNibName:@"CartViewController" bundle:nil];
+      
+        [[SlideNavigationController sharedInstance] popToRootAndSwitchToViewController:cartView withSlideOutAnimation:NO andCompletion:nil];
+    }];
 }
 - (IBAction)cancelButtnClick:(id)sender {
      [self dismissViewControllerAnimated:YES completion:nil];
