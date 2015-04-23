@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StoreLocationMapViewController">
@@ -105,7 +105,7 @@ Flat 20 % Off on Liliput Baby Jacket</string>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F00-Zi-Lt0" customClass="ESTIndoorLocationView">
-                            <rect key="frame" x="47" y="164" width="320" height="320"/>
+                            <rect key="frame" x="0.0" y="164" width="320" height="320"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
@@ -125,7 +125,7 @@ Flat 20 % Off on Liliput Baby Jacket</string>
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lkI-XJ-yQT" customClass="MapPathGenerator">
-                            <rect key="frame" x="47" y="164" width="320" height="320"/>
+                            <rect key="frame" x="0.0" y="164" width="320" height="320"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="410" id="XM1-6y-Qai"/>
@@ -143,13 +143,13 @@ Flat 20 % Off on Liliput Baby Jacket</string>
                         <constraint firstAttribute="bottom" secondItem="x2U-kU-IBo" secondAttribute="bottom" id="Isj-mE-5cM"/>
                         <constraint firstItem="lkI-XJ-yQT" firstAttribute="top" secondItem="VX5-Om-zrG" secondAttribute="bottom" constant="120" id="K8F-90-0De"/>
                         <constraint firstItem="x2U-kU-IBo" firstAttribute="top" secondItem="F00-Zi-Lt0" secondAttribute="bottom" id="Nhc-WQ-eDU"/>
-                        <constraint firstItem="F00-Zi-Lt0" firstAttribute="leading" secondItem="QEz-bZ-YhF" secondAttribute="leading" constant="47" id="Ta5-Tt-zm3"/>
+                        <constraint firstItem="F00-Zi-Lt0" firstAttribute="leading" secondItem="QEz-bZ-YhF" secondAttribute="leading" id="Ta5-Tt-zm3"/>
                         <constraint firstItem="f63-ao-5ff" firstAttribute="leading" secondItem="QEz-bZ-YhF" secondAttribute="leading" id="Y7k-c5-OwK"/>
                         <constraint firstItem="x2U-kU-IBo" firstAttribute="top" secondItem="QEz-bZ-YhF" secondAttribute="top" constant="484" id="dk3-C1-THf"/>
                         <constraint firstItem="VX5-Om-zrG" firstAttribute="leading" secondItem="QEz-bZ-YhF" secondAttribute="leading" id="hal-qy-Zl8"/>
                         <constraint firstAttribute="trailing" secondItem="x2U-kU-IBo" secondAttribute="trailing" id="iDL-IO-0DX"/>
                         <constraint firstItem="f63-ao-5ff" firstAttribute="top" secondItem="VX5-Om-zrG" secondAttribute="bottom" id="iru-xc-P1p"/>
-                        <constraint firstItem="lkI-XJ-yQT" firstAttribute="leading" secondItem="QEz-bZ-YhF" secondAttribute="leading" constant="47" id="ltO-oG-nIy"/>
+                        <constraint firstItem="lkI-XJ-yQT" firstAttribute="leading" secondItem="QEz-bZ-YhF" secondAttribute="leading" id="ltO-oG-nIy"/>
                         <constraint firstItem="VX5-Om-zrG" firstAttribute="top" secondItem="QEz-bZ-YhF" secondAttribute="top" id="n0B-55-EJf"/>
                         <constraint firstAttribute="bottom" secondItem="x2U-kU-IBo" secondAttribute="bottom" id="pJt-LH-MRw"/>
                         <constraint firstItem="x2U-kU-IBo" firstAttribute="top" secondItem="F00-Zi-Lt0" secondAttribute="bottom" id="qeQ-Lf-8Nt"/>
