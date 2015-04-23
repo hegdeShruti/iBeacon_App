@@ -284,7 +284,7 @@ BOOL isKidsOfferShown = NO;
         else{
             notification.alertBody=nil;
         }
-        if(notification.alertBody){
+        if(notification.alertBody ){
             
             
             NSDictionary *userInformation=[[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%ld",(long)offerId],@"offerID",offerHeading,@"offerHeader" ,nil];
@@ -311,9 +311,9 @@ BOOL isKidsOfferShown = NO;
 - (void)beaconManager:(ESTBeaconManager *)manager didExitRegion:(ESTBeaconRegion *)region
 {
      //UILocalNotification *notification = [UILocalNotification new];
-    if([region.identifier isEqualToString:@"MAINENTRANCEBEACON"] && self.globals.hasUsercrossedEntrance){
-        self.globals.hasUsercrossedEntrance=NO;
-    }
+//    if([region.identifier isEqualToString:@"MAINENTRANCEBEACON"] && self.globals.hasUsercrossedEntrance){
+//        self.globals.hasUsercrossedEntrance=NO;
+//    }
     
    
     

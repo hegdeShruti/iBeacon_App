@@ -92,15 +92,15 @@ BOOL isSearchEnabled = NO;
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+
     isSearchEnabled = NO;
+    
     UIButton *rtButton  = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
     [rtButton setImage:[UIImage imageNamed:@"clear.png"] forState:UIControlStateNormal];
     [rtButton addTarget:self action:@selector(clearPath:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rtButton];
     [SlideNavigationController sharedInstance].rightBarButtonItem = rightBarButtonItem;
-    
-    [super viewWillAppear:animated];
-    
     [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                                                                   [UIColor whiteColor],
                                                                                                   NSForegroundColorAttributeName,
@@ -111,20 +111,13 @@ BOOL isSearchEnabled = NO;
     
     self.indoorLocationView.backgroundColor = [UIColor clearColor];
     self.indoorLocationView.rotateOnPositionUpdate=NO;
-    self.indoorLocationView.showWallLengthLabels    = NO;
-    self.indoorLocationView.locationBorderColor     = [UIColor clearColor];
-    self.indoorLocationView.locationBorderThickness = 4;
-    self.indoorLocationView.doorColor               = [UIColor brownColor];
-    self.indoorLocationView.doorThickness           = 6;
-    self.indoorLocationView.traceColor              = [UIColor blueColor];
-    self.indoorLocationView.traceThickness          = 2;
-    self.indoorLocationView.wallLengthLabelsColor   = [UIColor blackColor];
     [self.indoorLocationView drawLocation:self.location];
     // You can change the avatar using positionImage property of ESTIndoorLocationView class.
     self.indoorLocationView.positionView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
     [self.indoorLocationView.positionView setBackgroundColor:[UIColor clearColor]];
 
-        self.frameWidth=self.view.frame.size.width>400?410:320;
+    //Adding store layout
+    self.frameWidth=self.view.frame.size.width>400?410:320;
     self.frameHeight=self.frameWidth;
     UIImageView *img=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.frameWidth,self.frameHeight)];
     [img setImage:[UIImage imageNamed:@"map.png"]];
@@ -140,11 +133,61 @@ BOOL isSearchEnabled = NO;
 //        [sectionLogo addTarget:self action:@selector(showOffer:) forControlEvents:UIControlEventTouchUpInside];
 //        [self.indoorLocationView drawObject:sectionLogo withPosition:[ESTPoint pointWithX:beacon.position.x y:beacon.position.y]];
 //    }
-
     
+    
+    //Setup Metrix
+    [self setupMetricx];
+    
+    // create path connections
+    for (int i = 0; i<_pathManager.pointList.count; i++) {
+        AOPathPoint *p = _pathManager.pointList[i];
+        NSArray *connectionList = [self getConnectionListForTag:p.tag];
+        [connectionList enumerateObjectsUsingBlock:^(UIButton *b, NSUInteger idx, BOOL *stop) {
+            AOPathConnection *c = [[AOPathConnection alloc] init];
+            c.point = [_pathManager getPathPointWithTag:b.tag];
+            [p addConnection:c];
+        }];
+    }
+    
+   }
+- (void)showOffer:(id)sender{
+    
+    NSLog(@"offer  %@",self.globals.offersDataArray);
+    
+    int section=[self getSectionID:(int)((UIButton *)sender).tag];
+    NSArray *resultOfferArray=[self.globals.productDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"%K == %d", @"sectionId",section]];
+    NSDictionary *resultOffer;
+    if (resultOfferArray !=nil &&  [resultOfferArray count ]!=0)
+        resultOffer=[resultOfferArray objectAtIndex:0 ];
+    if (resultOffer!=nil) {
+    int offerID = [[resultOffer valueForKey:@"offerid"] intValue];//[self getOfferbasedOnID:section];
+    Products *prodObject=  [GlobalVariables getProductWithID:offerID];
+    Offers *offerObject= [GlobalVariables getOfferWithID:offerID];
+   // CGRect mainFrame = [UIScreen mainScreen].bounds;
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    UIGraphicsBeginImageContext(window.bounds.size);
+    [window.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+//    [self.view drawViewHierarchyInRect:CGRectMake(0, 0, mainFrame.size.width, mainFrame.size.height) afterScreenUpdates:YES];
+  //  UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+  //  UIGraphicsEndImageContext();
+    if (prodObject!=nil) {
+        [self.globals showOfferPopUp:prodObject andMessage:offerObject.offerHeading onController:self withImage:image];
+    }
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.manager stopIndoorLocation];
+    self.globals.isUserOnTheMapScreen = NO;
+    [super viewWillDisappear:animated];
+}
+-(void)setupMetricx{
     _pathManager = [[AOShortestPath alloc] init];
     _pathManager.pointList = [NSMutableArray array];
-     _wommenSectionTagArray = [NSMutableArray array];
+    _wommenSectionTagArray = [NSMutableArray array];
     _kidSectionTagArray = [NSMutableArray array];
     _menSectionTagArray = [NSMutableArray array];
     // create visual structure of plane
@@ -162,7 +205,7 @@ BOOL isSearchEnabled = NO;
                ];
     
     // set default field size
-
+    
     _frameWidthFactor = self.frameWidth/[_plane[0] count];
     _frameHeightFactor = self.frameHeight/[_plane count];
     // generate plans's fields
@@ -182,7 +225,7 @@ BOOL isSearchEnabled = NO;
             } else {
                 l.backgroundColor = [UIColor clearColor];
             }
-
+            
             [self.indoorLocationView addSubview:l];
             if((i>2&&i<7)&& j<3){
                 [_wommenSectionTagArray addObject:[NSNumber numberWithInteger:l.tag]];
@@ -202,72 +245,7 @@ BOOL isSearchEnabled = NO;
             [_pathManager.pointList addObject:p];
         }
     }
-    
-    // create path connections
-    for (int i = 0; i<_pathManager.pointList.count; i++) {
-        AOPathPoint *p = _pathManager.pointList[i];
-        NSArray *connectionList = [self getConnectionListForTag:p.tag];
-        [connectionList enumerateObjectsUsingBlock:^(UIButton *b, NSUInteger idx, BOOL *stop) {
-            AOPathConnection *c = [[AOPathConnection alloc] init];
-            c.point = [_pathManager getPathPointWithTag:b.tag];
-            [p addConnection:c];
-        }];
-    }
-    
-   }
-- (void)showOffer:(id)sender{
-    
-    NSLog(@"offer  %@",self.globals.offersDataArray);
-    
-    SectionIdentifier section=[self getSectionID:(int)((UIButton *)sender).tag];
-    
-    NSArray *resultOfferArray=[self.globals.offersDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"%K == %d", @"sectionId",section]];
-    NSDictionary *resultOffer;
-    if (resultOfferArray !=nil &&  [resultOfferArray count ]!=0)
-        resultOffer=[resultOfferArray objectAtIndex:0 ];
-    int offerID = [self getOfferbasedOnID:section];
-    int prodId;
-    switch (offerID) {
-        case 2:
-            prodId=1;
-            break;
-        case 3:
-            prodId=6;
-            break;
-        case 6:
-            prodId=5;
-            break;
-        default:
-            break;
-    }
-    Products *prodObject=  [GlobalVariables getProductWithID:offerID];
-    Offers *offerObject= [GlobalVariables getOfferWithID:offerID];
-   // CGRect mainFrame = [UIScreen mainScreen].bounds;
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    UIGraphicsBeginImageContext(window.bounds.size);
-    [window.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-//    [self.view drawViewHierarchyInRect:CGRectMake(0, 0, mainFrame.size.width, mainFrame.size.height) afterScreenUpdates:YES];
-  //  UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-  //  UIGraphicsEndImageContext();
-    if (prodObject!=nil) {
-        [self.globals showOfferPopUp:prodObject andMessage:offerObject.offerHeading onController:self withImage:image];
-    }
-    
 }
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [self.manager stopIndoorLocation];
-    self.globals.isUserOnTheMapScreen = NO;
-    [super viewWillDisappear:animated];
-}
-
-#pragma mark - UISwitch events
-
-
-//-(void)showAlertForSection:
 
 
 - (void)actionField:(UIButton*)sender {
@@ -300,7 +278,7 @@ BOOL isSearchEnabled = NO;
                 
                 [_pathGeneratorView setPathList:_pathArray];
                 _pathGeneratorView.hidden=NO;
-                    _search = NO;
+                _search = NO;
                 
             } else {
                 _search = NO;
@@ -416,25 +394,26 @@ BOOL isSearchEnabled = NO;
     }
     return section;
 }
-
--(int)getOfferbasedOnID:(int)section{
-    int offerID=0 ;
-    switch (section) {
-        case 3:
-            offerID = 2;
-            break;
-        case 1:
-            offerID = 3;
-            break;
-        case 2:
-            offerID = 6;
-            break;
-        default:
-            break;
+-(void)locateProduct{
+    if (_product!=nil&& isSearchEnabled != YES ) {
+        NSArray *tempArray = [self.globals.productDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"%K == %@", @"productName",_product.prodName]];
+        if([tempArray count] > 0){
+            NSDictionary *resultProduct=[tempArray objectAtIndex:0];
+            Products *product = [(Products *)[Products alloc] initWithDictionary:resultProduct];
+            UIButton *but=(UIButton *)[self.indoorLocationView viewWithTag:[self getTagForSectionID:[[resultProduct valueForKey:@"sectionId"]intValue]]];
+            //    [but setBackgroundImage:[UIImage imageNamed:@"map-pin-green.png"] forState: UIControlStateNormal];
+            //show the description ...
+            self.labelView.hidden = NO;
+            self.textLabel.text = [NSString stringWithFormat:@"The product %@ is available in the %@",product.prodName,[GlobalVariables returnTitleForSection:[[resultProduct valueForKey:@"sectionId"] intValue]]];
+            [self.productImage sd_setImageWithURL:[NSURL URLWithString:[product.prodImage stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] ] placeholderImage:[UIImage imageNamed:@"1.png"]];
+            // self.productImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[resultProduct valueForKey:@"productName"]]];
+            isSearchEnabled = YES;
+            [self actionField:(UIButton *)[self.indoorLocationView viewWithTag:but.tag]];
+            
+        }
     }
-    return offerID;
+ 
 }
-
 #pragma mark - ESTIndoorLocationManager delegate
 
 - (void)indoorLocationManager:(ESTIndoorLocationManager *)manager
@@ -458,27 +437,9 @@ BOOL isSearchEnabled = NO;
     if (_startField.tag!=tagNo) {
         [_startField setBackgroundImage:nil forState:UIControlStateNormal];
     }
-    
     _startField = (UIButton*)[self.indoorLocationView viewWithTag:tagNo];
     [_startField setBackgroundImage:[UIImage imageNamed:@"person.png"] forState:UIControlStateNormal];
-    if (_product!=nil&& isSearchEnabled != YES ) {
-        NSArray *tempArray = [self.globals.productDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"%K == %@", @"productName",_product.prodName]];
-        if([tempArray count] > 0){
-            NSDictionary *resultProduct=[tempArray objectAtIndex:0];
-            Products *product = [(Products *)[Products alloc] initWithDictionary:resultProduct];
-            UIButton *but=(UIButton *)[self.indoorLocationView viewWithTag:[self getTagForSectionID:[[resultProduct valueForKey:@"sectionId"]intValue]]];
-            //    [but setBackgroundImage:[UIImage imageNamed:@"map-pin-green.png"] forState: UIControlStateNormal];
-            //show the description ...
-            self.labelView.hidden = NO;
-            self.textLabel.text = [NSString stringWithFormat:@"The product %@ is available in the %@",product.prodName,[GlobalVariables returnTitleForSection:[[resultProduct valueForKey:@"sectionId"] intValue]]];
-            [self.productImage sd_setImageWithURL:[NSURL URLWithString:[product.prodImage stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] ] placeholderImage:[UIImage imageNamed:@"1.png"]];
-            // self.productImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[resultProduct valueForKey:@"productName"]]];
-            isSearchEnabled = YES;
-                        [self actionField:(UIButton *)[self.indoorLocationView viewWithTag:but.tag]];
-            
-        }
-    }
-
+    [self locateProduct];
     
 }
 
