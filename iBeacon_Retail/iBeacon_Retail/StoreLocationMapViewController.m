@@ -92,6 +92,7 @@ BOOL isSearchEnabled = NO;
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    isSearchEnabled = NO;
     UIButton *rtButton  = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
     [rtButton setImage:[UIImage imageNamed:@"clear.png"] forState:UIControlStateNormal];
     [rtButton addTarget:self action:@selector(clearPath:) forControlEvents:UIControlEventTouchUpInside];
@@ -213,8 +214,7 @@ BOOL isSearchEnabled = NO;
         }];
     }
     
-    
-}
+   }
 - (void)showOffer:(id)sender{
     
     NSLog(@"offer  %@",self.globals.offersDataArray);
@@ -461,6 +461,24 @@ BOOL isSearchEnabled = NO;
     
     _startField = (UIButton*)[self.indoorLocationView viewWithTag:tagNo];
     [_startField setBackgroundImage:[UIImage imageNamed:@"person.png"] forState:UIControlStateNormal];
+    if (_product!=nil&& isSearchEnabled != YES ) {
+        NSArray *tempArray = [self.globals.productDataArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"%K == %@", @"productName",_product.prodName]];
+        if([tempArray count] > 0){
+            NSDictionary *resultProduct=[tempArray objectAtIndex:0];
+            Products *product = [(Products *)[Products alloc] initWithDictionary:resultProduct];
+            UIButton *but=(UIButton *)[self.indoorLocationView viewWithTag:[self getTagForSectionID:[[resultProduct valueForKey:@"sectionId"]intValue]]];
+            //    [but setBackgroundImage:[UIImage imageNamed:@"map-pin-green.png"] forState: UIControlStateNormal];
+            //show the description ...
+            self.labelView.hidden = NO;
+            self.textLabel.text = [NSString stringWithFormat:@"The product %@ is available in the %@",product.prodName,[GlobalVariables returnTitleForSection:[[resultProduct valueForKey:@"sectionId"] intValue]]];
+            [self.productImage sd_setImageWithURL:[NSURL URLWithString:[product.prodImage stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] ] placeholderImage:[UIImage imageNamed:@"1.png"]];
+            // self.productImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[resultProduct valueForKey:@"productName"]]];
+            isSearchEnabled = YES;
+                        [self actionField:(UIButton *)[self.indoorLocationView viewWithTag:but.tag]];
+            
+        }
+    }
+
     
 }
 

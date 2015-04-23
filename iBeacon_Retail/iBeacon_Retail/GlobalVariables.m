@@ -318,13 +318,15 @@ static GlobalVariables *instance = nil;
     [[SlideNavigationController sharedInstance] pushViewController:cartScreen animated:YES];
 }
 
-+(void)loadStoreMapScreen{
++(void)loadStoreMapScreen:(Products *)product{
 //    CartViewController* cartScreen = [[CartViewController alloc] initWithNibName:@"CartViewController" bundle:nil];
     //    MenuViewController* menuvc = (MenuViewController*)[SlideNavigationController sharedInstance].leftBarButtonItem;
     NSIndexPath* path = [NSIndexPath indexPathForRow: BeaconRetailMapIndex inSection:0];
     [instance.leftMenu.tableview selectRowAtIndexPath:path animated:NO scrollPosition:UITableViewScrollPositionMiddle];
     instance.leftMenu.currentIndex = BeaconRetailMapIndex;
-    [[SlideNavigationController sharedInstance] pushViewController:[self getStoreMap] animated:YES];
+    StoreLocationMapViewController* vc=[self getStoreMap];
+    vc.product=product;
+    [[SlideNavigationController sharedInstance] pushViewController:vc animated:YES];
 }
 
 +(MenuViewController *)getLeftMenu{
