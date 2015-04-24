@@ -51,6 +51,9 @@
 @property (assign, nonatomic) CGFloat frameWidth;
 @property (assign, nonatomic) CGFloat frameHeight;
 
+@property(nonatomic,retain)UIImageView *personView;
+
+
 @end
 
 BOOL isSearchEnabled = NO;
@@ -67,6 +70,7 @@ BOOL isSearchEnabled = NO;
         self.globals=[GlobalVariables getInstance];
         self.location = location;
         self.filteredProductList=[NSMutableArray array];
+        self.personView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"person.png"]];
     }
     
     return self;
@@ -111,6 +115,7 @@ BOOL isSearchEnabled = NO;
     
     self.indoorLocationView.backgroundColor = [UIColor clearColor];
     self.indoorLocationView.rotateOnPositionUpdate=NO;
+    self.indoorLocationView.showBeaconOrientation=NO;
     [self.indoorLocationView drawLocation:self.location];
     // You can change the avatar using positionImage property of ESTIndoorLocationView class.
     self.indoorLocationView.positionView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
@@ -125,12 +130,9 @@ BOOL isSearchEnabled = NO;
     
     [self.manager startIndoorLocation:self.location];
 //    for(ESTPositionedBeacon *beacon in self.location.beacons){
-//        OfferButton *sectionLogo = [[OfferButton alloc] initWithFrame:CGRectMake(0,0, 30, 50)];
-//        sectionLogo.tag=[GlobalVariables getSectionId:beacon.macAddress]+OFFER_TAG_OFFSET;
-//        sectionLogo.tagNo=[self getTag:beacon.position];
-//        // [tagList setValue:[NSNumber numberWithInt:sectionLogo.tagNo] forKey:[NSString stringWithFormat:@"%ld",sectionLogo.tag-1000]];
-//        [sectionLogo setBackgroundImage:[UIImage imageNamed:@"map-pin-red.png"] forState: UIControlStateNormal] ;
-//        [sectionLogo addTarget:self action:@selector(showOffer:) forControlEvents:UIControlEventTouchUpInside];
+//        UIImageView *sectionLogo = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, 0, 0)];
+////        [sectionLogo setImage:[UIImage imageNamed:@"map-pin-red.png"]] ;
+//        [sectionLogo setBackgroundColor:[UIColor clearColor]];
 //        [self.indoorLocationView drawObject:sectionLogo withPosition:[ESTPoint pointWithX:beacon.position.x y:beacon.position.y]];
 //    }
     
@@ -194,8 +196,8 @@ BOOL isSearchEnabled = NO;
     _plane = @[
                @[@0,@0,@0,@0,@0,@0,@0,@0,@0,@0], //1
                @[@0,@0,@1,@0,@1,@1,@1,@0,@1,@0], //2
-               @[@0,@1,@0,@0,@0,@1,@0,@0,@1,@0], //3
-               @[@0,@0,@0,@1,@1,@1,@1,@0,@0,@0], //4
+               @[@0,@1,@1,@1,@0,@1,@0,@1,@1,@0], //3
+               @[@0,@0,@0,@1,@1,@1,@1,@1,@0,@0], //4
                @[@0,@1,@0,@1,@0,@0,@1,@0,@1,@0], //5
                @[@0,@1,@1,@1,@0,@0,@1,@1,@1,@0], //6
                @[@0,@0,@0,@1,@1,@1,@1,@0,@0,@0], //7
@@ -250,7 +252,7 @@ BOOL isSearchEnabled = NO;
 
 - (void)actionField:(UIButton*)sender {
     [self clearPath:nil];
-    [_startField setBackgroundImage:[UIImage imageNamed:@"person.png"] forState:UIControlStateNormal];
+//    [_startField setBackgroundImage:[UIImage imageNamed:@"person.png"] forState:UIControlStateNormal];
     
         if([sender.titleLabel.text isEqualToString:@"X"]){
             NSLog(@"Its a wall !!");
@@ -420,12 +422,12 @@ BOOL isSearchEnabled = NO;
             didUpdatePosition:(ESTOrientedPoint *)position
                    inLocation:(ESTLocation *)location
 {
-    [self.indoorLocationView updatePosition:position];
-    
+//    [self.indoorLocationView updatePosition:position];
     float positionX,positionY;
     positionX = ceilf(position.y);
     positionY = ceilf(position.x);
-    
+    [self.indoorLocationView drawObject:_personView withPosition:[ESTPoint pointWithX:positionY y:positionX]];
+
     positionX=positionX > 0 ?positionX-4:positionX-5;
     positionX=fabsf(positionX);
     positionY=positionY < 0 ?positionY+6:positionY+5;
@@ -438,7 +440,8 @@ BOOL isSearchEnabled = NO;
         [_startField setBackgroundImage:nil forState:UIControlStateNormal];
     }
     _startField = (UIButton*)[self.indoorLocationView viewWithTag:tagNo];
-    [_startField setBackgroundImage:[UIImage imageNamed:@"person.png"] forState:UIControlStateNormal];
+    
+//    [_startField setBackgroundImage:[UIImage imageNamed:@"person.png"] forState:UIControlStateNormal];
     [self locateProduct];
     
 }
