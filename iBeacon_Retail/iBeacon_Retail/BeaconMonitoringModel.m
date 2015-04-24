@@ -32,10 +32,6 @@
 @end
 
 
-BOOL isMenOfferShown = NO;
-BOOL isWomenOfferShown = NO;
-BOOL isKidsOfferShown = NO;
-
 @implementation BeaconMonitoringModel
 @synthesize dict;
 
@@ -90,6 +86,7 @@ BOOL isKidsOfferShown = NO;
     self.mainEntraneRegion.notifyOnExit=YES;
     self.regionKidsSection.notifyOnEntry=YES;
     [self.beaconManager requestAlwaysAuthorization];
+    // commenting monitoring for now
 //    [self.beaconManager startMonitoringForRegion:  self.mainEntraneRegion];
 //    [self.beaconManager startMonitoringForRegion:  self.region];
 //    [self.beaconManager startMonitoringForRegion:  self.regionMenSection];
@@ -103,7 +100,7 @@ BOOL isKidsOfferShown = NO;
     [self.beaconManager startRangingBeaconsInRegion:  self.regionKidsSection];
    
 }
-
+/*
 #pragma beaconmanager Delegate method
 - (void)beaconManager:(ESTBeaconManager *)manager didEnterRegion:(ESTBeaconRegion *)region
 {
@@ -181,56 +178,21 @@ BOOL isKidsOfferShown = NO;
    
   
    }
+ */
 
 - (void)beaconManager:(ESTBeaconManager *)manager
       didRangeBeacons:(NSArray *)beacons
              inRegion:(ESTBeaconRegion *)region{
-  /*  for(ESTBeacon *beaconObj in beacons){
-        
-        if(([beaconObj.major isEqualToNumber:[dict objectForKey:@"MenSectionBeacon_Major"]])){
-            if(beaconObj.proximity == CLProximityFar || beaconObj.proximity == CLProximityUnknown){
-                isMenOfferShown = NO;
-            }
-            else if(((beaconObj.proximity==CLProximityImmediate)||(beaconObj.proximity==CLProximityNear)) && !isMenOfferShown){
-                isMenOfferShown = YES;
-                self.beaconRegion = MENSECTIONBEACON;
-                [self showPopUpForOffer];
-            }
-        }
-        else if(([beaconObj.major isEqualToNumber:[dict objectForKey:@"WomenSectionBeacon_Major"]])){
-            if(beaconObj.proximity == CLProximityFar || beaconObj.proximity == CLProximityUnknown){
-                isWomenOfferShown = NO;
-            }
-            else if(((beaconObj.proximity==CLProximityImmediate)||(beaconObj.proximity==CLProximityNear)) && !isWomenOfferShown){
-                isWomenOfferShown = YES;
-                self.beaconRegion = WOMENSECTIONBEACON;
-                [self showPopUpForOffer];
-            }
-        }
-        else if(([beaconObj.major isEqualToNumber:[dict objectForKey:@"KidSectionBeacon_Major"]])){
-            if(beaconObj.proximity == CLProximityFar || beaconObj.proximity == CLProximityUnknown){
-                isKidsOfferShown = NO;
-            }
-            else if(((beaconObj.proximity==CLProximityImmediate)||(beaconObj.proximity==CLProximityNear)) && !isKidsOfferShown){
-                isKidsOfferShown = YES;
-                self.beaconRegion = KIDSECTIONBEACON;
-                [self showPopUpForOffer];
-            }
-        }
-        else{
-            
-        }
-        
-    }*/
+  
     NSInteger offerId=0;
     NSString *offerHeading=[[NSString alloc] init];
     for(ESTBeacon *beaconObj in beacons){
     @synchronized(self) {
         UILocalNotification *notification = [UILocalNotification new];
         // if user is near outside beacon and he has already visted shop not that event as exit and clear all flags
-        if([region.identifier isEqualToString:@"MAINENTRANCEBEACON"]&&!self.globals.hasUsercrossedEntrance  && ((beaconObj.proximity==CLProximityImmediate)||(beaconObj.proximity==CLProximityNear)) ) {
-            self.globals.hasUsercrossedEntrance=YES;
-            //if(self.globals.hasUserEnteredTheStore){
+        if([region.identifier isEqualToString:@"MAINENTRANCEBEACON"]&&!self.globals.hasUserExited && self.globals.hasUserEnteredTheStore  && ((beaconObj.proximity==CLProximityImmediate)||(beaconObj.proximity==CLProximityNear)) ) {
+            self.globals.hasUserExited=YES;
+            
                 notification.alertBody = @"Thank you for visiting Us";
                 offerId=5;
                 offerHeading= @"Offers Just For You!";
@@ -241,23 +203,21 @@ BOOL isKidsOfferShown = NO;
                 self.globals.hasUserGotKidSectionOffers=NO;
             
                 [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
-           // }
             
         }
-        else if([region.identifier isEqualToString:@"MAINENTRANCEBEACON"]&&self.globals.hasUsercrossedEntrance  && ((beaconObj.proximity==CLProximityFar)||(beaconObj.proximity==CLProximityUnknown)) ){
-              self.globals.hasUsercrossedEntrance=NO;
-        }
-        else  if([region.identifier isEqualToString:@"ENTRYBEACON" ]&& !self.globals.hasUserEntredEntryBeacon && ((beaconObj.proximity==CLProximityImmediate)||(beaconObj.proximity==CLProximityNear))){
-            // else  if([region.identifier isEqualToString:@"ENTRYBEACON" ] ){
+
+        else  if([region.identifier isEqualToString:@"ENTRYBEACON" ]&& !self.globals.hasUserEntredEntryBeacon && self.globals.hasUserEnteredTheStore&&((beaconObj.proximity==CLProximityImmediate)||(beaconObj.proximity==CLProximityNear))){
+            
             notification.alertBody = @"Welcome to Tavant Store..Check for offers here";
             offerHeading= @"Welcome to the Store check for offers here";
             offerId=6;
             
-            self.globals.hasUserEnteredTheStore=YES;
-            self.globals.hasUserEntredEntryBeacon=YES;
+                self.globals.hasUserEnteredTheStore=YES;
+                self.globals.hasUserEntredEntryBeacon=YES;
+                self.globals.hasUserExited=NO;
         }
-        else if([region.identifier isEqualToString:@"MENSECTIONBEACON"]&& !self.globals.hasUserGotMenSectionOffers  && ((beaconObj.proximity==CLProximityImmediate)||(beaconObj.proximity==CLProximityNear)) ){
-            //else if([region.identifier isEqualToString:@"MENSECTIONBEACON"]){
+        else if([region.identifier isEqualToString:@"MENSECTIONBEACON"]&& !self.globals.hasUserGotMenSectionOffers &&self.globals.hasUserEnteredTheStore && ((beaconObj.proximity==CLProximityImmediate)||(beaconObj.proximity==CLProximityNear)) ){
+           
             notification.alertBody = @"Visit Men section to avail the exiting offers.";
             offerHeading= @"Welcome to Men's section!!";
             offerId=4;
@@ -266,15 +226,15 @@ BOOL isKidsOfferShown = NO;
             
             
         }
-        else if([region.identifier isEqualToString:@"WOMENSECTIONBEACON"]&& !self.globals.hasUserGotWOmenSectionOffers  && ((beaconObj.proximity==CLProximityImmediate)||(beaconObj.proximity==CLProximityNear))){
-            // else if([region.identifier isEqualToString:@"WOMENSECTIONBEACON"]){
+        else if([region.identifier isEqualToString:@"WOMENSECTIONBEACON"]&& !self.globals.hasUserGotWOmenSectionOffers && self.globals.hasUserEnteredTheStore && ((beaconObj.proximity==CLProximityImmediate)||(beaconObj.proximity==CLProximityNear))){
+           
             notification.alertBody = @"Visit Women section to avail the exiting offers.";
             offerId=1;
             offerHeading= @"Welcome to Women's section!!";
             self.globals.hasUserGotWOmenSectionOffers=YES;
         }
-        else if([region.identifier isEqualToString:@"KIDSECTIONBEACON"]&& !self.globals.hasUserGotKidSectionOffers  && ((beaconObj.proximity==CLProximityImmediate)||(beaconObj.proximity==CLProximityNear))){
-            // else if([region.identifier isEqualToString:@"KIDSECTIONBEACON"]){
+        else if([region.identifier isEqualToString:@"KIDSECTIONBEACON"]&& !self.globals.hasUserGotKidSectionOffers  && self.globals.hasUserEnteredTheStore&& ((beaconObj.proximity==CLProximityImmediate)||(beaconObj.proximity==CLProximityNear))){
+            
             notification.alertBody = @"Visit Kids section to avail the exiting offers.";
             offerHeading= @"Welcome to Kid's section!!";
             offerId=2;
@@ -284,7 +244,7 @@ BOOL isKidsOfferShown = NO;
         else{
             notification.alertBody=nil;
         }
-        if(notification.alertBody ){
+        if(notification.alertBody && !self.globals.isUserOnTheMapScreen){
             
             
             NSDictionary *userInformation=[[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%ld",(long)offerId],@"offerID",offerHeading,@"offerHeader" ,nil];
@@ -299,25 +259,9 @@ BOOL isKidsOfferShown = NO;
     }
 }
 
--(void)showPopUpForOffer{
-    if(!self.globals.isUserOnTheMapScreen){
-//        [self.globals showOfferPopUpWithTitle:[GlobalVariables returnTitleForRegion:self.beaconRegion] andMessage:@"You have 50% off on selected items"];
-//        ;
-//        [self.globals showOfferPopUp:[GlobalVariables returnTitleForRegion:self.beaconRegion] andMessage:@"You have 50% off on selected items"] onController:nil withImage:nil];
-    }
-
-}
 
 - (void)beaconManager:(ESTBeaconManager *)manager didExitRegion:(ESTBeaconRegion *)region
 {
-     //UILocalNotification *notification = [UILocalNotification new];
-//    if([region.identifier isEqualToString:@"MAINENTRANCEBEACON"] && self.globals.hasUsercrossedEntrance){
-//        self.globals.hasUsercrossedEntrance=NO;
-//    }
-    
-   
-    
-    
     
 }
 

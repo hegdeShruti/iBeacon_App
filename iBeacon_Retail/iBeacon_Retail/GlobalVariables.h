@@ -39,7 +39,7 @@ typedef enum {
 @property(nonatomic,assign) BOOL hasUserGotWOmenSectionOffers;
 @property(nonatomic,assign) BOOL hasUserGotMenSectionOffers;
 @property(nonatomic,assign) BOOL hasUserGotKidSectionOffers;
-@property(nonatomic,assign) BOOL hasUsercrossedEntrance;
+@property(nonatomic,assign) BOOL hasUserExited;
 @property(nonatomic,assign) BOOL hasUserEntredEntryBeacon;
 @property(nonatomic,assign) BOOL isUserOnTheMapScreen;
 @property(nonatomic,strong) NSMutableArray *offersDataArray;

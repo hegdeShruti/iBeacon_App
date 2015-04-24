@@ -31,15 +31,17 @@
 @property (nonatomic, strong) ESTBeaconRegion *regionMenSection;
 @property (nonatomic, strong) BeaconMonitoringModel *beaconOperations;
 @property (nonatomic,strong) LoginViewController *loginViewController;
+@property(nonatomic,strong) GlobalVariables * globals;
 
 @end
 
 @implementation AppDelegate
-@synthesize beaconOperations;
+@synthesize beaconOperations,globals;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     // get all prodict and offer related data app open
+   globals=[GlobalVariables getInstance];
     [GlobalVariables getAllProductsFromServer];
     
     // start monitoring for beacons
@@ -80,7 +82,7 @@
         NSLog(@" offer id is%@",notification.userInfo.description);
       
         // when app in backgroud and notification from beacon arrives then open product details screen
-        GlobalVariables * globals=[GlobalVariables getInstance];
+        
         CGRect mainFrame = [UIScreen mainScreen].bounds;
         UIGraphicsBeginImageContext(CGSizeMake(mainFrame.size.width, mainFrame.size.height));
         [self.window.rootViewController.view drawViewHierarchyInRect:CGRectMake(0, 0, mainFrame.size.width, mainFrame.size.height) afterScreenUpdates:YES];
