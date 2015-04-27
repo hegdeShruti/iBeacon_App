@@ -11,5 +11,6 @@
 @interface ProductImageCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic,weak) IBOutlet UIImageView* prodImage;
+@property (weak, nonatomic) IBOutlet UILabel *discountAmountLabel;
 
 @end

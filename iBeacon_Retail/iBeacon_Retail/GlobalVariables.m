@@ -311,12 +311,18 @@ static GlobalVariables *instance = nil;
 
 
 -(void)loadCartScreen{
-    CartViewController* cartScreen = [[CartViewController alloc] initWithNibName:@"CartViewController" bundle:nil];
+    if([GlobalVariables getCartItems].count == 0)
+    {
+        UIAlertView* emptyCartAlert = [[UIAlertView alloc] initWithTitle:@"Cart Empty" message:@"Please add items to cart first." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [emptyCartAlert show];
+    }else{
+        CartViewController* cartScreen = [[CartViewController alloc] initWithNibName:@"CartViewController" bundle:nil];
 //    MenuViewController* menuvc = (MenuViewController*)[SlideNavigationController sharedInstance].leftBarButtonItem;
-    NSIndexPath* path = [NSIndexPath indexPathForRow: BeaconRetailCartIndex inSection:0];
-    [instance.leftMenu.tableview selectRowAtIndexPath:path animated:NO scrollPosition:UITableViewScrollPositionMiddle];
-    instance.leftMenu.currentIndex = BeaconRetailCartIndex;
-    [[SlideNavigationController sharedInstance] pushViewController:cartScreen animated:YES];
+        NSIndexPath* path = [NSIndexPath indexPathForRow: BeaconRetailCartIndex inSection:0];
+        [instance.leftMenu.tableview selectRowAtIndexPath:path animated:NO scrollPosition:UITableViewScrollPositionMiddle];
+        instance.leftMenu.currentIndex = BeaconRetailCartIndex;
+        [[SlideNavigationController sharedInstance] pushViewController:cartScreen animated:YES];
+    }
 }
 
 +(void)loadStoreMapScreen:(Products *)product fromMenu: (BOOL) loadFromMenu{
