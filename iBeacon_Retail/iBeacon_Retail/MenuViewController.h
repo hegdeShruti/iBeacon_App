@@ -30,16 +30,6 @@ typedef NS_ENUM(NSInteger, BeconRetailMenuIndex) {
 - (void)menuItemSelected:(int) menuItem;
 @end
 
-//typedef enum : NSUInteger {
-//    products=0,
-//    offers,
-//    cart,
-//    map,
-//    logout
-//} menuIndex;
-
-
-
 @interface MenuViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,assign) NSInteger currentIndex;

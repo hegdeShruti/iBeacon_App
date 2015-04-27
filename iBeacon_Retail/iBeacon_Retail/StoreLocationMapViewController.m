@@ -507,6 +507,15 @@ BOOL isSearchEnabled = NO;
         
     }
 }
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    UITouch *touch = [[event allTouches] anyObject];
+    if ([self.searchBar isFirstResponder] && [touch view] != self.searchBar) {
+        [self.searchBar resignFirstResponder];
+    }
+    [super touchesBegan:touches withEvent:event];
+}
 #pragma mark UITableViewDataSource methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger) section {
@@ -544,7 +553,11 @@ BOOL isSearchEnabled = NO;
 #pragma mark Slide view delegate method
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu
 {
-    return YES;
+    if(self.loadedFromMainMenu == YES){
+        return YES;
+    }else{
+        return NO;
+    }
 }
 - (BOOL)slideNavigationControllerShouldDisplayRightMenu
 {

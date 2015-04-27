@@ -15,6 +15,7 @@
 #import "Products.h"
 @interface StoreLocationMapViewController : UIViewController<UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource,SlideNavigationControllerDelegate>
 
+@property BOOL loadedFromMainMenu;
 @property (nonatomic, strong) IBOutlet ESTIndoorLocationView *indoorLocationView;
 @property (nonatomic, retain) IBOutlet UITableView *autocompleteTableView;
 @property (nonatomic, retain) NSMutableArray *filteredProductList;

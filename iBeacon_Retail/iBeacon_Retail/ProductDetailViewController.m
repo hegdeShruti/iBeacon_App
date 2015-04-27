@@ -146,7 +146,7 @@
 - (IBAction)locateProduct:(UIButton *)sender {
 //    StoreLocationMapViewController* storeMap = [GlobalVariables getStoreMap];
 //    [[SlideNavigationController sharedInstance] pushViewController:storeMap animated:YES];
-    [GlobalVariables loadStoreMapScreen:_product];
+    [GlobalVariables loadStoreMapScreen:_product fromMenu:NO];
 }
 
 - (IBAction)addProductToCart:(id)sender {

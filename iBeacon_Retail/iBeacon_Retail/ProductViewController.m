@@ -54,7 +54,6 @@
     if([globals.productDataArray count]>0){
         self.products = self.searchFilteredProducts = globals.productDataArray;
     }
-    
     [self.prodCollectionView reloadData];
    
 }
@@ -152,35 +151,11 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     Products *prodObject= [[Products alloc] initWithDictionary:[self.searchFilteredProducts objectAtIndex:indexPath.row]];
-  //  prodObject.prodImage=[NSString stringWithFormat:@"%@.png",prodObject.prodName];
-//    NSDictionary* tempDic = [[NSDictionary alloc] initWithObjectsAndKeys:prodObject,@"product",[NSNumber numberWithInteger:1],@"quantity", nil];
-//    CartItem* cartItem = [[CartItem alloc] initWithDictionary:tempDic];
-//    [GlobalVariables addItemToCart:cartItem];
-    
     ProductDetailViewController* prodDetailVC = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController" bundle:nil];
     prodDetailVC.product = prodObject;
    // prodDetailVC.selectedImage=;
     [[SlideNavigationController sharedInstance] pushViewController:prodDetailVC animated:YES];
-//    [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:prodDetailVC withSlideOutAnimation:NO andCompletion:nil];
-//    test.view.frame = self.view.frame;
-//    NSLog(@"%@",self.navigationController);
-//    [self.navigationController pushViewController:prodDetailVC animated:YES];
-//    [self.delegate setGesturesOn:NO];
-//    [self.delegate toggleMenuButtonOnceProductDetailVCLoaded];
-    
-//    [self testRetrieve];
-//    UIAlertView* addedAlert = [[UIAlertView alloc] initWithTitle:@"Added" message:@"product added" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//    [addedAlert show];
-}
-
--(void) testRetrieve
-{
-    NSArray *obj =  [GlobalVariables getCartItems];
-    for(CartItem* itm in obj){
-        NSLog(@"CARTITEM SAVED - productName: %@,%li", itm.product.prodName, (long)itm.quantity);
-    }
 }
 
 #pragma searchBar delegates
@@ -191,22 +166,42 @@
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    self.searchBar.text=@"";
+    [self filterRetailerList];
     [searchBar resignFirstResponder];
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if(searchText.length == 0){
         [self filterRetailerList];
+        
     }else{
         searchBar.showsCancelButton = YES;
     }
     if([[searchBar.text stringByTrimmingCharactersInSet:[NSCharacterSet  whitespaceAndNewlineCharacterSet]] isEqualToString:@""]) return;
     [self filterRetailerList];
-//    [searchBar resignFirstResponder];
+}
+-(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
+    NSLog(@"YES!!!!!!!");
+    if(searchBar.text.length > 0){
+        searchBar.showsCancelButton = YES;
+    }else{
+        searchBar.showsCancelButton = NO;
+    }
+    return YES;
 }
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar{
     searchBar.showsCancelButton = NO;
     return YES;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    UITouch *touch = [[event allTouches] anyObject];
+    if ([self.searchBar isFirstResponder] && [touch view] != self.searchBar) {
+        [self.searchBar resignFirstResponder];
+    }
+    [super touchesBegan:touches withEvent:event];
 }
 
 -(void)filterRetailerList

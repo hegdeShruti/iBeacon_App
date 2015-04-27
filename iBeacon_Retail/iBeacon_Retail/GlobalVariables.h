@@ -64,6 +64,7 @@ typedef enum {
 +(int)getSectionId:(NSString *)macAddress;
 +(StoreLocationMapViewController*)getStoreMap;
 +(MenuViewController*)getLeftMenu;
++(void)clearLeftMenu;
 +(NSString *)returnTitleForSection:(SectionIdentifier)sectionId;
 -(void) getOffers;
 
@@ -72,7 +73,7 @@ typedef enum {
 +(void) getAllProductsFromServer;
 +(NSMutableArray*)getCartItems;
 -(void)loadCartScreen;
-+(void)loadStoreMapScreen:(Products *)product;
++(void)loadStoreMapScreen:(Products *)product fromMenu: (BOOL) loadFromMenu;
 
 +(Products *)getProductWithID:(NSInteger) offerId;
 +(Offers *)getOfferWithID:(NSInteger) offerId;

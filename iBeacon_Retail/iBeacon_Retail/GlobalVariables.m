@@ -260,7 +260,8 @@ static GlobalVariables *instance = nil;
         NSString *path = [[NSBundle mainBundle] pathForResource:@"location" ofType:@"json"];
         NSString *content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
         ESTLocation *location = [ESTLocationBuilder parseFromJSON:content];
-        vc = [[StoreLocationMapViewController alloc] initWithLocation:location];        
+        vc = [[StoreLocationMapViewController alloc] initWithLocation:location];
+        vc.loadedFromMainMenu=YES;
     //}
     instance.storeLocationController = vc;
     return vc;
@@ -318,13 +319,16 @@ static GlobalVariables *instance = nil;
     [[SlideNavigationController sharedInstance] pushViewController:cartScreen animated:YES];
 }
 
-+(void)loadStoreMapScreen:(Products *)product{
++(void)loadStoreMapScreen:(Products *)product fromMenu: (BOOL) loadFromMenu{
 //    CartViewController* cartScreen = [[CartViewController alloc] initWithNibName:@"CartViewController" bundle:nil];
     //    MenuViewController* menuvc = (MenuViewController*)[SlideNavigationController sharedInstance].leftBarButtonItem;
-    NSIndexPath* path = [NSIndexPath indexPathForRow: BeaconRetailMapIndex inSection:0];
-    [instance.leftMenu.tableview selectRowAtIndexPath:path animated:NO scrollPosition:UITableViewScrollPositionMiddle];
-    instance.leftMenu.currentIndex = BeaconRetailMapIndex;
+    if(loadFromMenu == YES){
+        NSIndexPath* path = [NSIndexPath indexPathForRow: BeaconRetailMapIndex inSection:0];
+        [instance.leftMenu.tableview selectRowAtIndexPath:path animated:NO scrollPosition:UITableViewScrollPositionMiddle];
+        instance.leftMenu.currentIndex = BeaconRetailMapIndex;
+    }
     StoreLocationMapViewController* vc=[self getStoreMap];
+    vc.loadedFromMainMenu = loadFromMenu;
     vc.product=product;
     [[SlideNavigationController sharedInstance] pushViewController:vc animated:YES];
 }
@@ -337,6 +341,9 @@ static GlobalVariables *instance = nil;
     return instance.leftMenu;
 }
 
++(void)clearLeftMenu{
+    instance.leftMenu=nil;
+}
 
 
 @end

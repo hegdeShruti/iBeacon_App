@@ -191,6 +191,7 @@
         [[SlideNavigationController sharedInstance] closeMenuWithCompletion:^(){
             SlideNavigationController *slideMenuSetToNull = [SlideNavigationController sharedInstance];
             slideMenuSetToNull = nil;
+            [GlobalVariables clearLeftMenu];
             storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
             vc = (LoginViewController*)[storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
             testAppDelegate = [UIApplication sharedApplication].delegate;
