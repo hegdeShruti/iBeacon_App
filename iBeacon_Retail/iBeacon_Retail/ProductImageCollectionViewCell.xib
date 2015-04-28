@@ -37,20 +37,20 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pd3-23-biv" userLabel="Offer Value View">
                                         <rect key="frame" x="42" y="10" width="48" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhx-Fo-oY6">
-                                                <rect key="frame" x="25" y="1" width="23" height="15"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhx-Fo-oY6">
+                                                <rect key="frame" x="30" y="1" width="17" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="15" id="VCg-Jx-iWn"/>
-                                                    <constraint firstAttribute="width" constant="23" id="wHF-8G-MqI"/>
+                                                    <constraint firstAttribute="width" constant="17" id="wHF-8G-MqI"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="10"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="off" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cN0-jW-K26">
-                                                <rect key="frame" x="25" y="13" width="23" height="15"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="off" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cN0-jW-K26">
+                                                <rect key="frame" x="30" y="13" width="17" height="15"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="23" id="MEO-Jt-WrR"/>
+                                                    <constraint firstAttribute="width" constant="17" id="MEO-Jt-WrR"/>
                                                     <constraint firstAttribute="height" constant="15" id="TxT-1R-jgZ"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="10"/>
@@ -60,7 +60,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEA-Y6-AWI" userLabel="DiscountValue Label">
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="DFx-kC-aby"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="DFx-kC-aby"/>
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="34" id="YAu-CV-3R1"/>
                                                     <constraint firstAttribute="height" constant="30" id="aW4-gI-9aW"/>
                                                 </constraints>
@@ -74,8 +74,8 @@
                                             <constraint firstItem="cN0-jW-K26" firstAttribute="leading" secondItem="Pd3-23-biv" secondAttribute="leading" constant="28" id="1cm-j1-U5Y"/>
                                             <constraint firstAttribute="bottom" secondItem="cN0-jW-K26" secondAttribute="bottom" constant="2" id="7Jy-dx-j4Z"/>
                                             <constraint firstAttribute="bottom" secondItem="eEA-Y6-AWI" secondAttribute="bottom" id="BK7-g9-W52"/>
-                                            <constraint firstItem="dhx-Fo-oY6" firstAttribute="leading" secondItem="eEA-Y6-AWI" secondAttribute="trailing" constant="-5" id="Fwv-G8-Ssz"/>
-                                            <constraint firstItem="cN0-jW-K26" firstAttribute="leading" secondItem="eEA-Y6-AWI" secondAttribute="trailing" constant="-5" id="I8V-Y1-k9o"/>
+                                            <constraint firstItem="dhx-Fo-oY6" firstAttribute="leading" secondItem="eEA-Y6-AWI" secondAttribute="trailing" id="Fwv-G8-Ssz"/>
+                                            <constraint firstItem="cN0-jW-K26" firstAttribute="leading" secondItem="eEA-Y6-AWI" secondAttribute="trailing" id="I8V-Y1-k9o"/>
                                             <constraint firstItem="dhx-Fo-oY6" firstAttribute="leading" secondItem="Pd3-23-biv" secondAttribute="leading" constant="28" id="PGI-x1-6Il"/>
                                             <constraint firstItem="eEA-Y6-AWI" firstAttribute="top" secondItem="Pd3-23-biv" secondAttribute="top" id="V9q-7n-6uC"/>
                                             <constraint firstAttribute="height" constant="30" id="aAn-mF-oxh"/>
