@@ -206,7 +206,7 @@
             
         }
 
-        else  if([region.identifier isEqualToString:@"ENTRYBEACON" ]&& !self.globals.hasUserEntredEntryBeacon && self.globals.hasUserEnteredTheStore&&((beaconObj.proximity==CLProximityImmediate)||(beaconObj.proximity==CLProximityNear))){
+        else  if([region.identifier isEqualToString:@"ENTRYBEACON" ]&& !self.globals.hasUserEntredEntryBeacon &&((beaconObj.proximity==CLProximityImmediate)||(beaconObj.proximity==CLProximityNear))){
             
             notification.alertBody = @"Welcome to Tavant Store..Check for offers here";
             offerHeading= @"Welcome to the Store check for offers here";
