@@ -152,6 +152,7 @@
 		EF1278AA1ADBD11E003CA791 /* product@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF12789A1ADBD11E003CA791 /* product@3x.png */; };
 		EF1278AB1ADBD11E003CA791 /* StoreMap.png in Resources */ = {isa = PBXBuildFile; fileRef = EF12789B1ADBD11E003CA791 /* StoreMap.png */; };
 		EF1278AC1ADBD11E003CA791 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = EF12789C1ADBD11E003CA791 /* user.png */; };
+		EF1D293C1AEF66340015F8F7 /* StoreMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = EF1D293B1AEF66340015F8F7 /* StoreMapView.m */; };
 		EF962CA11ADE84D500727551 /* MapPathGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = EF962CA01ADE84D500727551 /* MapPathGenerator.m */; };
 		EF962CA81ADFD84D00727551 /* clear.png in Resources */ = {isa = PBXBuildFile; fileRef = EF962CA71ADFD84D00727551 /* clear.png */; };
 		EF962CAC1ADFD8A100727551 /* person.png in Resources */ = {isa = PBXBuildFile; fileRef = EF962CAB1ADFD8A100727551 /* person.png */; };
@@ -399,6 +400,8 @@
 		EF12789A1ADBD11E003CA791 /* product@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "product@3x.png"; sourceTree = "<group>"; };
 		EF12789B1ADBD11E003CA791 /* StoreMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StoreMap.png; sourceTree = "<group>"; };
 		EF12789C1ADBD11E003CA791 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
+		EF1D293A1AEF66340015F8F7 /* StoreMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreMapView.h; sourceTree = "<group>"; };
+		EF1D293B1AEF66340015F8F7 /* StoreMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreMapView.m; sourceTree = "<group>"; };
 		EF962C9F1ADE84D500727551 /* MapPathGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapPathGenerator.h; path = ../MapPathGenerator.h; sourceTree = "<group>"; };
 		EF962CA01ADE84D500727551 /* MapPathGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapPathGenerator.m; path = ../MapPathGenerator.m; sourceTree = "<group>"; };
 		EF962CA71ADFD84D00727551 /* clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clear.png; sourceTree = "<group>"; };
@@ -530,6 +533,8 @@
 		4552699D1AB03F8500E6F7C3 /* StoreLocationMap */ = {
 			isa = PBXGroup;
 			children = (
+				EF1D293A1AEF66340015F8F7 /* StoreMapView.h */,
+				EF1D293B1AEF66340015F8F7 /* StoreMapView.m */,
 				EF962C9F1ADE84D500727551 /* MapPathGenerator.h */,
 				EF962CA01ADE84D500727551 /* MapPathGenerator.m */,
 				B1C0A4011AD563B200FBB027 /* AOShortestPath.h */,
@@ -1091,6 +1096,7 @@
 				45849EA11AD4F2FC00FF7A1F /* SlideNavigationController.m in Sources */,
 				81948B4B1AB6AA9C002A6FE6 /* Products.m in Sources */,
 				4556001C1AD2981D0034BBD2 /* ProductRecommendationCollectionViewCell.m in Sources */,
+				EF1D293C1AEF66340015F8F7 /* StoreMapView.m in Sources */,
 				81AE08931AA720D200CD7F75 /* OffersTableCell.m in Sources */,
 				818849BB1AB98B14005A06BF /* productGridCellCollectionViewCell.m in Sources */,
 				B1C0A4031AD563B200FBB027 /* AOShortestPath.m in Sources */,

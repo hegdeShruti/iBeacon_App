@@ -12,8 +12,6 @@
 	<dict>
 		<key>2DCC35DC8A143FBDE2DCB7CCD79EB81B2CD1EECF</key>
 		<string>https://github.com/hegdeShruti/iBeacon_App.git</string>
-		<key>514fc0e1-e916-0410-81aa-bcb374a88025++5317</key>
-		<string>https://inusv001.act.org/repos02/VTC/GST/G3Prototypes/PnD</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>iBeacon_Retail/iBeacon_Retail.xcodeproj</string>
@@ -21,13 +19,6 @@
 	<dict>
 		<key>2DCC35DC8A143FBDE2DCB7CCD79EB81B2CD1EECF</key>
 		<string>../../..</string>
-		<key>514fc0e1-e916-0410-81aa-bcb374a88025++5317</key>
-		<string>../../../..</string>
-	</dict>
-	<key>IDESourceControlProjectRepositoryRootDictionary</key>
-	<dict>
-		<key>514fc0e1-e916-0410-81aa-bcb374a88025++5317</key>
-		<string>https://inusv001.act.org/repos02</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/hegdeShruti/iBeacon_App.git</string>
@@ -37,14 +28,6 @@
 	<string>2DCC35DC8A143FBDE2DCB7CCD79EB81B2CD1EECF</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.subversion</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>514fc0e1-e916-0410-81aa-bcb374a88025++5317</string>
-			<key>IDESourceControlWCCName</key>
-			<string></string>
-		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

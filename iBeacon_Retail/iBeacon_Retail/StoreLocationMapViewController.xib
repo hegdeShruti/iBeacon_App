@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StoreLocationMapViewController">
@@ -9,7 +9,6 @@
                 <outlet property="autocompleteTableView" destination="JYe-5R-C2A" id="pGd-eq-uwO"/>
                 <outlet property="indoorLocationView" destination="F00-Zi-Lt0" id="GUy-Wq-3aN"/>
                 <outlet property="labelView" destination="f63-ao-5ff" id="YJX-sz-dhl"/>
-                <outlet property="pathGeneratorView" destination="lkI-XJ-yQT" id="wYL-BR-A2V"/>
                 <outlet property="productImage" destination="ZE1-GQ-xOx" id="1FR-Od-H3U"/>
                 <outlet property="searchBar" destination="VX5-Om-zrG" id="fq6-m9-Dgf"/>
                 <outlet property="textLabel" destination="rUQ-id-Mmv" id="FzV-9D-huU"/>
@@ -104,7 +103,7 @@ Flat 20 % Off on Liliput Baby Jacket</string>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F00-Zi-Lt0" customClass="ESTIndoorLocationView">
+                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F00-Zi-Lt0" customClass="StoreMapView">
                             <rect key="frame" x="0.0" y="164" width="320" height="320"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -124,32 +123,21 @@ Flat 20 % Off on Liliput Baby Jacket</string>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
-                        <view userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lkI-XJ-yQT" customClass="MapPathGenerator">
-                            <rect key="frame" x="0.0" y="164" width="320" height="320"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="410" id="XM1-6y-Qai"/>
-                                <constraint firstAttribute="height" constant="410" id="YcX-jx-0OF"/>
-                            </constraints>
-                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="F00-Zi-Lt0" firstAttribute="top" secondItem="VX5-Om-zrG" secondAttribute="bottom" constant="120" id="5ft-Tz-Wzh"/>
-                        <constraint firstItem="lkI-XJ-yQT" firstAttribute="top" secondItem="f63-ao-5ff" secondAttribute="bottom" id="83x-ae-JA4"/>
                         <constraint firstItem="F00-Zi-Lt0" firstAttribute="top" secondItem="f63-ao-5ff" secondAttribute="bottom" id="EN7-n1-8Da"/>
                         <constraint firstAttribute="trailing" secondItem="f63-ao-5ff" secondAttribute="trailing" id="GMR-xF-YDC"/>
-                        <constraint firstItem="x2U-kU-IBo" firstAttribute="top" secondItem="lkI-XJ-yQT" secondAttribute="bottom" id="GkD-Te-d17"/>
                         <constraint firstAttribute="bottom" secondItem="x2U-kU-IBo" secondAttribute="bottom" id="Isj-mE-5cM"/>
-                        <constraint firstItem="lkI-XJ-yQT" firstAttribute="top" secondItem="VX5-Om-zrG" secondAttribute="bottom" constant="120" id="K8F-90-0De"/>
                         <constraint firstItem="x2U-kU-IBo" firstAttribute="top" secondItem="F00-Zi-Lt0" secondAttribute="bottom" id="Nhc-WQ-eDU"/>
                         <constraint firstItem="F00-Zi-Lt0" firstAttribute="leading" secondItem="QEz-bZ-YhF" secondAttribute="leading" id="Ta5-Tt-zm3"/>
                         <constraint firstItem="f63-ao-5ff" firstAttribute="leading" secondItem="QEz-bZ-YhF" secondAttribute="leading" id="Y7k-c5-OwK"/>
                         <constraint firstItem="x2U-kU-IBo" firstAttribute="top" secondItem="QEz-bZ-YhF" secondAttribute="top" constant="484" id="dk3-C1-THf"/>
+                        <constraint firstItem="F00-Zi-Lt0" firstAttribute="top" secondItem="f63-ao-5ff" secondAttribute="bottom" id="h1m-XD-tfZ"/>
                         <constraint firstItem="VX5-Om-zrG" firstAttribute="leading" secondItem="QEz-bZ-YhF" secondAttribute="leading" id="hal-qy-Zl8"/>
                         <constraint firstAttribute="trailing" secondItem="x2U-kU-IBo" secondAttribute="trailing" id="iDL-IO-0DX"/>
                         <constraint firstItem="f63-ao-5ff" firstAttribute="top" secondItem="VX5-Om-zrG" secondAttribute="bottom" id="iru-xc-P1p"/>
-                        <constraint firstItem="lkI-XJ-yQT" firstAttribute="leading" secondItem="QEz-bZ-YhF" secondAttribute="leading" id="ltO-oG-nIy"/>
                         <constraint firstItem="VX5-Om-zrG" firstAttribute="top" secondItem="QEz-bZ-YhF" secondAttribute="top" id="n0B-55-EJf"/>
                         <constraint firstAttribute="bottom" secondItem="x2U-kU-IBo" secondAttribute="bottom" id="pJt-LH-MRw"/>
                         <constraint firstItem="x2U-kU-IBo" firstAttribute="top" secondItem="F00-Zi-Lt0" secondAttribute="bottom" id="qeQ-Lf-8Nt"/>
@@ -163,7 +151,6 @@ Flat 20 % Off on Liliput Baby Jacket</string>
                             <exclude reference="EN7-n1-8Da"/>
                             <exclude reference="vmx-ct-1qm"/>
                             <exclude reference="yTE-Fi-yUG"/>
-                            <exclude reference="GkD-Te-d17"/>
                             <exclude reference="Isj-mE-5cM"/>
                             <exclude reference="Nhc-WQ-eDU"/>
                             <exclude reference="pJt-LH-MRw"/>
