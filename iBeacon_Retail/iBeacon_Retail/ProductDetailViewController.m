@@ -9,7 +9,8 @@
 #import "ProductDetailViewController.h"
 #import "UIImageView+WebCache.h"
 
-@interface ProductDetailViewController ()
+@interface ProductDetailViewController()
+@property (nonatomic,strong) NSString* randomDiscount;
 @end
 
 @implementation ProductDetailViewController
@@ -51,6 +52,7 @@
     
     [self loadProductDetails];
     [self setColorButtonsRoundedCorner];
+    self.randomDiscount = [NSString stringWithFormat:@"%@",@(arc4random_uniform(90)+1)];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -96,6 +98,8 @@
         ProductImageCollectionViewCell* cell = (ProductImageCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"ProductImageCell" forIndexPath:indexPath];
        // cell.prodImage.image = [UIImage imageNamed:self.product.prodImage ];
         [cell.prodImage sd_setImageWithURL:[NSURL URLWithString:[self.product.prodImage stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]] placeholderImage:[UIImage imageNamed:@"Default_imageHolder.png"]];
+//        cell.discountAmountLabel.text = [NSString stringWithFormat:@"%@",@(arc4random_uniform(90)+1)];
+        cell.discountAmountLabel.text = self.randomDiscount;
         return cell;
         
     }else{
