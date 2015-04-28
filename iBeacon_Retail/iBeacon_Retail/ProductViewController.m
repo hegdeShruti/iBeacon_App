@@ -19,11 +19,12 @@
 
 
 @interface ProductViewController ()
+
 @property(nonatomic,strong) Products * product;
 @property(nonatomic,strong)NetworkOperations *networks;
 //@property(nonatomic,strong) NSMutableArray *productImagesArray;
 @property(nonatomic,strong) GlobalVariables *globals;
-
+@property (nonatomic,strong) UIRefreshControl* refreshControl;
 @end
 
 @implementation ProductViewController
@@ -39,6 +40,7 @@
     if(![globals.productDataArray count]>0){
           [self getProductListing];
     }
+    [self loadRefreshControlForProductListing];
     
 }
 
@@ -52,7 +54,8 @@
     [SlideNavigationController sharedInstance].rightBarButtonItem = rightBarButtonItem;
     self.navigationItem.title = @"Products";
     if([globals.productDataArray count]>0){
-        self.products = self.searchFilteredProducts = globals.productDataArray;
+        self.products = globals.productDataArray;
+        self.searchFilteredProducts = globals.productDataArray;
     }
     [self.prodCollectionView reloadData];
    
@@ -64,14 +67,17 @@
     NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:path];
     NSLog(@"The product Api is %@",[dict objectForKey:@"Prod_Api"]);
  // send block as parameter to get callbacks
-    [self shouldHideLoadingIndicator:NO];
+//    [self shouldHideLoadingIndicator:NO];
     [self.networks fetchDataFromServer:[dict objectForKey:@"Prod_Api"] withreturnMethod:^(NSMutableArray* data){
-        self.products = self.searchFilteredProducts = globals.productDataArray=data;
+        self.products = self.searchFilteredProducts = globals.productDataArray = data;
         NSLog(@"The product Api is %lu",(unsigned long)[globals.productDataArray count]);
         dispatch_async(dispatch_get_main_queue(), ^
                        {
                            [self.prodCollectionView reloadData];
                            [self shouldHideLoadingIndicator:YES];
+                           if (self.refreshControl) {
+                               [self.refreshControl endRefreshing];
+                           }
                            
                        });
         
@@ -104,7 +110,26 @@
 #pragma Collection view delegate methods
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 1;
+    if([self.searchFilteredProducts count] > 0){
+        return 1;
+    }else{
+        // Display a message when the table is empty
+        UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+        
+        messageLabel.text = @"No data is currently available.\nTap to refresh.";
+        messageLabel.textColor = [UIColor blackColor];
+        messageLabel.numberOfLines = 0;
+        messageLabel.textAlignment = NSTextAlignmentCenter;
+        messageLabel.font = [UIFont fontWithName:@"AvenirNext-UltraLightItalic" size:18];
+        [messageLabel sizeToFit];
+        
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(getProductListing)];
+        tapGestureRecognizer.numberOfTapsRequired = 1;
+        [messageLabel addGestureRecognizer:tapGestureRecognizer];
+        messageLabel.userInteractionEnabled = YES;        
+        self.prodCollectionView.backgroundView = messageLabel;
+    }
+    return 0;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView
@@ -234,5 +259,21 @@
         self.loadingIndicatorView.hidden=state;
 }
 
+-(void)loadRefreshControlForProductListing{
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.backgroundColor = [UIColor colorWithRed:74/255.00 green:170/255.00 blue:192/255.00 alpha:1];
+    self.refreshControl.tintColor = [UIColor whiteColor];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MMM d, h:mm a"];
+    NSString *title = [NSString stringWithFormat:@"Last update: %@", [formatter stringFromDate:[NSDate date]]];
+    NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:[UIColor whiteColor]
+                                                                forKey:NSForegroundColorAttributeName];
+    NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:title attributes:attrsDictionary];
+    self.refreshControl.attributedTitle = attributedTitle;
+    
+    [self.refreshControl addTarget:self action:@selector(getProductListing) forControlEvents:UIControlEventValueChanged];
+    [self.prodCollectionView addSubview:self.refreshControl];
+}
 
 @end
