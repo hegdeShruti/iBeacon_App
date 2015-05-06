@@ -80,29 +80,47 @@
 
 -(void) startUserActivities{
     NSUserActivity* newActivity =  [[NSUserActivity alloc] initWithActivityType:TavantIBeaconRetailContinutiyViewProduct];
+    ProductViewController* temp;
+    NSDictionary* activityData;
     newActivity.title = @"Viewing Product Detail";
-    ProductViewController* temp = (ProductViewController*)self.prevVCForUserActivityFlow;
-    NSDictionary* activityData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:self.prevScreen],@"prevScreen",[GlobalVariables getCartItems], @"cartItems",self.product, @"product", [GlobalVariables getCartItems],@"cartItems",temp.products, @"products", temp.searchFilteredProducts, @"filteredProducts",temp.searchString, @"searchString", nil];
+    switch(self.prevScreen){
+        case BeaconRetailProductIndex:
+            temp = (ProductViewController*)self.prevVCForUserActivityFlow;
+            activityData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:self.prevScreen],@"prevScreen",[GlobalVariables getCartItems], @"cartItems",self.product, @"product", temp.products, @"products", temp.searchFilteredProducts, @"filteredProducts",temp.searchString, @"searchString", nil];
+            break;
+        case BeaconRetailOffersIndex:
+            activityData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:self.prevScreen],@"prevScreen",[GlobalVariables getCartItems], @"cartItems",self.product, @"product", nil];
+            break;
+        default:
+            break;
+    }
+    
+//    ProductViewController* temp = (ProductViewController*)self.prevVCForUserActivityFlow;
+//    NSDictionary* activityData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:self.prevScreen],@"prevScreen",[GlobalVariables getCartItems], @"cartItems",self.product, @"product", [GlobalVariables getCartItems],@"cartItems",temp.products, @"products", temp.searchFilteredProducts, @"filteredProducts",temp.searchString, @"searchString", nil];
     newActivity.userInfo = [NSDictionary dictionaryWithObjectsAndKeys:activityData,TavantIBeaconRetailContinutiyScreenData, nil];
     self.viewProductActivity = newActivity;
     
     [self.viewProductActivity becomeCurrent];
 }
 
--(void)updateUserActivityState:(NSUserActivity *)activity{
-//    NSString* searchString=@"";
-//    if(![self.searchBar.text isEqualToString:@""]){
-//        searchString = self.searchBar.text;
-//    }
+-(void)updateUserActivityState:(NSUserActivity *)activity{    
+    ProductViewController* temp;
+    NSDictionary* activityData;
+    switch(self.prevScreen){
+        case BeaconRetailProductIndex:
+            temp = (ProductViewController*)self.prevVCForUserActivityFlow;
+            activityData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:self.prevScreen],@"prevScreen",[GlobalVariables getCartItems], @"cartItems",self.product, @"product", temp.products, @"products", temp.searchFilteredProducts, @"filteredProducts",temp.searchString, @"searchString", nil];
+            break;
+        case BeaconRetailOffersIndex:
+            activityData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:self.prevScreen],@"prevScreen",[GlobalVariables getCartItems], @"cartItems",self.product, @"product", nil];
+            break;
+        default:
+            break;
+    }
     
-//    if([activity.activityType isEqualToString:TavantIBeaconRetailContinutiyViewProduct]){
-        ProductViewController* temp = (ProductViewController*)self.prevVCForUserActivityFlow;
-        NSDictionary* activityData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:self.prevScreen],@"prevScreen",[GlobalVariables getCartItems], @"cartItems", self.product, @"product", [GlobalVariables getCartItems], @"cartItems", temp.products, @"products", temp.searchFilteredProducts, @"filteredProducts",temp.searchString, @"searchString", nil];
-        [activity addUserInfoEntriesFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:activityData,TavantIBeaconRetailContinutiyScreenData, nil]];
-//    }else{
-//        NSDictionary* activityData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:self.prevScreen],@"prevScreen",self.product, @"product", temp.products, @"products", temp.searchFilteredProducts, @"filteredProducts",temp.searchString, @"searchString", nil];
-//        [activity addUserInfoEntriesFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:activityData,TavantIBeaconRetailContinutiyScreenData, nil]];
-//    }
+//    ProductViewController* temp = (ProductViewController*)self.prevVCForUserActivityFlow;
+//    NSDictionary* activityData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:self.prevScreen],@"prevScreen",[GlobalVariables getCartItems], @"cartItems", self.product, @"product", [GlobalVariables getCartItems], @"cartItems", temp.products, @"products", temp.searchFilteredProducts, @"filteredProducts",temp.searchString, @"searchString", nil];
+    [activity addUserInfoEntriesFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:activityData,TavantIBeaconRetailContinutiyScreenData, nil]];
     [super updateUserActivityState:activity];
     
 }

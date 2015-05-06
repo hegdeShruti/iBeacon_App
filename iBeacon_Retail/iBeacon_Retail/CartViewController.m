@@ -27,7 +27,7 @@
     [self getCartListing];
     self.total=0;
     [self.tableview reloadData];
-    
+    [self updateTotal];
     
 }
 
@@ -103,9 +103,9 @@
     cell.prodDescription.text = prodObject.prodDescription;
     cell.price.text = prodObject.price;
     cell.subTotal.text = prodObject.price;
-    NSString *str=[prodObject.price  substringFromIndex:1];
-    self.total+=[str floatValue];
-    self.totalValue.text=[NSString stringWithFormat:@"$%.2f",self.total];
+//    NSString *str=[prodObject.price  substringFromIndex:1];
+//    self.total+=[str floatValue];
+//    self.totalValue.text=[NSString stringWithFormat:@"$%.2f",self.total];
     
     //NSLog(@"Product Image = %@",prodObject.prodImage );
     [cell.prodImage sd_setImageWithURL:[NSURL URLWithString:[prodObject.prodImage stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]] placeholderImage:[UIImage imageNamed:@"1.png"]];
@@ -140,6 +140,19 @@
 -(void) getCartListing{
     self.tableData = [[GlobalVariables getCartItems] copy];
     [self.tableview reloadData];
+    [self updateTotal];
+}
+
+-(void) updateTotal{
+//    NSString *str=[prodObject.price  substringFromIndex:1];
+//    self.total+=[str floatValue];
+    self.total= 0.0;
+    for(CartItem* item in self.tableData){
+        Products *prodObject= item.product;
+        NSString *str=[prodObject.price  substringFromIndex:1];
+        self.total+=[str floatValue];
+        self.totalValue.text=[NSString stringWithFormat:@"$%.2f",self.total];
+    }
 }
 
 /*

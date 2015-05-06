@@ -82,6 +82,18 @@
     
 }
 
+- (void)restoreUserActivityState:(NSUserActivity *)activity{
+    if([activity.activityType isEqualToString:TavantIBeaconRetailContinutiyViewProduct]){
+        NSDictionary* activityInfo = [activity.userInfo objectForKey:TavantIBeaconRetailContinutiyScreenData];
+        ProductDetailViewController* prodDetailVC = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController" bundle:nil];
+        prodDetailVC.product = (Products*)[activityInfo objectForKey:@"product"];
+        prodDetailVC.prevScreen = BeaconRetailOffersIndex;
+        prodDetailVC.prevVCForUserActivityFlow = self;
+        [[SlideNavigationController sharedInstance] pushViewController:prodDetailVC animated:YES];
+    }
+    [super restoreUserActivityState:activity];
+}
+
 // hardcoding section data for now
 -(void)filterOffersforSections{
     switch (self.offerId) {

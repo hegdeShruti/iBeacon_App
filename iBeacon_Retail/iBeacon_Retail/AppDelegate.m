@@ -208,6 +208,7 @@
     
     slideController.leftMenu = [GlobalVariables getLeftMenu];
     slideController.menuRevealAnimationDuration = .18;
+    slideController.avoidSwitchingToSameClassViewController = NO;
     [SlideNavigationController sharedInstance].portraitSlideOffset =frame.size.width-k_SlidePixelOffset;
     
     
