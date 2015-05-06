@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ProductImageCollectionViewCell.h"
+#import "ProductViewController.h"
 #import "ProductRecommendationCollectionViewCell.h"
 #import "StoreLocationMapViewController.h"
 #import "GlobalVariables.h"
@@ -15,6 +16,14 @@
 
 
 @interface ProductDetailViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate,UICollectionViewDelegate>
+
+@property (nonatomic,assign) NSInteger prevScreen;
+@property (nonatomic,strong) UIViewController* prevVCForUserActivityFlow;
+@property (nonatomic,strong) NSUserActivity* viewProductActivity;
+//@property (nonatomic,strong) NSUserActivity* updateCartActivity;
+
+
+
 @property (nonatomic,strong) NSArray* productImagesArray;
 @property (nonatomic,strong) NSArray* recommendationDataArray;
 @property (nonatomic,strong) Products* product;

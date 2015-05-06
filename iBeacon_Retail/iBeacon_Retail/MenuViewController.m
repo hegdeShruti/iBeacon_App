@@ -53,6 +53,32 @@
     
 }
 
+- (void)restoreUserActivityState:(NSUserActivity *)activity{
+    if([activity.activityType isEqualToString:TavantIBeaconRetailContinutiyViewScreen]){
+        NSDictionary* activityInfo = [activity.userInfo objectForKey:TavantIBeaconRetailContinutiyScreenData];
+        self.currentIndex = [[activityInfo objectForKey:@"menuIndex"] integerValue];
+        UIViewController* vc = [self loadMenuScreenAtIndex:self.currentIndex];
+//        [vc restoreUserActivityState:activity];
+        [[SlideNavigationController sharedInstance] popToRootAndSwitchToViewController:vc withSlideOutAnimation:NO andCompletion:^{
+            [vc restoreUserActivityState:activity];
+        }];
+    }else if([activity.activityType isEqualToString:TavantIBeaconRetailContinutiyViewProduct]){
+        NSDictionary* activityInfo = [activity.userInfo objectForKey:TavantIBeaconRetailContinutiyScreenData];
+        if([[activityInfo objectForKey:@"prevScreen"] integerValue] != BeaconRetailNotAMenuOption){
+            self.currentIndex = [[activityInfo objectForKey:@"prevScreen"] integerValue];
+            UIViewController* vc = [self loadMenuScreenAtIndex:self.currentIndex];
+            //        [vc restoreUserActivityState:activity];
+            [[SlideNavigationController sharedInstance] popToRootAndSwitchToViewController:vc withSlideOutAnimation:NO andCompletion:^{
+                [vc restoreUserActivityState:activity];
+            }];
+        }else{
+            
+        }
+    }
+    [self.tableview reloadData];
+        
+    [super restoreUserActivityState:activity];
+}
 
 -(UIView *) headerView {
     if (!_headerView) {
@@ -144,37 +170,14 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    [self.delegate menuItemSelected:indexPath.row];
     UIViewController* vc;
     UIAlertView *alert;
-    switch(indexPath.row)
-    {
-        case BeaconRetailProductIndex:
-            vc = (ProductViewController*)[[ProductViewController alloc] initWithNibName:@"ProductViewController" bundle:nil];
-            break;
-        case BeaconRetailOffersIndex:
-            vc = (OffersViewController*)[[OffersViewController alloc] initWithNibName:@"OffersViewController" bundle:nil];
-            break;
-        case BeaconRetailCartIndex:
-            vc = (CartViewController*)[[CartViewController alloc] initWithNibName:@"CartViewController" bundle:nil];
-            break;
-        case BeaconRetailMapIndex:
-//            vc = [self loadStoreMap:(StoreLocationMapViewController*)vc];
-            vc = [GlobalVariables getStoreMap];
-            break;
-        case BeaconRetailLogoutIndex:
-            alert = [[UIAlertView alloc] initWithTitle:@"Warning"
-                                                            message:@"Are you sure you want logout."
-                                                           delegate:self
-                                                  cancelButtonTitle:@"No"
-                                                  otherButtonTitles:@"Yes", nil];
-            [alert show];
-            break;
-        default:
-            break;
-    }
+    vc = [self loadMenuScreenAtIndex:indexPath.row];    
     if(indexPath.row != BeaconRetailLogoutIndex){
         [[SlideNavigationController sharedInstance] popToRootAndSwitchToViewController:vc withSlideOutAnimation:NO andCompletion:nil];
+    }else{
+        alert = [[UIAlertView alloc] initWithTitle:@"Warning" message:@"Are you sure you want logout." delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+        [alert show];
     }
 }
 
@@ -216,5 +219,28 @@
     globalVar.storeLocationController = vc;
     return vc;
 }
-
+-(UIViewController*) loadMenuScreenAtIndex:(NSInteger) idx{
+    UIViewController* vc;
+    switch(idx)
+    {
+        case BeaconRetailProductIndex:
+            vc = (ProductViewController*)[[ProductViewController alloc] initWithNibName:@"ProductViewController" bundle:nil];
+            break;
+        case BeaconRetailOffersIndex:
+            vc = (OffersViewController*)[[OffersViewController alloc] initWithNibName:@"OffersViewController" bundle:nil];
+            break;
+        case BeaconRetailCartIndex:
+            vc = (CartViewController*)[[CartViewController alloc] initWithNibName:@"CartViewController" bundle:nil];
+            break;
+        case BeaconRetailMapIndex:
+            //            vc = [self loadStoreMap:(StoreLocationMapViewController*)vc];
+            vc = [GlobalVariables getStoreMap];
+            break;
+        case BeaconRetailLogoutIndex:
+            break;
+        default:
+            break;
+    }
+    return vc;
+}
 @end

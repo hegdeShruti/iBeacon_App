@@ -77,5 +77,6 @@ typedef enum {
 
 +(Products *)getProductWithID:(NSInteger) offerId;
 +(Offers *)getOfferWithID:(NSInteger) offerId;
-
++(void)clearCartItems;
++(void)updateCartItemsWithNewData:(NSArray*)newData;
 @end

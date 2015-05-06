@@ -39,6 +39,13 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>com.tavant.www.iBeaconRetail.ViewScreen</string>
+		<string>com.tavant.www.iBeaconRetail.ViewProduct</string>
+	</array>
+	<key>CFBundleGetInfoString</key>
+	<string></string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

@@ -16,6 +16,8 @@
 #import "StoreMapView.h"
 @interface StoreLocationMapViewController : UIViewController<UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource,SlideNavigationControllerDelegate>
 
+
+@property (nonatomic,strong) NSUserActivity* screenActivity;
 @property BOOL loadedFromMainMenu;
 @property (nonatomic, strong) IBOutlet StoreMapView *indoorLocationView;
 @property (nonatomic, retain) IBOutlet UITableView *autocompleteTableView;

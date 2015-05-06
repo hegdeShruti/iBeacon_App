@@ -10,6 +10,8 @@
 #import "SlideNavigationController.h"
 
 @interface OffersViewController : UIViewController<SlideNavigationControllerDelegate>
+
+@property (nonatomic,strong) NSUserActivity* screenActivity;
 - (IBAction)menuButtonCLicked:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *offersTableView;
 @property(nonatomic,assign) NSInteger offerId;

@@ -53,12 +53,60 @@
     [self loadProductDetails];
     [self setColorButtonsRoundedCorner];
     self.randomDiscount = [NSString stringWithFormat:@"%@",@(arc4random_uniform(90)+1)];
+    [self startUserActivities];
+    [self updateUserActivityState:self.viewProductActivity];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [self.viewProductActivity invalidate];
+    [super viewWillDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)restoreUserActivityState:(NSUserActivity *)activity{
+    if([activity.activityType isEqualToString:TavantIBeaconRetailContinutiyViewProduct]){
+        NSDictionary* activityInfo = [activity.userInfo objectForKey:TavantIBeaconRetailContinutiyScreenData];
+        self.product = [activityInfo objectForKey:@"product"];
+        [self loadProductDetails];        
+//        NSLog(@"TEST 2");
+    }
+    //    self.searchBar.text = @"TEST";
+    [super restoreUserActivityState:activity];
+}
+
+-(void) startUserActivities{
+    NSUserActivity* newActivity =  [[NSUserActivity alloc] initWithActivityType:TavantIBeaconRetailContinutiyViewProduct];
+    newActivity.title = @"Viewing Product Detail";
+    ProductViewController* temp = (ProductViewController*)self.prevVCForUserActivityFlow;
+    NSDictionary* activityData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:self.prevScreen],@"prevScreen",[GlobalVariables getCartItems], @"cartItems",self.product, @"product", [GlobalVariables getCartItems],@"cartItems",temp.products, @"products", temp.searchFilteredProducts, @"filteredProducts",temp.searchString, @"searchString", nil];
+    newActivity.userInfo = [NSDictionary dictionaryWithObjectsAndKeys:activityData,TavantIBeaconRetailContinutiyScreenData, nil];
+    self.viewProductActivity = newActivity;
+    
+    [self.viewProductActivity becomeCurrent];
+}
+
+-(void)updateUserActivityState:(NSUserActivity *)activity{
+//    NSString* searchString=@"";
+//    if(![self.searchBar.text isEqualToString:@""]){
+//        searchString = self.searchBar.text;
+//    }
+    
+//    if([activity.activityType isEqualToString:TavantIBeaconRetailContinutiyViewProduct]){
+        ProductViewController* temp = (ProductViewController*)self.prevVCForUserActivityFlow;
+        NSDictionary* activityData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:self.prevScreen],@"prevScreen",[GlobalVariables getCartItems], @"cartItems", self.product, @"product", [GlobalVariables getCartItems], @"cartItems", temp.products, @"products", temp.searchFilteredProducts, @"filteredProducts",temp.searchString, @"searchString", nil];
+        [activity addUserInfoEntriesFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:activityData,TavantIBeaconRetailContinutiyScreenData, nil]];
+//    }else{
+//        NSDictionary* activityData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:self.prevScreen],@"prevScreen",self.product, @"product", temp.products, @"products", temp.searchFilteredProducts, @"filteredProducts",temp.searchString, @"searchString", nil];
+//        [activity addUserInfoEntriesFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:activityData,TavantIBeaconRetailContinutiyScreenData, nil]];
+//    }
+    [super updateUserActivityState:activity];
+    
+}
+
 
 #pragma mark - For Status Bar
 -(UIStatusBarStyle)preferredStatusBarStyle{
@@ -97,7 +145,7 @@
     if(collectionView.tag == 1){ // this is the product images collection view
         ProductImageCollectionViewCell* cell = (ProductImageCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"ProductImageCell" forIndexPath:indexPath];
        // cell.prodImage.image = [UIImage imageNamed:self.product.prodImage ];
-        [cell.prodImage sd_setImageWithURL:[NSURL URLWithString:[self.product.prodImage stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]] placeholderImage:[UIImage imageNamed:@"Default_imageHolder.png"]];
+        [cell.prodImage sd_setImageWithURL:[NSURL URLWithString:[self.product.prodImage stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]] placeholderImage:[UIImage imageNamed:@"Default_imageHolder.png"] options:SDWebImageRetryFailed];
 //        cell.discountAmountLabel.text = [NSString stringWithFormat:@"%@",@(arc4random_uniform(90)+1)];
         cell.discountAmountLabel.text = self.randomDiscount;
         return cell;
@@ -159,7 +207,14 @@
 //    self.cartButton.titleLabel.textColor=[UIColor whiteColor];
         CartItem* cartItem = [[CartItem alloc] initWithDictionary:tempDic];
         [GlobalVariables addItemToCart:cartItem];
+    [self updateUserActivityState:self.viewProductActivity];
+    [self.cartButton setTitle:@"  ADDED TO CART" forState:UIControlStateNormal];
+    self.cartButton.titleLabel.font = [UIFont fontWithName:@"AvenirNext-DemiBoldItalic" size:14];
     [self.cartButton setBackgroundColor:[UIColor colorWithRed:74/255.00 green:170/255.00 blue:192/255.00 alpha:1.0]];
+    
+//    [self.updateCartActivity becomeCurrent];
+//    [self updateUserActivityState:self.updateCartActivity];
+    
 }
 
 - (IBAction)highlightAddToCartButton:(id)sender {

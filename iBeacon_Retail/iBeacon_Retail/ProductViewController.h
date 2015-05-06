@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import "MenuViewController.h"
+#import "MenuViewController.h"
 #import "ProductDetailViewController.h"
 #import "SlideNavigationController.h"
 
@@ -22,8 +22,11 @@
 
 @interface ProductViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate,UISearchBarDelegate, SlideNavigationControllerDelegate>
 
+
+@property (nonatomic,strong) NSUserActivity* screenActivity;
 @property (nonatomic,strong) NSMutableArray *products;
 @property (nonatomic,strong) NSArray *searchFilteredProducts;
+@property (nonatomic,strong) NSString* searchString;
 
 
 @property (nonatomic,weak) id<productViewControllerDelegate> delegate;

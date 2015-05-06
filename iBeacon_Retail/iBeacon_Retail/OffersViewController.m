@@ -40,6 +40,9 @@
    
     
    [self filterOffersforSections];
+    [self startUserActivities];
+    self.userActivity.needsSave = YES;
+    [self updateUserActivityState:self.screenActivity];
     
 }
 
@@ -56,6 +59,27 @@
     [SlideNavigationController sharedInstance].rightBarButtonItem = rightBarButtonItem;
     [[SlideNavigationController sharedInstance].navigationBar.topItem setTitle:@"Offers"];
     [self.offersTableView reloadData];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [self.screenActivity invalidate];
+    [super viewWillDisappear:animated];
+}
+
+-(void) startUserActivities{
+    NSUserActivity* newActivity =  [[NSUserActivity alloc] initWithActivityType:TavantIBeaconRetailContinutiyViewScreen];
+    newActivity.title = @"Viewing Product List Screen";
+    NSDictionary* activityData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:BeaconRetailOffersIndex],@"menuIndex",[GlobalVariables getCartItems], @"cartItems", nil];
+    newActivity.userInfo = [NSDictionary dictionaryWithObjectsAndKeys:activityData,TavantIBeaconRetailContinutiyScreenData, nil];
+    self.screenActivity = newActivity;
+    [self.screenActivity becomeCurrent];
+}
+
+-(void)updateUserActivityState:(NSUserActivity *)activity{
+    NSDictionary* activityData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:BeaconRetailOffersIndex],@"menuIndex",[GlobalVariables getCartItems], @"cartItems", nil];
+    [activity addUserInfoEntriesFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:activityData,TavantIBeaconRetailContinutiyScreenData, nil]];
+    [super updateUserActivityState:activity];
+    
 }
 
 // hardcoding section data for now
@@ -159,7 +183,7 @@
     
     ProductDetailViewController* prodDetailVC = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController" bundle:nil];
     prodDetailVC.product = prodObject;
-    
+    prodDetailVC.prevScreen = BeaconRetailOffersIndex;
     [[SlideNavigationController sharedInstance] pushViewController:prodDetailVC animated:YES];
     
 }

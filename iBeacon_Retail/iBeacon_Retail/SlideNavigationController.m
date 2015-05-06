@@ -27,6 +27,7 @@
 
 #import "SlideNavigationController.h"
 #import "SlideNavigationContorllerAnimator.h"
+#import "Constants.h"
 
 typedef enum {
 	PopTypeAll,
@@ -175,6 +176,16 @@ static SlideNavigationController *singletonInstance;
 	[super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
 
     self.menuNeedsLayout = YES;
+}
+
+-(void)restoreUserActivityState:(NSUserActivity *)activity
+{
+//    NSLog(@"IM OVER HERE!!!!");
+    if([activity.activityType isEqualToString:TavantIBeaconRetailContinutiyViewScreen]){
+        [self.leftMenu restoreUserActivityState:activity];
+    }else if([activity.activityType isEqualToString:TavantIBeaconRetailContinutiyViewProduct]){
+        [self.leftMenu restoreUserActivityState:activity];
+    }
 }
 
 #pragma mark - Public Methods -

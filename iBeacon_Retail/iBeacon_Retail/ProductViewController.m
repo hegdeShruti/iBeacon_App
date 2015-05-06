@@ -53,12 +53,56 @@
     UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rtButton];
     [SlideNavigationController sharedInstance].rightBarButtonItem = rightBarButtonItem;
     self.navigationItem.title = @"Products";
-    if([globals.productDataArray count]>0){
+    if([self.products count] == 0 && [globals.productDataArray count]>0){
         self.products = globals.productDataArray;
         self.searchFilteredProducts = globals.productDataArray;
+    }else{
+        if(self.searchString){
+            self.searchBar.text = self.searchString;
+        }
     }
     [self.prodCollectionView reloadData];
+    
+    
+    [self startUserActivities];
+    self.userActivity.needsSave = YES;
+    [self updateUserActivityState:self.screenActivity];
    
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    [self.screenActivity invalidate];
+    [super viewWillDisappear:animated];
+}
+
+-(void)restoreUserActivityState:(NSUserActivity *)activity{
+    if([activity.activityType isEqualToString:TavantIBeaconRetailContinutiyViewScreen]){
+        NSDictionary* activityInfo = [activity.userInfo objectForKey:TavantIBeaconRetailContinutiyScreenData];
+        self.products = [activityInfo objectForKey:@"products"];
+        self.searchFilteredProducts = [activityInfo objectForKey:@"filteredProducts"];
+        if([activityInfo objectForKey:@"searchString"]){
+            self.searchBar.text = [activityInfo objectForKey:@"searchString"];
+            self.searchString = [activityInfo objectForKey:@"searchString"];
+        }
+        [self.prodCollectionView reloadData];
+        
+//        NSLog(@"TEST");
+    }else if([activity.activityType isEqualToString:TavantIBeaconRetailContinutiyViewProduct]){
+        NSDictionary* activityInfo = [activity.userInfo objectForKey:TavantIBeaconRetailContinutiyScreenData];
+        self.products = [activityInfo objectForKey:@"products"];
+        self.searchFilteredProducts = [activityInfo objectForKey:@"filteredProducts"];
+        if([activityInfo objectForKey:@"searchString"]){
+            self.searchBar.text = [activityInfo objectForKey:@"searchString"];
+            self.searchString = [activityInfo objectForKey:@"searchString"];
+        }
+        [self.prodCollectionView reloadData];
+        
+        ProductDetailViewController* prodDetailVC = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController" bundle:nil];
+        prodDetailVC.product = (Products*)[activityInfo objectForKey:@"product"];
+        prodDetailVC.prevScreen = BeaconRetailProductIndex;
+        prodDetailVC.prevVCForUserActivityFlow = self;
+        [[SlideNavigationController sharedInstance] pushViewController:prodDetailVC animated:YES];
+    }
+    [super restoreUserActivityState:activity];
 }
 
 -(void) getProductListing{
@@ -102,6 +146,27 @@
  }
  */
 
+-(void) startUserActivities{
+    NSUserActivity* newActivity =  [[NSUserActivity alloc] initWithActivityType:TavantIBeaconRetailContinutiyViewScreen];
+    newActivity.title = @"Viewing Product List Screen";
+    NSDictionary* activityData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:BeaconRetailProductIndex],@"menuIndex", [GlobalVariables getCartItems], @"cartItems", self.products, @"products", self.searchFilteredProducts, @"filteredProducts",@"", @"searchString", nil];
+    newActivity.userInfo = [NSDictionary dictionaryWithObjectsAndKeys:activityData,TavantIBeaconRetailContinutiyScreenData, nil];
+    self.screenActivity = newActivity;
+    [self.screenActivity becomeCurrent];
+}
+
+-(void)updateUserActivityState:(NSUserActivity *)activity{
+    NSString* searchString=@"";
+    if(![self.searchBar.text isEqualToString:@""]){
+        searchString = self.searchBar.text;
+    }
+    NSDictionary* activityData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:BeaconRetailProductIndex],@"menuIndex", [GlobalVariables getCartItems], @"cartItems", self.products, @"products", self.searchFilteredProducts, @"filteredProducts", searchString, @"searchString", nil];
+    [activity addUserInfoEntriesFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:activityData,TavantIBeaconRetailContinutiyScreenData, nil]];
+    [super updateUserActivityState:activity];
+
+}
+
+
 #pragma mark - For Status Bar
 -(UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
@@ -111,6 +176,7 @@
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     if([self.searchFilteredProducts count] > 0){
+        self.prodCollectionView.backgroundView = nil;
         return 1;
     }else{
         // Display a message when the table is empty
@@ -179,7 +245,9 @@
     Products *prodObject= [[Products alloc] initWithDictionary:[self.searchFilteredProducts objectAtIndex:indexPath.row]];
     ProductDetailViewController* prodDetailVC = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController" bundle:nil];
     prodDetailVC.product = prodObject;
-   // prodDetailVC.selectedImage=;
+    prodDetailVC.prevScreen = BeaconRetailProductIndex;
+    self.searchString = self.searchBar.text;
+    prodDetailVC.prevVCForUserActivityFlow = self;
     [[SlideNavigationController sharedInstance] pushViewController:prodDetailVC animated:YES];
 }
 
@@ -187,6 +255,7 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     //[self applyFilters:[NSSet setWithObject:searchBar.text]];
+    [self updateUserActivityState:self.userActivity];
     [searchBar resignFirstResponder];
 }
 
@@ -241,6 +310,7 @@
     }
 //    NSArray*  temp =  [[NSArray alloc] initWithArray:[self.products filteredArrayUsingPredicate:searchKeyWordPredicate]];
     self.searchFilteredProducts = [self.products filteredArrayUsingPredicate:searchKeyWordPredicate];
+    [self updateUserActivityState:self.screenActivity];
     [self.prodCollectionView reloadData];
 }
 

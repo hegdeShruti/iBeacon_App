@@ -39,6 +39,8 @@
 {
     [super viewWillAppear:animated];
     [self EnablePayButtonOnNavBar:YES];
+    [self startUserActivities];
+    [self updateUserActivityState:self.screenActivity];
     [self getCartListing];
 }
 
@@ -46,6 +48,7 @@
 {
     [super viewWillDisappear:animated];
     [self EnablePayButtonOnNavBar:NO];
+    [self.screenActivity invalidate];
     NSLog(@"CART SCREEN UNLOADING");
 }
 
@@ -55,6 +58,28 @@
 }
 
 
+-(void) startUserActivities{
+    NSUserActivity* newActivity =  [[NSUserActivity alloc] initWithActivityType:TavantIBeaconRetailContinutiyViewScreen];
+    newActivity.title = @"Viewing Product List Screen";
+    NSDictionary* activityData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:BeaconRetailCartIndex],@"menuIndex",[GlobalVariables getCartItems],@"cartItems",nil];
+    newActivity.userInfo = [NSDictionary dictionaryWithObjectsAndKeys:activityData,TavantIBeaconRetailContinutiyScreenData, nil];
+    self.screenActivity = newActivity;
+    [self.screenActivity becomeCurrent];
+}
+
+-(void)updateUserActivityState:(NSUserActivity *)activity{
+    NSDictionary* activityData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:BeaconRetailCartIndex],@"menuIndex",[GlobalVariables getCartItems],@"cartItems",nil];
+    [activity addUserInfoEntriesFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:activityData,TavantIBeaconRetailContinutiyScreenData, nil]];
+    [super updateUserActivityState:activity];
+}
+
+- (void)restoreUserActivityState:(NSUserActivity *)activity{
+    NSDictionary* activityInfo = [activity.userInfo objectForKey:TavantIBeaconRetailContinutiyScreenData];
+    NSArray* cartItems = [activityInfo objectForKey:@"cartItems"];
+    [GlobalVariables clearCartItems];
+    [GlobalVariables updateCartItemsWithNewData:cartItems];
+    [self getCartListing];
+}
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -99,6 +124,7 @@
         //add code here for when you hit delete
         CartItem* item = (CartItem*)[self.tableData objectAtIndex:indexPath.row];
         [GlobalVariables removeItemFromCart:item];
+        [self updateUserActivityState:self.screenActivity];
         [self getCartListing];
     }
 }

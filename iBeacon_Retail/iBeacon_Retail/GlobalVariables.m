@@ -351,5 +351,13 @@ static GlobalVariables *instance = nil;
     instance.leftMenu=nil;
 }
 
++(void)clearCartItems{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"CartItems"];
+}
 
++(void)updateCartItemsWithNewData:(NSArray*)newData{
+    for(CartItem* cart in newData){
+        [self addItemToCart:cart];
+    }
+}
 @end

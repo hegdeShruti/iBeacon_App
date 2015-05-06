@@ -21,14 +21,9 @@ typedef NS_ENUM(NSInteger, BeconRetailMenuIndex) {
     BeaconRetailOffersIndex,
     BeaconRetailCartIndex,
     BeaconRetailMapIndex,
-    BeaconRetailLogoutIndex
+    BeaconRetailLogoutIndex,
+    BeaconRetailNotAMenuOption
 };
-
-@protocol MenuViewControllerDelegate <NSObject,UIAlertViewDelegate>
-
-@optional
-- (void)menuItemSelected:(int) menuItem;
-@end
 
 @interface MenuViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
@@ -41,6 +36,7 @@ typedef NS_ENUM(NSInteger, BeconRetailMenuIndex) {
 @property (nonatomic,strong) NSArray* menuItems;
 @property (nonatomic,strong) NSArray* menuImageItems;
 @property (nonatomic,weak) IBOutlet UITableView* tableview;
-@property (nonatomic,weak) id<MenuViewControllerDelegate> delegate;
+
+-(UIViewController*) loadMenuScreenAtIndex:(NSInteger) idx;
 
 @end

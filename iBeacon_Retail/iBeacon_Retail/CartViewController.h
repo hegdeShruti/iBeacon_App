@@ -12,9 +12,11 @@
 #import "GlobalVariables.h"
 #import "CartItem.h"
 #import "SlideNavigationController.h"
+#import "MenuViewController.h"
 
 @interface CartViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,SlideNavigationControllerDelegate>
 
+@property (nonatomic,strong) NSUserActivity* screenActivity;
 @property (nonatomic,weak) IBOutlet UITableView* tableview;
 @property (nonatomic,strong) NSArray* tableData;
 @property (nonatomic,weak) IBOutlet UILabel* totalValue;

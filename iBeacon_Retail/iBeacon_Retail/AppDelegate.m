@@ -136,6 +136,33 @@
     }
 }
 
+-(BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray *))restorationHandler{
+//    NSDictionary *userInfo = (NSDictionary*)userActivity.userInfo;
+    NSDictionary* activityInfo = [userActivity.userInfo objectForKey:TavantIBeaconRetailContinutiyScreenData];
+    NSArray* cartItems = [activityInfo objectForKey:@"cartItems"];
+    if(cartItems){
+        // update/sync cart items across devices
+        [GlobalVariables clearCartItems];
+        [GlobalVariables updateCartItemsWithNewData:cartItems];
+    }
+    [self.window.rootViewController restoreUserActivityState:userActivity];
+//    NSLog(@"USER INFO IS : %@",userInfo);
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application willContinueUserActivityWithType:(NSString *)userActivityType{
+    return YES;
+}
+
+-(void)application:(UIApplication *)application didFailToContinueUserActivityWithType:(NSString *)userActivityType error:(NSError *)error{
+    if (error.code != NSUserCancelledError) {
+        NSString* message = [NSString stringWithFormat:@"The connection to your other device may have been interrupted. Please try again.,%@",error.localizedDescription];
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Handoff Error" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        UIAlertView* alertView = UIAlertView(title: "Handoff Error", message: message, delegate: nil, cancelButtonTitle: "Dismiss")
+        [alertView show];
+    }
+}
+
 - (void) clearNotifications {
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 0];
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
