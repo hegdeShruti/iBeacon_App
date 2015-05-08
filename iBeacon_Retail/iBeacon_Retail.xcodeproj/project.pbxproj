@@ -533,15 +533,15 @@
 		4552699D1AB03F8500E6F7C3 /* StoreLocationMap */ = {
 			isa = PBXGroup;
 			children = (
+				4552699E1AB03FDD00E6F7C3 /* StoreLocationMapViewController.h */,
+				4552699F1AB03FDD00E6F7C3 /* StoreLocationMapViewController.m */,
+				455269A01AB03FDD00E6F7C3 /* StoreLocationMapViewController.xib */,
 				EF1D293A1AEF66340015F8F7 /* StoreMapView.h */,
 				EF1D293B1AEF66340015F8F7 /* StoreMapView.m */,
 				EF962C9F1ADE84D500727551 /* MapPathGenerator.h */,
 				EF962CA01ADE84D500727551 /* MapPathGenerator.m */,
 				B1C0A4011AD563B200FBB027 /* AOShortestPath.h */,
 				B1C0A4021AD563B200FBB027 /* AOShortestPath.m */,
-				4552699E1AB03FDD00E6F7C3 /* StoreLocationMapViewController.h */,
-				4552699F1AB03FDD00E6F7C3 /* StoreLocationMapViewController.m */,
-				455269A01AB03FDD00E6F7C3 /* StoreLocationMapViewController.xib */,
 			);
 			name = StoreLocationMap;
 			sourceTree = "<group>";

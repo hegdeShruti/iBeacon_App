@@ -55,7 +55,7 @@
     self.autocompleteTableView.delegate = self;
     self.autocompleteTableView.dataSource = self;
     self.autocompleteTableView.hidden = YES;
-   
+   [self startUserActivities];
 
 }
 
@@ -79,7 +79,9 @@
 
     [self.indoorLocationView setupLocation:_location product:_product withParentController:self];
     [self.indoorLocationView startLocation];
-    [self startUserActivities];
+//    [self startUserActivities];
+//    self.userActivity.needsSave = YES;
+    [self updateUserActivityState:self.screenActivity];
     
 }
 
@@ -92,17 +94,18 @@
 }
 
 -(void) startUserActivities{
-    NSUserActivity* newActivity =  [[NSUserActivity alloc] initWithActivityType:TavantIBeaconRetailContinutiyViewScreen];
-    newActivity.title = @"Viewing Product List Screen";
+    self.screenActivity =  [[NSUserActivity alloc] initWithActivityType:TavantIBeaconRetailContinutiyViewScreen];
+    self.screenActivity.title = @"Viewing Product List Screen";
     NSDictionary* activityData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:BeaconRetailMapIndex],@"menuIndex",[GlobalVariables getCartItems], @"cartItems", nil];
-    newActivity.userInfo = [NSDictionary dictionaryWithObjectsAndKeys:activityData,TavantIBeaconRetailContinutiyScreenData, nil];
-    self.screenActivity = newActivity;
-    [self.screenActivity becomeCurrent];
+    self.screenActivity.userInfo = [NSDictionary dictionaryWithObjectsAndKeys:activityData,TavantIBeaconRetailContinutiyScreenData, nil];
+    self.userActivity = self.screenActivity;
+    [self.userActivity becomeCurrent];
 }
 
 -(void)updateUserActivityState:(NSUserActivity *)activity{
     NSDictionary* activityData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:BeaconRetailMapIndex],@"menuIndex",[GlobalVariables getCartItems], @"cartItems", nil];
     [activity addUserInfoEntriesFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:activityData,TavantIBeaconRetailContinutiyScreenData, nil]];
+//    [self.screenActivity becomeCurrent];
     [super updateUserActivityState:activity];
     
 }

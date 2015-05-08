@@ -34,6 +34,7 @@
 //    self.scrollview.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width,  self.contentView.frame.size.height);
     
     [self setupPageControlForProductImagesCollectionView];
+    [self startUserActivities];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -53,7 +54,8 @@
     [self loadProductDetails];
     [self setColorButtonsRoundedCorner];
     self.randomDiscount = [NSString stringWithFormat:@"%@",@(arc4random_uniform(90)+1)];
-    [self startUserActivities];
+//    [self startUserActivities];
+//    self.userActivity.needsSave = YES;
     [self updateUserActivityState:self.viewProductActivity];
 }
 
@@ -79,10 +81,10 @@
 }
 
 -(void) startUserActivities{
-    NSUserActivity* newActivity =  [[NSUserActivity alloc] initWithActivityType:TavantIBeaconRetailContinutiyViewProduct];
+    self.viewProductActivity =  [[NSUserActivity alloc] initWithActivityType:TavantIBeaconRetailContinutiyViewProduct];
     ProductViewController* temp;
     NSDictionary* activityData;
-    newActivity.title = @"Viewing Product Detail";
+    self.viewProductActivity.title = @"Viewing Product Detail";
     switch(self.prevScreen){
         case BeaconRetailProductIndex:
             temp = (ProductViewController*)self.prevVCForUserActivityFlow;
@@ -97,10 +99,10 @@
     
 //    ProductViewController* temp = (ProductViewController*)self.prevVCForUserActivityFlow;
 //    NSDictionary* activityData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:self.prevScreen],@"prevScreen",[GlobalVariables getCartItems], @"cartItems",self.product, @"product", [GlobalVariables getCartItems],@"cartItems",temp.products, @"products", temp.searchFilteredProducts, @"filteredProducts",temp.searchString, @"searchString", nil];
-    newActivity.userInfo = [NSDictionary dictionaryWithObjectsAndKeys:activityData,TavantIBeaconRetailContinutiyScreenData, nil];
-    self.viewProductActivity = newActivity;
+    self.viewProductActivity.userInfo = [NSDictionary dictionaryWithObjectsAndKeys:activityData,TavantIBeaconRetailContinutiyScreenData, nil];
+    self.userActivity = self.viewProductActivity;
     
-    [self.viewProductActivity becomeCurrent];
+    [self.userActivity becomeCurrent];
 }
 
 -(void)updateUserActivityState:(NSUserActivity *)activity{    
@@ -121,6 +123,7 @@
 //    ProductViewController* temp = (ProductViewController*)self.prevVCForUserActivityFlow;
 //    NSDictionary* activityData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:self.prevScreen],@"prevScreen",[GlobalVariables getCartItems], @"cartItems", self.product, @"product", [GlobalVariables getCartItems], @"cartItems", temp.products, @"products", temp.searchFilteredProducts, @"filteredProducts",temp.searchString, @"searchString", nil];
     [activity addUserInfoEntriesFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:activityData,TavantIBeaconRetailContinutiyScreenData, nil]];
+//    [self.viewProductActivity becomeCurrent];
     [super updateUserActivityState:activity];
     
 }
@@ -229,10 +232,6 @@
     [self.cartButton setTitle:@"  ADDED TO CART" forState:UIControlStateNormal];
     self.cartButton.titleLabel.font = [UIFont fontWithName:@"AvenirNext-DemiBoldItalic" size:14];
     [self.cartButton setBackgroundColor:[UIColor colorWithRed:74/255.00 green:170/255.00 blue:192/255.00 alpha:1.0]];
-    
-//    [self.updateCartActivity becomeCurrent];
-//    [self updateUserActivityState:self.updateCartActivity];
-    
 }
 
 - (IBAction)highlightAddToCartButton:(id)sender {

@@ -28,6 +28,7 @@
     self.total=0;
     [self.tableview reloadData];
     [self updateTotal];
+    [self startUserActivities];
     
 }
 
@@ -39,17 +40,18 @@
 {
     [super viewWillAppear:animated];
     [self EnablePayButtonOnNavBar:YES];
-    [self startUserActivities];
+//    [self startUserActivities];
+//    self.userActivity.needsSave = YES;
     [self updateUserActivityState:self.screenActivity];
     [self getCartListing];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    [super viewWillDisappear:animated];
     [self EnablePayButtonOnNavBar:NO];
     [self.screenActivity invalidate];
     NSLog(@"CART SCREEN UNLOADING");
+    [super viewWillDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,17 +61,18 @@
 
 
 -(void) startUserActivities{
-    NSUserActivity* newActivity =  [[NSUserActivity alloc] initWithActivityType:TavantIBeaconRetailContinutiyViewScreen];
-    newActivity.title = @"Viewing Product List Screen";
+    self.screenActivity =  [[NSUserActivity alloc] initWithActivityType:TavantIBeaconRetailContinutiyViewScreen];
+    self.screenActivity.title = @"Viewing Product List Screen";
     NSDictionary* activityData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:BeaconRetailCartIndex],@"menuIndex",[GlobalVariables getCartItems],@"cartItems",nil];
-    newActivity.userInfo = [NSDictionary dictionaryWithObjectsAndKeys:activityData,TavantIBeaconRetailContinutiyScreenData, nil];
-    self.screenActivity = newActivity;
-    [self.screenActivity becomeCurrent];
+    self.screenActivity.userInfo = [NSDictionary dictionaryWithObjectsAndKeys:activityData,TavantIBeaconRetailContinutiyScreenData, nil];
+    self.userActivity = self.screenActivity;
+    [self.userActivity becomeCurrent];
 }
 
 -(void)updateUserActivityState:(NSUserActivity *)activity{
     NSDictionary* activityData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:BeaconRetailCartIndex],@"menuIndex",[GlobalVariables getCartItems],@"cartItems",nil];
     [activity addUserInfoEntriesFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:activityData,TavantIBeaconRetailContinutiyScreenData, nil]];
+//    [self.screenActivity becomeCurrent];
     [super updateUserActivityState:activity];
 }
 
@@ -79,6 +82,7 @@
     [GlobalVariables clearCartItems];
     [GlobalVariables updateCartItemsWithNewData:cartItems];
     [self getCartListing];
+    [super restoreUserActivityState:activity];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

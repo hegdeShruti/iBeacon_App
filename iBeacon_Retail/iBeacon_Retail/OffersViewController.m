@@ -37,12 +37,8 @@
         [self getOffersListing];
         
     }
-   
-    
    [self filterOffersforSections];
-    [self startUserActivities];
-    self.userActivity.needsSave = YES;
-    [self updateUserActivityState:self.screenActivity];
+    [self startUserActivities];   
     
 }
 
@@ -59,6 +55,9 @@
     [SlideNavigationController sharedInstance].rightBarButtonItem = rightBarButtonItem;
     [[SlideNavigationController sharedInstance].navigationBar.topItem setTitle:@"Offers"];
     [self.offersTableView reloadData];
+//    [self startUserActivities];
+//    self.userActivity.needsSave = YES;
+    [self updateUserActivityState:self.screenActivity];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -67,17 +66,18 @@
 }
 
 -(void) startUserActivities{
-    NSUserActivity* newActivity =  [[NSUserActivity alloc] initWithActivityType:TavantIBeaconRetailContinutiyViewScreen];
-    newActivity.title = @"Viewing Product List Screen";
+    self.screenActivity =  [[NSUserActivity alloc] initWithActivityType:TavantIBeaconRetailContinutiyViewScreen];
+    self.screenActivity.title = @"Viewing Product List Screen";
     NSDictionary* activityData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:BeaconRetailOffersIndex],@"menuIndex",[GlobalVariables getCartItems], @"cartItems", nil];
-    newActivity.userInfo = [NSDictionary dictionaryWithObjectsAndKeys:activityData,TavantIBeaconRetailContinutiyScreenData, nil];
-    self.screenActivity = newActivity;
-    [self.screenActivity becomeCurrent];
+    self.screenActivity.userInfo = [NSDictionary dictionaryWithObjectsAndKeys:activityData,TavantIBeaconRetailContinutiyScreenData, nil];
+    self.userActivity = self.screenActivity;
+    [self.userActivity becomeCurrent];
 }
 
 -(void)updateUserActivityState:(NSUserActivity *)activity{
     NSDictionary* activityData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:BeaconRetailOffersIndex],@"menuIndex",[GlobalVariables getCartItems], @"cartItems", nil];
     [activity addUserInfoEntriesFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:activityData,TavantIBeaconRetailContinutiyScreenData, nil]];
+//    [self.screenActivity becomeCurrent];
     [super updateUserActivityState:activity];
     
 }
@@ -89,6 +89,7 @@
         prodDetailVC.product = (Products*)[activityInfo objectForKey:@"product"];
         prodDetailVC.prevScreen = BeaconRetailOffersIndex;
         prodDetailVC.prevVCForUserActivityFlow = self;
+        [prodDetailVC restoreUserActivityState:activity];
         [[SlideNavigationController sharedInstance] pushViewController:prodDetailVC animated:YES];
     }
     [super restoreUserActivityState:activity];

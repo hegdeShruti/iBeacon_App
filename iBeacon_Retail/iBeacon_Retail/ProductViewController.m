@@ -41,7 +41,7 @@
           [self getProductListing];
     }
     [self loadRefreshControlForProductListing];
-    
+    [self startUserActivities];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -64,14 +64,35 @@
     [self.prodCollectionView reloadData];
     
     
-    [self startUserActivities];
-    self.userActivity.needsSave = YES;
+//    [self startUserActivities];
+//    self.userActivity.needsSave = YES;
     [self updateUserActivityState:self.screenActivity];
    
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [self.screenActivity invalidate];
     [super viewWillDisappear:animated];
+}
+
+-(void) startUserActivities{
+    self.screenActivity =  [[NSUserActivity alloc] initWithActivityType:TavantIBeaconRetailContinutiyViewScreen];
+    self.screenActivity.title = @"Viewing Product List Screen";
+    NSDictionary* activityData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:BeaconRetailProductIndex],@"menuIndex", [GlobalVariables getCartItems], @"cartItems", self.products, @"products", self.searchFilteredProducts, @"filteredProducts",@"", @"searchString", nil];
+    self.screenActivity.userInfo = [NSDictionary dictionaryWithObjectsAndKeys:activityData,TavantIBeaconRetailContinutiyScreenData, nil];
+    self.userActivity = self.screenActivity;
+    [self.userActivity becomeCurrent];
+}
+
+-(void)updateUserActivityState:(NSUserActivity *)activity{
+    NSString* searchString=@"";
+    if(![self.searchBar.text isEqualToString:@""]){
+        searchString = self.searchBar.text;
+    }
+    NSDictionary* activityData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:BeaconRetailProductIndex],@"menuIndex", [GlobalVariables getCartItems], @"cartItems", self.products, @"products", self.searchFilteredProducts, @"filteredProducts", searchString, @"searchString", nil];
+    [activity addUserInfoEntriesFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:activityData,TavantIBeaconRetailContinutiyScreenData, nil]];
+    //    [self.screenActivity becomeCurrent];
+    [super updateUserActivityState:activity];
+    
 }
 
 -(void)restoreUserActivityState:(NSUserActivity *)activity{
@@ -100,6 +121,7 @@
         prodDetailVC.product = (Products*)[activityInfo objectForKey:@"product"];
         prodDetailVC.prevScreen = BeaconRetailProductIndex;
         prodDetailVC.prevVCForUserActivityFlow = self;
+        [prodDetailVC restoreUserActivityState:activity];
         [[SlideNavigationController sharedInstance] pushViewController:prodDetailVC animated:YES];
     }
     [super restoreUserActivityState:activity];
@@ -145,27 +167,6 @@
  // Pass the selected object to the new view controller.
  }
  */
-
--(void) startUserActivities{
-    NSUserActivity* newActivity =  [[NSUserActivity alloc] initWithActivityType:TavantIBeaconRetailContinutiyViewScreen];
-    newActivity.title = @"Viewing Product List Screen";
-    NSDictionary* activityData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:BeaconRetailProductIndex],@"menuIndex", [GlobalVariables getCartItems], @"cartItems", self.products, @"products", self.searchFilteredProducts, @"filteredProducts",@"", @"searchString", nil];
-    newActivity.userInfo = [NSDictionary dictionaryWithObjectsAndKeys:activityData,TavantIBeaconRetailContinutiyScreenData, nil];
-    self.screenActivity = newActivity;
-    [self.screenActivity becomeCurrent];
-}
-
--(void)updateUserActivityState:(NSUserActivity *)activity{
-    NSString* searchString=@"";
-    if(![self.searchBar.text isEqualToString:@""]){
-        searchString = self.searchBar.text;
-    }
-    NSDictionary* activityData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:BeaconRetailProductIndex],@"menuIndex", [GlobalVariables getCartItems], @"cartItems", self.products, @"products", self.searchFilteredProducts, @"filteredProducts", searchString, @"searchString", nil];
-    [activity addUserInfoEntriesFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:activityData,TavantIBeaconRetailContinutiyScreenData, nil]];
-    [super updateUserActivityState:activity];
-
-}
-
 
 #pragma mark - For Status Bar
 -(UIStatusBarStyle)preferredStatusBarStyle{
